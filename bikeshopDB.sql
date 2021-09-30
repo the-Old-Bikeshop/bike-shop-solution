@@ -1,7 +1,47 @@
 DROP DATABASE IF EXISTS bikeshop;
 CREATE DATABASE bikeshop;
 USE bikeshop;
-CREATE TABLE user (userID INT NOT NULL PRIMARY KEY);
+
+CREATE TABLE user (
+  userID INT NOT NULL PRIMARY KEY
+  nickname VARCHAR(100) NOT NULL,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  password_hash VARCHAR(155) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(100) NOT NULL,
+  'role' INT NOT NULL,
+  );
+CREATE TABLE 'address' (
+  addressID INT NOT NULL PRIMARY KEY,
+  street_name VARCHAR(150) NOT NULL,
+  address_content VARCHAR(150) NOT NULL,
+  phone_number VARCHAR(100) NOT NULL,
+  address_type INT NOT NULL,
+  postalCodeID INT NOT NULL,
+  FOREIGN KEY (postalCodeID) REFERENCES city (postalCodeID),
+);
+CREATE TABLE city (
+  postalCodeID INT NOT NULL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+);
+CREATE TABLE review (
+  reviewID INT NOT NULL PRIMARY KEY,
+  creation_date VARCHAR(100)
+  title VARCHAR(255),
+  content TEXT NOT NULL,
+  userID INT NOT NULL,
+  FOREIGN KEY (userID) REFERENCES user (userID)
+);
+CREATE TABLE order (
+  orderID INT NOT NULL PRIMARY KEY,
+  creation_date VARCHAR(100),
+  'status' INT NOT NULL,
+  content TEXT NOT NULL,
+  userID INT NOT NULL,
+  FOREIGN KEY (userID) REFERENCES user (userID)
+);
 CREATE TABLE drive_type (
   drive_typeID INT NOT NULL PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
