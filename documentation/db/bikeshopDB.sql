@@ -29,7 +29,7 @@ CREATE TABLE `address` (
 );
 CREATE TABLE shipping (
   shippingID INT NOT NULL PRIMARY KEY,
-  creation_date DATE NOT NULL,
+  creation_date DATE,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   userID INT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE shipping (
 );
 CREATE TABLE review (
   reviewID INT NOT NULL PRIMARY KEY,
-  creation_date DATE NOT NULL,
+  creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE review (
 );
 CREATE TABLE `order` (
   orderID INT NOT NULL PRIMARY KEY,
-  creation_date DATE NOT NULL,
-  follow_up_date DATE NOT NULL,
+  creation_date DATETIME NOT NULL,
+  follow_up_date DATE,
   `status` VARCHAR(100) NOT NULL,
   payment_status VARCHAR(100) NOT NULL,
   total_price INT NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE product (
   stock INT NOT NULL,
   `length` DECIMAL(10, 2),
   color VARCHAR(100),
-  creation_date DATE NOT NULL,
+  creation_date DATE,
   bike_specificationsID INT NOT NULL,
   brandID INT NOT NULL,
   userID INT NOT NULL,
@@ -173,7 +173,7 @@ CREATE TABLE post (
   postID INT NOT NULL PRIMARY KEY,
   title VARCHAR(255),
   content TEXT,
-  create_date VARCHAR(100),
+  creation_date DATETIME,
   productID INT NOT NULL,
   userID INT NOT NULL,
   FOREIGN KEY (productID) REFERENCES product (productID),
@@ -188,7 +188,7 @@ CREATE TABLE post_has_images (
 );
 CREATE TABLE comment (
   commentID INT NOT NULL PRIMARY KEY,
-  creation_date DATE NOT NULL,
+  creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
@@ -198,7 +198,7 @@ CREATE TABLE comment (
 );
 CREATE TABLE reply (
   replyID INT NOT NULL PRIMARY KEY,
-  creation_date DATE NOT NULL,
+  creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
