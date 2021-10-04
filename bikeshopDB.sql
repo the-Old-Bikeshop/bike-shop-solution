@@ -29,7 +29,7 @@ CREATE TABLE `address` (
 );
 CREATE TABLE shipping (
   shippingID INT NOT NULL PRIMARY KEY,
-  creation_date VARCHAR(100) NOT NULL,
+  creation_date DATE NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   userID INT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE shipping (
 );
 CREATE TABLE review (
   reviewID INT NOT NULL PRIMARY KEY,
-  creation_date VARCHAR(100),
+  creation_date DATE NOT NULL,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
@@ -45,7 +45,8 @@ CREATE TABLE review (
 );
 CREATE TABLE `order` (
   orderID INT NOT NULL PRIMARY KEY,
-  creation_date VARCHAR(100),
+  creation_date DATE NOT NULL,
+  follow_up_date DATE NOT NULL,
   `status` VARCHAR(100) NOT NULL,
   payment_status VARCHAR(100) NOT NULL,
   total_price INT NOT NULL,
@@ -96,7 +97,7 @@ CREATE TABLE bike_specifications (
   bike_specificationsID INT NOT NULL PRIMARY KEY,
   `type` VARCHAR(255) NOT NULL,
   back_basket INT,
-  mudguarts INT,
+  mudguards INT,
   front_basket INT,
   lights INT,
   disk_brakes INT,
@@ -120,7 +121,7 @@ CREATE TABLE product (
   stock INT NOT NULL,
   `length` DECIMAL(10, 2),
   color VARCHAR(100),
-  create_date VARCHAR(100),
+  creation_date DATE NOT NULL,
   bike_specificationsID INT NOT NULL,
   brandID INT NOT NULL,
   userID INT NOT NULL,
@@ -171,7 +172,7 @@ CREATE TABLE product_has_images (
 CREATE TABLE post (
   postID INT NOT NULL PRIMARY KEY,
   title VARCHAR(255),
-  content LONGTEXT,
+  content TEXT,
   create_date VARCHAR(100),
   productID INT NOT NULL,
   userID INT NOT NULL,
@@ -187,7 +188,7 @@ CREATE TABLE post_has_images (
 );
 CREATE TABLE comment (
   commentID INT NOT NULL PRIMARY KEY,
-  creation_date VARCHAR(100),
+  creation_date DATE NOT NULL,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
@@ -197,7 +198,7 @@ CREATE TABLE comment (
 );
 CREATE TABLE reply (
   replyID INT NOT NULL PRIMARY KEY,
-  creation_date VARCHAR(100),
+  creation_date DATE NOT NULL,
   title VARCHAR(255),
   content TEXT NOT NULL,
   userID INT NOT NULL,
