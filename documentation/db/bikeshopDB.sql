@@ -145,14 +145,6 @@ CREATE TABLE favourite_products(
   FOREIGN KEY (productID) REFERENCES product (productID),
   CONSTRAINT PK_favourite_products PRIMARY KEY(userID, productID)
 );
-CREATE TABLE product_list(
-  ID INT NOT NULL,
-  productID INT NOT NULL,
-  productID_two INT NOT NULL,
-  FOREIGN KEY (productID) REFERENCES product (productID),
-  FOREIGN KEY (productID_two) REFERENCES product (productID),
-  CONSTRAINT PK_product_list PRIMARY KEY(ID, productID, productID_two)
-);
 CREATE TABLE product_has_category (
   productID INT NOT NULL,
   categoryID INT NOT NULL,
@@ -194,16 +186,6 @@ CREATE TABLE comment (
   userID INT NOT NULL,
   postID INT NOT NULL,
   FOREIGN KEY (postID) REFERENCES post(postID),
-  FOREIGN KEY (userID) REFERENCES `user` (userID)
-);
-CREATE TABLE reply (
-  replyID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  creation_date DATETIME,
-  title VARCHAR(255),
-  content TEXT NOT NULL,
-  userID INT NOT NULL,
-  commentID INT NOT NULL,
-  FOREIGN KEY (commentID) REFERENCES comment(commentID),
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE `page` (
