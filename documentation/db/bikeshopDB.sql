@@ -3,7 +3,7 @@ CREATE DATABASE bikeshop;
 USE bikeshop;
 
 CREATE TABLE `user` (
-  userID INT NOT NULL PRIMARY KEY,
+  userID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   nick_name VARCHAR(100) NOT NULL,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE city (
   `name` VARCHAR(100) NOT NULL
 );
 CREATE TABLE `address` (
-  addressID INT NOT NULL PRIMARY KEY,
+  addressID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   street_name VARCHAR(150) NOT NULL,
   address_content VARCHAR(150) NOT NULL,
   phone_number VARCHAR(100) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `address` (
   FOREIGN KEY (postalCodeID) REFERENCES city (postalCodeID)
 );
 CREATE TABLE shipping (
-  shippingID INT NOT NULL PRIMARY KEY,
+  shippingID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   creation_date DATE,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
@@ -36,7 +36,7 @@ CREATE TABLE shipping (
   FOREIGN KEY (userID) REFERENCES user (userID)
 );
 CREATE TABLE review (
-  reviewID INT NOT NULL PRIMARY KEY,
+  reviewID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE review (
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE `order` (
-  orderID INT NOT NULL PRIMARY KEY,
+  orderID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   creation_date DATETIME NOT NULL,
   follow_up_date DATE,
   `status` VARCHAR(100) NOT NULL,
@@ -57,35 +57,35 @@ CREATE TABLE `order` (
   FOREIGN KEY (shippingID) REFERENCES shipping (shippingID)
 );
 CREATE TABLE drive_type (
-  drive_typeID INT NOT NULL PRIMARY KEY,
+  drive_typeID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   short_description VARCHAR(255)
 );
 CREATE TABLE wheel_size (
-  wheel_sizeID INT NOT NULL PRIMARY KEY,
+  wheel_sizeID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   wheel_ISO VARCHAR(255) NOT NULL,
   tire_ISO VARCHAR(255) NOT NULL
 );
 CREATE TABLE braking_system (
-  braking_systemID INT NOT NULL PRIMARY KEY,
+  braking_systemID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `condition` INT(2)
 );
 CREATE TABLE category (
-  categoryID INT NOT NULL PRIMARY KEY,
+  categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   short_description VARCHAR(255)
 );
 CREATE TABLE `image` (
-  imageID INT NOT NULL PRIMARY KEY,
+  imageID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255),
   `URL` TEXT,
   alt VARCHAR(255)
 );
 CREATE TABLE brand (
-  brandID INT NOT NULL PRIMARY KEY,
+  brandID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   short_description VARCHAR(255),
@@ -94,7 +94,7 @@ CREATE TABLE brand (
   FOREIGN KEY (imageID) REFERENCES `image` (imageID)
 );
 CREATE TABLE bike_specifications (
-  bike_specificationsID INT NOT NULL PRIMARY KEY,
+  bike_specificationsID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `type` VARCHAR(255) NOT NULL,
   back_basket INT,
   mudguards INT,
@@ -111,7 +111,7 @@ CREATE TABLE bike_specifications (
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE product (
-  productID INT NOT NULL PRIMARY KEY,
+  productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT,
   short_description VARCHAR(255),
@@ -170,7 +170,7 @@ CREATE TABLE product_has_images (
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE post (
-  postID INT NOT NULL PRIMARY KEY,
+  postID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(255),
   content TEXT,
   creation_date DATETIME,
@@ -187,7 +187,7 @@ CREATE TABLE post_has_images (
   CONSTRAINT PK_post_has_images PRIMARY KEY (postID, imageID)
 );
 CREATE TABLE comment (
-  commentID INT NOT NULL PRIMARY KEY,
+  commentID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
@@ -197,7 +197,7 @@ CREATE TABLE comment (
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE reply (
-  replyID INT NOT NULL PRIMARY KEY,
+  replyID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   creation_date DATETIME,
   title VARCHAR(255),
   content TEXT NOT NULL,
@@ -207,7 +207,7 @@ CREATE TABLE reply (
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
 CREATE TABLE `page` (
-  pageID INT NOT NULL PRIMARY KEY,
+  pageID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
   cannonical_path VARCHAR(100),
