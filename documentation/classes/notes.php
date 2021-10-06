@@ -1,4 +1,4 @@
-parts class
+Parts class
         -functions:
 
             add/get/update drive type
@@ -7,7 +7,7 @@ parts class
             add/get/update category
             add/get/update braking system
 
-image class
+Image class
 
         -functions:
             check format
@@ -16,7 +16,7 @@ image class
             add to database
         return db position
 
-bike specks
+Bike specks
 
         use parts class
                 get parts
@@ -27,8 +27,9 @@ product class
             use parts class
             get parts
             use image class
-            get all products
+            get all products(filter, order by, search)
             add/get/update product
+
 
 
 user class
@@ -41,12 +42,18 @@ user class
 
             add/remove review
 
+Auth class
+
+            login
+            logout
+            add user info to session
+
 Order class
 
             add/get/update/view delivery methods
-            add order, update sesion and cookie
+            add order, update session and cookie
 
-post class
+Post class
             use image class
             add/update and view all posts
             add/remove/update comment if user is author
