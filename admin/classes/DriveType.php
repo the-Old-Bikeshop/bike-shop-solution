@@ -75,5 +75,14 @@ class DriveType
         }
     }
 
+    public function deleteBikeDrive($id) {
+        $query= $this->db->dbCon->prepare("DELETE FROM `drive_type` WHERE drive_typeID = $id");
+        if($query->execute()) {
+            $this->message = "Product deleted";
+        } else {
+            $this->message = "ERROR, product could not be deleted";
+        }
+    }
+
 
 }

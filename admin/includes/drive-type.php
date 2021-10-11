@@ -34,29 +34,35 @@
 <!--);-->
 
 <?php
+    $update = false;
     $drive_type = new DriveType();
   if(isset($_POST['submit-new'])) {
       $drive_type = new DriveType($_POST['name'], $_POST['short_description'], $_POST['description']);
       $drive_type->createBikeDrive();
   }elseif(isset($_POST['update'])) {
       $drive_type = new DriveType();
-      $drive = $drive_type->fetchOneDriveType($_POST['id']);
+      $update= true;
+
+      $drive = $drive_type->fetchOneDriveType($_POST['drive_typeID']);
   }elseif(isset($_POST['submit-update'])){
       $drive_type = new DriveType();
-      $drive_type->updateBikeDrive($_POST['name'], $_POST['short_description'], $_POST['description'], $_POST["drive_typeID"] );
+      $drive_type->updateBikeDrive($_POST['name'], $_POST['short_description'], $_POST['description'], $_POST['drive_typeID'] );
+  }elseif(isset($_POST['delete'])) {
+      $drive_type = new DriveType();
+      $drive_type->deleteBikeDrive($_POST['drive_typeID']);
   }
 
 ?>
 
-<section class="container row">
+<section class="row">
 
-<div class="col-12">
+<div class="col-12 col-md-12 offset-md-2 mt-5 mb-3 ">
     <h2>
         Drive Type
     </h2>
 </div>
-    <h3>All drive types</h3>
-    <table class="table">
+    <h3 class="col-12 col-md-8 offset-md-2">All drive types</h3>
+    <table class="table table-sm col-12 col-md-8 offset-md-2 pb-5 border-bottom border-secondary">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
@@ -75,16 +81,21 @@
                 <td><?php echo $res['short_description']?></td>
                 <td><?php echo $res['description']?></td>
                 <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="id" value="<?php echo $res['drive_typeID'] ?>">
-                        <input type="submit" name="update" value="update" class="btn btn-secondary" >
-                    </form>
-                    <a href= "#?delete=<?php echo $res['ID']?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                        <form action="" method="post" class="d-inline-block">
+                            <input type="text" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
+                            <input type="submit" name="update" value="update" class="btn btn-info" >
+                        </form>
+                        <form action="" method="post" class="d-inline-block">
+                            <input type="text" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
+                            <input type="submit" name="delete" value="delete" class="btn btn-danger" onclick="return confirm('Delete! are you sure?')" >
+                        </form>
+                    </td>
             </tr>
         <?php endforeach ?>
 
         </tbody>
     </table>
+
 
 <!--    display message-->
     <?php if(isset($drive_type->message)): ?>
@@ -100,30 +111,28 @@
 
 
 
-<form class="col-12 row" action="" method="post">
-    <p class="text-secondary  col-12">Use this form to create a new drive type</p>
-    <div class="form-group col-12 col-md-8 mt-2">
+<form class="col-12 row mt-5 col-12 col-md-8 offset-md-2 pb-5" action="" method="post" id="form">
+    <p class="text-secondary  col-12"><?php echo !$update ? "Create new drive type" : "Update product " . $drive['name'] ?> </p>
+    <div class="form-group col-12 mt-2">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="name of the drive type" value=" <?php echo isset($drive['name']) ? $drive['name'] : '' ?>" required>
     </div>
-    <div class="form-group col-12 col-md-8 mt-2">
+    <div class="form-group col-12  mt-2">
         <label for="short_description">Short description(max 255 characters)</label>
         <input type="text" class="form-control" id="short_description" name="short_description" placeholder="short description 255 characters" value="<?php echo isset($drive['short_description']) ? $drive['short_description'] : '' ?>"">
     </div>
-    <div class="form-group col-12 col-md-8 mt-2">
+    <div class="form-group col-12  mt-2">
         <label for="description">Describe products in detail</label>
-        <textarea class="form-control" id="description" rows="5" name="description">
-            <?php echo isset($drive['description']) ? $drive['description'] : '' ?>"
-        </textarea>
+        <textarea class="form-control" id="description" rows="5" name="description"><?php echo isset($drive['description']) ? $drive['description'] : ''?></textarea>
     </div>
     <?php if(isset($drive['drive_typeID'])): ?>
 
-        <input type="hidden" name = "drive_typeID" value = "<?php echo $drive['drive_typeID'] ?>">
+        <input type="text" hidden name = "drive_typeID" value = "<?php echo $drive['drive_typeID'] ?>">
 
     <?php endif; ?>
-    <div class="form-group col-12 col-md-8 mt-2">
-        <input type="submit" class="btn btn-primary" name="submit-new" value="Create">
-        <input type="submit" class="btn btn-secondary" name="submit-update" value="Update">
+    <div class="form-group col-12 mt-2">
+        <input type="submit" class="btn <?php echo !$update ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$update ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$update ? 'Create new' : 'update' ?>">
+        <input type="submit" class="btn btn-outline-dark ml-auto" name="reset" value="clear">
     </div>
 
 </form>
