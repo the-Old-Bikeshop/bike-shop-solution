@@ -19,19 +19,12 @@
 <!--tire_ISO VARCHAR(255) NOT NULL-->
 <!--);-->
 
-<!--CREATE TABLE braking_system (-->
-<!--braking_systemID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-->
-<!--`name` VARCHAR(255) NOT NULL,-->
-<!--`condition` INT(2)-->
-<!--);-->
-
-
 <!--CREATE TABLE category (-->
 <!--categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-->
 <!--`name` VARCHAR(100) NOT NULL,-->
 <!--`description` TEXT,-->
 <!--short_description VARCHAR(255)-->
-<!--);-->
+<!--)-->
 
 <?php
     $update = false;
@@ -68,7 +61,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Short description</th>
-            <th scope="col">description</th>
+            <th scope="col">Description</th>
             <th scope="col">Controls</th>
         </tr>
         </thead>
