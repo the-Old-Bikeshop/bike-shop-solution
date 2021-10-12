@@ -58,7 +58,7 @@ class BrakeType
         $query = $this->db->dbCon->prepare("UPDATE `braking_system` SET 
                                                         `name` = :name , 
                                                         `condition` = :condition
-                                                    WHERE drive_typeID = $id");
+                                                    WHERE braking_systemID = $id");
 
         $query->bindValue(':name', $this->name);
         $query->bindValue(':condition', $this->condition);

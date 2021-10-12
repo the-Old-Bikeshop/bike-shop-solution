@@ -59,6 +59,8 @@ spl_autoload_register(function ($class)
       $brake->deleteBrakeSystem($_POST['braking_systemID']);
   }
 
+  $convert = new Convert();
+
 ?>
 
 <html lang="en">
@@ -80,25 +82,27 @@ spl_autoload_register(function ($class)
 
 <div class="col-12 col-md-12 offset-md-2 mt-5 mb-3 ">
     <h2>
-        Drive Type
+        Brake systems
     </h2>
 </div>
-    <h3 class="col-12 col-md-8 offset-md-2">All drive types</h3>
+    <h3 class="col-12 col-md-8 offset-md-2">All brake systems</h3>
     <table class="table table-sm col-12 col-md-8 offset-md-2 pb-5 border-bottom border-secondary">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">condition</th>
+            <th scope="col">Condition id</th>
+            <th scope="col">Condition</th>
             <th scope="col">Controls</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($brake->fetchAllBrakeSystems() as $res): ?>
             <tr>
-                <th scope="row"></th>
+                <th scope="row"> <?php echo $res['braking_systemID']?></th>
                 <td><?php echo $res['name']?></td>
                 <td><?php echo $res['condition']?></td>
+                <td><?php echo $convert->condition($res['condition'])?></td>
                 <td>
                         <form action="" method="post" class="d-inline-block">
                             <input type="text" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
@@ -138,8 +142,21 @@ spl_autoload_register(function ($class)
     </div>
 
     <div class="form-group col-12  mt-2">
-        <label for="condition">products condition</label>
-        <input type="number" name="condition" id="condition" value="<?php echo isset($val['condition']) ? $val['condition'] : '' ?>" >
+        <label for="condition">Products condition</label>
+
+<!--        creates the select element and the selects using a for loop. -->
+
+        <select class="custom-select" id="condition" name="condition">
+            <?php  for($i = 1; $i < 6; $i++ ):?>
+            <option value= <?php echo $i ?>
+                <?php if(isset($val['condition']) && $val["condition"] == $i):?>
+                        selected
+                <?php endif; ?>
+            >
+                <?php echo $convert->condition($i) ?></option>
+
+            <?php endfor; ?>
+        </select>
     </div>
     <?php if(isset($val['braking_systemID'])): ?>
 
@@ -148,7 +165,6 @@ spl_autoload_register(function ($class)
     <?php endif; ?>
     <div class="form-group col-12 mt-2">
         <input type="submit" class="btn <?php echo !$update ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$update ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$update ? 'Create new' : 'update' ?>">
-        <input type="submit" class="btn btn-outline-dark ml-auto" name="reset" value="clear">
     </div>
 
 </form>

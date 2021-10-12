@@ -75,7 +75,7 @@
         <tbody>
         <?php foreach ($drive_type->fetchAllDriveTypes() as $res): ?>
             <tr>
-                <th scope="row"></th>
+                <th scope="row"> <?php echo $res["drive_typeID"] ?></th>
                 <td><?php echo $res['name']?></td>
                 <td><?php echo $res['short_description']?></td>
                 <td><?php echo $res['description']?></td>
@@ -131,7 +131,6 @@
     <?php endif; ?>
     <div class="form-group col-12 mt-2">
         <input type="submit" class="btn <?php echo !$update ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$update ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$update ? 'Create new' : 'update' ?>">
-        <input type="submit" class="btn btn-outline-dark ml-auto" name="reset" value="clear">
     </div>
 
 </form>
