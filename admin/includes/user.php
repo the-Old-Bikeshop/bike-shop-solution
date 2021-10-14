@@ -58,8 +58,18 @@ $user = new User();
                 <td><?php echo $res['email']?></td>
                 <td><?php echo $res['phone_number']?></td>
                         <td><?php echo $res['role']?></td>
-                <td><a href= "updateUser.php?id=<?php echo$res['userID'] ?>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Edit</a>
-                    <a href= "deleteUser.php?delete=<?php echo $res['userID']?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+
+                <td>
+                    <form action="updateUser.php" method="post" class="d-inline-block">
+                        <input type="text" hidden name="userID" value="<?php echo $res['userID'] ?>">
+                        <input type="submit" name="submit" value="update" class="btn btn-info" >
+                    </form>
+                    <form action="deleteUser.php" method="post" class="d-inline-block">
+                        <input type="text" hidden name="userID" value="<?php echo $res['userID'] ?>">
+                        <input type="submit" name="delete" value="delete" class="btn btn-danger" onclick="return confirm('Delete! Are you sure?')" >
+                    </form>
+
+                </td>
             </tr>
         <?php endforeach ?>
 

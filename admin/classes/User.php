@@ -65,6 +65,7 @@ class User
 
         if ($query->execute()) {
             $this->message = "User Created.";
+            Header("Location: user.php");
         } else {
             $this->message = "User could not be created.";
         }
@@ -75,7 +76,7 @@ class User
         $query = $this->db->dbCon->prepare("DELETE FROM `user` WHERE userID=$id" );
         if($query->execute()) {
             $this->message = "User deleted";
-            Header("Location: allUsers.php");
+            Header("Location: user.php");
         } else {
             $this->message = "User could not be deleted";
         }
@@ -84,9 +85,9 @@ class User
     public function fetchUser($id) {
 
         $query =$this->db->dbCon->prepare(
-            "SELECT nick_name, password, last_name, first_name, phone_number, email, role 
+            "SELECT nick_name, password_hash, last_name, first_name, phone_number, email, role 
                     FROM `user`
-                    WHERE ID = '$id'
+                    WHERE userID = '$id'
                     ");
         $result_user = null;
         if($query->execute()) {
@@ -95,7 +96,6 @@ class User
             $this->message = "the user could not be found";
             exit;
         }
-
         $this->nick_name = $result_user['nick_name'];
         $this->last_name = $result_user['last_name'];
         $this->first_name = $result_user['first_name'];

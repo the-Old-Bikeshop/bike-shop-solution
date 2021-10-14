@@ -3,7 +3,7 @@ spl_autoload_register(function ($class)
 {require_once"../classes/".$class.".php";});
 
 if(isset($_POST['submit'])) {
-    $user = new User($_POST['username'], $_POST['lName'], $_POST['fName'], $_POST['description'], $_POST['rank'], $_POST['email']);
+    $user = new User($_POST['nick_name'], $_POST['last_name'], $_POST['first_name'], $_POST['phone_number'], $_POST['rank'], $_POST['email']);
     $user->createUser($_POST['password'], 15);
 
 }
@@ -41,36 +41,37 @@ if(isset($_POST['submit'])) {
     <form action="" method="post">
         <div class="form-row">
             <div class="col-md-5 mb-3">
-                <label for="validationDefault01">First name</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="" name="fName" required>
+                <label for="first_name">First name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="First name" value="" name="first_name" required>
             </div>
             <div class="col-md-5 mb-3">
-                <label for="validationDefault02">Last name</label>
-                <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="" name="lName" required >
+                <label for="last_name">Last name</label>
+                <input type="text" class="form-control" id="last_name" placeholder="Last name" value="" name="last_name" required >
             </div>
             <div class="col-md-5 mb-3">
-                <label for="validationDefaultUsername">Username</label>
-                    <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" name="username" required>
+                <label for="nick_name">nick_name</label>
+                <input type="text" class="form-control" id="nick_name" placeholder="nick_name" value="" name="nick_name" required>
             </div>
             <div class="col-md-5 mb-3">
                 <label for="validationDefaultPassword">Password</label>
                 <input type="password" class="form-control" id="validationDefaultPassword" placeholder="Password" aria-describedby="inputGroupPrepend2" name="password" required>
             </div>
+
         </div>
         <div class="form-row">
             <div class="col-md-5 mb-3">
-                <label for="validationDefault03">Email</label>
-                <input type='email' class="form-control" id="validationDefault03" placeholder="email@email.com" required name="email">
+                <label for="email">Email</label>
+                <input type='email' class="form-control" id="email" placeholder="email" value = "" name="email" required ">
             </div>
             <div class="col-md-5 mb-3">
-                <label for="validationDefault04">About</label>
-                <textarea class="form-control" id="validationDefault04" placeholder="State" required name="description"> </textarea>
+                <label for="nick_name">Phone</label>
+                <input type="number" class="form-control" id="nick_name" placeholder="phone nr" value="" name="phone_number" required>
             </div>
                 <input  hidden type="text" class="form-control" id="validationDefault05" placeholder="Zip" required value = 1 name = 'rank'>
 
         </div>
 
-        <button class="btn btn-primary" type="submit" name="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" name="submit">Create user</button>
     </form>
 </section>
 </body>
