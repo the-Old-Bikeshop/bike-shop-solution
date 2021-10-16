@@ -1,7 +1,7 @@
 <?php 
 
 // Admin routes
-RouterController::set('admin-login', function() {
+RouterController::set('admin/login', function() {
     AdminLoginController::CreateView('AdminLoginView');
 });
 
