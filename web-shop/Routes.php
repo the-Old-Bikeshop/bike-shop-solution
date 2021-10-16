@@ -2,7 +2,7 @@
 
 // Admin routes
 RouterController::set('admin-login', function() {
-    AdminLoginController::CreateView('AdminLogin');
+    AdminLoginController::CreateView('AdminLoginView');
 });
 
 // Customer routes
@@ -10,11 +10,11 @@ RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
 });
 
-RouterController::set('about-us', function() {
+RouterController::set('about', function() {
     ContactController::CreateView('AboutView');
 });
 
-RouterController::set('contact-us', function() {
+RouterController::set('contact', function() {
     ContactController::CreateView('ContactView');
 });
 
