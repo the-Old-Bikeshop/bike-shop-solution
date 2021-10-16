@@ -1,6 +1,11 @@
 <?php
 spl_autoload_register(function ($class)
-{require_once"classes/".$class.".php";});
+{require_once"./classes/".$class.".php";});
+
+$session = new SessionHandle();
+if ($session->confirm_logged_in()) {
+    Header("Location: .views/login/php");
+}
 
 ?>
 
@@ -20,13 +25,9 @@ spl_autoload_register(function ($class)
 <body>
 
 <h1>admin page</h1>
-
-<?php include_once "includes/drive-type.php" ?>
-
-
-
-
-
+<form action="./views/login.php" method="get">
+    <input type="submit" name="logout" value="Logout">
+</form>
 
 
 
