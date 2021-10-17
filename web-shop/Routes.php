@@ -11,7 +11,7 @@ RouterController::set('landing', function() {
 });
 
 RouterController::set('about', function() {
-    ContactController::CreateView('AboutView');
+    AboutController::CreateView('AboutView');
 });
 
 RouterController::set('contact', function() {
