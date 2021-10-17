@@ -1,11 +1,21 @@
 <?php 
 
-Route::set('about-us', function() {
-    ContactController::CreateView('AboutUs');
+// Admin routes
+RouterController::set('admin/login', function() {
+    AdminLoginController::CreateView('AdminLoginView');
 });
 
-Route::set('contact-us', function() {
-    ContactController::CreateView('ContactUs');
+// Customer routes
+RouterController::set('landing', function() {
+    LandingController::CreateView('LandingView');
+});
+
+RouterController::set('about', function() {
+    ContactController::CreateView('AboutView');
+});
+
+RouterController::set('contact', function() {
+    ContactController::CreateView('ContactView');
 });
 
 ?>

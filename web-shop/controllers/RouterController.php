@@ -1,5 +1,5 @@
 <?php
-    class Route {
+    class RouterController {
 
         public static $validRoutes = array();
 
