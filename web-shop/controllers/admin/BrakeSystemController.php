@@ -19,29 +19,72 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-$update = false;
-$brake = new BrakeType();
-if(isset($_POST['submit-new'])) {
-    $brake = new BrakeType($_POST['name'], $_POST['condition']);
-    $brake->createBrakeSystem();
-}elseif(isset($_POST['update'])) {
-    $brake = new BrakeType();
-    $update= true;
-
-    $val = $brake->fetchOneBrakeSystem($_POST['braking_systemID']);
-}elseif(isset($_POST['submit-update'])){
-    $brake = new BrakeType();
-    $brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
-}elseif(isset($_POST['delete'])) {
-    $brake = new BrakeType();
-    $brake->deleteBrakeSystem($_POST['braking_systemID']);
-}
-
-$convert = new Convert();
-
-echo "for the brake system controller";
 
 class BrakeSystemController extends ViewController
 {
+
+    public $convert;
+    private $update;
+    private $brake;
+    private $val;
+
+    public function __construct()
+    {
+        $this->convert = new Convert();
+        $this->update = false;
+        $this->brake = new BrakeType();
+
+    }
+
+    public function setBrake() {
+        if(isset($_POST['submit-new'])) {
+            $this->brake = new BrakeType($_POST['name'], $_POST['condition']);
+            $this->brake->createBrakeSystem();
+        }elseif(isset($_POST['update'])) {
+            $this->brake = new BrakeType();
+            $this->update= true;
+            $this->val = $this->brake->fetchOneBrakeSystem($_POST['braking_systemID']);
+        }elseif(isset($_POST['submit-update'])){
+            $this->brake = new BrakeType();
+            $this->brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
+        }elseif(isset($_POST['delete'])) {
+            $this->brake = new BrakeType();
+            $this->brake->deleteBrakeSystem($_POST['braking_systemID']);
+        }
+    }
+
+    /**
+     * @return BrakeType
+     */
+    public function getBrake(): BrakeType
+    {
+        return $this->brake;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVal()
+    {
+        return $this->val;
+    }
+
+    /**
+     * @return false
+     */
+    public function getUpdate(): bool
+    {
+        return $this->update;
+    }
+
+    /**
+     * @return Convert
+     */
+    public function getConvert(): Convert
+    {
+        return $this->convert;
+    }
+
+
 
 }
