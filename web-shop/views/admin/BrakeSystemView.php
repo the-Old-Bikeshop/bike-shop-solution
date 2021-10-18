@@ -90,7 +90,6 @@ $br->getBrake();
 
                 <select class="custom-select" id="condition" name="condition">
                     <?php for($i = 1; $i < 6; $i++ ):?>
-
                         <option value= <?php echo $i . " " ?>
                                 <?php if($br->getVal()["condition"] == $i):?>
                                 selected
@@ -100,13 +99,12 @@ $br->getBrake();
                                 if(!is_null($i)){
                                     $br->getConvert()->condition($i);
                                 };
-
                             ?>
                         </option>
-
                     <?php endfor; ?>
-
                 </select>
+
+                
 
 
 
