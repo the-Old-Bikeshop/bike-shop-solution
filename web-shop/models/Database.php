@@ -1,20 +1,17 @@
 <?php
 
-class Database {
-    protected const DB_SERVER = 'localhost';
-    protected const DB_USER = 'root';
-    protected const DB_PASSWORD = 'root';
-    protected const DB_DATABASE = 'bikeshop';
+class Database
+{
     public $dbCon;
 
     public function __construct() {
-        $user = $this::DB_USER;
-        $password = $this::DB_PASSWORD;
-        $server = $this::DB_SERVER;
-        $database = $this::DB_DATABASE;
+        $server = "localhost";
+        $user = "root";
+        $passport = "root";
+        $database = "bikeshop";
 
         try {
-            $this->dbCon = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $user, $password);
+            $this->dbCon = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $user, $passport);
             $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->dbCon;
         } catch (PDOException $err) {
@@ -25,6 +22,5 @@ class Database {
     public function dbClose() {
         $this->dbCon = null;
     }
-}
 
-?>
+}

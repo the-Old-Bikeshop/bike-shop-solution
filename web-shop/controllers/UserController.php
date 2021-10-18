@@ -20,17 +20,17 @@ spl_autoload_register(function($class_name) {
 
 class UserController extends ViewController {
 
-    private $user;
+    // protected $user;
 
-    public function __construct()
-    {
-        $this->convert = new User();
-    }
+    // public function __construct()
+    // {
+    //     $this->user = new User();
+    // }
 
     public function registerUser() {
          //Process form
             
-        //Sanitize POST data
+        // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //Init data
@@ -60,8 +60,8 @@ class UserController extends ViewController {
         }
 
         //Register User
-        elseif($this->user->registerUser($data)) {
-            $redirect = new Redirect("about");
+        if($this->user->registerUser($data)) {
+            new Redirect("about");
         }else {
             die("Something went wrong");
         }
@@ -69,14 +69,19 @@ class UserController extends ViewController {
     
 }
 
-// $init = new UserController;
+$init = new UserController;
 
 // This keeps track if user sends the request
-// if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     switch($_POST['type']) {
-//         case 'register';
-//             $init->register();
-//             break;
-//     }
-// }
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    switch($_POST['type']) {
+        case 'register';
+            $init->registerUser();
+            break;
+            default:
+            echo "shieet...";
+    }
+}
+
+
+
 
