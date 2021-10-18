@@ -2,11 +2,8 @@
 
 
 // Admin routes
-RouterController::set('admin/login', function() {
-    AdminLoginController::CreateView('AdminLoginView');
-});
 
-RouterController::set('brake-system', function() {
+RouterController::set('admin-brake-system', function() {
     BrakeSystemController::CreateView('BrakeSystemView');
 });
 
