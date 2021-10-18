@@ -97,7 +97,7 @@ $br->getBrake();
                             <?php endif; ?>
                         >
                             <?php
-                                if(isset($i)){
+                                if(!is_null($i)){
                                     $br->getConvert()->condition($i);
                                 };
 
