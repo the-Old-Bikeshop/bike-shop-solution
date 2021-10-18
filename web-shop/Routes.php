@@ -6,7 +6,7 @@ RouterController::set('admin/login', function() {
     AdminLoginController::CreateView('AdminLoginView');
 });
 
-RouterController::set('admin/brake-system', function() {
+RouterController::set('brake-system', function() {
     BrakeSystemController::CreateView('BrakeSystemView');
 });
 
