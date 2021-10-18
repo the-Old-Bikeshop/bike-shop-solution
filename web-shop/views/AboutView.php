@@ -2,5 +2,13 @@
 
 <?php
 $about = new AboutController();
-$about->printhello();
+
 var_dump($about->user);
+
+
+?>
+
+<h1>the about us</h1>
+
+
+

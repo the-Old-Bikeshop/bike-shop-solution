@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    public static $host;
-    public static $dbName;
-    public static $username;
-    public static $password;
+    protected const DB_SERVER = 'localhost';
+    protected const DB_USER = 'admin2';
+    protected const DB_PASSWORD = 'Mirodenii1!';
+    protected const DB_DATABASE = 'bikeshop';
 }
 
 ?>

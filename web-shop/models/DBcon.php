@@ -1,11 +1,9 @@
 <?php
+spl_autoload_register(function ($class)
+{require_once"./".$class.".php";});
 
-class DBcon
+class DBcon extends Database
 {
-    protected const DB_SERVER = 'localhost';
-    protected const DB_USER = 'admin2';
-    protected const DB_PASSWORD = 'Mirodenii1!';
-    protected const DB_DATABASE = 'bikeshop';
     public $dbCon;
 
     public function __construct() {
@@ -13,6 +11,7 @@ class DBcon
         $pass = $this::DB_PASSWORD;
         $server = $this::DB_SERVER;
         $database = $this::DB_DATABASE;
+
 
         try {
             $this->dbCon = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $user, $pass);

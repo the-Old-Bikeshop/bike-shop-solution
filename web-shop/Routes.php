@@ -1,8 +1,13 @@
-<?php 
+<?php
+
 
 // Admin routes
 RouterController::set('admin/login', function() {
     AdminLoginController::CreateView('AdminLoginView');
+});
+
+RouterController::set('admin/brake-system', function() {
+    BrakeSystemController::CreateView('BrakeSystemView');
 });
 
 // Customer routes
@@ -11,7 +16,7 @@ RouterController::set('landing', function() {
 });
 
 RouterController::set('about', function() {
-    ContactController::CreateView('AboutView');
+    AboutController::CreateView('AboutView');
 });
 
 RouterController::set('contact', function() {
