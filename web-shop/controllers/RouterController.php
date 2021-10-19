@@ -13,10 +13,5 @@
 
         }
 
-        public function route_push($location) {
-            header("Location: {$location}");
-            exit;
-        }
-
     }
 ?>

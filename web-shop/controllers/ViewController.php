@@ -1,16 +1,26 @@
 <?php
 
+
+
 class ViewController {
 
-    public static function CreateView($viewName) {
 
-            if (file_exists('./views/'.$viewName.'.php')) {
-                require_once './views/'.$viewName.'.php';
-            } elseif (file_exists('./views/admin/'.$viewName.'.php')) {
-                require_once './views/admin/'.$viewName.'.php';
+    public static function CreateView($viewName) {
+        $dirs = array(
+            'views/',
+            'views/admin/',
+        );
+
+        foreach( $dirs as $dir ) {
+            if (file_exists('./'. $dir . $viewName .'.php')) {
+                require_once('./'. $dir . $viewName .'.php');
+                return;
             }
+        }
+
     }
-    
+
 }
+
 
 ?>
