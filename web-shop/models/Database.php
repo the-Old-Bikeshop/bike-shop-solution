@@ -6,8 +6,8 @@ class Database
 
     public function __construct() {
         $server = "localhost";
-        $user = "root";
-        $passport = "root";
+        $user = "admin2";
+        $passport = "Mirodenii1!";
         $database = "bikeshop";
 
         try {

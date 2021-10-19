@@ -11,8 +11,8 @@ spl_autoload_register(function($class_name) {
     // Looping through each directory to load all the class files. It will only require a file once.
     // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
     foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name .'.php')) {
-            require_once($dir . $class_name.'.php');
+        if (file_exists($dir . $class_name . '.php')) {
+            require_once( $dir . $class_name . '.php');
              return;
         }
     }
@@ -20,16 +20,17 @@ spl_autoload_register(function($class_name) {
 
 class UserController extends ViewController {
 
-    // protected $user;
+     protected $user;
+     protected $data;
 
-    // public function __construct()
-    // {
-    //     $this->user = new User();
-    // }
+     public function __construct()
+     {
+         $this->user = new User();
+     }
 
-    public function registerUser() {
+    public function prepUser() {
          //Process form
-            
+
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -39,13 +40,15 @@ class UserController extends ViewController {
             'first_name' => trim($_POST['first_name']),
             'last_name' => trim($_POST['last_name']),
             'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),
-            'password_repeated' => trim($_POST['password_repeated'])
+            'password_repeated' => trim($_POST['password_repeated']),
+            'role' => trim($_POST['role'])
         ];
+
+        $password = $this->hashPassword(trim($_POST['password']), 15);
 
         //Validate inputs
         if(empty($data['nick_name']) || empty($data['first_name']) || empty($data['last_name']) || 
-        empty($data['email']) || empty($data['password']) || empty($data['password_repeated'])) {
+        empty($data['email'])) {
             echo "This is empty as programmer after coding in php";
         }
 
@@ -53,34 +56,41 @@ class UserController extends ViewController {
             echo "Shit happened :D, your email is wrong boy :)!";
         }
 
-        elseif(strlen($data['password']) < 6) {
+        elseif(strlen($_POST['password']) < 6) {
             echo "Password too short!";
-        } else if($data['password'] !== $data['password_repeated']) {
+        } else if($_POST['password'] !== $_POST['password_repeated']) {
             echo "Password doesnt match!";
         }
+        $this->data = $data;
 
         //Register User
-        if($this->user->registerUser($data)) {
-            new Redirect("about");
-        }else {
-            die("Something went wrong");
-        }
+        $this->user->registerUser($this->data, $password);
+
+
+
+
+    }
+
+    public function hashPassword( $password,  $iteration = 15 ) {
+        $iterations = ['cost' => $iteration];
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
+        return $hashed_password;
     }
     
 }
 
-$init = new UserController;
-
-// This keeps track if user sends the request
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    switch($_POST['type']) {
-        case 'register';
-            $init->registerUser();
-            break;
-            default:
-            echo "shieet...";
-    }
-}
+//$init = new UserController;
+//
+//// This keeps track if user sends the request
+//if($_SERVER['REQUEST_METHOD'] == 'POST') {
+//    switch($_POST['type']) {
+//        case 'register';
+//            $init->registerUser();
+//            break;
+//            default:
+//            echo "shieet...";
+//    }
+//}
 
 
 

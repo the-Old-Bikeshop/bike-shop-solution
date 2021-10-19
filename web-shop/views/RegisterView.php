@@ -1,3 +1,19 @@
+<?php
+$init = new UserController;
+
+// This keeps track if user sends the request
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    switch($_POST['type']) {
+        case 'register';
+            $init->prepUser();
+            break;
+        default:
+            echo "shieet...";
+    }
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,7 +28,7 @@
             <div style="background-color: whitesmoke; width:25rem; padding-top:2rem; height: auto; display:flex; align-items:center; justify-content:center; padding-bottom:2rem; border-radius: 20px;">
                 <section class="container row">
                     <h2 style="margin-bottom:2rem;" class="col col-12 text-center">Sign up.</h2>
-                    <form action="../controllers/UserController.php" method="post" class="col col-12">
+                    <form action="" method="post" class="col col-12">
                         <input type="hidden" name="type" value="register">
                         <div style="display: flex; align-items:center; justify-content:center;" class="form-row row">
                             <div class="col-12 col-md-11">
@@ -36,9 +52,11 @@
                                 <input id="password" type="text" name="password" class="form-control">
                             </div>
                             <div class="col-12 col-md-11" style="margin-top:8px;">
-                                <label for="password_repeated">Repeat Password</label>
-                                <input id="password_repeated" type="text" name="password_repeated" class="form-control"> 
+                                <label for="password">Password repeat</label>
+                                <input id="password" type="text" name="password_repeated" class="form-control">
                             </div>
+                            <input type="hidden" name="role" value="1">
+
                             <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
                                 <button type="submit" name="submit" style="margin-top:30px;" class="btn btn-dark col-12 col-md-10">Sign up</button>
                             </div>

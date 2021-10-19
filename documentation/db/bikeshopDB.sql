@@ -9,9 +9,10 @@ CREATE TABLE `user` (
   last_name VARCHAR(100) NOT NULL,
   password_hash VARCHAR(155) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  phone_number VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(100),
   `role` VARCHAR(100) NOT NULL
 );
+ALTER TABLE `user` CHANGE `phone_number` `phone_number` VARCHAR(100)  NULL;
 CREATE TABLE city (
   postalCodeID INT NOT NULL PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL
