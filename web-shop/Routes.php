@@ -28,4 +28,9 @@ RouterController::set('contact', function() {
     ContactController::CreateView('ContactView');
 });
 
+RouterController::set('sign-up', function() {
+    UserController::CreateView('RegisterView');
+});
+
 ?>
+
