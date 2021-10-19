@@ -3,6 +3,22 @@
 class Convert
 {
 
+    private $conditionValues = array();
+
+
+    public function __construct()
+    {
+        $this->conditionValues = [1,2,3,4,5,];
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getConditionValues(): array
+    {
+        return $this->conditionValues;
+    }
+
     public function condition($val) {
         switch($val) {
             case 1:

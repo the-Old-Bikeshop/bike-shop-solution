@@ -89,19 +89,20 @@ $br->getBrake();
                 <!--        creates the select element and the selects using a for loop. -->
 
                 <select class="custom-select" id="condition" name="condition">
-                    <?php for($i = 1; $i < 6; $i++ ):?>
-                        <option value= <?php echo $i . " " ?>
-                                <?php if($br->getVal()["condition"] == $i):?>
-                                selected
-                            <?php endif; ?>
-                        >
-                            <?php
-                                if(!is_null($i)){
-                                    $br->getConvert()->condition($i);
-                                };
-                            ?>
-                        </option>
-                    <?php endfor; ?>
+                    <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
+                    <option value= <?php echo $cond . " " ?>
+                            <?php if($br->getVal()["condition"] == $cond):?>
+                            selected
+                        <?php endif; ?>
+                    >
+                        <?php
+                        if($br->getConvert()->getConditionValues() !== null ) {
+                            $br->getConvert()->condition($cond);
+                        }?>
+                    </option>
+
+                    <?php endforeach; ?>
+
                 </select>
 
                 
