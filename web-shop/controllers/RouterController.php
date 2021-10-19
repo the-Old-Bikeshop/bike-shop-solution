@@ -1,5 +1,5 @@
 <?php
-    class Route {
+    class RouterController {
 
         public static $validRoutes = array();
 
@@ -11,6 +11,11 @@
                 $function->__invoke();
             }
 
+        }
+
+        public function route_push($location) {
+            header("Location: {$location}");
+            exit;
         }
 
     }
