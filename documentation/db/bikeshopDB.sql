@@ -9,6 +9,7 @@ CREATE TABLE `user` (
   last_name VARCHAR(100) NOT NULL,
   password_hash VARCHAR(155) NOT NULL,
   email VARCHAR(100) NOT NULL,
+<<<<<<< HEAD
   phone_number VARCHAR(100) NOT NULL,
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `role` VARCHAR(100) NOT NULL
@@ -35,6 +36,12 @@ CREATE TABLE email_template (
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+=======
+  phone_number VARCHAR(100),
+  `role` VARCHAR(100) NOT NULL
+);
+ALTER TABLE `user` CHANGE `phone_number` `phone_number` VARCHAR(100)  NULL;
+>>>>>>> implementing-mvc-upgrade
 CREATE TABLE city (
   postalCodeID INT NOT NULL PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL
