@@ -7,6 +7,10 @@ RouterController::set('admin-brake-system', function() {
     BrakeSystemController::CreateView('BrakeSystemView');
 });
 
+RouterController::set('admin-wheel-size', function() {
+    WheelSizeController::CreateView('WheelSizeView');
+});
+
 RouterController::set('admin-drive-type', function() {
     DriveTypeController::CreateView('DriveTypeView');
 });
