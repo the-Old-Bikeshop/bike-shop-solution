@@ -1,5 +1,4 @@
 <?php
-
 spl_autoload_register(function($class_name) {
 
     // Define an array of directories in the order of their priority to iterate through.
@@ -19,56 +18,55 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-
-
-
-class BrakeSystemController extends ViewController
+class DriveTypeController extends ViewController
 {
+    public $update;
+    private $drive_type;
+    private $drive;
 
-    public $convert;
-    private $update;
-    private $brake;
-    private $val;
+
 
     public function __construct()
     {
-        $this->convert = new Convert();
         $this->update = false;
-        $this->brake = new BrakeType();
+        $this->drive_type = new DriveType();
 
     }
 
-    public function setBrake() {
+
+    public function setDriveType(): void
+    {
+
         if(isset($_POST['submit-new'])) {
-            $this->brake = new BrakeType($_POST['name'], $_POST['condition']);
-            $this->brake->createBrakeSystem();
+            $this->drive_type = new DriveType($_POST['name'], $_POST['short_description'], $_POST['description']);
+            $this->drive_type->createBikeDrive();
         }elseif(isset($_POST['update'])) {
-            $this->brake = new BrakeType();
+            $this->drive_type = new DriveType();
             $this->update= true;
-            $this->val = $this->brake->fetchOneBrakeSystem($_POST['braking_systemID']);
+            $this->drive = $this->drive_type->fetchOneDriveType($_POST['drive_typeID']);
         }elseif(isset($_POST['submit-update'])){
-            $this->brake = new BrakeType();
-            $this->brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
+            $this->drive_type = new DriveType();
+            $this->drive_type->updateBikeDrive($_POST['name'], $_POST['short_description'], $_POST['description'], $_POST['drive_typeID'] );
         }elseif(isset($_POST['delete'])) {
-            $this->brake = new BrakeType();
-            $this->brake->deleteBrakeSystem($_POST['braking_systemID']);
+            $this->drive_type = new DriveType();
+            $this->drive_type->deleteBikeDrive($_POST['drive_typeID']);
         }
     }
 
     /**
-     * @return BrakeType
+     * @return DriveType
      */
-    public function getBrake(): BrakeType
+    public function getDriveType(): DriveType
     {
-        return $this->brake;
+        return $this->drive_type;
     }
 
     /**
      * @return mixed
      */
-    public function getVal()
+    public function getDrive()
     {
-        return $this->val;
+        return $this->drive;
     }
 
     /**
@@ -78,15 +76,5 @@ class BrakeSystemController extends ViewController
     {
         return $this->update;
     }
-
-    /**
-     * @return Convert
-     */
-    public function getConvert(): Convert
-    {
-        return $this->convert;
-    }
-
-
 
 }
