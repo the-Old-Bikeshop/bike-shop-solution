@@ -19,6 +19,10 @@ RouterController::set('admin-company-details', function() {
     CompanyDetailsController::CreateView('CompanyDetailsView');
 });
 
+RouterController::set('admin-category', function () {
+    CategoryController::CreateView('CategoryView');
+});
+
 // Customer routes
 RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
