@@ -3,7 +3,7 @@ $init = new UserController;
 
 // This keeps track if user sends the request
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    switch($_POST['type']) {
+    switch($_POST['login']) {
         case 'login';
             $init->login();
             break;
@@ -39,13 +39,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input id="password" type="text" name="password" class="form-control">
                             </div>
                             <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
-                                <button type="submit" name="submit" style="margin-top:30px;" class="btn btn-dark col-12 col-md-10">Sign up</button>
+                                <button type="" name="" style="margin-top:30px;" class="btn btn-dark col-12
+                                col-md-10">Sign up</button>
                             </div>
                         </div>
+                        <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
+                            <input style="margin-top:30px;" class="btn btn-outline-dark col-12 col-md-10" type="submit"
+                                    name="login" value="login">
+                        </div>
                     </form>
-                    <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
-                        <button style="margin-top:30px;" class="btn btn-outline-dark col-12 col-md-10" type="submit" name="submit">Sign in</button>
-                    </div>
+
                 </section>
             </div>
         </div>

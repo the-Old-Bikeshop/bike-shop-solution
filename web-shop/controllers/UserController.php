@@ -92,8 +92,11 @@ class UserController extends ViewController {
         //Check for email
         if($this->user->findUserByEmail($data['email'])){
             //User Found
-            $loggedInUser = $this->user->loginUser($data['email'], $data['password']);
+            $loggedInUser = $this->user->LogInUser($data['email'], $data['password']);
+
             if($loggedInUser){
+                var_dump($loggedInUser);
+                new RedirectHandler("index.php");
                 //Create session
                 // session handler goes here and activates the session
             }else{
