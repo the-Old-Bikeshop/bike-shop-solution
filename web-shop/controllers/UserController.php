@@ -28,7 +28,7 @@ class UserController extends ViewController {
          $this->user = new User();
      }
 
-    public function prepUser() {
+    public function register() {
          //Process form
 
         // Sanitize POST data
@@ -61,14 +61,11 @@ class UserController extends ViewController {
         } else if($_POST['password'] !== $_POST['password_repeated']) {
             echo "Password doesnt match!";
         }
+
         $this->data = $data;
 
         //Register User
         $this->user->registerUser($this->data, $password);
-
-
-
-
     }
 
     public function hashPassword( $password,  $iteration = 15 ) {
@@ -76,21 +73,38 @@ class UserController extends ViewController {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
         return $hashed_password;
     }
-    
+
+    public function login(){
+        //Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        //Init data
+        $data=[
+            'email' => trim($_POST['email']),
+            'password' => trim($_POST['password'])
+        ];
+
+        if(empty($data['email']) || empty($data['password'])){
+            // redirect user to login and show message "fill the inputs"
+            exit();
+        }
+
+        //Check for email
+        if($this->user->findUserByEmail($data['email'])){
+            //User Found
+            $loggedInUser = $this->user->loginUser($data['email'], $data['password']);
+            if($loggedInUser){
+                //Create session
+                // session handler goes here and activates the session
+            }else{
+                // redirect user to login and show message "password incorrect"
+            }
+        }else{
+              // redirect user to login and show message "no user found"
+        }
+    }
 }
 
-//$init = new UserController;
-//
-//// This keeps track if user sends the request
-//if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//    switch($_POST['type']) {
-//        case 'register';
-//            $init->registerUser();
-//            break;
-//            default:
-//            echo "shieet...";
-//    }
-//}
 
 
 
