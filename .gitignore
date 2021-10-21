@@ -1,5 +1,3 @@
 
-./idea/vcs.xml
-./idea/workspace.xml
-./idea/php.xml
+./idea
 ./web-shop/models/Database.php

@@ -15,6 +15,10 @@ RouterController::set('admin-drive-type', function() {
     DriveTypeController::CreateView('DriveTypeView');
 });
 
+RouterController::set('admin-company-details', function() {
+    CompanyDetailsController::CreateView('CompanyDetailsView');
+});
+
 // Customer routes
 RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
