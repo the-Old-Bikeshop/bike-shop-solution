@@ -96,7 +96,7 @@ class UserController extends ViewController {
 
             if($loggedInUser){
                 var_dump($loggedInUser);
-                new RedirectHandler("index.php");
+                new RedirectHandler("landing");
                 //Create session
                 // session handler goes here and activates the session
             }else{

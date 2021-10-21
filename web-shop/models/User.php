@@ -69,7 +69,6 @@ class User {
 
         if($row == false) return false;
 
-
         $hashedPassword = $row->password_hash;
         if(password_verify($password, $hashedPassword)){
             return $row;
