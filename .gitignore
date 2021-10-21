@@ -1,2 +1,5 @@
+
+./idea/vcs.xml
+./idea/workspace.xml
+./idea/php.xml
 ./web-shop/models/Database.php
-.idea
