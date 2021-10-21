@@ -9,9 +9,9 @@ CREATE TABLE `user` (
   last_name VARCHAR(100) NOT NULL,
   password_hash VARCHAR(155) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  phone_number VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(100),
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `role` VARCHAR(100) NOT NULL
+  `role` INT NOT NULL
 );
 
 CREATE TABLE `company_details` (
