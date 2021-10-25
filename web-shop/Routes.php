@@ -40,5 +40,9 @@ RouterController::set('sign-up', function() {
     UserController::CreateView('RegisterView');
 });
 
+RouterController::set('sign-in', function() {
+    UserController::CreateView('LoginView');
+});
+
 ?>
 

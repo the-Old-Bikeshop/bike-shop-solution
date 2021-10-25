@@ -40,16 +40,20 @@ class BrakeSystemController extends ViewController
 
     public function setBrake() {
         if(isset($_POST['submit-new'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType($_POST['name'], $_POST['condition']);
             $this->brake->createBrakeSystem();
         }elseif(isset($_POST['update'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
             $this->update= true;
             $this->val = $this->brake->fetchOneBrakeSystem($_POST['braking_systemID']);
         }elseif(isset($_POST['submit-update'])){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
             $this->brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
         }elseif(isset($_POST['delete'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
             $this->brake->deleteBrakeSystem($_POST['braking_systemID']);
         }

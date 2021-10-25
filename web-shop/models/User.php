@@ -47,4 +47,36 @@ class User {
         }
 
     }
+
+       //Find user by email or username
+       public function findUserByEmail($email){
+
+        $query = $this->db->dbCon->prepare("SELECT * FROM `user` WHERE `email` = :email");
+
+        $query->bindValue(':email', $email);
+
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_OBJ);
+        //Check row
+        if($query->rowCount() > 0){
+            return $row;
+        }else{
+            return false;
+        }
+    }
+
+    // Login User
+    public function LogInUser($email, $password) {
+        $row = $this->findUserByEmail($email);
+
+        if($row == false) return false;
+
+        $hashedPassword = $row->password_hash;
+        if(password_verify($password, $hashedPassword)){
+            return $row;
+        }else{
+            return false;
+        }
+  
+    }
 }

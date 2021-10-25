@@ -17,7 +17,7 @@ class Login
                     $_SESSION['email'] = $found_user[0]['email'];
                     $_SESSION['name'] = $found_user[0]['first_name'];
 
-                    $redirect = new Redirect("admin.php");
+                    $redirect = new RedirectHandler("index.php");
                 } else {
                     // username/password combo was not found in the database
                     $this->message = "Email/password combination incorrect.<br />
