@@ -90,23 +90,21 @@ $br->getBrake();
 
                 <select class="custom-select" id="condition" name="condition">
                     <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
-                    <option value= <?php echo $cond . " " ?>
-                            <?php if($br->getVal()["condition"] == $cond):?>
-                            selected
-                        <?php endif; ?>
-                    >
+
+
+                        <option value= <?php echo $cond . " " ?>
+                                <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == $cond ):?>
+                                selected
+                            <?php endif; ?>
+                        >
                         <?php
-                        if($br->getConvert()->getConditionValues() !== null ) {
                             $br->getConvert()->condition($cond);
-                        }?>
+                        ?>
                     </option>
 
                     <?php endforeach; ?>
 
                 </select>
-
-                
-
 
 
             </div>
