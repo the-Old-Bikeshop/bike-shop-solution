@@ -51,7 +51,12 @@ class User {
        //Find user by email or username
        public function findUserByEmail($email){
 
-        $query = $this->db->dbCon->query("SELECT * FROM `user` WHERE `email` = '{$email}'");
+        $query = $this->db->dbCon->query("SELECT * FROM `user` WHERE email = :email");
+
+        $query->bindValue(':email', '$email');
+
+//        var_dump($query);
+//        exit();
 
         $query->execute();
         $row = $query->fetch(PDO::FETCH_OBJ);

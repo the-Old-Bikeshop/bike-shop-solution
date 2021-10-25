@@ -8,7 +8,7 @@ class Convert
 
     public function __construct()
     {
-        $this->conditionValues = [1,2,3,4,5,];
+        $this->conditionValues = [1,2,3,4,5];
     }
 
     /**
