@@ -23,6 +23,11 @@ RouterController::set('admin-category', function () {
     CategoryController::CreateView('CategoryView');
 });
 
+RouterController::set('admin-image', function () {
+    ImageController::CreateView('ImageView');
+});
+
+
 // Customer routes
 RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
