@@ -45,10 +45,16 @@ $img->setImage();
                     <td><?php echo $res['name']?></td>
                     <td><?php echo $res['URL']?></td>
                     <td><?php echo $res['alt']?></td>
-                    <td><img src="<?php echo __DIR__ . "/../../../public/img/" . $res['URL'] ?>"
-                             height="100px"</td>
+                    <td><img src="<?php echo '/bike-shop-solution/public/img/' . $res['URL'] ?>"
+                             height="100px" alt="<?php echo $res['alt'] ?>"
+                    </td>
+<!--                    <td><img src="../../../public/61795542e0e6b_north-american-cycle-courier-championship.jpeg"-->
+<!--                             height="100px" alt="--><?php //echo $res['alt'] ?><!--"-->
+<!--                    </td>-->
 
                     <td>
+
+<!--                        . $res['URL']-->
                         <form action="" method="post" class="d-inline-block">
                             <input type="text" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
                             <input type="submit" name="update" value="update" class="btn btn-info" >
@@ -81,7 +87,7 @@ $img->setImage();
 
 
         <form class="col-12 row mt-5 col-md-8 offset-md-2 pb-5" action="" method="post" id="form" enctype="multipart/form-data">
-            <p class="text-secondary  col-12"><?php echo !$img->getUpdate() ? "Create new drive type" : "Update product " . $img->getImg()['name'] ?> </p>
+            <p class="text-secondary  col-12"><?php echo !$img->getUpdate() ? "Create new drive type" : "Update product " .  $img->getImg()['name'] ?? '' ?> </p>
             <div class="form-group col-12 mt-2">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="name of the  drive type"
@@ -97,7 +103,7 @@ $img->setImage();
             <div class="form-group col-12 mt-2">
                 <label for="URL">URL</label>
                 <input type="text" class="form-control" id="URL" name="URL" placeholder="URL"
-                       value=" <?php echo isset($img->getImg()['URL']) ? $img->getImg()['URL'] : '' ?>" required>
+                       value="<?php echo isset($img->getImg()['URL']) ? trim($img->getImg()['URL']) : ''?>" required>
             </div>
 
             <div class="form-group col-12 mt-2">
@@ -106,15 +112,15 @@ $img->setImage();
                        value=" <?php echo isset($img->getImg()['name']) ? $img->getImg()['name'] : '' ?>" required>
             </div>
 
-            <?php  if(isset($val['URL'])):?>
+            <?php  if(isset($img->getImg()['URL'])):?>
                 <img
                         src="<?php echo isset($img->getImg()['URL']) ? $img->getImg()['URL'] : '' ?> "
                         alt="<?php echo isset($img->getImg()['alt']) ? $img->getImg()['alt'] : '' ?>">
             <?php endif; ?>
 
-            <?php if(isset($val['imageID'])): ?>
+            <?php if(isset($img->getImg()['imageID'])): ?>
 
-                <input type="text" hidden name = "imageID" value = "<?php echo $val['imageID'] ?>">
+                <input type="text" hidden name="imageID" value ="<?php echo $img->getImg()['imageID'] ?>">
 
             <?php endif; ?>
             <div class="form-group col-12 mt-2">

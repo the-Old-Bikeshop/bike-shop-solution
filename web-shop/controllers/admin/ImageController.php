@@ -45,12 +45,15 @@ class ImageController extends
     }
 
     public function setData() {
-        if(isset($_POST['submit-new'])) {
+        if(isset($_POST['submit-new'])||isset($_POST['submit-update'])) {
 
             $_POST = filter_input_array(INPUT_POST,
                 FILTER_SANITIZE_STRING);
 
-            if($_FILES['image']) {
+//            var_dump($_POST);
+//            var_dump($_FILES);
+
+            if(isset($_FILES['tmp_name'])) {
                 $imageName = $_FILES['image']['name'];
                 $this->file = $_FILES['image']['tmp_name'];
                 $imageType = getimagesize($this->file);
@@ -68,13 +71,19 @@ class ImageController extends
                         ];
                     }
                 }
+            }else {
+
+                var_dump($_POST);
+                $this->data = [
+                    'name' => trim($_POST['name']) ?? "",
+                    'alt' => trim($_POST['alt']) ?? "",
+                    'URL' => $_POST['URL'],
+                    'imageID'=>$_POST['imageID']
+                ];
+
             }
         }
     }
-
-
-
-
 
 
     public function setImage(): void
