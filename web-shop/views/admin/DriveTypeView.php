@@ -1,27 +1,14 @@
 <?php
-
+// Initializing Admin Brake system controller
 $dt = new DriveTypeController();
 $dt->setDriveType();
 $dt->getDriveType();
-
-
 ?>
 
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Admin</title>
-</head>
-<body>
+<?php include include(dirname(__DIR__).'/includes/adminNavigation.php');?>
 
 <section class="row row col-12 row mt-5 col-md-8 offset-md-2 pb-5">
-
     <div class="col-12 col-md-12 offset-md-2 mt-5 mb-3 ">
         <h2>
             Drive Type

@@ -8,6 +8,8 @@
             require_once './controllers/'.$class_name.'.php';
         } elseif (file_exists('./controllers/admin/'.$class_name.'.php')) {
             require_once './controllers/admin/'.$class_name.'.php';
+        } elseif (file_exists('./public/includes/'.$class_name.'.php')) {
+            require_once './public/includes/'.$class_name.'.php';
         }
 
     }

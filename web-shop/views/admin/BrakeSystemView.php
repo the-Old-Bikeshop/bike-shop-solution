@@ -3,9 +3,7 @@ $br = new BrakeSystemController();
 
 $br->setBrake();
 $br->getBrake();
-
 ?>
-
 
 <html lang="en">
 <head>
