@@ -1,3 +1,6 @@
+<?php  include_once "./includes/adminNavigation.php"?>
+
+<h1>This is the index above</h1>
 <?php
     require_once('./Routes.php');
 
@@ -15,4 +18,6 @@
     }
     
 ?>
+
+<h1>This is the index php</h1>
 
