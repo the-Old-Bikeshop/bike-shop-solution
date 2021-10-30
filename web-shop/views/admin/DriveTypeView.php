@@ -81,13 +81,13 @@ $dt->getDriveType();
                         <div class="form-group col-12  mt-2">
                             <label for="short_description">Short description(max 255 characters)</label>
                             <input type="text" class="form-control" id="short_description" name="short_description" placeholder="short description 255 characters" value="<?php echo $dt->getDrive()['short_description'] ?? '' ?>"">
-        </div>
-        <div class=" form-group col-12 mt-2">
+                        </div>
+                        <div class=" form-group col-12 mt-2">
                             <label for="description">Describe products in detail</label>
                             <textarea class="form-control" id="description" rows="5" name="description"><?php echo $dt->getDrive()['description'] ?? '' ?></textarea>
                         </div>
                         <?php if (isset($dt->getDrive()['drive_typeID'])) : ?>
-                            <input type="text" hidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
+                            <input type="text" hewidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
                         <?php endif; ?>
                         <div class="form-group col-12 mt-2">
                             <input type="submit" class="btn <?php echo !$dt->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$dt->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$dt->getUpdate() ? 'Create new' : 'update' ?>">
