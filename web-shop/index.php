@@ -1,18 +1,16 @@
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/styles/adminNavigation.css">
+    <link rel="stylesheet"  type="text/css" href="./public/styles/adminNavigation.css">
     <title>Admin</title>
 </head>
 <body style="overflow:hidden; padding:0; margin:0;">
     <div style="display:flex; justify-content:space-between;">
-
-        <?php include_once "./includes/adminNavigation.php" ?>
+        <?php include_once "./includes/adminNavigation.php"?>
         <div style="width:80vw;">
             <?php require_once('./Routes.php');
 
