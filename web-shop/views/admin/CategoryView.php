@@ -19,37 +19,39 @@
     </div>
     <div style="padding-left:1rem; padding:1rem; width:100%;">
         <h3 style="padding: 0; margin-top:0.5rem;" class="col-12">All Categories</h3>
-        <table class="table table-sm col-12 col-md-8 pb-5 border-bottom border-secondary">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">name</th>
-                <th scope="col">short description</th>
-                <th scope="col">description</th>
-                <th scope="col">controls</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($ct->getCategories()->fetchAllCategories() as $res): ?>
+        <div class="card bg-light col-12 p-0">
+            <table class="table table-sm col-12">
+                <thead class="thead-light">
                 <tr>
-                    <th scope="row"> <?php echo $res["categoryID"] ?></th>
-                    <td><?php echo $res['name']?></td>
-                    <td><?php echo $res['short_description']?></td>
-                    <td><?php echo $res['description']?></td>
-                    <td>
-                        <form action="" method="post" class="d-inline-block">
-                            <input type="text" hidden name="categoryID" value="<?php echo $res['categoryID'] ?>">
-                            <input type="submit" name="update" value="update" class="btn btn-secondary" >
-                        </form>
-                        <form action="" method="post" class="d-inline-block">
-                            <input type="text" hidden name="categoryID" value="<?php echo $res['categoryID'] ?>">
-                            <input type="submit" name="delete" value="delete" class="btn btn-danger" onclick="return confirm('Delete! are you sure?')" >
-                        </form>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">short description</th>
+                    <th scope="col">description</th>
+                    <th scope="col">controls</th>
                 </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="col-12">
+                <?php foreach ($ct->getCategories()->fetchAllCategories() as $res): ?>
+                    <tr>
+                        <th scope="row"> <?php echo $res["categoryID"] ?></th>
+                        <td><?php echo $res['name']?></td>
+                        <td><?php echo $res['short_description']?></td>
+                        <td><?php echo $res['description']?></td>
+                        <td>
+                            <form action="" method="post" class="d-inline-block p-0 m-0">
+                                <input type="text" hidden name="categoryID" value="<?php echo $res['categoryID'] ?>">
+                                <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
+                            </form>
+                            <form action="" method="post" class="d-inline-block p-0 m-0">
+                                <input type="text" hidden name="categoryID" value="<?php echo $res['categoryID'] ?>">
+                                <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!--    display message-->

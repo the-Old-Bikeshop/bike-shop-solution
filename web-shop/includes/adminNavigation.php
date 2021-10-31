@@ -9,6 +9,7 @@
                         <a href="/bike-shop-solution/web-shop/admin-drive-type" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Drive Types</a>
                         <a href="/bike-shop-solution/web-shop/admin-brake-system" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Break Systems</a>
                         <a href="/bike-shop-solution/web-shop/admin-wheel-size" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Wheel Sizes</a>
+                        <a href="/bike-shop-solution/web-shop/admin-company-details" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Owl Bikeshop Details</a>
                     </div>
                 </div>
             <div style="height:7vh; width: 20vw; position:absolute; bottom:0; left:0; display:flex; align-items:center; padding:1rem; justify-content:flex-start; background-color:rgba(0,0,0,0.15);">
