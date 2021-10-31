@@ -16,7 +16,6 @@
         </button>
     </div>
     <div style="padding-left:1rem; padding:1rem; width:100%;">
-        <h3 style="padding: 0; margin-top:0.5rem;" class="col-12">All Brake Systems</h3>
         <div class="card bg-light col-12 p-0">
             <table class="table table-sm col-12">
                 <thead class="thead-light">

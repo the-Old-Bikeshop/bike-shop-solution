@@ -15,37 +15,36 @@ $ws->getWheelSize();
         </button>
     </div>
     <div style="padding-left:1rem; padding:1rem; width:100%;">
-        <h3 style="padding: 0; margin-top:0.5rem;" class="col-12">All Wheel Sizes</h3>
         <div class="card bg-light col-12 p-0">
-        <table class="table table-sm col-12">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">wheel ISO</th>
-                <th scope="col">tire ISO</th>
-                <th scope="col">Controls</th>
-            </tr>
-            </thead>
-            <tbody class="col-12">
-            <?php foreach ($ws->getWheelSize()->fetchAllWheelSizes() as $res): ?>
+            <table class="table table-sm col-12">
+                <thead class="thead-light">
                 <tr>
-                    <th scope="row"> <?php echo $res["wheel_sizeID"] ?></th>
-                    <td><?php echo $res['wheel_ISO']?></td>
-                    <td><?php echo $res['tire_ISO']?></td>
-                    <td>
-                        <form action="" method="post" class="d-inline-block p-0 m-0">
-                            <input type="text" hidden name="wheel_sizeID" value="<?php echo $res['wheel_sizeID'] ?>">
-                            <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
-                        </form>
-                        <form action="" method="post" class="d-inline-block p-0 m-0">
-                            <input type="text" hidden name="wheel_sizeID" value="<?php echo $res['wheel_sizeID'] ?>">
-                            <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
-                        </form>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">wheel ISO</th>
+                    <th scope="col">tire ISO</th>
+                    <th scope="col">Controls</th>
                 </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="col-12">
+                <?php foreach ($ws->getWheelSize()->fetchAllWheelSizes() as $res): ?>
+                    <tr>
+                        <th scope="row"> <?php echo $res["wheel_sizeID"] ?></th>
+                        <td><?php echo $res['wheel_ISO']?></td>
+                        <td><?php echo $res['tire_ISO']?></td>
+                        <td>
+                            <form action="" method="post" class="d-inline-block p-0 m-0">
+                                <input type="text" hidden name="wheel_sizeID" value="<?php echo $res['wheel_sizeID'] ?>">
+                                <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
+                            </form>
+                            <form action="" method="post" class="d-inline-block p-0 m-0">
+                                <input type="text" hidden name="wheel_sizeID" value="<?php echo $res['wheel_sizeID'] ?>">
+                                <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
         </div>
     </div>
 
