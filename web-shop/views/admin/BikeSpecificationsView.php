@@ -263,83 +263,92 @@ $bike_s = new BikeSpecificationController();
             <h3>Has:</h3>
 
             <div class="form-group col-12  mt-2">
-                <label for="wheel_size"></label>
+                <label for="wheel_size">Wheel size</label>
                 <!--        creates the select element and the selects using a for loop. -->
 
-                <select class="custom-select" id="wheel_size" name="condition">
-                    <?php if(($bike_s->getWheel()->fetchAllWheelSizes())):?>
-                        <?php  foreach ($bike_s->getWheel()->fetchAllWheelSizes() as $wheel):?>
-
-                    <option value="<?php echo $wheel['wheel_sizeID'] ?? "" ?>"
-                            <?php if(!is_null($wheel['wheel_sizeID']) && $wheel['wheel_sizeID'] == $bike_s->getOneBike()
-                            ['wheel_sizeID']):?>
-                                selected
-                            <?php endif; ?>
-                            ><?php if(!is_null($wheel['wheel_ISO'])||!is_null($wheel['tire_ISO'])) {
-                                echo $wheel['wheel_ISO']. ' / ' . $wheel['tire_ISO'];
-                                } ?>
-                    </option>
-
-
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                    <p>Create a wheel size first at <a href="./WheelSizeView.php"></a></p>
-                    <?php endif;?>
-                </select>
-                <select class="custom-select" id="wheel_size" name="condition">
-                    <?php if(($bike_s->getWheel()->fetchAllWheelSizes()) !== null):?>
-                        <?php  foreach ($bike_s->getWheel()->fetchAllWheelSizes() as $wheel):?>
+                <select class="custom-select" id="wheel_size" name="wheel_sizeID">
+                    <?php if(($bike_s->getWheel()->fetchAllWheelSizes() !== null)) {
+                        foreach ($bike_s->getWheel()->fetchAllWheelSizes() as $wheel):?>
 
                             <option value="<?php echo $wheel['wheel_sizeID'] ?? "" ?>"
-                                <?php if(!is_null($wheel['wheel_sizeID']) && $wheel['wheel_sizeID'] == $bike_s->getOneBike()
-                                    ['wheel_sizeID']):?>
-                                    selected
-                                <?php endif; ?>
-                            ><?php if(isset($wheel['wheel_ISO'])||isset($wheel['tire_ISO'])) {
-                                    echo $wheel['wheel_ISO']. ' / ' . $wheel['tire_ISO'];
-                                } ?>
+                                    <?php if(!isset($wheel['wheel_sizeID']) && isset($bike_s->getOneBike()['wheel_sizeID']) && $wheel['wheel_sizeID'] ==
+                                        $bike_s->getOneBike()['wheel_sizeID']):?>
+                                        selected
+                                    <?php endif; ?>
+                                    ><?php if(!is_null($wheel['wheel_ISO'])||!is_null($wheel['tire_ISO'])) {
+                                        echo $wheel['wheel_ISO']. ' / ' . $wheel['tire_ISO'];
+                                        } ?>
                             </option>
 
 
                         <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Create a wheel size first at <a href="./WheelSizeView.php"></a></p>
-                    <?php endif;?>
+                    <?php } else {?>
+                    <p>Create a wheel size first at <a href="./WheelSizeView.php">wheel size</a></p>
+                    <?php } ?>
                 </select>
 
+            </div>
+
+            <div class="form-group col-12  mt-2">
+                <label for="wheel_size">Braking system</label>
+                <!--        creates the select element and the selects using a for loop. -->
+
+                <select class="custom-select" id="brake_system" name="brake_systemID">
+                    <?php if(($bike_s->getBrake()->fetchAllBrakeSystems() !== null)) {
+                        foreach ($bike_s->getBrake()->fetchAllBrakeSystems() as $brake):?>
+
+                            <option value="<?php echo $brake['brake_systemID'] ?? "" ?>"
+                                <?php if(!isset($brake['brake_systemID']) && isset($bike_s->getOneBike()['brake_systemID'])
+                                    &&
+                                    $brake['brake_systemID'] ==
+                                    $bike_s->getOneBike()['brake_systemID']):?>
+                                    selected
+                                <?php endif; ?>
+                            ><?php
+                                    echo $brake['name'] ?? ""
+                                 ?>
+                            </option>
+
+
+                        <?php endforeach; ?>
+                    <?php } else {?>
+                        <p>Create a brake system first at <a href="./BrakeSystemView.php"> brake system</a></p>
+                    <?php } ?>
+                </select>
+
+            </div>
+
+            <div class="form-group col-12  mt-2">
+                <label for="wheel_size">drive Type</label>
+                <!--        creates the select element and the selects using a for loop. -->
+
+                <select class="custom-select" id="drive_type" name="drive_typeID">
+                    <?php if(($bike_s->getDriveType()->fetchAllDriveTypes() !== null)) {
+                        foreach ($bike_s->getDriveType()->fetchAllDriveTypes() as $drive):?>
+
+                            <option value="<?php echo $drive['drive_typeID'] ?? "" ?>"
+                                <?php if(!isset($drive['drive_typeID']) && isset($bike_s->getOneBike()['drive_typeID'])
+                                    &&
+                                    $drive['drive_typeID'] ==
+                                    $bike_s->getOneBike()['drive_typeID']):?>
+                                    selected
+                                <?php endif; ?>
+                            ><?php
+                                echo $drive['name'] ?? ""
+                                ?>
+                            </option>
+
+
+                        <?php endforeach; ?>
+                    <?php } else {?>
+                        <p>Create a drive type first at <a href="./DriveTypeView.php"> Drive type</a></p>
+                    <?php } ?>
+                </select>
 
             </div>
 
         </div>
-
-
-        <div class="form-group col-12  mt-2">
-            <label for="wheel_sizeID">Company wheel_sizeID</label>
-            <textarea class="form-control"
-                      id="wheel_sizeID" rows="5"
-                      name="wheel_sizeID"><?php echo $bike_s->getOneBike()['wheel_sizeID'] ?? ''?></textarea>
-        </div>
-
-        <div class="form-group col-12  mt-2">
-            <label for="braking_systemID">Company braking_systemID</label>
-            <textarea class="form-control"
-                      id="braking_systemID" rows="5"
-                      name="braking_systemID"><?php echo $bike_s->getOneBike()['braking_systemID'] ?? ''?></textarea>
-        </div>
-
-        <div class="form-group col-12  mt-2">
-            <label for="drive_typeID">Company drive_typeID</label>
-            <textarea class="form-control"
-                      id="drive_typeID" rows="5"
-                      name="drive_typeID"><?php echo $bike_s->getOneBike()['drive_typeID'] ?? ''?></textarea>
-        </div>
-        <div class="form-group col-12  mt-2">-->
-                    <label for="created_by">Company created_by</label>
-                    <textarea class="form-control"
-                              id="created_by" rows="5"
-                              name="created_by"><?php echo $bike_s->getOneBike()['created_by'] ??
-     ''?></textarea>
-                </div>
+        <input type="hidden" name="userID" value="2">
 
         <?php if(isset($bike_s->getOneBike()['bike_specificationsID'])): ?>
 

@@ -42,7 +42,7 @@ spl_autoload_register(function($class_name) {
 class BikeSpecificationController extends ViewController
 {
 
-    private $brake_system;
+    private $brake;
     private $drive_type ;
     private $update;
     private $bikeSpecifications;
@@ -55,7 +55,7 @@ class BikeSpecificationController extends ViewController
     {
 
         $this->drive_type = new DriveType();
-        $this->brake_system = new BrakeType();
+        $this->brake= new BrakeType();
         $this->update = false;
         $this->bikeSpecifications = new BikeSpecifications();
         $this->convert = new Convert();
@@ -121,17 +121,17 @@ class BikeSpecificationController extends ViewController
 
 
     /**
-     * @return BrakeSystemController
+     * @return BrakeType
      */
-    public function getBrakeSystem(): BrakeSystemController
+    public function getBrake(): BrakeType
     {
-        return $this->brake_system;
+        return $this->brake;
     }
 
     /**
-     * @return DriveTypeController
+     * @return DriveType
      */
-    public function getDriveType(): DriveTypeController
+    public function getDriveType(): DriveType
     {
         return $this->drive_type;
     }
