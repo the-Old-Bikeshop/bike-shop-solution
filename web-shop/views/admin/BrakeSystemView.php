@@ -1,20 +1,23 @@
 <?php
-$br = new BrakeSystemController();
+    // Initializing admin Brake system controller
+    $br = new BrakeSystemController();
 
-$br->setBrake();
-$br->getBrake();
+    $br->setBrake();
+    $br->getBrake();
 ?>
 
-<div class="container-fluid m-2 row">
-    <section class="row col-12 row mt-5 col-md-8 offset-md-2 pb-5">
-
-        <div class="col-12 col-md-12 offset-md-2 mt-5 mb-3 ">
-            <h2>
-                Brake systems
-            </h2>
-        </div>
-        <h3 class="col-12 col-md-8 offset-md-2">All brake systems</h3>
-        <table class="table table-sm col-12 col-md-8 offset-md-2 pb-5 border-bottom border-secondary">
+<section class="row col-12">
+    <div style="align-items:center; justify-content:space-between; border-bottom:2px dashed rgba(0,0,0,0.15); padding:1rem; width:100%; display: flex;">
+        <h1>
+            Break Systems
+        </h1>
+        <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-primary">
+            Create New
+        </button>
+    </div>
+    <div style="padding-left:1rem; padding:1rem; width:100%;">
+        <h3 style="padding: 0; margin-top:0.5rem;" class="col-12">All Brake Systems</h3>
+        <table class="table table-sm col-12 col-md-8 pb-5 border-bottom border-secondary">
             <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
@@ -34,7 +37,7 @@ $br->getBrake();
                     <td>
                         <form action="" method="post" class="d-inline-block">
                             <input type="text" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
-                            <input type="submit" name="update" value="update" class="btn btn-info" >
+                            <input type="submit" name="update" value="update" class="btn btn-secondary" >
                         </form>
                         <form action="" method="post" class="d-inline-block">
                             <input type="text" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
@@ -43,69 +46,63 @@ $br->getBrake();
                     </td>
                 </tr>
             <?php endforeach ?>
-
             </tbody>
         </table>
+    </div>
 
+    <!--    display message-->
+    <?php if(isset($brake->message)): ?>
+        <div class="col-12 col-md-8 offset-md-2">
+            <h3><?php echo $brake->message ?></h3>
+        </div>
+    <?php endif  ?>
 
-        <!--    display message-->
-        <?php if(isset($brake->message)): ?>
-
-            <div class="col-12 col-md-8 offset-md-2">
-                <h3><?php echo $brake->message ?></h3>
+    <!--    the form for creating and updating drive_type starts here-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        <?php echo !$br->getUpdate() ? "Create new drive type" : "Update product " . $br->getVal()['name'] ?>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="col-12" action="" method="post" id="form">
+                        <div class="form-group col-12 mt-2">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name of the drive type" value=" <?php echo isset($br->getVal()['name']) ? $br->getval()['name'] : '' ?>" required>
+                        </div>
+                        <div class="form-group col-12  mt-2">
+                            <label for="condition">Products condition</label>
+                            <!-- creates the select element and the selects using a for loop. -->
+                            <select class="custom-select" id="condition" name="condition">
+                                <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
+                                    <option value= <?php echo $cond . " " ?>
+                                            <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == $cond ):?>
+                                            selected
+                                        <?php endif; ?>
+                                    >
+                                    <?php
+                                        $br->getConvert()->condition($cond);
+                                    ?>
+                                </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <?php if(isset($val['braking_systemID'])): ?>
+                            <input type="text" hidden name = "braking_systemID" value = "<?php echo $val['braking_systemID'] ?>">
+                        <?php endif; ?>
+                        <div class="form-group col-12 mt-2">
+                            <input type="submit" class="btn <?php echo !$br->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$br->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$br->getUpdate() ? 'Create new' : 'update' ?>">
+                        </div>
+                    </form>
+                </div>
             </div>
-
-        <?php endif  ?>
-
-
-        <!--    the form for creating and updating drive_type starts here-->
-
-
-
-        <form class="col-12 row mt-5 col-md-8 offset-md-2 pb-5" action="" method="post" id="form">
-            <p class="text-secondary  col-12"><?php echo !$br->getUpdate() ? "Create new drive type" : "Update product " . $br->getVal()['name'] ?> </p>
-            <div class="form-group col-12 mt-2">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="name of the drive type" value=" <?php echo isset($br->getVal()['name']) ? $br->getval()['name'] : '' ?>" required>
-            </div>
-
-
-            <div class="form-group col-12  mt-2">
-                <label for="condition">Products condition</label>
-                <!--        creates the select element and the selects using a for loop. -->
-
-                <select class="custom-select" id="condition" name="condition">
-                    <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
-
-
-                        <option value= <?php echo $cond . " " ?>
-                                <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == $cond ):?>
-                                selected
-                            <?php endif; ?>
-                        >
-                        <?php
-                            $br->getConvert()->condition($cond);
-                        ?>
-                    </option>
-
-                    <?php endforeach; ?>
-
-                </select>
-
-
-            </div>
-            <?php if(isset($val['braking_systemID'])): ?>
-
-                <input type="text" hidden name = "braking_systemID" value = "<?php echo $val['braking_systemID'] ?>">
-
-            <?php endif; ?>
-            <div class="form-group col-12 mt-2">
-                <input type="submit" class="btn <?php echo !$br->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$br->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$br->getUpdate() ? 'Create new' : 'update' ?>">
-            </div>
-
-        </form>
-
-    </section>
-</div>
+        </div>
+    </div>
+</section>
 
 

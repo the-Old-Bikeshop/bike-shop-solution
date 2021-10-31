@@ -1,7 +1,5 @@
 <?php
-
 spl_autoload_register(function($class_name) {
-
     // Define an array of directories in the order of their priority to iterate through.
     $dirs = array(
         'models/',
@@ -19,12 +17,8 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-
-
-
 class BrakeSystemController extends ViewController
 {
-
     public $convert;
     private $update;
     private $brake;
@@ -35,7 +29,6 @@ class BrakeSystemController extends ViewController
         $this->convert = new Convert();
         $this->update = false;
         $this->brake = new BrakeType();
-
     }
 
     public function setBrake() {
