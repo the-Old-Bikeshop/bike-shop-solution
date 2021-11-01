@@ -19,23 +19,7 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-//CREATE TABLE bike_specifications (
-//        bike_specificationsID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//  `type` VARCHAR(255) NOT NULL,
-//  back_basket INT,
-//  mudguards INT,
-//  front_basket INT,
-//  lights INT,
-//  disk_brakes INT,
-//  wheel_sizeID INT,
-//  braking_systemID INT,
-//  drive_typeID INT,
-//  created_by INT,
-//  FOREIGN KEY (wheel_sizeID) REFERENCES wheel_size (wheel_sizeID),
-//  FOREIGN KEY (braking_systemID) REFERENCES braking_system (braking_systemID),
-//  FOREIGN KEY (drive_typeID) REFERENCES drive_type (drive_typeID),
-//  FOREIGN KEY (created_by) REFERENCES `user` (userID)
-//);
+
 
 
 
@@ -64,22 +48,23 @@ class BikeSpecificationController extends ViewController
 
     public function setBikeSpecifications(): void
     {
+
         if(isset($_POST['submit-new'])) {
+
             $this->setData();
             $this->bikeSpecifications = new BikeSpecifications();
             $this->bikeSpecifications->createBikeSpecifications($this->data);
         }elseif(isset($_POST['update'])) {
             $this->bikeSpecifications = new BikeSpecifications();
-
             $this->update= true;
-            $this->one_bike = $this->bikeSpecifications->fetchOneBikeSpecification($_POST['company_detailsID']);
+            $this->one_bike = $this->bikeSpecifications->fetchOneBikeSpecification($_POST['bike_specificationsID']);
         }elseif(isset($_POST['submit-update'])){
             $this->bikeSpecifications = new BikeSpecifications();
             $this->setData();
-            $this->bikeSpecifications->updatebikeSpecifications($this->data, $_POST['company_detailsID'] );
+            $this->bikeSpecifications->updatebikeSpecifications($this->data, $_POST['bike_specificationsID'] );
         }elseif(isset($_POST['delete'])) {
             $this->bikeSpecifications = new BikeSpecifications();
-            $this->bikeSpecifications->deletebikeSpecifications($_POST['company_detailsID']);
+            $this->bikeSpecifications->deletebikeSpecifications($_POST['bike_specificationsID']);
         }
     }
 
@@ -90,15 +75,15 @@ class BikeSpecificationController extends ViewController
 
         $data = [
             'type' => trim($_POST['type']) ?? "",
-            'back_basket' => trim($_POST['back_basket'])?? "",
-            'mudguards' => trim($_POST['mudguards'])?? "",
-            'front_basket' => trim($_POST['front_basket'])?? "",
-            'lights' => trim($_POST['lights'])?? "",
-            'disk_brakes' => trim($_POST['disk_brakes'])?? "",
-            'wheel_sizeID' => trim($_POST['wheel_sizeID'])?? "",
-            'braking_systemID' => trim($_POST['braking_systemID'])?? "",
-            'drive_typeID' => trim($_POST['drive_typeID'])?? "",
-            'created_by' => trim($_POST['created_by'])?? ""
+            'back_basket' => intval(trim($_POST['back_basket'])?? ""),
+            'mudguards' => intval(trim($_POST['mudguards'])?? ""),
+            'front_basket' => intval(trim($_POST['front_basket'])?? ""),
+            'lights' => intval(trim($_POST['lights'])?? ""),
+            'disk_brakes' => intval(trim($_POST['disk_brakes'])?? ""),
+            'wheel_sizeID' => intval(trim($_POST['wheel_sizeID'])?? ""),
+            'braking_systemID' => intval(trim($_POST['braking_systemID'])?? ""),
+            'drive_typeID' => intval(trim($_POST['drive_typeID'])?? ""),
+            'created_by' => intval(trim($_POST['created_by'])?? "")
         ];
         $this->data = $data;
     }

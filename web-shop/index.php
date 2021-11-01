@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./public/styles/adminNavigation.css">
     <title>Admin</title>
 </head>
-<body style="overflow:hidden; padding:0; margin:0;">
+<body style="padding:0; margin:0;">
 <div style="display:flex; justify-content:space-between;">
 
 <!--    --><?php //include_once "./includes/adminNavigation.php" ?>

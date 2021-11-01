@@ -1,5 +1,6 @@
 <?php
 $bike_s = new BikeSpecificationController();
+$bike_s->setBikeSpecifications();
 
 ?>
 <!---->
@@ -21,8 +22,8 @@ $bike_s = new BikeSpecificationController();
 <!--FOREIGN KEY (created_by) REFERENCES `user` (userID)-->
 <!--);-->
 
-<section  class="row row col-12 row mt-5 col-md-8 offset-md-2 pb-5">
-    <h1>Bike specifications</h1>
+<section  class="row row col-12 row mt-5 pb-5">
+    <h1 class="offset-md-2 mb-2">Bike specifications</h1>
 
 
     <table class="table table-sm col-12 col-md-8 offset-md-2 pb-5 border-bottom border-secondary">
@@ -30,14 +31,14 @@ $bike_s = new BikeSpecificationController();
         <tr>
             <th scope="col">#</th>
             <th scope="col">type</th>
-            <th scope="col">back_basket</th>
-            <th scope="col">mudguards</th>
-            <th scope="col">front_basket</th>
-            <th scope="col">lights</th>
-            <th scope="col">disk_brakes</th>
-            <th scope="col">wheel_size</th>
-            <th scope="col">braking_system</th>
-            <th scope="col">drive_type</th>
+            <th scope="col">accepts: back basket</th>
+            <th scope="col">accepts: mudguards</th>
+            <th scope="col">accepts: front basket</th>
+            <th scope="col">accepts: lights</th>
+            <th scope="col">accepts: disk brakes</th>
+            <th scope="col">wheel size</th>
+            <th scope="col">braking system</th>
+            <th scope="col">drive type</th>
             <th scope="col">created by</th>
             <th scope="col">controls</th>
 
@@ -48,15 +49,15 @@ $bike_s = new BikeSpecificationController();
             <tr>
                 <th scope="row"> <?php echo $res['bike_specificationsID']?></th>
                 <td><?php echo $res['type']?></td>
-                <td><?php echo $res['back_basket']?></td>
-                <td><?php echo $res['mudguards']?></td>
-                <td><?php echo $res['front_basket']?></td>
-                <td><?php echo $res['lights']?></td>
-                <td><?php echo $res['disk_brakes']?></td>
-                <td><?php echo $res['wheel_sizeID']?></td>
-                <td><?php echo $res['braking_systemID']?></td>
-                <td><?php echo $res['drive_typeID']?></td>
-                <td><?php echo $res['userID']?></td>
+                <td><?php $bike_s->getConvert()->yesNo($res['back_basket']); ?></td>
+                <td><?php $bike_s->getConvert()->yesNo($res['mudguards']); ?></td>
+                <td><?php $bike_s->getConvert()->yesNo($res['front_basket']);?></td>
+                <td><?php $bike_s->getConvert()->yesNo($res['lights']);?></td>
+                <td><?php $bike_s->getConvert()->yesNo($res['disk_brakes']);?></td>
+                <td><?php echo $res['wheel_ISO'] . ' / ' . $res['tire_ISO']?></td>
+                <td><?php echo $res['brake_name']?></td>
+                <td><?php echo $res['drive_name']?></td>
+                <td><?php echo $res['first_name'] . " " . $res['last_name']?></td>
                 <td>
                     <form action="" method="post" class="d-inline-block">
                         <input type="text" hidden name="bike_specificationsID" value="<?php echo $res['bike_specificationsID'] ?>">
@@ -74,8 +75,11 @@ $bike_s = new BikeSpecificationController();
     </table>
 
     <form class="col-12 row mt-5 col-12 col-md-8 offset-md-2 pb-5 mb-5" action="" method="post" id="form">
-        <p class="text-secondary  col-12"><?php echo !$bike_s->getUpdate() ? "Create new company details" : "Update details "
-                . $bike_s->getOneBike()['bike_specificationsID'] ?> </p>
+        <p class="text-secondary  col-12"><?php echo !$bike_s->getUpdate() ? "Create new bike specifications" : "Update bike specifications "
+                . $text = $bike_s->getOneBike()['type'] ?? "";
+              ?> </p>
+
+        <?php echo $bike_s->getBikeSpecifications()->message ?? ""; ?>
         <div class="form-group col-12 mt-2">
             <label for="type">Type</label>
             <input type="text" class="form-control" id="type" name="type"
@@ -293,15 +297,15 @@ $bike_s = new BikeSpecificationController();
                 <label for="wheel_size">Braking system</label>
                 <!--        creates the select element and the selects using a for loop. -->
 
-                <select class="custom-select" id="brake_system" name="brake_systemID">
+                <select class="custom-select" id="brake_system" name="braking_systemID">
                     <?php if(($bike_s->getBrake()->fetchAllBrakeSystems() !== null)) {
                         foreach ($bike_s->getBrake()->fetchAllBrakeSystems() as $brake):?>
 
-                            <option value="<?php echo $brake['brake_systemID'] ?? "" ?>"
-                                <?php if(!isset($brake['brake_systemID']) && isset($bike_s->getOneBike()['brake_systemID'])
+                            <option value="<?php echo $brake['braking_systemID'] ?? "" ?>"
+                                <?php if(!isset($brake['braking_systemID']) && isset($bike_s->getOneBike()['braking_systemID'])
                                     &&
-                                    $brake['brake_systemID'] ==
-                                    $bike_s->getOneBike()['brake_systemID']):?>
+                                    $brake['braking_systemID'] ==
+                                    $bike_s->getOneBike()['braking_systemID']):?>
                                     selected
                                 <?php endif; ?>
                             ><?php
@@ -348,7 +352,7 @@ $bike_s = new BikeSpecificationController();
             </div>
 
         </div>
-        <input type="hidden" name="userID" value="2">
+        <input type="hidden" name="created_by" value="1">
 
         <?php if(isset($bike_s->getOneBike()['bike_specificationsID'])): ?>
 
