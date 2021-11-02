@@ -56,7 +56,10 @@
     <!--    display message-->
 
     <!--    the form for creating and updating drive_type starts here-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1"
+         role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+    <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>>
         <div class="modal-dialog modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -65,9 +68,12 @@
                             $ct->getOneCategory()['name'] . $ct->getOneCategory()['short_description'];
                         ?> 
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <form action="" method="post">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+
                 </div>
                 <div class="modal-body">
                     <form action="" method="post" class="col-12" id="form">
@@ -105,6 +111,7 @@
                                 name="<?php echo !$ct->getUpdate() ? 'submit-new' : 'submit-update' ?>"
                                 value="<?php echo !$ct->getUpdate() ? 'Create new' : 'update' ?>"
                             >
+                            <input type="submit" class="btn btn-secondary" value = "Cancel">
                         </div>
                     </form>
                 </div>

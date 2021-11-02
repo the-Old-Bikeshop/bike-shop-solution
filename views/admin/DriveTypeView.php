@@ -57,7 +57,9 @@
     <?php endif  ?>
 
     <!--    the form for creating and updating drive_type starts here-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+        <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>>
         <div class="modal-dialog modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -83,11 +85,11 @@
                             <textarea class="form-control" id="description" rows="5" name="description"><?php echo $dt->getDrive()['description'] ?? '' ?></textarea>
                         </div>
                         <?php if (isset($dt->getDrive()['drive_typeID'])) : ?>
-                            <input type="text" hewidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
+                            <input type="text" hidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
                         <?php endif; ?>
                         <div class="form-group col-12 mt-2">
                             <input type="submit" class="btn <?php echo !$dt->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$dt->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$dt->getUpdate() ? 'Create new' : 'update' ?>">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-secondary" value = "Cancel">
                         </div>
                     </form>
                 </div>
