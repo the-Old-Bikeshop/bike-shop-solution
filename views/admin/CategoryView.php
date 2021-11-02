@@ -64,7 +64,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">   
-                        <?php echo !$ct->getUpdate() ? "Create new" : "Update" .
+                        <?php echo !$ct->getUpdate() ? "Create new" : "Update: " .
                             $ct->getOneCategory()['name'] . $ct->getOneCategory()['short_description'];
                         ?> 
                     </h5>
