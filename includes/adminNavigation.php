@@ -57,7 +57,7 @@
                         <a href="/bike-shop-solution/admin-company-details" style="font-size:1rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Owl Bikeshop Details</a>
                     </div>
                 </div>
-            <div style="height:7vh; width: 20vw; position:absolute; bottom:0; left:0; display:flex; align-items:center; padding:1rem; justify-content:flex-start; background-color:rgba(0,0,0,0.15);">
+            <div style="height:7vh; width: 20vw; position:absolute; bottom:0; left:0; display:flex; align-items:center; padding:1rem; justify-content:flex-start; background-color:rgba(0,0,0,0.10); border-top:rgba(0,0,0,0.10) solid 0.5px;">
                 <h4 style="color:black; opacity:0.7; font-size:0.8rem; margin:0; padding:0;">Logged in user: Radek or Raul</h4>
             </div>
         </div>
