@@ -1,6 +1,7 @@
 <?php
     // Initializing admin Drive Type controller
     $dt = new DriveTypeController();
+    
     $dt->setDriveType();
     $dt->getDriveType();
 ?>

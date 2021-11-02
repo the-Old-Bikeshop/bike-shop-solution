@@ -1,5 +1,4 @@
 <?php
-
 spl_autoload_register(function($class_name) {
 
     // Define an array of directories in the order of their priority to iterate through.
@@ -19,10 +18,7 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-class ImageController extends
-    ViewController
-{
-
+class ImageController extends ViewController {
 
     private CONST MAXSIZE = 3000;
     public $update;
@@ -34,25 +30,17 @@ class ImageController extends
     private $data;
     private $iName;
 
-
-
     public function __construct()
     {
         $this->update = false;
         $this->image = new Image();
-
-
     }
 
     public function setData() {
         if(isset($_POST['submit-new'])||isset($_POST['submit-update'])) {
-
-            $_POST = filter_input_array(INPUT_POST,
-                FILTER_SANITIZE_STRING);
-
-//            var_dump($_POST);
-//            var_dump($_FILES);
-
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+            //var_dump($_POST);
+            //var_dump($_FILES);
             if(isset($_FILES['tmp_name'])) {
                 $imageName = $_FILES['image']['name'];
                 $this->file = $_FILES['image']['tmp_name'];
@@ -71,7 +59,7 @@ class ImageController extends
                         ];
                     }
                 }
-            }else {
+            }else{
 
                 var_dump($_POST);
                 $this->data = [
@@ -80,14 +68,11 @@ class ImageController extends
                     'URL' => $_POST['URL'],
                     'imageID'=>$_POST['imageID']
                 ];
-
             }
         }
     }
 
-
-    public function setImage(): void
-    {
+    public function setImage(): void {
 
         if (isset($_POST['submit-new'])) {
             $this->setData();
@@ -108,8 +93,8 @@ class ImageController extends
         }
     }
 
-
     public function load($fileName) {
+
         $image_info = getimagesize($fileName);
         $this->image_type = $image_info[2];
 
@@ -120,44 +105,40 @@ class ImageController extends
         }elseif ($this->image_type = IMAGETYPE_PNG) {
             $this->image_file = imagecreatefrompng($fileName);
         }
-
     }
+
     public function save($filename, $image_type = IMAGETYPE_JPEG, $compression = 100) {
+
         $this->load($this->file);
         if ($image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image_file, $filename, $compression);
-        } elseif($image_type == IMAGETYPE_GIF) {
+        }elseif($image_type == IMAGETYPE_GIF) {
             imagegif($this->image_file, $filename);
         }elseif ($image_type == IMAGETYPE_PNG) {
             imagepng($this->image_type, $filename);
         }
     }
+
     /**
      * @return Image
      */
-    public function getImage(): Image
-    {
+    public function getImage(): Image {
         return $this->image;
     }
 
     /**
      * @return mixed
      */
-    public function getImg()
-    {
+    public function getImg() {
         return $this->img;
     }
 
     /**
      * @return false
      */
-    public function getUpdate(): bool
-    {
+    public function getUpdate(): bool{
         return $this->update;
     }
-
-
-
 }
 
 
