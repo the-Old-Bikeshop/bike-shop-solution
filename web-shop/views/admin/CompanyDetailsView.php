@@ -77,21 +77,18 @@
                     placeholder="08:00-17:00 mon-fri"
                     value=" <?php echo $cd->getOneDetails()['opening_hours'] ?? '' ?>" >
         </div>
-
         <div class="form-group col-12 mt-2">
             <label for="phone">phone</label>
             <input type="text" class="form-control" id="phone" name="phone"
                     placeholder="+45 xxxxxxxxx"
                     value=" <?php echo $cd->getOneDetails()['phone'] ?? '' ?>" >
         </div>
-
         <div class="form-group col-12 mt-2">
             <label for="instagram">Instagram</label>
             <input type="text" class="form-control" id="instagram" name="instagram"
                     placeholder="intagram link"
                     value=" <?php echo $cd->getOneDetails()['instagram'] ?? '' ?>" >
         </div>
-
         <div class="form-group col-12 mt-2">
             <label for="address">address</label>
             <input type="text" class="form-control" id="address" name="address"
@@ -104,35 +101,30 @@
                     placeholder="email"
                     value=" <?php echo $cd->getOneDetails()['email'] ?? '' ?>" >
         </div>
-
         <div class="form-group col-12  mt-2">
             <label for="company_description">Company description</label>
             <textarea class="form-control"
                         id="company_description" rows="5"
                         name="company_description"><?php echo $cd->getOneDetails()['company_description'] ?? ''?></textarea>
         </div>
-
         <div class="form-group col-12  mt-2">
             <label for="mission">Company mission</label>
             <textarea class="form-control"
                         id="mission" rows="5"
                         name="mission"><?php echo $cd->getOneDetails()['mission'] ?? ''?></textarea>
         </div>
-
         <div class="form-group col-12  mt-2">
             <label for="vision">Company vision</label>
             <textarea class="form-control"
                         id="vision" rows="5"
                         name="vision"><?php echo $cd->getOneDetails()['vision'] ?? ''?></textarea>
         </div>
-
         <div class="form-group col-12  mt-2">
             <label for="statement">Company statement</label>
             <textarea class="form-control"
                         id="statement" rows="5"
                         name="statement"><?php echo $cd->getOneDetails()['statement'] ?? ''?></textarea>
         </div>
-
         <?php if(isset($cd->getOneDetails()['company_detailsID'])): ?>
 
             <input type="text" hidden
