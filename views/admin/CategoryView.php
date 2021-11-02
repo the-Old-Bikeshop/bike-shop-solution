@@ -74,7 +74,6 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </form>
-
                 </div>
                 <div class="modal-body">
                     <form action="" method="post" class="col-12" id="form">
@@ -88,8 +87,7 @@
                         <div class="form-group col-12  mt-2">
                             <label for="short_description">short description(teaser)</label>
                             <input type="text" class="form-control" id="short_description" name="short_description"
-                                placeholder="tire ISO"
-                                value="<?php echo $ct->getOneCategory()['short_description'] ?? ''?>"
+                                   value="<?php echo $ct->getOneCategory()['short_description'] ?? ''?>"
                             >
                         </div>
                         <div class="form-group col-12  mt-2">

@@ -9,7 +9,7 @@
         <h1>
             Drive Types
         </h1>
-        <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-primary">
+        <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark">
             Create New
         </button>
     </div>
@@ -59,16 +59,19 @@
     <!--    the form for creating and updating drive_type starts here-->
     <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-        <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>>
+         <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>
+    >
         <div class="modal-dialog modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">
-                        <?php echo !$dt->getUpdate() ? "Create new drive type" : "Update product " . $dt->getDrive()['name'] ?>
+                        <?php echo !$dt->getUpdate() ? "Create new" : "Update: " . $dt->getDrive()['name'] ?>
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <form action="" method="post">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
                 </div>
                 <div class="modal-body">
                     <form class="col-12" action="" method="post" id="form">
@@ -78,7 +81,7 @@
                         </div>
                         <div class="form-group col-12  mt-2">
                             <label for="short_description">Short description(max 255 characters)</label>
-                            <input type="text" class="form-control" id="short_description" name="short_description" placeholder="short description 255 characters" value="<?php echo $dt->getDrive()['short_description'] ?? '' ?>"">
+                            <input type="text" class="form-control" id="short_description" name="short_description" value="<?php echo $dt->getDrive()['short_description'] ?? '' ?>"">
                         </div>
                         <div class=" form-group col-12 mt-2">
                             <label for="description">Describe products in detail</label>
