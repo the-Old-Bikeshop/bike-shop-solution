@@ -1,5 +1,4 @@
 <?php
-
 spl_autoload_register(function($class_name) {
 
     // Define an array of directories in the order of their priority to iterate through.
@@ -19,29 +18,21 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-
-class WheelSizeController extends
-    ViewController
-{
+class WheelSizeController extends ViewController {
 
     public $update;
     private $wheel_size;
     private $wheel;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->update = false;
         $this->wheel_size = new WheelSize();
 
     }
 
-
-    public function setWheelSize(): void
-    {
-
+    public function setWheelSize(): void {
 
         if(isset($_POST['submit-new'])) {
-
             $this->wheel_size = new WheelSize( filter_var(trim($_POST['wheel_ISO']),FILTER_SANITIZE_STRING), filter_var(trim($_POST['tire_ISO']),FILTER_SANITIZE_STRING));
             $this->wheel_size->createWheelSize();
         }elseif(isset($_POST['update'])) {
@@ -81,5 +72,4 @@ class WheelSizeController extends
     {
         return $this->update;
     }
-
 }

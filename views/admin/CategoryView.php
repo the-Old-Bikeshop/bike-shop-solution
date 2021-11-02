@@ -110,7 +110,7 @@
                                 name="<?php echo !$ct->getUpdate() ? 'submit-new' : 'submit-update' ?>"
                                 value="<?php echo !$ct->getUpdate() ? 'Create new' : 'update' ?>"
                             >
-                            <input type="submit" class="btn btn-secondary" value = "Cancel">
+                            <input type="submit" class="btn btn-secondary" value="Cancel">
                         </div>
                     </form>
                 </div>

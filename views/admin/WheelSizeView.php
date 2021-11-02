@@ -10,7 +10,7 @@ $ws->getWheelSize();
         <h1>
             Wheel Sizes
         </h1>
-        <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-primary">
+        <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark">
             Create New
         </button>
     </div>
@@ -59,18 +59,24 @@ $ws->getWheelSize();
     <?php endif  ?>
 
     <!--    the form for creating and updating drive_type starts here-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog" role="document">
+    <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" 
+         role="dialog" 
+         aria-labelledby="exampleModalCenterTitle" 
+         <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>
+    >
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">   
-                        <?php echo !$ws->getUpdate() ? "Create new wheel size" : "Update product " .
+                        <?php echo !$ws->getUpdate() ? "Create new" : "Update: " .
                                     $ws->getWheel()['wheel_ISO'] . $ws->getWheel()['tire_ISO'];
                         ?> 
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <form action="" method="post">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
                 </div>
                 <div class="modal-body">
                     <form action="" method="post" class="col-12"  id="form">
@@ -84,8 +90,7 @@ $ws->getWheelSize();
                         <div class="form-group col-12  mt-2">
                             <label for="tire_iso">tire ISO</label>
                             <input type="text" class="form-control" id="tire_iso" name="tire_ISO"
-                                placeholder="tire ISO"
-                                value="<?php echo $ws->getWheel()['tire_ISO'] ?? ''?>"
+                                   value="<?php echo $ws->getWheel()['tire_ISO'] ?? ''?>"
                             >
                         </div>
                         <?php if(isset($ws->getWheel()['wheel_sizeID'])): ?>
@@ -99,6 +104,7 @@ $ws->getWheelSize();
                                 name="<?php echo !$ws->getUpdate() ? 'submit-new' : 'submit-update' ?>"
                                 value="<?php echo !$ws->getUpdate() ? 'Create new' : 'update' ?>"
                             >
+                            <input type="submit" class="btn btn-secondary" value="Cancel">
                         </div>
                     </form>
                 </div>
