@@ -93,8 +93,8 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <?php if(isset($val['braking_systemID'])): ?>
-                            <input type="text" hidden name = "braking_systemID" value = "<?php echo $val['braking_systemID'] ?>">
+                        <?php if(isset($br->getVal()['braking_systemID'])): ?>
+                            <input type="text" hidden name = "braking_systemID" value = "<?php echo $br->getVal()['braking_systemID'] ?>">
                         <?php endif; ?>
                         <div class="form-group col-12 mt-2">
                             <input type="submit" class="btn <?php echo !$br->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$br->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$br->getUpdate() ? 'Create new' : 'update' ?>">
