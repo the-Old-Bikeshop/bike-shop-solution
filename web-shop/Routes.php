@@ -27,6 +27,10 @@ RouterController::set('admin-image', function () {
     ImageController::CreateView('ImageView');
 });
 
+RouterController::set('admin-bike-specifications', function () {
+    BikeSpecificationController::CreateView('BikeSpecificationsView');
+});
+
 
 // Customer routes
 RouterController::set('landing', function() {
