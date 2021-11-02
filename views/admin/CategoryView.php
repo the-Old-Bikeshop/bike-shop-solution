@@ -1,10 +1,10 @@
 <?php
-//CREATE TABLE category (
-//    categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//  `name` VARCHAR(100) NOT NULL,
-//  `description` TEXT,
-//  short_description VARCHAR(255)
-//);
+    //CREATE TABLE category (
+    //    categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    //  `name` VARCHAR(100) NOT NULL,
+    //  `description` TEXT,
+    //  short_description VARCHAR(255)
+    //);
     $ct = new CategoryController();
     $ct->setcategories();
 ?>
@@ -64,7 +64,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">   
-                        <?php echo !$ct->getUpdate() ? "Create new wheel size" : "Update product " .
+                        <?php echo !$ct->getUpdate() ? "Create new" : "Update" .
                             $ct->getOneCategory()['name'] . $ct->getOneCategory()['short_description'];
                         ?> 
                     </h5>

@@ -20,15 +20,7 @@ spl_autoload_register(function ($class_name)
     }
 });
 
-class CategoryController extends
-    ViewController
-{
-
-
-
-
-
-
+class CategoryController extends ViewController {
 
     public $update;
     private $categories;
@@ -36,14 +28,11 @@ class CategoryController extends
     private $data;
     public $message;
 
-
     public function __construct()
     {
         $this->update = false;
         $this->categories = new Category();
-
     }
-
 
     public function setcategories(): void
     {
@@ -67,17 +56,19 @@ class CategoryController extends
             $this->categories->deleteCategory($_POST['categoryID']);
         }
     }
+
     //CREATE TABLE category (
     //    categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     //  `name` VARCHAR(100) NOT NULL,
     //  `description` TEXT,
     //  short_description VARCHAR(255)
     //);
+
     /**
      * @param mixed $data
      */
-    public function setData(): void
-    {
+    public function setData(): void {
+
         $_POST = filter_input_array(INPUT_POST,
             FILTER_SANITIZE_STRING);
 
@@ -120,7 +111,4 @@ class CategoryController extends
     {
         return $this->update;
     }
-
-
-
 }

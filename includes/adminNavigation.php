@@ -6,11 +6,11 @@
                 <div style="width: 100%; margin-top:8rem;">
                     <div style="width: 100% !important;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a href="/bike-shop-solution/admin-category" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Categories</a>
+                        <a href="/bike-shop-solution/admin-bike-specifications" style="font-size:1.2rem; width: 100%
+                        !important; color:black; margin-bottom:0.5rem;">Bike Specifications</a>
                         <a href="/bike-shop-solution/admin-drive-type" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Drive Types</a>
                         <a href="/bike-shop-solution/admin-brake-system" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Break Systems</a>
                         <a href="/bike-shop-solution/admin-wheel-size" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Wheel Sizes</a>
-                        <a href="/bike-shop-solution/admin-bike-specifications" style="font-size:1.2rem; width: 100%
-                        !important; color:black; margin-bottom:0.5rem;">Bike Specifications</a>
                         <a href="/bike-shop-solution/admin-image" style="font-size:1.2rem; width: 100%
                         !important; color:black; margin-bottom:0.5rem;">image</a>
                         <a href="/bike-shop-solution/admin-company-details" style="font-size:1.2rem; width: 100% !important; color:black; margin-bottom:0.5rem;">Owl Bikeshop Details</a>
