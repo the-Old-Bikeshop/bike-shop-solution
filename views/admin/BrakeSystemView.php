@@ -10,13 +10,13 @@ $br->getBrake();
 <div class="container-fluid m-2 row">
     <section class="row col-12 row mt-5 col-md-8 offset-md-2 pb-5">
 
-        <div class="col-12 col-md-12 offset-md-2 mt-5 mb-3 ">
+        <div class="col-12 col-md-12 mt-5 mb-3 ">
             <h2>
                 Brake systems
             </h2>
         </div>
-        <h3 class="col-12 col-md-8 offset-md-2">All brake systems</h3>
-        <table class="table table-sm col-12 col-md-8 offset-md-2 pb-5 border-bottom border-secondary">
+        <h3 class="col-12">All brake systems</h3>
+        <table class="table table-sm col-12 pb-5 border-bottom border-secondary">
             <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
