@@ -37,10 +37,6 @@
                         <th scope="col">address</th>
                         <th scope="col">email</th>
                         <th scope="col">instagram</th>
-                        <th scope="col">company_description</th>
-                        <th scope="col">mission</th>
-                        <th scope="col">vision</th>
-                        <th scope="col">statement</th>
                         <th scope="col">Controls</th>
                     </tr>
                 </thead>
@@ -53,10 +49,6 @@
                         <td><?php echo $res['address']?></td>
                         <td><?php echo $res['email']?></td>
                         <td><?php echo $res['instagram']?></td>
-                        <td><?php echo $res['company_description']?></td>
-                        <td><?php echo $res['mission']?></td>
-                        <td><?php echo $res['vision']?></td>
-                        <td><?php echo $res['statement']?></td>
                         <td>
                             <form action="" method="post" class="d-inline-block">
                                 <input type="text" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">

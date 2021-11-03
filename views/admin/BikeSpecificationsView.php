@@ -19,17 +19,11 @@ $bike_s->setBikeSpecifications();
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">type</th>
-                    <th scope="col">accepts: back basket</th>
-                    <th scope="col">accepts: mudguards</th>
-                    <th scope="col">accepts: front basket</th>
-                    <th scope="col">accepts: lights</th>
-                    <th scope="col">accepts: disk brakes</th>
                     <th scope="col">wheel size</th>
                     <th scope="col">braking system</th>
                     <th scope="col">drive type</th>
                     <th scope="col">created by</th>
                     <th scope="col">controls</th>
-
                 </tr>
                 </thead>
                 <tbody class="col-12">
@@ -37,11 +31,6 @@ $bike_s->setBikeSpecifications();
                     <tr>
                         <th scope="row"> <?php echo $res['bike_specificationsID']?></th>
                         <td><?php echo $res['type']?></td>
-                        <td><?php $bike_s->getConvert()->yesNo($res['back_basket']); ?></td>
-                        <td><?php $bike_s->getConvert()->yesNo($res['mudguards']); ?></td>
-                        <td><?php $bike_s->getConvert()->yesNo($res['front_basket']);?></td>
-                        <td><?php $bike_s->getConvert()->yesNo($res['lights']);?></td>
-                        <td><?php $bike_s->getConvert()->yesNo($res['disk_brakes']);?></td>
                         <td><?php echo $res['wheel_ISO'] . ' / ' . $res['tire_ISO']?></td>
                         <td><?php echo $res['brake_name']?></td>
                         <td><?php echo $res['drive_name']?></td>
@@ -272,8 +261,6 @@ $bike_s->setBikeSpecifications();
                                                 echo $drive['name'] ?? ""
                                                 ?>
                                             </option>
-
-
                                         <?php endforeach; ?>
                                     <?php } else {?>
                                         <p>
