@@ -18,13 +18,11 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-class DriveTypeController extends ViewController
-{
+class DriveTypeController extends ViewController {
+
     public $update;
     private $drive_type;
     private $drive;
-
-
 
     public function __construct()
     {
@@ -33,9 +31,7 @@ class DriveTypeController extends ViewController
 
     }
 
-
-    public function setDriveType(): void
-    {
+    public function setDriveType(): void {
 
         if(isset($_POST['submit-new'])) {
             $this->drive_type = new DriveType($_POST['name'], $_POST['short_description'], $_POST['description']);
@@ -76,5 +72,4 @@ class DriveTypeController extends ViewController
     {
         return $this->update;
     }
-
 }

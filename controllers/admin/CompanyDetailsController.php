@@ -20,8 +20,7 @@ spl_autoload_register(function($class_name) {
 });
 
 
-class CompanyDetailsController extends ViewController
-{
+class CompanyDetailsController extends ViewController {
 
     public $update;
     private $companyDetails;
@@ -29,18 +28,12 @@ class CompanyDetailsController extends ViewController
     private $data;
     public $message;
 
-
-
-    public function __construct()
-    {
+    public function __construct() {
         $this->update = false;
         $this->companyDetails = new CompanyDetails();
-
     }
 
-
-    public function setCompanyDetails(): void
-    {
+    public function setCompanyDetails(): void {
 
         if(isset($_POST['submit-new'])) {
             $this->setData();
@@ -48,7 +41,6 @@ class CompanyDetailsController extends ViewController
             $this->companyDetails->createCompanyDetails($this->data);
         }elseif(isset($_POST['update'])) {
             $this->companyDetails = new CompanyDetails();
-
             $this->update= true;
             $this->details = $this->companyDetails->fetchOneCompanyDetail($_POST['company_detailsID']);
         }elseif(isset($_POST['submit-update'])){
@@ -85,33 +77,28 @@ class CompanyDetailsController extends ViewController
     /**
      * @param mixed $message
      */
-    public function setMessage(): void
-    {
+    public function setMessage(): void {
         $this->message = $this->companyDetails->message;
     }
 
     /**
      * @return CompanyDetails()
      */
-    public function getCompanyDetails()
-    {
+    public function getCompanyDetails() {
         return $this->companyDetails;
     }
 
     /**
      * @return mixed
      */
-    public function getOneDetails()
-    {
+    public function getOneDetails() {
         return $this->details;
     }
 
     /**
      * @return false
      */
-    public function getUpdate(): bool
-    {
+    public function getUpdate(): bool {
         return $this->update;
     }
-
 }
