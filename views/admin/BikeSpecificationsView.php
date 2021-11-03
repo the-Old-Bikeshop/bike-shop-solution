@@ -2,24 +2,6 @@
 $bike_s = new BikeSpecificationController();
 $bike_s->setBikeSpecifications();
 ?>
-<!-- -->
-<!--CREATE TABLE bike_specifications (-->
-<!--bike_specificationsID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-->
-<!--`type` VARCHAR(255) NOT NULL,-->
-<!--back_basket INT,-->
-<!--mudguards INT,-->
-<!--front_basket INT,-->
-<!--lights INT,-->
-<!--disk_brakes INT,-->
-<!--wheel_sizeID INT,-->
-<!--braking_systemID INT,-->
-<!--drive_typeID INT,-->
-<!--created_by INT,-->
-<!--FOREIGN KEY (wheel_sizeID) REFERENCES wheel_size (wheel_sizeID),-->
-<!--FOREIGN KEY (braking_systemID) REFERENCES braking_system (braking_systemID),-->
-<!--FOREIGN KEY (drive_typeID) REFERENCES drive_type (drive_typeID),-->
-<!--FOREIGN KEY (created_by) REFERENCES `user` (userID)-->
-<!--); -->
 
 <section  class="row col-12">
     <div style="align-items:center; justify-content:space-between; border-bottom:2px dashed rgba(0,0,0,0.15); padding:1rem; width:100%; display: flex;">
@@ -80,8 +62,6 @@ $bike_s->setBikeSpecifications();
             </table>
         </div>
     </div>
-
-
       <!--    the form for creating and updating drive_type starts here-->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1"
          role="dialog"
@@ -100,18 +80,17 @@ $bike_s->setBikeSpecifications();
                     </form>
                 </div>
                 <div class="modal-body">
-                    <form class="col-12 row mt-5 col-12 col-md-8 offset-md-2 pb-5 mb-5" action="" method="post" id="form">
+                    <form class="col-12" action="" method="post" id="form">
                         <?php echo $bike_s->getBikeSpecifications()->message ?? ""; ?>
-                        <div class="form-group col-12 mt-2">
+                        <div class="form-group p-0 col-12 mb-3">
                             <label for="type">Type</label>
-                            <input type="text" class="form-control" id="type" name="type"
+                            <input type="text" class="col-12 form-control" id="type" name="type"
                                 value=" <?php echo $bike_s->getOneBike()['type'] ?? '' ?>" 
                             >
                         </div>
-                        <div class="col-12 border border-primary rounded">
-                            <h3>Accepts: </h3>
+                        <div class="col-12 border border-secondary rounded">
                             <div class="form-group col-12 mt-2">
-                                <span>Back basket</span>
+                                <span style="font-weight: bold; opacity:0.8; margin-right: 1rem;">Back basket:</span>
                                 <?php foreach ($bike_s->getConvert()->getYesNo() as $cond):?>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -135,7 +114,7 @@ $bike_s->setBikeSpecifications();
                                 <?php endforeach; ?>
                             </div>
                             <div class="form-group col-12 mt-2">
-                                <span>Lights</span>
+                                <span style="font-weight: bold; opacity:0.8; margin-right: 1rem;">Lights:</span>
                                 <?php foreach ($bike_s->getConvert()->getYesNo() as $cond):?>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -158,7 +137,7 @@ $bike_s->setBikeSpecifications();
                                 <?php endforeach; ?>
                             </div>
                             <div class="form-group col-12 mt-2">
-                                <span>Mudguards</span>
+                                <span style="font-weight: bold; opacity:0.8; margin-right: 1rem;">Mudguards:</span>
                                 <?php foreach ($bike_s->getConvert()->getYesNo() as $cond):?>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -181,7 +160,7 @@ $bike_s->setBikeSpecifications();
                                 <?php endforeach; ?>
                             </div>
                             <div class="form-group col-12 mt-2">
-                                <span>Front Basket</span>
+                                <span style="font-weight: bold; opacity:0.8; margin-right: 1rem;">Front Basket:</span>
                                 <?php foreach ($bike_s->getConvert()->getYesNo() as $cond):?>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -205,7 +184,7 @@ $bike_s->setBikeSpecifications();
                                 <?php endforeach; ?>
                             </div>
                             <div class="form-group col-12 mt-2">
-                                <span>Disk Brakes</span>
+                                <span style="font-weight: bold; opacity:0.8; margin-right: 1rem;">Disk Brakes:</span>
                                 <?php foreach ($bike_s->getConvert()->getYesNo() as $cond):?>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -228,10 +207,9 @@ $bike_s->setBikeSpecifications();
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <div class="col-12 border border-primary rounded mt-2">
-                            <h3>Has:</h3>
+                        <div class="col-12 border border-secondary rounded mt-3">
                             <div class="form-group col-12  mt-2">
-                                <label for="wheel_size">Wheel size</label>
+                                <label for="wheel_size" >Wheel size</label>
                                 <select class="custom-select" id="wheel_size" name="wheel_sizeID">
                                     <?php if(($bike_s->getWheel()->fetchAllWheelSizes() !== null)) {
                                         foreach ($bike_s->getWheel()->fetchAllWheelSizes() as $wheel):?>
@@ -312,12 +290,13 @@ $bike_s->setBikeSpecifications();
                                 name = "bike_specificationsID"
                                 value = "<?php echo $bike_s->getOneBike()['bike_specificationsID'] ?>"
                             >
-                        <?php endif; ?>
+                        <?php endif;?>
                         <div class="form-group col-12 mt-2">
                             <input type="submit" class="btn <?php echo !$bike_s->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
                                 name="<?php echo !$bike_s->getUpdate() ? 'submit-new' : 'submit-update' ?>"
-                                value="<?php echo !$bike_s->getUpdate() ? 'Create new' : 'update' ?>"
+                                value="<?php echo !$bike_s->getUpdate() ? 'Create new' : 'Update:' ?>"
                             >
+                            <input type="submit" class="btn btn-secondary" value="Cancel">
                         </div>
                     </form>
                 </div>
