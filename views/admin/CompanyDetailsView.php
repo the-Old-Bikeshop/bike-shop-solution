@@ -1,17 +1,17 @@
 <?php
-//CREATE TABLE `company_details` (
-//company_detailsID INT NOT NULL Primary Key AUTO_INCREMENT,
-//    company_description TEXT,
-//    opening_hours VARCHAR(100),
-//    mission TEXT,
-//    vision TEXT,
-//    statement TEXT,
-//    phone VARCHAR(20),
-//    address VARCHAR(255),
-//    email VARCHAR(150),
-//    instagram VARCHAR(100)
-//);
-//ALTER TABLE `company_details` CHANGE `STATEMENT` `statement` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+    //CREATE TABLE `company_details` (
+    //company_detailsID INT NOT NULL Primary Key AUTO_INCREMENT,
+    //    company_description TEXT,
+    //    opening_hours VARCHAR(100),
+    //    mission TEXT,
+    //    vision TEXT,
+    //    statement TEXT,
+    //    phone VARCHAR(20),
+    //    address VARCHAR(255),
+    //    email VARCHAR(150),
+    //    instagram VARCHAR(100)
+    //);
+    //ALTER TABLE `company_details` CHANGE `STATEMENT` `statement` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
     $cd = new CompanyDetailsController();
 
     $cd->setCompanyDetails();
@@ -30,19 +30,19 @@
         <div class="card bg-light col-12 p-0">
             <table class="table table-sm col-12">
                 <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">opening_hours</th>
-                    <th scope="col">phone</th>
-                    <th scope="col">address</th>
-                    <th scope="col">email</th>
-                    <th scope="col">instagram</th>
-                    <th scope="col">company_description</th>
-                    <th scope="col">mission</th>
-                    <th scope="col">vision</th>
-                    <th scope="col">statement</th>
-                    <th scope="col">Controls</th>
-                </tr>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">opening_hours</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">address</th>
+                        <th scope="col">email</th>
+                        <th scope="col">instagram</th>
+                        <th scope="col">company_description</th>
+                        <th scope="col">mission</th>
+                        <th scope="col">vision</th>
+                        <th scope="col">statement</th>
+                        <th scope="col">Controls</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($cd->getCompanyDetails()->fetchAllCompanyDetails() as $res): ?>
@@ -60,7 +60,7 @@
                         <td>
                             <form action="" method="post" class="d-inline-block">
                                 <input type="text" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
-                                <input type="submit" name="update" value="update" class="btn btn-info" >
+                                <input type="submit" name="update" value="update" class="btn btn-secondary" >
                             </form>
                             <form action="" method="post" class="d-inline-block">
                                 <input type="text" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
