@@ -84,7 +84,7 @@
 
     <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-        <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>>
+        <?php echo isset($_POST["update"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -98,7 +98,75 @@
                     </form>
                 </div>
                 <div class="modal-body">
-         sdasadsa
+                    <form action="" method="post" class="col-12" id="form">
+                        <div class="form-group col-12 mt-2">
+                            <label for="opening_hours">Opening Hours</label>
+                            <input type="text" class="form-control" id="opening_hours" name="opening_hours"
+                                   placeholder="08:00-17:00 mon-fri"
+                                   value=" <?php echo $cd->getOneDetails()['opening_hours'] ?? '' ?>" >
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="phone">phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                   placeholder="+45 xxxxxxxxx"
+                                   value=" <?php echo $cd->getOneDetails()['phone'] ?? '' ?>" >
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="instagram">Instagram</label>
+                            <input type="text" class="form-control" id="instagram" name="instagram"
+                                   placeholder="intagram link"
+                                   value=" <?php echo $cd->getOneDetails()['instagram'] ?? '' ?>" >
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="address">address</label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                   placeholder="address"
+                                   value=" <?php echo $cd->getOneDetails()['address'] ?? '' ?>" >
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="email">email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                   placeholder="email"
+                                   value=" <?php echo $cd->getOneDetails()['email'] ?? '' ?>" >
+                        </div>
+                        <div class="form-group col-12  mt-2">
+                            <label for="company_description">Company description</label>
+                            <textarea class="form-control"
+                                      id="company_description" rows="5"
+                                      name="company_description"><?php echo $cd->getOneDetails()['company_description'] ?? ''?></textarea>
+                        </div>
+                        <div class="form-group col-12  mt-2">
+                            <label for="mission">Company mission</label>
+                            <textarea class="form-control"
+                                      id="mission" rows="5"
+                                      name="mission"><?php echo $cd->getOneDetails()['mission'] ?? ''?></textarea>
+                        </div>
+                        <div class="form-group col-12  mt-2">
+                            <label for="vision">Company vision</label>
+                            <textarea class="form-control"
+                                      id="vision" rows="5"
+                                      name="vision"><?php echo $cd->getOneDetails()['vision'] ?? ''?></textarea>
+                        </div>
+                        <div class="form-group col-12  mt-2">
+                            <label for="statement">Company statement</label>
+                            <textarea class="form-control"
+                                      id="statement" rows="5"
+                                      name="statement"><?php echo $cd->getOneDetails()['statement'] ?? ''?></textarea>
+                        </div>
+                        <?php if(isset($cd->getOneDetails()['company_detailsID'])): ?>
+
+                            <input type="text" hidden
+                                   name = "company_detailsID"
+                                   value = "<?php echo $cd->getOneDetails()['company_detailsID'] ?>">
+
+                        <?php endif; ?>
+                        <div class="form-group col-12 mt-2">
+                            <input type="submit" class="btn <?php echo !$cd->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
+                                   name="<?php echo !$cd->getUpdate() ? 'submit-new' : 'submit-update' ?>"
+                                   value="<?php echo !$cd->getUpdate() ? 'Create new' : 'update' ?>">
+                            <input type="submit" class="btn btn-secondary" value = "Cancel">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

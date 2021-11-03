@@ -61,9 +61,8 @@ $ws->getWheelSize();
     <!--    the form for creating and updating drive_type starts here-->
     <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" 
          role="dialog" 
-         aria-labelledby="exampleModalCenterTitle" 
-         <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>
-    >
+         aria-labelledby="exampleModalCenterTitle"
+        <?php echo isset($_POST["update"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

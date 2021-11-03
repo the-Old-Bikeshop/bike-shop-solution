@@ -61,8 +61,7 @@
     <!--    the form for creating and updating drive_type starts here-->
     <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-        <?php echo isset($_POST["update"]) ? 'style = "display : block"' : 'style = "display : none"'?>
-    >
+        <?php echo isset($_POST["update"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -102,7 +101,11 @@
                             <input type="text" hidden name = "braking_systemID" value = "<?php echo $br->getVal()['braking_systemID'] ?>">
                         <?php endif; ?>
                         <div class="form-group col-12 mt-2">
-                            <input type="submit" class="btn <?php echo !$br->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$br->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$br->getUpdate() ? 'Create new' : 'update' ?>">
+                            <input type="submit" class="btn
+                                <?php echo !$br->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
+                                   name="<?php echo !$br->getUpdate() ? 'submit-new' : 'submit-update' ?>"
+                                   value="<?php echo !$br->getUpdate() ? 'Create new' : 'update' ?>">
+
                             <input type="submit" class="btn btn-secondary" value="Cancel">
                         </div>
                     </form>
