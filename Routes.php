@@ -31,6 +31,10 @@ RouterController::set('admin-bike-specifications', function () {
     BikeSpecificationController::CreateView('BikeSpecificationsView');
 });
 
+RouterController::set('admin-products', function() {
+    ProductsController::CreateView('ProductView');
+});
+
 
 // Customer routes
 RouterController::set('landing', function() {

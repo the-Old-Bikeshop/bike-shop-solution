@@ -39,9 +39,13 @@ class ImageController extends ViewController {
     public function setData() {
         if(isset($_POST['submit-new'])||isset($_POST['submit-update'])) {
             $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-            //var_dump($_POST);
-            //var_dump($_FILES);
-            if(isset($_FILES['tmp_name'])) {
+
+//            var_dump($_POST);
+//            var_dump($_FILES);
+//                echo  $_POST["tmp_name"];
+
+            if(isset($_FILES['image']['tmp_name'])) {
+//                var_dump($_FILES);
                 $imageName = $_FILES['image']['name'];
                 $this->file = $_FILES['image']['tmp_name'];
                 $imageType = getimagesize($this->file);
@@ -61,7 +65,7 @@ class ImageController extends ViewController {
                 }
             }else{
 
-                var_dump($_POST);
+//                var_dump($_POST);
                 $this->data = [
                     'name' => trim($_POST['name']) ?? "",
                     'alt' => trim($_POST['alt']) ?? "",
@@ -138,6 +142,14 @@ class ImageController extends ViewController {
      */
     public function getUpdate(): bool{
         return $this->update;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 }
 
