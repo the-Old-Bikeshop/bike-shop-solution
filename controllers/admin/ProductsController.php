@@ -40,6 +40,7 @@ class ProductsController extends
         $this->products = new Product();
         $this->imageController = new ImageController();
         $this->productImage = new ProductImage();
+        $this->image = new Image();
 
 
     }
@@ -68,6 +69,16 @@ class ProductsController extends
         } elseif (isset($_POST['delete'])) {
             $this->products = new Product();
             $this->products->deleteRow('product', 'productID', $_POST['productID']);
+        } elseif (isset($_POST['addNewImage'])) {
+            $this->image = new Image();
+            $this->imageController->setData();
+            var_dump($_FILES);
+            $this->imageID = $this->image->createImage($this->imageController->getData());
+            var_dump($_POST['productID']);
+            var_dump($this->imageID);
+            $this->productImage->createProductImage($_POST['productID'], $this->imageID);
+        }elseif (isset($_POST['deleteImage'])) {
+            $this->productImage->deleteImage($_POST['imageID'], $_POST['productID']);
         }
     }
 
@@ -134,6 +145,22 @@ class ProductsController extends
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * @return Image
+     */
+    public function getImage(): Image
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return ProductImage
+     */
+    public function getProductImage(): ProductImage
+    {
+        return $this->productImage;
     }
 
 }

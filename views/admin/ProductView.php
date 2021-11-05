@@ -55,13 +55,36 @@ $product->setProduct();
                         <td><?php echo $res['color']?></td>
                         <td><?php echo $res['bike_specificationsID']?></td>
                         <td><?php echo $res['brandID']?></td>
-                        <td><?php echo $res['images']?></td>
+                        <td>
+                            <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
+
+                            <?php $url = $product->getImage()->fetchOneImage($img['imageID']); ?>
+
+                                <img
+                                        src="./public/img/<?php echo $url['URL'] ?? '' ?>"
+                                        alt="<?php echo $url['alt'] ?? '' ?>"
+                                height="50px">
+
+
+
+                                <?php echo $url['URL'] ?>
+
+                            <?php endforeach; ?>
+
+                        </td>
+
+
                         <td><?php echo $res['created_by']?></td>
                         <td><?php echo $res['created_at']?></td>
                         <td>
                             <form action="" method="post" class="d-inline-block p-0 m-0">
                                 <input type="text" hidden name="productID" value="<?php echo $res['productID'] ?>">
                                 <input type="submit" name="update" value="update"  class="btn btn-outline-secondary btn-sm">
+                            </form>
+                            <form action="" method="post" class="d-inline-block p-0 m-0">
+                                <input type="text" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                <input type="submit" name="addImage" value="add image" class="btn btn-outline-secondary
+                                btn-sm" >
                             </form>
                             <form action="" method="post" class="d-inline-block p-0 m-0">
                                 <input type="text" hidden name="productID" value="<?php echo $res['productID'] ?>">
@@ -76,9 +99,15 @@ $product->setProduct();
     </div>
 
     <!--    display message-->
-    <?php if(isset($brake->message)): ?>
+    <?php if(isset($product->getProducts()->message)): ?>
         <div class="col-12 col-md-8 offset-md-2">
-            <h3><?php echo $brake->message ?></h3>
+            <h3><?php echo $product->getProducts()->message ?></h3>
+        </div>
+    <?php endif  ?>
+
+    <?php if(isset($product->getProductImage()->message)): ?>
+        <div class="col-12 col-md-8 offset-md-2">
+            <h3><?php echo $product->getProductImage()->message ?></h3>
         </div>
     <?php endif  ?>
 
@@ -220,9 +249,8 @@ $product->setProduct();
                             <label for="description">Product Image</label>
                             <div class="form-group col-12 mt-2">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="name
-                                 of the  drive type"
-                                       value="" required
+                                <input type="text" class="form-control" id="name" name="name" placeholder="image name"
+                                       value=""
                                 >
                             </div>
                             <div class="form-group col-12 mt-2">
@@ -238,7 +266,7 @@ $product->setProduct();
                             <div class="form-group col-12 mt-2">
                                 <label for="alt">Alt</label>
                                 <input type="text" class="form-control" id="alt" name="alt" placeholder="alt form the image"
-                                       value=" " required
+                                       value=""
                                 >
                             </div>
                         </div>
@@ -256,12 +284,105 @@ $product->setProduct();
                                 <?php echo !$product->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
                                    name="<?php echo !$product->getUpdate() ? 'submit-new' : 'submit-update' ?>"
                                    value="<?php echo !$product->getUpdate() ? 'Create new' : 'update' ?>">
+                            <form action="">
+                                <input type="submit" class="btn btn-secondary" value="Cancel">
+                            </form>
 
-                            <input type="submit" class="btn btn-secondary" value="Cancel">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade <?php echo isset($_POST["addImage"]) ? 'show' : ' ' ?>" id="addImage"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+        <?php echo isset($_POST["addImage"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        <?php echo $_POST['addImage'] ? "Add or remove image for" : "" .
+                            $product->getProduct()['name'] ?>
+                    </h5>
+                    <form action="" method="post" >
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-body">
+                    <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
+                        <div class="d-flex">
+                            <?php foreach($product->getProducts()->fetchImageList($_POST['productID']) as $img): ?>
+
+                                <?php $url = $product->getImage()->fetchOneImage($img['imageID']); ?>
+
+                                <img
+                                        src="./public/img/<?php echo $url['URL'] ?? '' ?>"
+                                        alt="<?php echo $url['alt'] ?? '' ?>"
+                                        height="50px">
+
+
+
+                                <?php echo $url['URL'] ?>
+                                <form action="" method="post">
+                                    <input type="hidden" name="imageID" value="<?php echo $img['imageID'] ?>">
+                                    <input type="hidden" name="productID" value="<?php echo $_POST['productID'] ?>">
+                                    <input type="submit" name="deleteImage" value="delete image">
+                                </form>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+                        <div class="form-group col-12 mt-2">
+                            <label for="description">Product Image</label>
+                            <div class="form-group col-12 mt-2">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="image name"
+                                       value=""
+                                >
+                            </div>
+                            <div class="form-group col-12 mt-2">
+                                <label for="image">Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                            </div>
+                            <div class="form-group col-12 mt-2">
+                                <label for="URL">URL</label>
+                                <input type="text" class="form-control" id="URL" name="URL"
+                                       value=""
+                                >
+                            </div>
+                            <div class="form-group col-12 mt-2">
+                                <label for="alt">Alt</label>
+                                <input type="text" class="form-control" id="alt" name="alt" placeholder="alt form the image"
+                                       value=""
+                                >
+                            </div>
+                        </div>
+
+
+                        <?php echo $_POST['productID'] ?>
+
+
+                        <?php if(isset($_POST['productID'])): ?>
+                            <input type="text" hidden name = "productID" value = "<?php echo $_POST['productID'] ?>">
+                        <?php endif; ?>
+                        <div class="form-group col-12 mt-2">
+                            <input type="submit" class="btn btn-primary"
+                                   name="addNewImage"
+                                   value="add New Image">
+                            <form action="">
+                                <input type="submit" class="btn btn-secondary" value="Cancel">
+                            </form>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>

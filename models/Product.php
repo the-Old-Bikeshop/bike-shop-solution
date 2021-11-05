@@ -86,6 +86,23 @@ class Product extends BasisSQL
 
     }
 
+    public function fetchImageList($id) {
+
+        try {
+            $query = $this->db->dbCon->prepare("SELECT `imageID` FROM `product_has_images` WHERE productID = :id");
+            $query->bindValue(':id', $id);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+
+        } catch(Exception $e) {
+            $this->message = $e->getMessage();
+        }
+
+
+
+    }
+
     public function updateProduct($data, $id) {
         try {
 

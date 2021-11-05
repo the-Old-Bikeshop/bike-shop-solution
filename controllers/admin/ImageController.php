@@ -37,7 +37,7 @@ class ImageController extends ViewController {
     }
 
     public function setData() {
-        if(isset($_POST['submit-new'])||isset($_POST['submit-update'])) {
+        if(isset($_POST['submit-new'])||isset($_POST['submit-update'])||isset($_POST['addNewImage'])) {
             $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
 //            var_dump($_POST);
