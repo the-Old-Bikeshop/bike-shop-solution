@@ -123,6 +123,10 @@ class ImageController extends ViewController {
         }
     }
 
+    public function deleteImageFromFile($file) {
+        unlink($file);
+    }
+
     /**
      * @return Image
      */

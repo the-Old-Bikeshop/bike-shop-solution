@@ -72,13 +72,10 @@ class ProductsController extends
         } elseif (isset($_POST['addNewImage'])) {
             $this->image = new Image();
             $this->imageController->setData();
-            var_dump($_FILES);
             $this->imageID = $this->image->createImage($this->imageController->getData());
-            var_dump($_POST['productID']);
-            var_dump($this->imageID);
             $this->productImage->createProductImage($_POST['productID'], $this->imageID);
         }elseif (isset($_POST['deleteImage'])) {
-            $this->productImage->deleteImage($_POST['imageID'], $_POST['productID']);
+            $this->productImage->deleteImage($_POST['deleteImageID'], $_POST['deleteProductID']);
         }
     }
 

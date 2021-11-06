@@ -53,15 +53,18 @@ $product->setProduct();
                         <td><?php echo $res['length']?></td>
                         <td><?php echo $res['weight']?></td>
                         <td><?php echo $res['color']?></td>
-                        <td><?php echo $res['bike_specificationsID']?></td>
-                        <td><?php echo $res['brandID']?></td>
+                        <td><?php echo $product->getProducts()->fetchOne('bike_specifications', 'bike_specificationsID', $res['bike_specificationsID'])['type']
+                            ?></td>
+                        <td><?php echo $product->getProducts()->fetchOne('brand', 'brandID', $res['brandID'])
+                            ['name']?></td>
                         <td>
                             <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
 
                             <?php $url = $product->getImage()->fetchOneImage($img['imageID']); ?>
 
                                 <img
-                                        src="./public/img/<?php echo $url['URL'] ?? '' ?>"
+                                        src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/bike-shop-solution/public/img/' .
+                                        $url['URL'] ?>"
                                         alt="<?php echo $url['alt'] ?? '' ?>"
                                 height="50px">
 
@@ -327,11 +330,12 @@ $product->setProduct();
 
 
                                 <?php echo $url['URL'] ?>
-                                <form action="" method="post">
-                                    <input type="hidden" name="imageID" value="<?php echo $img['imageID'] ?>">
-                                    <input type="hidden" name="productID" value="<?php echo $_POST['productID'] ?>">
+
+                                    <input type="hidden" name="deleteImageID" value="<?php echo $img['imageID'] ?>">
+                                    <input type="hidden" name="deleteProductID" value="<?php echo $_POST['productID']
+                                    ?>">
                                     <input type="submit" name="deleteImage" value="delete image">
-                                </form>
+
 
                             <?php endforeach; ?>
 
@@ -363,10 +367,6 @@ $product->setProduct();
                             </div>
                         </div>
 
-
-                        <?php echo $_POST['productID'] ?>
-
-
                         <?php if(isset($_POST['productID'])): ?>
                             <input type="text" hidden name = "productID" value = "<?php echo $_POST['productID'] ?>">
                         <?php endif; ?>
@@ -374,7 +374,7 @@ $product->setProduct();
                             <input type="submit" class="btn btn-primary"
                                    name="addNewImage"
                                    value="add New Image">
-                            <form action="">
+                            <form action="" method="post">
                                 <input type="submit" class="btn btn-secondary" value="Cancel">
                             </form>
 
