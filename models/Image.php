@@ -30,8 +30,10 @@ class Image
         try {
             $this->db->dbCon->beginTransaction();
             $query->execute();
-            $this->db->dbCon->commit();
+
             $this->last_id = $this->db->dbCon->lastInsertId();
+            $this->db->dbCon->commit();;
+            return $this->last_id;
 
         }
         catch (Exception $e) {
