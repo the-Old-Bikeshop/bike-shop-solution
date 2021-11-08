@@ -28,7 +28,7 @@
                 </tr>
                 </thead>
                 <tbody class="col-12">
-                <?php foreach ($br->getBrake()->fetchAllBrakeSystems() as $res): ?>
+                <?php foreach ($br->getBrake()->fetchAll('braking_system') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res['braking_systemID']?></th>
                         <td><?php echo $res['name']?></td>

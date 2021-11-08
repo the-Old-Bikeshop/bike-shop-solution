@@ -44,7 +44,7 @@ class CategoryController extends ViewController {
             $this->categories = new Category();
 
             $this->update = true;
-            $this->category = $this->categories->fetchOneCategory($_POST['categoryID']);
+            $this->category = $this->categories->fetchOne('category', 'categoryID', $_POST['categoryID']);
         } elseif (isset($_POST['submit-update'])) {
             $this->categories = new Category();
             $this->setData();
@@ -52,7 +52,7 @@ class CategoryController extends ViewController {
                 $_POST['categoryID']);
         } elseif (isset($_POST['delete'])) {
             $this->categories = new Category();
-            $this->categories->deleteCategory($_POST['categoryID']);
+            $this->categories->deleteRow('category', 'categoryID', $_POST['categoryID']);
         }
     }
 
@@ -87,9 +87,7 @@ class CategoryController extends ViewController {
         $this->message = $this->categories->message;
     }
 
-    /**
-     * @return categories()
-     */
+
     public function getCategories()
     {
         return $this->categories;

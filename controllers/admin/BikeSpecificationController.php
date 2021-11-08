@@ -57,14 +57,16 @@ class BikeSpecificationController extends ViewController
         }elseif(isset($_POST['update'])) {
             $this->bikeSpecifications = new BikeSpecifications();
             $this->update= true;
-            $this->one_bike = $this->bikeSpecifications->fetchOneBikeSpecification($_POST['bike_specificationsID']);
+            $this->one_bike = $this->bikeSpecifications->fetchOne('bike_specifications', 'bike_specificationsID',
+                $_POST['bike_specificationsID']);
         }elseif(isset($_POST['submit-update'])){
             $this->bikeSpecifications = new BikeSpecifications();
             $this->setData();
             $this->bikeSpecifications->updatebikeSpecifications($this->data, $_POST['bike_specificationsID'] );
         }elseif(isset($_POST['delete'])) {
             $this->bikeSpecifications = new BikeSpecifications();
-            $this->bikeSpecifications->deletebikeSpecifications($_POST['bike_specificationsID']);
+            $this->bikeSpecifications->deleteRow('bike_specifications', 'bike_specificationsID',
+                $_POST['bike_specificationsID']);
         }
     }
 

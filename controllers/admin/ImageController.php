@@ -44,8 +44,9 @@ class ImageController extends ViewController {
 //            var_dump($_FILES);
 //                echo  $_POST["tmp_name"];
 
-            if(isset($_FILES['image']['tmp_name'])) {
-//                var_dump($_FILES);
+
+            if(!($_FILES['image']['tmp_name']) == "") {
+                var_dump($_FILES);
                 $imageName = $_FILES['image']['name'];
                 $this->file = $_FILES['image']['tmp_name'];
                 $imageType = getimagesize($this->file);
@@ -61,6 +62,7 @@ class ImageController extends ViewController {
                             'alt' => trim($_POST['alt']) ?? "",
                             'URL' => $this->iName
                         ];
+//                        var_dump($this->data);
                     }
                 }
             }else{
@@ -85,7 +87,7 @@ class ImageController extends ViewController {
         } elseif (isset($_POST['update'])) {
             $this->image = new Image();
             $this->update = true;
-            $this->img = $this->image->fetchOneImage($_POST['imageID']);
+            $this->img = $this->image->fetchOne('image','imageID' ,$_POST['imageID']);
         } elseif (isset($_POST['submit-update'])) {
             $this->setData();
             $this->image = new Image();
@@ -93,7 +95,7 @@ class ImageController extends ViewController {
 
         } elseif (isset($_POST['delete'])) {
             $this->image = new Image();
-            $this->image->deleteImage($_POST['imageID']);
+            $this->image->deleteRow('image','imageID' ,$_POST['imageID']);
         }
     }
 

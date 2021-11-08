@@ -1,33 +1,21 @@
 <?php
 
-class Image
+class Image extends BasisSQL
 {
 
-    private $db;
-    private $basic;
+
     public $message = "";
     public $last_id;
 
 
-    public function __construct()
-    {
-        $this->db = new DBcon();
-        $this->basic = new BasisSQL();
-
-    }
-
     public function createImage($data) {
-
-
-        $query = $this->db->dbCon->prepare("INSERT INTO `image` (name, URL, alt) VALUES (:name, :URL , :alt)");
-
-        $query->bindValue(':name', $data['name']);
-        $query->bindValue(':URL', $data['URL']);
-        $query->bindValue(':alt', $data['alt']);
-
-
-
         try {
+
+            $query = $this->db->dbCon->prepare("INSERT INTO `image` (name, URL, alt) VALUES (:name, :URL , :alt)");
+
+            $query->bindValue(':name', $data['name']);
+            $query->bindValue(':URL', $data['URL']);
+            $query->bindValue(':alt', $data['alt']);
             $this->db->dbCon->beginTransaction();
             $query->execute();
 
@@ -41,39 +29,6 @@ class Image
           $this->message = $e->getMessage();
         }
 
-    }
-
-     public function fetchAllImages() {
-
-//          $this->basic->fetchAll(`image`);
-
-         $query = $this->db->dbCon->prepare("SELECT * FROM `image`");
-//         $query->bindValue(':table', $table);
-         try{
-             $query->execute();
-             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-             $this->message = "";
-             return $result;
-
-         }catch (Exception $e) {
-             $this->message = $e->getMessage();
-         }
-         return $this->message;
-
-     }
-
-    public function fetchOneImage($id) {
-
-        $query = $this->db->dbCon->prepare("SELECT * FROM `image` WHERE `imageID` = $id");
-
-        try {
-            $query->execute();
-            $result = $query->fetch(PDO::FETCH_ASSOC);
-            return $result;
-
-        }catch (Exception $e) {
-            $this->message= "fetch failed";
-        }
     }
 
     public function updateImage($data) {
@@ -97,19 +52,6 @@ class Image
             $this->message = $e->getMessage();
         }
 
-    }
-
-
-    public function deleteImage($id) {
-        $query = $this->db->dbCon->prepare("DELETE FROM `image` WHERE `imageID` = $id");
-
-        try {
-            $query->execute();
-            $this->message = "Image Deleted";
-
-        }catch (Exception $e) {
-            $this->message = "There was an error" . $e->getMessage();
-        }
     }
 
 

@@ -41,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($cd->getCompanyDetails()->fetchAllCompanyDetails() as $res): ?>
+                <?php foreach ($cd->getCompanyDetails()->fetchAll('company_details') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res['company_detailsID']?></th>
                         <td><?php echo $res['opening_hours']?></td>

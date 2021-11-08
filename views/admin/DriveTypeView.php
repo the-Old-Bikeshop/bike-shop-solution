@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody class="col-12">
-                    <?php foreach ($dt->getDriveType()->fetchAllDriveTypes() as $res) : ?>
+                    <?php foreach ($dt->getDriveType()->fetchAll('drive_type') as $res) : ?>
                         <tr class="ml-2">
                             <th scope="row"> <?php echo $res["drive_typeID"] ?></th>
                             <td><?php echo $res['name'] ?></td>

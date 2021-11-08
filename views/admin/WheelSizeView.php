@@ -26,7 +26,7 @@ $ws->getWheelSize();
                 </tr>
                 </thead>
                 <tbody class="col-12">
-                <?php foreach ($ws->getWheelSize()->fetchAllWheelSizes() as $res): ?>
+                <?php foreach ($ws->getWheelSize()->fetchAll('wheel_size') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res["wheel_sizeID"] ?></th>
                         <td><?php echo $res['wheel_ISO']?></td>

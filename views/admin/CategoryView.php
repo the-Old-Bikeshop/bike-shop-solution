@@ -30,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody class="col-12">
-                <?php foreach ($ct->getCategories()->fetchAllCategories() as $res): ?>
+                <?php foreach ($ct->getCategories()->fetchAll('category') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res["categoryID"] ?></th>
                         <td><?php echo $res['name']?></td>
@@ -95,8 +95,7 @@
                                 class="form-control"
                                 name="description"
                                 id="description"
-                                rows="5"><?php echo $ct->getOneCategory()['description']??''?>
-                            </textarea>
+                                rows="5"><?php echo $ct->getOneCategory()['description']??''?></textarea>
                         </div>
                         <?php if(isset($ct->getOneCategory()['categoryID'])): ?>
                             <input type="text" hidden

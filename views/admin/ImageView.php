@@ -31,7 +31,7 @@ $img->setImage();
                 </tr>
                 </thead>
                 <tbody class="col-12">
-                <?php foreach ($img->getImage()->fetchAllImages() as $res): ?>
+                <?php foreach ($img->getImage()->fetchAll('image') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res['imageID']?></th>
                         <td><?php echo $res['name']?></td>
@@ -103,7 +103,7 @@ $img->setImage();
                         <div class="form-group col-12 mt-2">
                             <label for="URL">URL</label>
                             <input type="text" class="form-control" id="URL" name="URL"
-                                value="<?php echo isset($img->getImg()['URL']) ? trim($img->getImg()['URL']) : ''?>" required
+                                value="<?php echo isset($img->getImg()['URL']) ? trim($img->getImg()['URL']) : ''?>"
                             >
                         </div>
                         <div class="form-group col-12 mt-2">

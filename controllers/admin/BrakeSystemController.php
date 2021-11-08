@@ -40,7 +40,7 @@ class BrakeSystemController extends ViewController
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
             $this->update= true;
-            $this->val = $this->brake->fetchOneBrakeSystem($_POST['braking_systemID']);
+            $this->val = $this->brake->fetchOne("braking_system", "braking_systemID", $_POST['braking_systemID'] );
         }elseif(isset($_POST['submit-update'])){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
@@ -48,7 +48,7 @@ class BrakeSystemController extends ViewController
         }elseif(isset($_POST['delete'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $this->brake = new BrakeType();
-            $this->brake->deleteBrakeSystem($_POST['braking_systemID']);
+            $this->brake->deleteRow('braking_system', "braking_systemID" , $_POST['braking_systemID']);
         }
     }
 

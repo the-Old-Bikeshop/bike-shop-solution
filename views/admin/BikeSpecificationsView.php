@@ -27,7 +27,7 @@ $bike_s->setBikeSpecifications();
                 </tr>
                 </thead>
                 <tbody class="col-12">
-                <?php foreach ($bike_s->getBikeSpecifications()->fetchAllBikeSpecifications() as $res): ?>
+                <?php foreach ($bike_s->getBikeSpecifications()->fetchAll('bike_speks') as $res): ?>
                     <tr>
                         <th scope="row"> <?php echo $res['bike_specificationsID']?></th>
                         <td><?php echo $res['type']?></td>
@@ -52,9 +52,10 @@ $bike_s->setBikeSpecifications();
         </div>
     </div>
       <!--    the form for creating and updating drive_type starts here-->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+      <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+          <?php echo isset($_POST["update"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>
       >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -200,8 +201,8 @@ $bike_s->setBikeSpecifications();
                             <div class="form-group col-12  mt-2">
                                 <label for="wheel_size" >Wheel size</label>
                                 <select class="custom-select" id="wheel_size" name="wheel_sizeID">
-                                    <?php if(($bike_s->getWheel()->fetchAllWheelSizes() !== null)) {
-                                        foreach ($bike_s->getWheel()->fetchAllWheelSizes() as $wheel):?>
+                                    <?php if(($bike_s->getWheel()->fetchAll('wheel_size') !== null)) {
+                                        foreach ($bike_s->getWheel()->fetchAll('wheel_size') as $wheel):?>
                                             <option value="<?php echo $wheel['wheel_sizeID'] ?? "" ?>"
                                                     <?php if(!isset($wheel['wheel_sizeID']) && isset($bike_s->getOneBike()['wheel_sizeID']) && $wheel['wheel_sizeID'] ==
                                                         $bike_s->getOneBike()['wheel_sizeID']):?>
@@ -223,8 +224,8 @@ $bike_s->setBikeSpecifications();
                             <div class="form-group col-12  mt-2">
                                 <label for="wheel_size">Braking system</label>
                                 <select class="custom-select" id="brake_system" name="braking_systemID">
-                                    <?php if(($bike_s->getBrake()->fetchAllBrakeSystems() !== null)) {
-                                        foreach ($bike_s->getBrake()->fetchAllBrakeSystems() as $brake):?>
+                                    <?php if(($bike_s->getBrake()->fetchAll('braking_system') !== null)) {
+                                        foreach ($bike_s->getBrake()->fetchAll('braking_system') as $brake):?>
                                             <option value="<?php echo $brake['braking_systemID'] ?? "" ?>"
                                                 <?php if(!isset($brake['braking_systemID']) && isset($bike_s->getOneBike()['braking_systemID'])
                                                     &&
@@ -247,8 +248,8 @@ $bike_s->setBikeSpecifications();
                             <div class="form-group col-12  mt-2">
                                 <label for="wheel_size">Drive Type</label>
                                 <select class="custom-select" id="drive_type" name="drive_typeID">
-                                    <?php if(($bike_s->getDriveType()->fetchAllDriveTypes() !== null)) {
-                                        foreach ($bike_s->getDriveType()->fetchAllDriveTypes() as $drive):?>
+                                    <?php if(($bike_s->getDriveType()->fetchAll('drive_type') !== null)) {
+                                        foreach ($bike_s->getDriveType()->fetchAll('drive_type') as $drive):?>
 
                                             <option value="<?php echo $drive['drive_typeID'] ?? "" ?>"
                                                 <?php if(!isset($drive['drive_typeID']) && isset($bike_s->getOneBike()['drive_typeID'])

@@ -42,14 +42,14 @@ class CompanyDetailsController extends ViewController {
         }elseif(isset($_POST['update'])) {
             $this->companyDetails = new CompanyDetails();
             $this->update= true;
-            $this->details = $this->companyDetails->fetchOneCompanyDetail($_POST['company_detailsID']);
+            $this->details = $this->companyDetails->fetchOne( 'company_details', 'company_detailsID',  $_POST['company_detailsID']);
         }elseif(isset($_POST['submit-update'])){
             $this->companyDetails = new CompanyDetails();
             $this->setData();
             $this->companyDetails->updateCompanyDetails($this->data, $_POST['company_detailsID'] );
         }elseif(isset($_POST['delete'])) {
             $this->companyDetails = new CompanyDetails();
-            $this->companyDetails->deleteCompanyDetails($_POST['company_detailsID']);
+            $this->companyDetails->deleteRow('company_details', 'company_detailsID',  $_POST['company_detailsID']);
         }
     }
 

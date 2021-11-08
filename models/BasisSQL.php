@@ -12,7 +12,6 @@ class BasisSQL {
 
         $this->db = new DBcon();
 
-
     }
 
     public function fetchAll($table)
@@ -22,7 +21,6 @@ class BasisSQL {
             $query = $this->db->dbCon->prepare("SELECT * FROM `{$tbl}`");
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            $this->message = "items fetched succesfully";
             return $result;
 
         }catch (Exception $e) {
@@ -48,7 +46,6 @@ class BasisSQL {
         }catch (Exception $e) {
             $this->message = $e->getMessage();
         }
-        return "something went wrong";
     }
 
     public function deleteRow($table, $col_id, $id)
@@ -66,7 +63,6 @@ class BasisSQL {
         }catch (Exception $e) {
             $this->message = $e->getMessage();
         }
-        return "something went wrong";
 
     }
 

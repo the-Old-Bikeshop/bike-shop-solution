@@ -18,35 +18,19 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-class CompanyDetails
+class CompanyDetails extends BasisSQL
 {
-    private $db;
+
     public $message = "";
 
 
-    public function __construct()
-    {
-        $this->db = new DBcon();
-    }
-
     public function createCompanyDetails($data) {
 
-        //CREATE TABLE `company_details` (
-        //company_detailsID INT NOT NULL Primary Key AUTO_INCREMENT,
-        //    company_description TEXT,
-        //    opening_hours VARCHAR(100),
-        //    mission TEXT,
-        //    vision TEXT,
-        //    STATEMENT TEXT,
-        //    phone VARCHAR(20),
-        //    address VARCHAR(255),
-        //    email VARCHAR(150),
-        //    instagram VARCHAR(100)
-        //);
 
 
 
-        $query=$this->db->dbCon->prepare("INSERT INTO `company_details` (
+        try {
+            $query=$this->db->dbCon->prepare("INSERT INTO `company_details` (
                                company_description,
                                opening_hours,
                                mission ,
@@ -69,52 +53,29 @@ class CompanyDetails
                                        
                                )" );
 
-        $query->bindValue(':company_description', $data['company_description']);
-        $query->bindValue(':opening_hours', $data['opening_hours']);
-        $query->bindValue(':mission', $data['mission']);
-        $query->bindValue(':vision', $data['vision']);
-        $query->bindValue(':statement', $data['statement']);
-        $query->bindValue(':phone', $data['phone']);
-        $query->bindValue(':address', $data['address']);
-        $query->bindValue(':email', $data['email']);
-        $query->bindValue(':instagram', $data['instagram']);
+            $query->bindValue(':company_description', $data['company_description']);
+            $query->bindValue(':opening_hours', $data['opening_hours']);
+            $query->bindValue(':mission', $data['mission']);
+            $query->bindValue(':vision', $data['vision']);
+            $query->bindValue(':statement', $data['statement']);
+            $query->bindValue(':phone', $data['phone']);
+            $query->bindValue(':address', $data['address']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':instagram', $data['instagram']);
+            $query->execute();
 
-
-        if($query->execute()) {
-            $this->message = "New company details added to the database";
-        } else{
-            $this->message = "Something went wrong";
-        }
-    }
-
-    public function fetchOneCompanyDetail($id) {
-        $query = $this->db->dbCon->prepare("SELECT * FROM `company_details` WHERE `company_detailsID` = $id ");
-        if($query->execute()) {
-            $result = $query->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        } else {
-            return "ERROR: The database could not be reached";
+        }catch (Exception $e) {
+            $this->message = $e->getMessage();
+        } finally {
         }
 
     }
-
-
-    public function fetchAllCompanyDetails() {
-        $query = $this->db->dbCon->prepare("SELECT * FROM `company_details`");
-        if($query->execute()) {
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        } else {
-            return "ERROR: The database could not be reached";
-        }
-
-    }
-
 
 
     public function updateCompanyDetails($data, $id) {
 
-        $query=$this->db->dbCon->prepare("UPDATE `company_details` SET 
+        try {
+            $query=$this->db->dbCon->prepare("UPDATE `company_details` SET 
                                `company_description` = :company_description,
                                `opening_hours` = :opening_hours,
                                `mission` = :mission,
@@ -126,35 +87,25 @@ class CompanyDetails
                                `instagram` = :instagram
                                WHERE company_detailsID = $id" );
 
-        $query->bindValue(':company_description', $data['company_description']);
-        $query->bindValue(':opening_hours', $data['opening_hours']);
-        $query->bindValue(':mission', $data['mission']);
-        $query->bindValue(':vision', $data['vision']);
-        $query->bindValue(':statement', $data['statement']);
-        $query->bindValue(':phone', $data['phone']);
-        $query->bindValue(':address', $data['address']);
-        $query->bindValue(':email', $data['email']);
-        $query->bindValue(':instagram', $data['instagram']);
+            $query->bindValue(':company_description', $data['company_description']);
+            $query->bindValue(':opening_hours', $data['opening_hours']);
+            $query->bindValue(':mission', $data['mission']);
+            $query->bindValue(':vision', $data['vision']);
+            $query->bindValue(':statement', $data['statement']);
+            $query->bindValue(':phone', $data['phone']);
+            $query->bindValue(':address', $data['address']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':instagram', $data['instagram']);
+            $query->execute();
 
-
-        if($query->execute()) {
-            $this->message = "New company details updated to the database";
-        } else{
-            $this->message = "Something went wrong";
+        }catch (Exception $e) {
+            $this->message = $e->getMessage();
+        } finally {
         }
 
     }
-
-    public function deleteCompanyDetails($id) {
-            $query = $this->db->dbCon->prepare("DELETE FROM `company_details` WHERE company_detailsID = $id");
-
-            if($query->execute()) {
-                $this->message="deleted";
-
-            }else {
-                $this->message="something went wrong";
-            }
-    }
-
-
 }
+
+
+
+

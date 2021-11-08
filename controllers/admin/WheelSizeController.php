@@ -38,14 +38,14 @@ class WheelSizeController extends ViewController {
         }elseif(isset($_POST['update'])) {
             $this->wheel_size = new WheelSize();
             $this->update= true;
-            $this->wheel = $this->wheel_size->fetchOneWheel($_POST['wheel_sizeID']);
+            $this->wheel = $this->wheel_size->fetchOne('wheel_size', 'wheel_sizeID', $_POST['wheel_sizeID']);
         }elseif(isset($_POST['submit-update'])){
 
             $this->wheel_size = new WheelSize();
             $this->wheel_size->updateWheelSize(filter_var(trim($_POST['wheel_ISO']),FILTER_SANITIZE_STRING), filter_var(trim($_POST['tire_ISO']),FILTER_SANITIZE_STRING), $_POST['wheel_sizeID']);
         }elseif(isset($_POST['delete'])) {
             $this->wheel_size = new WheelSize();
-            $this->wheel_size->deleteWheelSize($_POST['wheel_sizeID']);
+            $this->wheel_size->deleteRow('wheel_size', 'wheel_sizeID', $_POST['wheel_sizeID']);
         }
     }
 

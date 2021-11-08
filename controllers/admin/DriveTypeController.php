@@ -39,13 +39,13 @@ class DriveTypeController extends ViewController {
         }elseif(isset($_POST['update'])) {
             $this->drive_type = new DriveType();
             $this->update= true;
-            $this->drive = $this->drive_type->fetchOneDriveType($_POST['drive_typeID']);
+            $this->drive = $this->drive_type->fetchOne('drive_type', 'drive_typeID', $_POST['drive_typeID']);
         }elseif(isset($_POST['submit-update'])){
             $this->drive_type = new DriveType();
             $this->drive_type->updateBikeDrive($_POST['name'], $_POST['short_description'], $_POST['description'], $_POST['drive_typeID'] );
         }elseif(isset($_POST['delete'])) {
             $this->drive_type = new DriveType();
-            $this->drive_type->deleteBikeDrive($_POST['drive_typeID']);
+            $this->drive_type->deleteRow('drive_type', 'drive_typeID', $_POST['drive_typeID']);
         }
     }
 
