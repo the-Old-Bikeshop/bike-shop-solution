@@ -57,9 +57,9 @@ CREATE TABLE `address` (
   phone_number VARCHAR(100) NOT NULL,
   address_type INT NOT NULL,
   userID INT NOT NULL,
-  postalCodeID INT NOT NULL,
+  postalCodeID VARCHAR(10) NOT NULL,
   FOREIGN KEY (userID) REFERENCES `user` ( userID ),
-  FOREIGN KEY (postalCodeID) REFERENCES delivery_zip (postal_code)
+  FOREIGN KEY (postalCodeID) REFERENCES `delivery_zip` (postal_code)
 );
 
 CREATE TABLE shipping (
