@@ -61,8 +61,7 @@ $product->setProduct();
                                 <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
                                 <?php $url = $product->getImage()->fetchOne('image', 'imageID', $img['imageID']); ?>
                                         <img
-                                            src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/bike-shop-solution/public/img/' .
-                                            $url['URL'] ?>"
+                                            src="<?php echo '/bike-shop-solution/public/img/' . $res['URL'] ?>?>"
                                             alt="<?php echo $url['alt'] ?? '' ?>"
                                             height="50px"
                                         >

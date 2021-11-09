@@ -16,7 +16,6 @@ class ProductImage extends
             $query->bindValue(':imageID', $imageID);
 
             $query->execute();
-            $this->message = "image added to procuct";
 
         }catch (Exception $e) {
             $this->message = $e->getMessage();
