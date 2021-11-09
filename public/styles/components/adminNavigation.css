@@ -1,3 +1,5 @@
+@import "../colors.css";
+
 .tab_nav_wrapper {
     width: 20vw; 
     height:100vh; 
@@ -42,7 +44,7 @@
 }
 
 .nav_link {
-    font-size:0.8rem; 
+    font-size:1rem; 
     width: 100% !important; 
     color:black; 
     margin-bottom:0.8rem; 

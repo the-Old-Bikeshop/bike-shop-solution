@@ -1,17 +1,2 @@
-<h1>About us</h1>
-
-<?php
-$about = new AboutController();
-
-var_dump($about->user);
-
-
-$routs  = new RouterController();
-var_dump($routs::$validRoutes);
-
-?>
-
-<h1>the about us</h1>
-
-
-
+<?php include_once "./components/customerNavigation.php"?>
+<h1>This is about page!1!1!1!</h1>

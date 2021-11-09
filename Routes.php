@@ -43,12 +43,16 @@ RouterController::set('admin-shipping', function () {
 });
 
 // Customer routes
-RouterController::set('landing', function() {
-    LandingController::CreateView('LandingView');
+RouterController::set('home', function() {
+    HomeController::CreateView('HomeView');
 });
 
-RouterController::set('landing', function() {
-    LandingController::CreateView('LandingView');
+RouterController::set('products', function() {
+    ProductsController::CreateView('ProductsView');
+});
+
+RouterController::set('blog', function() {
+    BlogController::CreateView('BlogView');
 });
 
 RouterController::set('about', function() {
@@ -65,6 +69,14 @@ RouterController::set('sign-up', function() {
 
 RouterController::set('sign-in', function() {
     UserController::CreateView('LoginView');
+});
+
+RouterController::set('customer-account', function() {
+    UserController::CreateView('CustomerAccountView');
+});
+
+RouterController::set('basket', function() {
+    BasketController::CreateView('BasketView');
 });
 
 ?>
