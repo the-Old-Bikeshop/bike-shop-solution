@@ -50,6 +50,7 @@
             <div style="width: 100%;">
                 <div style="width: 100% !important;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a href="/bike-shop-solution/admin-dashboard" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Dashboard</a>
+                    <a href="/bike-shop-solution/admin-products" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Products</a>
                     <a href="/bike-shop-solution/admin-category" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Categories</a>
                     <a href="/bike-shop-solution/admin-bike-specifications" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Bike Specifications</a>
                     <a href="/bike-shop-solution/admin-drive-type" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed;border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Drive Types</a>
@@ -57,6 +58,9 @@
                     <a href="/bike-shop-solution/admin-wheel-size" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Wheel Sizes</a>
                     <a href="/bike-shop-solution/admin-image" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Images</a>
                     <a href="/bike-shop-solution/admin-company-details" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Bikeshop Information</a>
+                    <a href="/bike-shop-solution/admin-shipping" style="font-size:0.8rem; width: 100% !important;
+                    color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px;
+                    font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Shipping</a>
                 </div>
             </div>
         <div style="height:5vh; width: 20vw; position:absolute; bottom:0; left:0; display:flex; align-items:center; padding:1rem; justify-content:flex-start; background-color:rgba(0,0,0,0.10); border-top:rgba(0,0,0,0.10) solid 0.5px;">
