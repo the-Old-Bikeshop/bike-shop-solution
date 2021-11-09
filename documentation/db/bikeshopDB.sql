@@ -4,10 +4,10 @@ USE bikeshop;
 
 CREATE TABLE `user` (
   userID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  nick_name VARCHAR(100) NOT NULL,
-  first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  password_hash VARCHAR(155) NOT NULL,
+  nick_name VARCHAR(100),
+  first_name VARCHAR(100),
+  last_name VARCHAR(100),
+  password_hash VARCHAR(155),
   email VARCHAR(100) NOT NULL,
   phone_number VARCHAR(100),
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -35,9 +35,19 @@ CREATE TABLE email_template (
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE city (
-  postalCodeID INT NOT NULL PRIMARY KEY,
-  `name` VARCHAR(100) NOT NULL
+CREATE TABLE delivery_zip (
+	postal_code VARCHAR(10) NOT NULL PRIMARY KEY,
+	country_code VARCHAR(10),
+	place_name VARCHAR(255),
+	admin_name1 VARCHAR(5),
+	admin_name2 VARCHAR (5),
+	admin_name3 VARCHAR (5),
+	code_name3 VARCHAR (5),
+	code_name2 VARCHAR(5),
+	code_name1 VARCHAR(5),
+	latitude VARCHAR(10),
+	longitude VARCHAR(10),
+	accuracy INT(2)
 );
 
 CREATE TABLE `address` (
@@ -49,7 +59,7 @@ CREATE TABLE `address` (
   userID INT NOT NULL,
   postalCodeID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES `user` ( userID ),
-  FOREIGN KEY (postalCodeID) REFERENCES city (postalCodeID)
+  FOREIGN KEY (postalCodeID) REFERENCES delivery_zip (postal_code)
 );
 
 CREATE TABLE shipping (
@@ -73,7 +83,7 @@ CREATE TABLE `order` (
   follow_up_date DATE,
   `status` INT NOT NULL ,
   payment_status INT NOT NULL,
-  total_price DECIMAL(10,2) NOT NULL,
+  total_price DECIMAL(10,2),
   userID INT NOT NULL,
   shippingID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES `user` (userID),
@@ -199,8 +209,8 @@ CREATE TABLE post (
   title VARCHAR(255),
   content TEXT,
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  productID INT NOT NULL,
-  userID INT NOT NULL,
+  productID INT,
+  userID INT,
   FOREIGN KEY (productID) REFERENCES product (productID),
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
@@ -217,9 +227,9 @@ CREATE TABLE comment (
   commentID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title VARCHAR(255),
-  content TEXT NOT NULL,
-  userID INT NOT NULL,
-  postID INT NOT NULL,
+  content TEXT ,
+  userID INT ,
+  postID INT ,
   FOREIGN KEY (postID) REFERENCES post(postID),
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );
@@ -232,3 +242,30 @@ CREATE TABLE `page` (
   meta_description VARCHAR(500),
   meta_keyword VARCHAR(100)
 );
+
+
+CREATE OR REPLACE VIEW bike_speks AS
+SELECT
+	bike_s.bike_specificationsID,
+	bike_S.type,
+	bike_s.back_basket,
+	bike_s.mudguards,
+	bike_s.front_basket,
+	bike_s.lights,
+	bike_s.disk_brakes,
+	bs.name AS brake_name,
+	bs.condition,
+	ws.wheel_ISO,
+	ws.tire_ISO,
+	dt.name AS drive_name,
+	dt.short_description,
+	dt.description,
+	u.nick_name,
+	u.first_name,
+	u.last_name
+FROM bike_specifications bike_s
+	     INNER JOIN wheel_size ws ON (bike_s.wheel_sizeID = ws.wheel_sizeID)
+	     INNER JOIN drive_type dt ON (bike_s.drive_typeID = dt.drive_typeID)
+	     INNER JOIN braking_system bs ON (bike_s.braking_systemID = bs.braking_systemID)
+	     INNER JOIN user u ON (bike_s.created_by = u.userID);
+
