@@ -1,6 +1,6 @@
-<div class="tab_nav_wrapper" style="width: 20vw; height:100vh; background-color:whitesmoke; border-right:rgba(0,0,0,0.10) solid 0.5px;">
-    <div class="tab_nav_container" style="padding:1rem;width:100%; height:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;">
-            <div style="display: flex; flex-direction:column; justify-content:flex-start; align-items:flex-start; height:auto; width:100%;">
+<div class="tab_nav_wrapper">
+    <div class="tab_nav_container">
+            <div class="tab_nav_header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 206.191 206.191">
                 <g id="Group_4" data-name="Group 4" transform="translate(-1118 -661)">
                     <path id="Path_1" data-name="Path 1" d="M1200.351,743.451a12.406,12.406,0,0,0,11.67,8.288c.234,0,.461-.024.691-.037-.23.013-.457.036-.691.037A12.411,12.411,0,0,1,1200.351,743.451Z" transform="translate(-15.236 -15.255)" fill="#3c9"/>
@@ -45,26 +45,24 @@
                     <path id="Path_40" data-name="Path 40" d="M1198.957,792c0,.514.014,1.022.035,1.527v0c-.016-.505-.033-1-.033-1.524Z" transform="translate(-14.978 -24.237)" fill="#3c9"/>
                 </g>
                 </svg>
-                <h5 style="font-weight: bold; margin-top:1rem; opacity: 0.8;">Administration</h5>
+                <h5 class="tab_nav_heading">Administration</h5>
             </div>
-            <div style="width: 100%;">
-                <div style="width: 100% !important;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a href="/bike-shop-solution/admin-dashboard" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Dashboard</a>
-                    <a href="/bike-shop-solution/admin-products" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Products</a>
-                    <a href="/bike-shop-solution/admin-category" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Categories</a>
-                    <a href="/bike-shop-solution/admin-bike-specifications" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Bike Specifications</a>
-                    <a href="/bike-shop-solution/admin-drive-type" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed;border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Drive Types</a>
-                    <a href="/bike-shop-solution/admin-brake-system" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Break Systems</a>
-                    <a href="/bike-shop-solution/admin-wheel-size" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Wheel Sizes</a>
-                    <a href="/bike-shop-solution/admin-image" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Images</a>
-                    <a href="/bike-shop-solution/admin-company-details" style="font-size:0.8rem; width: 100% !important; color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px; font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Bikeshop Information</a>
-                    <a href="/bike-shop-solution/admin-shipping" style="font-size:0.8rem; width: 100% !important;
-                    color:black; margin-bottom:0.8rem; border:rgba(0,0,0,0.25) 2px dashed; border-radius:11px;
-                    font-weight:bold; text-decoration:none; padding:0.5rem; opacity:0.7;">Shipping</a>
+            <div class="nav_links_wrapper">
+                <div class="nav_links_container">
+                    <a href="/bike-shop-solution/admin-dashboard" class="nav_link">Dashboard</a>
+                    <a href="/bike-shop-solution/admin-products" class="nav_link">Products</a>
+                    <a href="/bike-shop-solution/admin-category" class="nav_link">Categories</a>
+                    <a href="/bike-shop-solution/admin-bike-specifications" class="nav_link">Bike Specifications</a>
+                    <a href="/bike-shop-solution/admin-drive-type" class="nav_link">Drive Types</a>
+                    <a href="/bike-shop-solution/admin-brake-system" class="nav_link">Break Systems</a>
+                    <a href="/bike-shop-solution/admin-wheel-size" class="nav_link">Wheel Sizes</a>
+                    <a href="/bike-shop-solution/admin-image" class="nav_link">Images</a>
+                    <a href="/bike-shop-solution/admin-company-details" class="nav_link">Bikeshop Information</a>
+                    <a href="/bike-shop-solution/admin-shipping" class="nav_link">Shipping</a>
                 </div>
             </div>
-        <div style="height:5vh; width: 20vw; position:absolute; bottom:0; left:0; display:flex; align-items:center; padding:1rem; justify-content:flex-start; background-color:rgba(0,0,0,0.10); border-top:rgba(0,0,0,0.10) solid 0.5px;">
-            <h4 style="color:black; opacity:0.7; font-size:0.8rem; margin:0; padding:0;">Logged in user: Radek or Raul</h4>
+        <div class="nav_tab_snack_bar">
+            <h4 class="snack_bar_heading">Logged in user: Radek or Raul</h4>
         </div>
     </div>
 </div>
