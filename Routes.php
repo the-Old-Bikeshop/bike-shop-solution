@@ -2,6 +2,17 @@
 
 
 // Admin routes
+RouterController::set('admin-dashboard', function() {
+    DashboardController::CreateView('DashboardView');
+});
+
+RouterController::set('admin-products', function() {
+    ProductsController::CreateView('ProductView');
+});
+
+RouterController::set('admin-category', function () {
+    CategoryController::CreateView('CategoryView');
+});
 
 RouterController::set('admin-brake-system', function() {
     BrakeSystemController::CreateView('BrakeSystemView');
@@ -19,10 +30,6 @@ RouterController::set('admin-company-details', function() {
     CompanyDetailsController::CreateView('CompanyDetailsView');
 });
 
-RouterController::set('admin-category', function () {
-    CategoryController::CreateView('CategoryView');
-});
-
 RouterController::set('admin-image', function () {
     ImageController::CreateView('ImageView');
 });
@@ -31,12 +38,11 @@ RouterController::set('admin-bike-specifications', function () {
     BikeSpecificationController::CreateView('BikeSpecificationsView');
 });
 
-RouterController::set('admin-products', function() {
-    ProductsController::CreateView('ProductView');
+// Customer routes
+RouterController::set('landing', function() {
+    LandingController::CreateView('LandingView');
 });
 
-
-// Customer routes
 RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
 });
