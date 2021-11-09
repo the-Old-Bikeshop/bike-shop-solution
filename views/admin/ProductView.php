@@ -60,7 +60,7 @@ $product->setProduct();
                         <td>
                             <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
 
-                            <?php $url = $product->getImage()->fetchOneImage($img['imageID']); ?>
+                            <?php $url = $product->getImage()->fetchOne('image', 'imageID', $img['imageID']); ?>
 
                                 <img
                                         src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/bike-shop-solution/public/img/' .
@@ -320,14 +320,12 @@ $product->setProduct();
                         <div class="d-flex">
                             <?php foreach($product->getProducts()->fetchImageList($_POST['productID']) as $img): ?>
 
-                                <?php $url = $product->getImage()->fetchOneImage($img['imageID']); ?>
+                                <?php $url = $product->getImage()->fetchOne('image', 'imageID', $img['imageID']); ?>
 
                                 <img
                                         src="./public/img/<?php echo $url['URL'] ?? '' ?>"
                                         alt="<?php echo $url['alt'] ?? '' ?>"
                                         height="50px">
-
-
 
                                 <?php echo $url['URL'] ?>
 
