@@ -38,6 +38,10 @@ RouterController::set('admin-bike-specifications', function () {
     BikeSpecificationController::CreateView('BikeSpecificationsView');
 });
 
+RouterController::set('admin-shipping', function () {
+   ShippingController::CreateView('ShippingView');
+});
+
 // Customer routes
 RouterController::set('landing', function() {
     LandingController::CreateView('LandingView');
