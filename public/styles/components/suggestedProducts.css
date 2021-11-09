@@ -1,0 +1,13 @@
+.suggested-products-wrapper {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-color: var(--background-secondary);
+}
+
+.carousel-product-image {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    width: 100%;
+    height: 20rem;
+    background-color: blueviolet;
+}

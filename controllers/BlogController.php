@@ -18,7 +18,7 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-class AboutController extends ViewController {
+class BlogController extends ViewController {
 
 }
 
