@@ -2,11 +2,10 @@
 $product = new ProductsController();
 $product->setProduct();
 
-
 ?>
 
 <div style="display: flex; justify-content:space-between; align-items:flex-start;">
-    <?php include_once "./includes/adminNavigation.php"?>
+    <?php include_once "./components/adminNavigation.php"?>
     <section style="width:80vw;">
         <div style="align-items:center; justify-content:space-between; border-bottom:2px dashed rgba(0,0,0,0.15); padding:1rem; width:100%; display: flex;">
             <h1>
@@ -326,12 +325,8 @@ $product->setProduct();
                                         <input type="hidden" name="deleteProductID" value="<?php echo $_POST['productID']
                                         ?>">
                                         <input type="submit" name="deleteImage" value="delete image">
-
-
                                 <?php endforeach; ?>
-
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="description">Product Image</label>
                                 <div class="form-group col-12 mt-2">
