@@ -95,16 +95,13 @@ class UserController extends ViewController {
             //User Found
             $loggedInUser = $this->user->LogInUser($data['email'], $data['password']);
 
-            if($loggedInUser){
-                var_dump($loggedInUser);
-                new RedirectHandler("landing");
-                //Create session
+            if($loggedInUser->role == 2){
+                new RedirectHandler("admin-category");
                 // session handler goes here and activates the session
-            }else{
-                // redirect user to login and show message "password incorrect"
+            }elseif ($loggedInUser->role == 1){
+                new RedirectHandler("landing");
+                // session handler goes here and activates the session
             }
-        }else{
-              // redirect user to login and show message "no user found"
         }
     }
 }

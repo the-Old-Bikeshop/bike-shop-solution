@@ -1,4 +1,4 @@
-p .cipa {
-    color:red;
+.test {
+    color:red !important;
     font-size: 10rem;
 }
