@@ -6,18 +6,18 @@
     $dt->getDriveType();
 ?>
 
-<div style="display: flex; justify-content:space-between; align-items:flex-start;">
+<div class="page_wrapper">
     <?php include_once "./components/adminNavigation.php"?>
-    <section style="width:80vw;">
-        <div style="align-items:center; justify-content:space-between; border-bottom:2px dashed rgba(0,0,0,0.15); padding:1rem; width:100%; display: flex;">
-            <h1>
+    <section class="admin_section_wrapper">
+        <div class="page_heading_wrapper">
+            <h1 class="page_heading">
                 Drive Types
             </h1>
-            <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark">
+            <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark admin-main-button">
                 Create New
             </button>
         </div>
-        <div style="padding-left:1rem; padding:1rem; width:100%;">
+        <div class="page_content_wrapper">
             <div class="card bg-light col-12 p-0">
                 <table class="table table-sm col-12">
                     <thead class="thead-light">

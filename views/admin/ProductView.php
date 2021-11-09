@@ -4,18 +4,18 @@ $product->setProduct();
 
 ?>
 
-<div style="display: flex; justify-content:space-between; align-items:flex-start;">
+<div class="page_wrapper">
     <?php include_once "./components/adminNavigation.php"?>
-    <section style="width:80vw;">
-        <div style="align-items:center; justify-content:space-between; border-bottom:2px dashed rgba(0,0,0,0.15); padding:1rem; width:100%; display: flex;">
-            <h1>
+    <section class="admin_section_wrapper">
+        <div class="page_heading_wrapper">
+            <h1 class="page_heading">
                 Products
             </h1>
-            <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark">
+            <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark admin-main-button">
                 Create New
             </button>
         </div>
-        <div style="padding-left:1rem; padding:1rem; width:100%;">
+        <div class="page_content_wrapper">
             <div class="card bg-light col-12 p-0">
                 <table class="table table-sm col-12">
                     <thead class="thead-light">
@@ -51,30 +51,24 @@ $product->setProduct();
                             <td><?php echo $res['length']?></td>
                             <td><?php echo $res['weight']?></td>
                             <td><?php echo $res['color']?></td>
-                            <td><?php echo $product->getProducts()->fetchOne('bike_specifications', 'bike_specificationsID', $res['bike_specificationsID'])['type']
-                                ?></td>
-                            <td><?php echo $product->getProducts()->fetchOne('brand', 'brandID', $res['brandID'])
-                                ['name']?></td>
+                            <td>
+                                <?php echo $product->getProducts()->fetchOne('bike_specifications', 'bike_specificationsID', $res['bike_specificationsID'])['type']?>
+                            </td>
+                            <td>
+                                <?php echo $product->getProducts()->fetchOne('brand', 'brandID', $res['brandID']) ['name']?>
+                            </td>
                             <td>
                                 <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
-
                                 <?php $url = $product->getImage()->fetchOne('image', 'imageID', $img['imageID']); ?>
-
-                                    <img
+                                        <img
                                             src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/bike-shop-solution/public/img/' .
                                             $url['URL'] ?>"
                                             alt="<?php echo $url['alt'] ?? '' ?>"
-                                    height="50px">
-
-
-
+                                            height="50px"
+                                        >
                                     <?php echo $url['URL'] ?>
-
                                 <?php endforeach; ?>
-
                             </td>
-
-
                             <td><?php echo $res['created_by']?></td>
                             <td><?php echo $res['created_at']?></td>
                             <td>
@@ -112,7 +106,6 @@ $product->setProduct();
             </div>
         <?php endif  ?>
 
-
         <!--    the form for creating and updating drive_type starts here-->
         <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
@@ -133,10 +126,10 @@ $product->setProduct();
                         <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
                             <div class="form-group col-12 mt-2">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="product_name" placeholder="name of
-                                the drive type"
+                                <input type="text" class="form-control" id="name" name="product_name" placeholder="name of the drive type"
                                     value=" <?php echo $product->getProduct()['name'] ?? '' ?>"
-                                    required>
+                                    required
+                                >
                             </div>
 
                             <div class="form-group col-12 mt-2">
@@ -173,53 +166,44 @@ $product->setProduct();
                                     value=" <?php echo $product->getProduct()['color'] ?? '' ?>"
                                     >
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="weight">weight</label>
                                 <input type="text" class="form-control" id="weight" name="weight" placeholder="weight"
                                     value=" <?php echo $product->getProduct()['stock'] ?? '' ?>"
-                                    >
+                                >
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="length">length</label>
                                 <input type="text" class="form-control" id="length" name="length" placeholder="length"
                                     value=" <?php echo $product->getProduct()['length'] ?? '' ?>"
-                                    >
+                                >
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="description">description</label>
-                                <textarea  class="form-control" id="description" name="description" placeholder="description"
-                                    "
-                                ><?php echo $product->getProduct()['description'] ?? '' ?></textarea>
+                                <textarea  class="form-control" id="description" name="description" placeholder="description">
+                                    <?php echo $product->getProduct()['description'] ?? '' ?>
+                                </textarea>
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="description">Brand</label>
                                 <select class="custom-select" id="brand" name="brandID">
                                     <?php if(($product->getProducts()->fetchAll('brand') !== null)) {
                                         foreach ($product->getProducts()->fetchAll('brand') as $brand):?>
-
                                             <option value="<?php echo $brand['brandID'] ?? "" ?>"
                                                 <?php if(!isset($brand['brandID']) && isset($product->getProduct()['brandID']) &&
                                                     $brand['brandID'] ==
                                                     $product->getProduct()['brandID']):?>
                                                     selected
                                                 <?php endif; ?>
-                                            ><?php
-                                                echo $brand['name'] ?? ""
-                                                ?>
+                                            >
+                                                <?php echo $brand['name'] ?? ""?>
                                             </option>
-
-
                                         <?php endforeach; ?>
                                     <?php } else {?>
                                         <p>Create a brake system first at <a href="./BrandView.php"> brake system</a></p>
                                     <?php } ?>
                                 </select>
                             </div>
-
                             <div class="form-group col-12 mt-2">
                                 <label for="description">Bike specifications</label>
                                 <select class="custom-select" id="brand" name="bike_specificationsID">
@@ -268,12 +252,9 @@ $product->setProduct();
                                     >
                                 </div>
                             </div>
-
                             <input type="hidden" name="created_by" value="1">
-
                             <?php if(isset($product->getProduct()['productID'])): ?>
-                                <input type="text" hidden name = "productID" value = "<?php echo $product->getProduct()['productID']
-                                ?>">
+                                <input type="text" hidden name = "productID" value = "<?php echo $product->getProduct()['productID']?>">
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
                                 <input type="submit" class="btn
@@ -311,19 +292,15 @@ $product->setProduct();
                         <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
                             <div class="d-flex">
                                 <?php foreach($product->getProducts()->fetchImageList($_POST['productID']) as $img): ?>
-
                                     <?php $url = $product->getImage()->fetchOne('image', 'imageID', $img['imageID']); ?>
-
                                     <img
                                             src="./public/img/<?php echo $url['URL'] ?? '' ?>"
                                             alt="<?php echo $url['alt'] ?? '' ?>"
-                                            height="50px">
-
+                                            height="50px"
+                                    >
                                     <?php echo $url['URL'] ?>
-
                                         <input type="hidden" name="deleteImageID" value="<?php echo $img['imageID'] ?>">
-                                        <input type="hidden" name="deleteProductID" value="<?php echo $_POST['productID']
-                                        ?>">
+                                        <input type="hidden" name="deleteProductID" value="<?php echo $_POST['productID']?>">
                                         <input type="submit" name="deleteImage" value="delete image">
                                 <?php endforeach; ?>
                             </div>

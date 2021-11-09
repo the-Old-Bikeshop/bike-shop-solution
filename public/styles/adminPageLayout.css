@@ -1,0 +1,51 @@
+.page_wrapper {
+    display:flex; 
+    justify-content:space-between; 
+    align-items:flex-start;
+}
+
+.admin_section_wrapper {
+    width:80vw;
+}
+
+.page_heading_wrapper {
+    align-items:center; 
+    justify-content:space-between; 
+    border-bottom:2px dashed rgba(0,0,0,0.15); 
+    padding:1rem; 
+    width:100%; 
+    display: flex;
+}
+
+.page_heading {
+    font-size: 2.5rem;
+}
+
+.admin-main-button {
+    height: 3rem;
+}
+
+.page_content_wrapper {
+    padding-left:1rem; 
+    padding:1rem; 
+    width:100%;
+}
+
+.column-form-item {
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.form-heading {
+    font-weight: regular; 
+    margin-right: 1rem;
+}
+
+.row-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
