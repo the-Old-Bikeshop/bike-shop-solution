@@ -28,7 +28,7 @@
                 Create New
             </button>
         </div>
-        <div class="class="page_content_wrapper"">
+        <div class="page_content_wrapper">
             <div class="card bg-light col-12 p-0">
                 <table class="table table-sm col-12">
                     <thead class="thead-light">
