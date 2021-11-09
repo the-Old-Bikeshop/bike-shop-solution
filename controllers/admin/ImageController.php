@@ -46,7 +46,7 @@ class ImageController extends ViewController {
 
 
             if(!($_FILES['image']['tmp_name']) == "") {
-                var_dump($_FILES);
+//                var_dump($_FILES);
                 $imageName = $_FILES['image']['name'];
                 $this->file = $_FILES['image']['tmp_name'];
                 $imageType = getimagesize($this->file);

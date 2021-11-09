@@ -71,7 +71,6 @@ class Product extends BasisSQL
             $query->bindValue(':created_by',$data['created_by']);
 
             $query->execute();
-            $this->message = "Product created";
             $this->last_id = $this->db->dbCon->lastInsertId();
             $this->db->dbCon->commit();
             return $this->last_id;
@@ -137,7 +136,6 @@ class Product extends BasisSQL
             $query->bindValue(':id',$id);
 
             $query->execute();
-            $this->message = "Product updated";
             $this->db->dbCon->commit();
             $this->last_id = $this->db->dbCon->lastInsertId();
             return $this->last_id;
