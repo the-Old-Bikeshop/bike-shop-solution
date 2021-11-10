@@ -1,11 +1,7 @@
 <?php
 $shipping = new ShippingController();
 $shipping->setShippings();
-//CREATE TABLE shipping (
-//    shippingID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//  `name` VARCHAR(100) NOT NULL,
-//  `description` TEXT
-//);
+
 ?>
 <div class="page_wrapper">
     <?php include_once "./components/adminNavigation.php"?>
