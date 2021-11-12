@@ -30,18 +30,7 @@ class OrderController extends
     private $convert;
 
 
-//CREATE TABLE `order` (
-//orderID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-//follow_up_date DATE,
-//`status` INT NOT NULL ,
-//payment_status INT NOT NULL,
-//total_price DECIMAL(10,2),
-//userID INT NOT NULL,
-//shippingID INT NOT NULL,
-//FOREIGN KEY (userID) REFERENCES `user` (userID),
-//FOREIGN KEY (shippingID) REFERENCES shipping (shippingID)
-//);
+
 
     public function __construct()
     {

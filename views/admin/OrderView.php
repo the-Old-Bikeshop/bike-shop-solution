@@ -43,27 +43,28 @@ $order->setOrders();
                         <th scope="col">total_price</th>
                         <th scope="col">userID</th>
                         <th scope="col">shippingID</th>
+                        <th scope="col">Controls</th>
                     </tr>
                     </thead>
                     <tbody class="col-12">
                     <?php foreach ($order->getOrders()->fetchAll('order') as $res): ?>
                         <tr>
-                            <th scope="row"> <?php echo $res["oderID"] ?></th>
+                            <th scope="row"> <?php echo $res["orderID"] ?></th>
                             <td><?php echo $res['created_at']?></td>
                             <td><?php echo $res['follow_up_date']?></td>
-                            <td><?php echo $res['status']?></td>
-                            <td><?php echo $res['payment_status']?></td>
+                            <td><?php $order->getConvert()->orderStatus($res['status']);?></td>
+                            <td><?php $order->getConvert()->paymentStatus($res['payment_status']); ?></td>
                             <td><?php echo $res['total_price']?></td>
                             <td><?php echo $res['userID']?></td>
                             <td><?php echo $res['shippingID']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="shippingID" value="<?php echo $res['shippingID']
+                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
                                     ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="shippingID" value="<?php echo $res['shippingID']
+                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
                                     ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
@@ -106,19 +107,10 @@ $order->setOrders();
                         <form action="" method="post" class="col-12" id="form">
                             <div class="form-group col-12 mt-2">
                                 <label for="total_price">total price</label>
-                                <input type="number" class="form-control" id="total_price" name="total_price"
+                                <input type="text" class="form-control" id="total_price" name="total_price"
                                        placeholder="total price"
                                        value=" <?php echo $order->getOrder()['total_price'] ?? '' ?>"
                                 >
-                            </div>
-
-                            <div class="form-group col-12  mt-2">
-                                <label for="description">description</label>
-                                <textarea
-                                    class="form-control"
-                                    name="description"
-                                    id="description"
-                                    rows="5"><?php echo $order->getOrder()['description']??''?></textarea>
                             </div>
 
                             <div class="column-form-item form-group col-12  mt-2">
@@ -142,7 +134,7 @@ $order->setOrders();
                             </div>
 
                             <div class="column-form-item form-group col-12  mt-2">
-                                <label for="status" >Status</label>
+                                <label for="status">Order status</label>
                                 <select class="custom-select" id="status" name="status">
                                     <?php if ($order->getConvert()->getOrderStatus() !== null) : ?>
                                         <?php foreach ($order->getConvert()->getOrderStatus() as $status):?>
@@ -154,6 +146,26 @@ $order->setOrders();
                                                 <?php endif; ?>
 
                                             ><?php $order->getConvert()->orderStatus($status);?></option>
+
+                                        <?php endforeach ;?>
+
+                                    <?php endif ;?>
+                                </select>
+                            </div>
+
+                            <div class="column-form-item form-group col-12  mt-2">
+                                <label for="status" >Payment status</label>
+                                <select class="custom-select" id="status" name="payment_status">
+                                    <?php if ($order->getConvert()->getPaymentStatus() !== null) : ?>
+                                        <?php foreach ($order->getConvert()->getPaymentStatus() as $payment):?>
+                                            <option value="<?php echo $payment; ?>"
+                                                <?php if(($order->getOrder()!==null) && $order->getConvert()
+                                                        ->getPaymentStatus() !== null &&
+                                                    ($order->getOrder()['payment_status'] == $payment)):?>
+                                                    selected
+                                                <?php endif; ?>
+
+                                            ><?php $order->getConvert()->paymentStatus($payment);?></option>
 
                                         <?php endforeach ;?>
 
