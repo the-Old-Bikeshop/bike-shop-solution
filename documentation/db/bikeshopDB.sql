@@ -177,7 +177,7 @@ CREATE TABLE order_has_products(
   productID INT NOT NULL,
   FOREIGN KEY (orderID) REFERENCES `order` (orderID),
   FOREIGN KEY (productID) REFERENCES product (productID),
-  CONSTRAINT PK_order_products PRIMARY KEY(userID, productID)
+  CONSTRAINT PK_order_products PRIMARY KEY(orderID, productID)
 );
 
 CREATE TABLE favourite_products(
