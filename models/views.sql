@@ -34,21 +34,16 @@ FROM bike_specifications bike_s
     INNER JOIN braking_system bs ON (bike_s.braking_systemID = bs.braking_systemID)
     INNER JOIN user u ON (bike_s.created_by = u.userID);
 
-    <!-- -->
-<!--CREATE TABLE bike_specifications (-->
-<!--bike_specificationsID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-->
-<!--`type` VARCHAR(255) NOT NULL,-->
-<!--back_basket INT,-->
-<!--mudguards INT,-->
-<!--front_basket INT,-->
-<!--lights INT,-->
-<!--disk_brakes INT,-->
-<!--wheel_sizeID INT,-->
-<!--braking_systemID INT,-->
-<!--drive_typeID INT,-->
-<!--created_by INT,-->
-<!--FOREIGN KEY (wheel_sizeID) REFERENCES wheel_size (wheel_sizeID),-->
-<!--FOREIGN KEY (braking_systemID) REFERENCES braking_system (braking_systemID),-->
-<!--FOREIGN KEY (drive_typeID) REFERENCES drive_type (drive_typeID),-->
-<!--FOREIGN KEY (created_by) REFERENCES `user` (userID)-->
-<!--); -->
+
+
+CREATE OR REPLACE VIEW order_view AS
+SELECT o.orderID, o.created_at, o.status, o.payment_status, o.total_price, op.quantity, s.name AS shipping, p.name, u.first_name, u.last_name, u.email
+FROM product p
+	     INNER JOIN order_has_products op ON (op.productID = p.productID)
+	     RIGHT JOIN `order` o ON (op.orderID = o.orderID)
+	     INNER JOIN shipping s ON (o.shippingID = s.shippingID)
+	     INNER JOIN user u ON (o.userID = u.userID)
+
+
+
+

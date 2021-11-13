@@ -16,6 +16,20 @@ class OrderHasProducts extends
             $this->message = $e->getMessage();
         }
 
-}
+    }
+
+    public function updateQuantity($data) {
+        try {
+            $query = $this->db->dbCon->prepare("UPDATE `order_has_products` SET quantity = :quantity WHERE orderID = :orderID AND productID = :productID");
+            $query->bindValue(':quantity', $data['quantity']);
+            $query->bindValue(':orderID', $data['orderID']);
+            $query->bindValue(':productID', $data['productID']);
+
+            $query->execute();
+
+        }catch(Exception $e) {
+            $this->message = $e->getMessage();
+        }
+    }
 
 }
