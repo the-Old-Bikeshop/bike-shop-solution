@@ -28,6 +28,9 @@ class OrderController extends
     private $orders;
     private $order;
     private $convert;
+    private $products;
+    private $shipping;
+    private $orderHasProduct;
 
 
 
@@ -37,6 +40,8 @@ class OrderController extends
         $this->update = false;
         $this->convert = new Convert();
         $this->orders = new Order();
+        $this->shipping = $this->orders->fetchAll('shipping');
+        $this->orderHasProduct = new OrderHasProducts();
 
     }
 
@@ -50,7 +55,6 @@ class OrderController extends
             $this->orders->createOrder($this->data);
         } elseif (isset($_POST['update'])) {
             $this->orders = new Order();
-
             $this->update = true;
             $this->order = $this->orders->fetchOne('order', 'orderID', $_POST['orderID']);
         } elseif (isset($_POST['submit-update'])) {
@@ -62,7 +66,25 @@ class OrderController extends
         } elseif (isset($_POST['delete'])) {
             $this->orders = new Order();
             $this->orders->deleteRow('order', 'orderID', $_POST['orderID']);
+        } elseif (isset($_POST['addProduct'])) {
+            $this->orders = new Order();
+            $this->order = $this->orders->fetchOne('order', 'orderID', $_POST['orderID']);
+            $this->products = $this->orders->fetchAll('product');
+        } elseif(isset($_POST['addProductToOrder'])){
+            $this->orderHasProduct->addProductToOrder($this->productData());
+
         }
+    }
+
+    public function productData() {
+           $_POST = filter_input_array(INPUT_POST,
+            FILTER_SANITIZE_STRING);
+           $data =  [
+               'orderID' => trim($_POST['orderID']),
+               'productID' => trim($_POST['productID']),
+               'quantity' => trim($_POST['quantity'])
+           ];
+           return $data;
     }
 
     public function setData(): void {
@@ -110,6 +132,22 @@ class OrderController extends
     public function getConvert(): Convert
     {
         return $this->convert;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @return array|Exception|false
+     */
+    public function getShipping()
+    {
+        return $this->shipping;
     }
 
 

@@ -37,31 +37,42 @@ $order->setOrders();
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Created at</th>
-                        <th scope="col">follow_up_date</th>
+                        <th scope="col">product name</th>
+                        <th scope="col">quantity</th>
                         <th scope="col">status</th>
                         <th scope="col">payment_status</th>
                         <th scope="col">total_price</th>
                         <th scope="col">userID</th>
+                        <th scope="col">email</th>
                         <th scope="col">shippingID</th>
                         <th scope="col">Controls</th>
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($order->getOrders()->fetchAll('order') as $res): ?>
+                    <?php foreach ($order->getOrders()->fetchAll('order_view') as $res): ?>
+
                         <tr>
                             <th scope="row"> <?php echo $res["orderID"] ?></th>
                             <td><?php echo $res['created_at']?></td>
-                            <td><?php echo $res['follow_up_date']?></td>
+                            <td><?php echo $res['name']?></td>
+                            <td><?php echo $res['quantity']?></td>
                             <td><?php $order->getConvert()->orderStatus($res['status']);?></td>
                             <td><?php $order->getConvert()->paymentStatus($res['payment_status']); ?></td>
                             <td><?php echo $res['total_price']?></td>
-                            <td><?php echo $res['userID']?></td>
-                            <td><?php echo $res['shippingID']?></td>
+                            <td><?php echo $res['first_name'] . " " . $res['last_name'] ?></td>
+                            <td><?php echo $res['email'] ?></td>
+                            <td><?php echo $res['shipping']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
                                     ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID'] ?>">
+                                    <input type="submit" name="addProduct" value="Add product" class="btn
+                                    btn-outline-secondary
+                                    btn-sm" >
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
@@ -116,8 +127,8 @@ $order->setOrders();
                             <div class="column-form-item form-group col-12  mt-2">
                                 <label for="shippingID" >Shipping method</label>
                                 <select class="custom-select" id="shippingID" name="shippingID">
-                                    <?php if (($order->getOrders()->fetchAll('shipping')) !== null) {
-                                        foreach ($order->getOrders()->fetchAll('shipping') as $shipping):?>
+                                    <?php if ($order->getShipping() !== null) {
+                                        foreach ($order->getShipping() as $shipping):?>
                                             <option value="<?php echo $shipping['shippingID'] ?? '' ?>"
                                                 <?php if(!isset($shipping['shippingID']) && isset($order->getOrder()['oderID'])
                                                     && $shipping['shippingID'] ==
@@ -188,6 +199,68 @@ $order->setOrders();
                                        value="<?php echo !$order->getUpdate() ? 'Create new' : 'update' ?>"
                                 >
                                 <input type="submit" class="btn btn-secondary" value="Cancel">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade <?php echo isset($_POST["addProduct"]) ? 'show' : ' ' ?>" id="addProduct"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            <?php echo isset($_POST["addProduct"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <?php echo $_POST['addProduct'] ? "Add or remove products for order nr " . $order->getOrder
+                                ()['orderID'] : ""?>
+                        </h5>
+                        <form action="" method="post" >
+                            <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-body">
+                        <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
+                            <div class="form-group col-12 mt-2">
+                                <label for="description">Product</label>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="name">Product name</label>
+                                    <select class="custom-select" id="shippingID" name="productID">
+                                        <?php if ($order->getProducts() !== null) {
+                                            foreach ($order->getProducts() as $product):?>
+                                                <option value="<?php echo $product['productID'] ?? '' ?>"
+
+                                                ><?php echo $product["name"] ?? ""?></option>
+
+                                            <?php endforeach; ?>
+
+                                        <?php }; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity"
+                                           placeholder="quantity"
+                                           value="1"
+                                    >
+                                </div>
+
+                            <?php if(isset($_POST['orderID'])): ?>
+                                <input type="text" hidden name = "orderID" value = "<?php echo $_POST['orderID'] ?>">
+                            <?php endif; ?>
+                            <div class="form-group col-12 mt-2">
+                                <input type="submit" class="btn btn-primary"
+                                       name="addProductToOrder"
+                                       value="add Product">
+                                <form action="" method="post">
+                                    <input type="submit" class="btn btn-secondary" value="Cancel">
+                                </form>
+
                             </div>
                         </form>
                     </div>
