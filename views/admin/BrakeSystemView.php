@@ -89,7 +89,7 @@
                                     <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
                                         <option value= <?php echo $cond . " " ?>
                                                 <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == $cond ):?>
-                                                selected
+                                                'selected'
                                             <?php endif; ?>
                                         >
                                         <?php

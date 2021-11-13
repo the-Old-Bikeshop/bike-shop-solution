@@ -59,6 +59,7 @@
                     <a href="/bike-shop-solution/admin-image" class="nav_link">Images</a>
                     <a href="/bike-shop-solution/admin-company-details" class="nav_link">Bikeshop Information</a>
                     <a href="/bike-shop-solution/admin-shipping" class="nav_link">Shipping</a>
+                    <a href="/bike-shop-solution/admin-order" class="nav_link">Order</a>
                 </div>
             </div>
         <div class="nav_tab_snack_bar">

@@ -42,6 +42,10 @@ RouterController::set('admin-shipping', function () {
    ShippingController::CreateView('ShippingView');
 });
 
+RouterController::set('admin-order', function () {
+   OrderController::CreateView('OrderView');
+});
+
 // Customer routes
 RouterController::set('home', function() {
     HomeController::CreateView('HomeView');

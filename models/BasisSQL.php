@@ -58,7 +58,6 @@ class BasisSQL {
             $query->bindValue(':id', $id);
 
             $query->execute();
-            $this->message = "Item Deleted";
 
         }catch (Exception $e) {
             $this->message = $e->getMessage();
