@@ -173,9 +173,9 @@ CREATE TABLE product (
 
 CREATE TABLE order_has_products(
   quantity INT NOT NULL,
-  userID INT NOT NULL,
+  orderID INT NOT NULL,
   productID INT NOT NULL,
-  FOREIGN KEY (userID) REFERENCES `user` (userID),
+  FOREIGN KEY (orderID) REFERENCES `order` (orderID),
   FOREIGN KEY (productID) REFERENCES product (productID),
   CONSTRAINT PK_order_products PRIMARY KEY(userID, productID)
 );
