@@ -72,4 +72,8 @@ class WheelSizeController extends ViewController {
     {
         return $this->update;
     }
+
+    public function getAllWheelSizes() {
+        return $this->wheel_size-> fetchAll('wheel_size');
+    }
 }

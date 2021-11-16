@@ -26,19 +26,19 @@ $shipping->setShippings();
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($shipping->getShippings()->fetchAll('shipping') as $res): ?>
+                    <?php foreach ($shipping->getAllShippings() as $res): ?>
                         <tr>
                             <th scope="row"> <?php echo $res["shippingID"] ?></th>
                             <td><?php echo $res['name']?></td>
                             <td><?php echo $res['description']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="shippingID" value="<?php echo $res['shippingID']
+                                    <input type="hidden"  name="shippingID" value="<?php echo $res['shippingID']
                                     ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="shippingID" value="<?php echo $res['shippingID']
+                                    <input type="hidden" name="shippingID" value="<?php echo $res['shippingID']
                                     ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
@@ -94,7 +94,7 @@ $shipping->setShippings();
                                     rows="5"><?php echo $shipping->getShipping()['description']??''?></textarea>
                             </div>
                             <?php if(isset($shipping->getShipping()['shippingID'])): ?>
-                                <input type="text" hidden
+                                <input type="hidden" hidden
                                     name = "shippingID"
                                     value = "<?php echo $shipping->getShipping()['shippingID'] ?>"
                                 >

@@ -26,24 +26,19 @@ spl_autoload_register(function($class_name) {
 class BikeSpecificationController extends ViewController
 {
 
-    private $brake;
-    private $drive_type ;
+
     private $update;
     private $bikeSpecifications;
     private $data;
     private $one_bike;
     private $convert;
-    private $wheel;
+
 
     public function __construct()
     {
-
-        $this->drive_type = new DriveType();
-        $this->brake= new BrakeType();
         $this->update = false;
         $this->bikeSpecifications = new BikeSpecifications();
         $this->convert = new Convert();
-        $this->wheel = new WheelSize();
     }
 
     public function setBikeSpecifications(): void
@@ -106,23 +101,6 @@ class BikeSpecificationController extends ViewController
         return $this->one_bike;
     }
 
-
-    /**
-     * @return BrakeType
-     */
-    public function getBrake(): BrakeType
-    {
-        return $this->brake;
-    }
-
-    /**
-     * @return DriveType
-     */
-    public function getDriveType(): DriveType
-    {
-        return $this->drive_type;
-    }
-
     /**
      * @return Convert
      */
@@ -139,12 +117,22 @@ class BikeSpecificationController extends ViewController
         return $this->update;
     }
 
-    /**
-     * @return WheelSize
-     */
-    public function getWheel(): WheelSize
-    {
-        return $this->wheel;
+
+
+    public function getAllDriveTypes() {
+        return $this->bikeSpecifications->fetchAll('drive_type');
+    }
+
+    public function getAllBrakingSystem() {
+        return $this->bikeSpecifications->fetchAll('braking_system');
+    }
+
+    public function getAllWheelSizes() {
+        return $this->bikeSpecifications->fetchAll('wheel_size');
+    }
+
+    public function getAllBikeSpecifications() {
+        return $this->bikeSpecifications->fetchAll('bike_speks');
     }
 
 }

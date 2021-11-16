@@ -72,4 +72,8 @@ class DriveTypeController extends ViewController {
     {
         return $this->update;
     }
+
+    public function getAllDriveTypes() {
+        return $this->drive_type->fetchAll('drive_type');
+    }
 }

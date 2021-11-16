@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($cd->getCompanyDetails()->fetchAll('company_details') as $res): ?>
+                    <?php foreach ($cd->getAllCompanyDetails() as $res): ?>
                         <tr>
                             <th scope="row"> <?php echo $res['company_detailsID']?></th>
                             <td><?php echo $res['opening_hours']?></td>
@@ -53,11 +53,11 @@
                             <td><?php echo $res['instagram']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
+                                    <input type="hidden" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-secondary" >
                                 </form>
                                 <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
+                                    <input type="hidden" hidden name="company_detailsID" value="<?php echo $res['company_detailsID'] ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-danger" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
                             </td>
@@ -149,7 +149,7 @@
                             </div>
                             <?php if(isset($cd->getOneDetails()['company_detailsID'])): ?>
 
-                                <input type="text" hidden
+                                <input type="hidden" hidden
                                     name = "company_detailsID"
                                     value = "<?php echo $cd->getOneDetails()['company_detailsID'] ?>">
 

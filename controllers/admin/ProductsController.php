@@ -101,25 +101,6 @@ class ProductsController extends
         $this->product_info = $product_info;
     }
 
-    //CREATE TABLE product (
-    //    productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    //  `name` VARCHAR(100) NOT NULL,
-    //  `description` TEXT,
-    //  short_description VARCHAR(255),
-    //  `weight` DECIMAL(10, 2),
-    //  price DECIMAL(10, 2) NOT NULL,
-    //  model_name VARCHAR(255) NOT NULL,
-    //  stock INT NOT NULL,
-    //  `length` DECIMAL(10, 2),
-    //  color VARCHAR(100),
-    //  bike_specificationsID INT,
-    //  brandID INT,
-    //  created_by INT NOT NULL,
-    //  FOREIGN KEY (bike_specificationsID) REFERENCES bike_specifications (bike_specificationsID),
-    //  FOREIGN KEY (brandID) REFERENCES brand (brandID),
-    //  FOREIGN KEY (created_by) REFERENCES `user` (userID)
-    //);
-
     /**
      * @return mixed
      */
@@ -158,6 +139,30 @@ class ProductsController extends
     public function getProductImage(): ProductImage
     {
         return $this->productImage;
+    }
+
+    public function getAllProducts() {
+        return $this->products->fetchAll('product');
+    }
+
+    public function getOneBikeSpecificationType($id) {
+        return $this->products->fetchOne('bike_specifications', 'bike_specificationsID', $id)['type'];
+    }
+
+    public function getOneBrandName($id) {
+        return $this->products->fetchOne('brand', 'brandID', $id) ['name'];
+    }
+
+    public function getOneImage($id) {
+        return $this->products->fetchOne('image', 'imageID', $id);
+    }
+
+    public function getAllBrands() {
+        return $this->products->fetchAll('brand');
+    }
+
+    public function getAllBikeSpecifications() {
+        return $this->products->fetchAll('bike_speks');
     }
 
 }

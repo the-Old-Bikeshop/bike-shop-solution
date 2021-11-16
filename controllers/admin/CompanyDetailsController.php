@@ -101,4 +101,8 @@ class CompanyDetailsController extends ViewController {
     public function getUpdate(): bool {
         return $this->update;
     }
+
+    public function getAllCompanyDetails() {
+        return $this->companyDetails->fetchAll('company_details');
+    }
 }

@@ -1,9 +1,8 @@
 <?php
     // Initializing admin Brake system controller
     $br = new BrakeSystemController();
-
     $br->setBrake();
-    $br->getBrake();
+
 ?>
 
 <div class="page_wrapper">
@@ -30,19 +29,19 @@
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($br->getBrake()->fetchAll('braking_system') as $res): ?>
+                    <?php foreach ($br->braking_system() as $res): ?>
                         <tr>
                             <th scope="row"> <?php echo $res['braking_systemID']?></th>
                             <td><?php echo $res['name']?></td>
                             <td><?php echo $res['condition']?></td>
-                            <td><?php $br->getConvert()->condition($res['condition'])?></td>
+                            <td><?php $br->getOneCondition($res['condition'])?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
+                                    <input type="hidden" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
                                     <input type="submit" name="update" value="update"  class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
+                                    <input type="hidden" hidden name="braking_systemID" value="<?php echo $res['braking_systemID'] ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
                             </td>
@@ -88,9 +87,9 @@
                                 <select class="custom-select" id="condition" name="condition">
                                     <?php foreach ($br->getConvert()->getConditionValues() as $cond):?>
                                         <option value= <?php echo $cond . " " ?>
-                                                <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == $cond ):?>
-                                                'selected'
-                                            <?php endif; ?>
+                                                <?php if(isset($br->getVal()["condition"]) && $br->getVal()["condition"] == (string)$cond ):?>
+                                               selected
+                                          <?php endif; ?>
                                         >
                                         <?php
                                             $br->getConvert()->condition($cond);
@@ -100,7 +99,7 @@
                                 </select>
                             </div>
                             <?php if(isset($br->getVal()['braking_systemID'])): ?>
-                                <input type="text" hidden name = "braking_systemID" value = "<?php echo $br->getVal()['braking_systemID'] ?>">
+                                <input type="hidden" hidden name = "braking_systemID" value = "<?php echo $br->getVal()['braking_systemID'] ?>">
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
                                 <input type="submit" class="btn

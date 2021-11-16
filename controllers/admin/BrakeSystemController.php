@@ -38,16 +38,13 @@ class BrakeSystemController extends ViewController
             $this->brake->createBrakeSystem();
         }elseif(isset($_POST['update'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->update= true;
             $this->val = $this->brake->fetchOne("braking_system", "braking_systemID", $_POST['braking_systemID'] );
         }elseif(isset($_POST['submit-update'])){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
         }elseif(isset($_POST['delete'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->brake->deleteRow('braking_system', "braking_systemID" , $_POST['braking_systemID']);
         }
     }
@@ -82,6 +79,19 @@ class BrakeSystemController extends ViewController
     public function getConvert(): Convert
     {
         return $this->convert;
+    }
+
+    public function braking_system() {
+        return $this->brake->fetchAll('braking_system');
+    }
+
+    public function getOneCondition($cond) {
+        $this->convert->condition($cond);
+    }
+
+    public function checkSelect($input, $condition) {
+
+          return  $input !== null && $input == $condition ? 'selected' : "";
     }
 
 

@@ -38,30 +38,18 @@ class CategoryController extends ViewController {
 
         if (isset($_POST['submit-new'])) {
             $this->setData();
-            $this->categories = new Category();
             $this->categories->createCategories($this->data);
         } elseif (isset($_POST['update'])) {
-            $this->categories = new Category();
-
             $this->update = true;
             $this->category = $this->categories->fetchOne('category', 'categoryID', $_POST['categoryID']);
         } elseif (isset($_POST['submit-update'])) {
-            $this->categories = new Category();
             $this->setData();
-            $this->categories->updateCategory($this->data,
-                $_POST['categoryID']);
+            $this->categories->updateCategory($this->data, $_POST['categoryID']);
         } elseif (isset($_POST['delete'])) {
-            $this->categories = new Category();
             $this->categories->deleteRow('category', 'categoryID', $_POST['categoryID']);
         }
     }
 
-    //CREATE TABLE category (
-    //    categoryID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    //  `name` VARCHAR(100) NOT NULL,
-    //  `description` TEXT,
-    //  short_description VARCHAR(255)
-    //);
 
     /**
      * @param mixed $data
@@ -93,6 +81,9 @@ class CategoryController extends ViewController {
         return $this->categories;
     }
 
+    public function fetchAllCategories() {
+        return $this->categories->fetchAll('category');
+    }
     /**
      * @return mixed
      */
@@ -109,3 +100,4 @@ class CategoryController extends ViewController {
         return $this->update;
     }
 }
+

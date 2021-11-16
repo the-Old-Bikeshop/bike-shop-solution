@@ -95,6 +95,10 @@ class ShippingController extends
         return $this->update;
     }
 
+    public function getAllShippings() {
+        return $this->shippings->fetchAll('shipping');
+    }
+
 
 
 }
