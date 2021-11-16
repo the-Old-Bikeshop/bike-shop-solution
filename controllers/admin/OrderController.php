@@ -150,6 +150,10 @@ class OrderController extends
         return $this->shipping;
     }
 
+    public function getAllOrders() {
+        return $this->orders->fetchAll('order_view');
+    }
+
 
 
 }

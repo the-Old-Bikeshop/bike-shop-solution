@@ -49,7 +49,7 @@ $order->setOrders();
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($order->getOrders()->fetchAll('order_view') as $res): ?>
+                    <?php foreach ($order->getAllOrders() as $res): ?>
 
                         <tr>
                             <th scope="row"> <?php echo $res["orderID"] ?></th>
@@ -64,18 +64,18 @@ $order->setOrders();
                             <td><?php echo $res['shipping']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
+                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID']
                                     ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID'] ?>">
+                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID'] ?>">
                                     <input type="submit" name="addProduct" value="Add product" class="btn
                                     btn-outline-secondary
                                     btn-sm" >
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="text" hidden name="orderID" value="<?php echo $res['orderID']
+                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID']
                                     ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
@@ -188,7 +188,7 @@ $order->setOrders();
 
                             <input type="hidden" name="userID" value="1">
                             <?php if(isset($order->getOrder()['orderID'])): ?>
-                                <input type="text" hidden
+                                <input type="hidden" hidden
                                        name = "orderID"
                                        value = "<?php echo $order->getOrder()['orderID'] ?>"
                                 >
@@ -251,7 +251,7 @@ $order->setOrders();
                                 </div>
 
                             <?php if(isset($_POST['orderID'])): ?>
-                                <input type="text" hidden name = "orderID" value = "<?php echo $_POST['orderID'] ?>">
+                                <input type="hidden" hidden name = "orderID" value = "<?php echo $_POST['orderID'] ?>">
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
                                 <input type="submit" class="btn btn-primary"
