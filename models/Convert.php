@@ -8,6 +8,7 @@ class Convert
     private $orderStatus = array();
     private $paymentStatus = array();
     private $userRoles = array();
+    private $addressTypes = array();
 
     public function __construct()
     {
@@ -16,6 +17,18 @@ class Convert
         $this->orderStatus = [0, 1, 2, 4, 5, 6, 7, 8, 9, 10];
         $this->paymentStatus = [0, 1, 2, 3, 4, 5, 6];
         $this->userRoles = [1, 2, 3];
+        $this->addressTypes =[1, 2];
+    }
+
+    public function addressType($val) {
+        switch ($val) {
+            case 1:
+                echo "invoicing address";
+                break;
+            case 2:
+                echo "delivery address";
+                break;
+        }
     }
 
     public function userRole($val)
@@ -173,6 +186,14 @@ class Convert
     public function getUserRoles(): array
     {
         return $this->userRoles;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getAddressTypes(): array
+    {
+        return $this->addressTypes;
     }
 }
 //Order status
