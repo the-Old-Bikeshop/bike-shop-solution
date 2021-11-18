@@ -23,10 +23,14 @@ class UserController extends ViewController {
 
      protected $user;
      protected $data;
+     private $roleConvert;
+     private $userInfo;
+     private $update;
 
      public function __construct()
      {
          $this->user = new User();
+         $this->roleConvert = new Convert();
      }
 
     public function register() {
@@ -36,24 +40,17 @@ class UserController extends ViewController {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //Init data
-        $data = [
-            'nick_name' => trim($_POST['nick_name']),
-            'first_name' => trim($_POST['first_name']),
-            'last_name' => trim($_POST['last_name']),
-            'email' => trim($_POST['email']),
-            'password_repeated' => trim($_POST['password_repeated']),
-            'role' => trim($_POST['role'])
-        ];
+        $this->setData();
 
         $password = $this->hashPassword(trim($_POST['password']), 15);
 
         //Validate inputs
-        if(empty($data['nick_name']) || empty($data['first_name']) || empty($data['last_name']) || 
-        empty($data['email'])) {
+        if(empty($this->data['nick_name']) || empty($this->data['first_name']) || empty($this->data['last_name']) ||
+        empty($this->data['email'])) {
             echo "This is empty as programmer after coding in php";
         }
 
-        elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        elseif(!filter_var($this->data['email'], FILTER_VALIDATE_EMAIL)) {
             echo "Shit happened :D, your email is wrong boy :)!";
         }
 
@@ -63,8 +60,6 @@ class UserController extends ViewController {
             echo "Password doesnt match!";
         }
 
-        $this->data = $data;
-
         //Register User
         $this->user->registerUser($this->data, $password);
     }
@@ -73,6 +68,31 @@ class UserController extends ViewController {
         $iterations = ['cost' => $iteration];
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
         return $hashed_password;
+    }
+
+    private function setData() {
+        $data = [
+            'nick_name' => trim($_POST['nick_name']),
+            'first_name' => trim($_POST['first_name']),
+            'last_name' => trim($_POST['last_name']),
+            'email' => trim($_POST['email']),
+            'password_repeated' => trim($_POST['password_repeated']),
+            'role' => 1
+        ];
+        $this->data = $data;
+
+    }
+
+    private function setUpdateData() {
+        $data = [
+            'nick_name' => trim($_POST['nick_name']),
+            'first_name' => trim($_POST['first_name']),
+            'last_name' => trim($_POST['last_name']),
+            'email' => trim($_POST['email']),
+            'role' => trim($_POST['role'])
+        ];
+        $this->data = $data;
+
     }
 
     public function login(){
@@ -104,6 +124,72 @@ class UserController extends ViewController {
             }
         }
     }
+
+//    This runs in the admin page
+
+    public function setUser()
+    {
+
+        if (isset($_POST['submit-new-admin'])) {
+            $this->register();
+        } elseif (isset($_POST['update'])) {
+            $this->update = true;
+            $this->userInfo = $this->user->fetchOne('user', 'userID', $_POST['userID']);
+        } elseif (isset($_POST['submit-update'])) {
+            $this->setUpdateData();
+            $this->user->updateUserRole($this->data,
+                $_POST['userID']);
+        } elseif (isset($_POST['delete'])) {
+            $this->user->deleteRow('user', 'userID', $_POST['userID']);
+        }
+    }
+
+    public function getAllUsers() {
+       return  $this->user->fetchAll('user');
+    }
+    public function getMessage() {
+         return $this->user->message;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function getAllRoles() {
+        return $this->roleConvert->getUserRoles();
+    }
+
+    /**
+     * @return Convert
+     */
+    public function getRoleConvert(): Convert
+    {
+        return $this->roleConvert;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdate()
+    {
+        return $this->update;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserInfo()
+    {
+        return $this->userInfo;
+    }
+
+
+
+
 }
 
 

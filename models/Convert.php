@@ -7,16 +7,34 @@ class Convert
     private $yesNo = array();
     private $orderStatus = array();
     private $paymentStatus = array();
+    private $userRoles = array();
 
     public function __construct()
     {
-        $this->conditionValues = [1,2,3,4,5];
-        $this->yesNo = [0,1];
+        $this->conditionValues = [1, 2, 3, 4, 5];
+        $this->yesNo = [0, 1];
         $this->orderStatus = [0, 1, 2, 4, 5, 6, 7, 8, 9, 10];
-        $this->paymentStatus = [0, 1, 2, 3, 4, 5, 6 ];
+        $this->paymentStatus = [0, 1, 2, 3, 4, 5, 6];
+        $this->userRoles = [1, 2, 3];
     }
 
-    public function paymentStatus($val) {
+    public function userRole($val)
+    {
+        switch ($val) {
+            case 1:
+                echo "Standard";
+                break;
+            case 2:
+                echo "Admin";
+                break;
+            case 3:
+                echo "Partner";
+                break;
+        }
+    }
+
+    public function paymentStatus($val)
+    {
         switch ($val) {
             case 0:
                 echo "Pending";
@@ -43,7 +61,8 @@ class Convert
         }
     }
 
-    public function orderStatus($val) {
+    public function orderStatus($val)
+    {
         switch ($val) {
             case 0:
                 echo "Pending";
@@ -83,9 +102,9 @@ class Convert
     }
 
 
-
-    public function condition($val) {
-        switch($val) {
+    public function condition($val)
+    {
+        switch ($val) {
             case 1:
                 echo "New";
                 break;
@@ -104,13 +123,14 @@ class Convert
         }
     }
 
-    public function yesNo($val) {
+    public function yesNo($val)
+    {
         switch ($val) {
             case 0:
-                echo"No";
+                echo "No";
                 break;
             case 1:
-                echo"Yes";
+                echo "Yes";
                 break;
         }
     }
@@ -145,6 +165,14 @@ class Convert
     public function getPaymentStatus(): array
     {
         return $this->paymentStatus;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getUserRoles(): array
+    {
+        return $this->userRoles;
     }
 }
 //Order status

@@ -17,13 +17,8 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-class User {
+class User extends BasisSQL {
 
-    private $db;
-
-    public function __construct() {
-        $this->db = new DBcon();
-    }
 
     //Register User
     public function registerUser($data, $password) {
@@ -78,5 +73,34 @@ class User {
             return false;
         }
   
+    }
+
+    public function updateUserRole($data, $id) {
+        $this->db->dbCon->beginTransaction();
+        try {
+            $query = $this->db->dbCon->prepare("UPDATE `user` SET 
+                                                                    nick_name = :nick_name, 
+                                                                    first_name = :first_name,
+                                                                    last_name = :last_name,
+                                                                    email = :email,
+                                                                    role = :role
+                                                                    WHERE userID = :userID");
+
+            $query->bindValue(':nick_name', $data['nick_name']);
+            $query->bindValue(':first_name', $data['first_name']);
+            $query->bindValue(':last_name', $data['last_name']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':role', $data['role']);
+            $query->bindValue(':userID', $id);
+            $query->execute();
+
+            $this->db->dbCon->commit();
+
+        }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+            $this->message = $e->getMessage();
+        }
+
+
     }
 }

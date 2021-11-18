@@ -54,7 +54,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <label for="password">Password repeat</label>
                                 <input id="password" type="text" name="password_repeated" class="form-control">
                             </div>
-                            <input type="hidden" name="role" value="1">
                             <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
                                 <button type="submit" name="submit" style="margin-top:30px;" class="btn btn-dark col-12 col-md-10">Sign up</button>
                             </div>
