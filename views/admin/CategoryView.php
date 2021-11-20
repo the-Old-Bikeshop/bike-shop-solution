@@ -1,6 +1,6 @@
 <?php
     $ct = new CategoryController();
-    $ct->setcategories();
+    $ct->setCategories();
 ?>
 <div class="page_wrapper">
     <?php include_once "./components/adminNavigation.php"?>

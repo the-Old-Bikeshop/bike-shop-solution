@@ -54,6 +54,10 @@ RouterController::set('admin-address', function() {
     AddressController::CreateView('AddressView');
 });
 
+RouterController::set('admin-post', function() {
+    PostController::CreateView('PostView');
+});
+
 // Customer routes
 RouterController::set('home', function() {
     HomeController::CreateView('HomeView');

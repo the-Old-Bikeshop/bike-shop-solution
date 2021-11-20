@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="public/styles/components/suggestedProducts.css">
     <link rel="stylesheet" href="public/styles/components/adminNavigation.css">
     <link rel="stylesheet" href="public/styles/components/adminPageLayout.css">
+    <script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
     <!-- Custom CSS Views-->
     <link rel="stylesheet" href="public/styles/views/homeView.css">
     <title>Admin</title>

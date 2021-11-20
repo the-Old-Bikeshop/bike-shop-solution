@@ -33,7 +33,7 @@ class CategoryController extends ViewController {
         $this->categories = new Category();
     }
 
-    public function setcategories(): void
+    public function setCategories(): void
     {
 
         if (isset($_POST['submit-new'])) {
