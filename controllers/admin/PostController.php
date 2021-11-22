@@ -64,7 +64,7 @@ class PostController extends
             'userID' => htmlspecialchars(trim($_POST['userID'])) ?? ""
         ];
         $this->data = $data;
-        print_r($data);
+//        print_r($data);
     }
 
     public function fetchAllPosts() {
