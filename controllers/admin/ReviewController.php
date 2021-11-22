@@ -82,7 +82,7 @@ class ReviewController extends
     }
 
     public function fetchAllReviews() {
-        return $this->reviews->fetchAll('review');
+        return $this->reviews->fetchAll('review_view');
     }
 
 

@@ -36,7 +36,7 @@ $review->setReview();
                             <th scope="row"> <?php echo $res["reviewID"] ?></th>
                             <td><?php echo $res['title']?></td>
                             <td><?php echo $res['content']?></td>
-                            <td><?php echo $res['userID']?></td>
+                            <td><?php echo $res['last_name'] . " " . $res['first_name']?></td>
                             <td><?php echo $res['created_at']?></td>
                             <td><?php echo $res['rating']?></td>
                             <td><?php $review->getStatus()->reviewStatus($res['state'])?></td>
@@ -151,7 +151,7 @@ $review->setReview();
                                     <?php endif ;?>
                                 </select>
                             </div>
-                                <input type="hidden" name="userID" value="1">
+                                <input type="hidden" name="userID" value="<?php echo $_SESSION['userID'] ?? '1' ?>">
 
 
 

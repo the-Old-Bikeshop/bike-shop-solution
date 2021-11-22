@@ -96,22 +96,17 @@ class UserController extends ViewController {
         if($this->user->findUserByEmail($data['email'])){
             //User Found
             $loggedInUser = $this->user->LogInUser($data['email'], $data['password']);
+            $_SESSION['name'] = $loggedInUser->first_name . " " . $loggedInUser->last_name ;
+            $_SESSION['user-role'] = $loggedInUser->role;
+            $_SESSION['email'] = $loggedInUser->email;
+            $_SESSION['userID'] = $loggedInUser->userID;
 
             if($loggedInUser->role == 2){
-                print_r($loggedInUser);
-                $_SESSION['name'] = $loggedInUser->first_name . " " . $loggedInUser->last_name ;
-                $_SESSION['user-role'] = $loggedInUser->role;
-                $_SESSION['email'] = $loggedInUser->email;
+
                 new RedirectHandler("admin");
-
-
-
                 // session handler goes here and activates the session
             }elseif ($loggedInUser->role == 1){
                 // session handler goes here and activates the session
-                $_SESSION['name'] = $loggedInUser->first_name . " " . $loggedInUser->last_name ;
-                $_SESSION['user-role'] = $loggedInUser->role;
-                $_SESSION['email'] = $loggedInUser->email;
                 new RedirectHandler("landing");
 
             }
