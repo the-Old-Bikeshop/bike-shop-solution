@@ -58,6 +58,10 @@ RouterController::set('admin-post', function() {
     PostController::CreateView('PostView');
 });
 
+RouterController::set('admin-comment', function() {
+    CommentController::CreateView('CommentView');
+});
+
 // Customer routes
 RouterController::set('home', function() {
     HomeController::CreateView('HomeView');

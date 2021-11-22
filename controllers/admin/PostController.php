@@ -84,6 +84,14 @@ class PostController extends
     }
 
     /**
+     * @return Post
+     */
+    public function getPosts(): Post
+    {
+        return $this->posts;
+    }
+
+    /**
      * @return mixed
      */
     public function getOnePost()

@@ -1,6 +1,6 @@
 <?php
-$post = new PostController();
-$post->setPost();
+$comment = new CommentController();
+$comment->setComment();
 ?>
 <div class="page_wrapper">
     <?php include_once "./components/adminNavigation.php"?>
@@ -21,24 +21,31 @@ $post->setPost();
                         <th scope="col">#</th>
                         <th scope="col">title</th>
                         <th scope="col">content</th>
-                        <th scope="col">for Product</th>
+                        <th scope="col">for Post</th>
+                        <th scope="col">made by</th>
+                        <th scope="col">made at</th>
                         <th scope="col">controls</th>
+
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($post->fetchAllPosts() as $res): ?>
+                    <?php foreach ($comment->fetchAllComments() as $res): ?>
                         <tr>
-                            <th scope="row"> <?php echo $res["postID"] ?></th>
+                            <th scope="row"> <?php echo $res["commentID"] ?></th>
                             <td><?php echo $res['title']?></td>
                             <td><?php echo htmlspecialchars_decode($res['content'])?></td>
-                            <td><?php echo $res['productID']?></td>
+                            <td><?php echo $res['postID']?></td>
+                            <td><?php echo $res['userID']?></td>
+                            <td><?php echo $res['created_at']?></td>
                             <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="postID" value="<?php echo $res['postID'] ?>">
+                                    <input type="hidden" hidden name="commentID" value="<?php echo $res['commentID']
+                                    ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="postID" value="<?php echo $res['postID'] ?>">
+                                    <input type="hidden" hidden name="commentID" value="<?php echo $res['commentID']
+                                    ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
                             </td>
@@ -50,8 +57,9 @@ $post->setPost();
         </div>
 
         <!--    display message-->
+
         <h3>
-            <?php echo $post->getPosts()->message  ?>
+            <?php echo $comment->getComments()->message  ?>
         </h3>
 
         <!--    the form for creating and updating drive_type starts here-->
@@ -63,8 +71,8 @@ $post->setPost();
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">
-                            <?php echo !$post->getUpdate() ? "Create new" : "Update: " .
-                                $post->getOnePost()['name'] . $post->getOnePost()['short_description'];
+                            <?php echo !$comment->getUpdate() ? "Create new" : "Update: " .
+                                $comment->getOneComment()['title']
                             ?>
                         </h5>
                         <form action="" method="post">
@@ -77,13 +85,13 @@ $post->setPost();
                         <form action="" method="post" class="col-12" id="form">
 
                             <div class="form-group col-12 mt-2">
-                                <label for="productID">For product(can be empty)</label>
-                                <select class="custom-select" id="productID" name="productID">
-                                    <?php if ($post->fetchAllProducts() !== null) {
-                                        foreach ($post->fetchAllProducts() as $product):?>
-                                            <option value="<?php echo $product['productID'] ?? '' ?>"
+                                <label for="postID">For post</label>
+                                <select class="custom-select" id="postID" name="postID">
+                                    <?php if ($comment->fetchAllPosts() !== null) {
+                                        foreach ($comment->fetchAllPosts() as $post):?>
+                                            <option value="<?php echo $post['postID'] ?? '' ?>"
 
-                                            ><?php echo $product["name"] ?? ""?></option>
+                                            ><?php echo $post["title"] ?? ""?></option>
 
                                         <?php endforeach; ?>
 
@@ -95,7 +103,7 @@ $post->setPost();
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
                                        placeholder="title"
-                                       value=" <?php echo $post->getOnePost()['title'] ?? '' ?>" required
+                                       value=" <?php echo $comment->getOneComment()['title'] ?? '' ?>" required
                                 >
                             </div>
                             <div class="form-group col-12  mt-2">
@@ -104,23 +112,19 @@ $post->setPost();
                                     class="form-control"
                                     name="content"
                                     id="postContent"
-                                    rows="5"><?php echo $post->getOnePost()['content']??''?></textarea>
-                                <script type="text/javascript">
-                                    CKEDITOR.replace( 'postContent' );
-                                </script>
-                            </div>
+                                    rows="5"><?php echo $comment->getOneComment()['content']??''?></textarea>
                             <input type="hidden" name="userID" value="1">
 
-                            <?php if(isset($post->getOnePost()['postID'])): ?>
+                            <?php if(isset($comment->getOneComment()['commentID'])): ?>
                                 <input type="hidden" hidden
-                                       name = "postID"
-                                       value = "<?php echo $post->getOnePost()['postID'] ?>"
+                                       name = "commentID"
+                                       value = "<?php echo $comment->getOneComment()['commentID'] ?>"
                                 >
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
-                                <input type="submit" class="btn <?php echo !$post->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
-                                       name="<?php echo !$post->getUpdate() ? 'submit-new' : 'submit-update' ?>"
-                                       value="<?php echo !$post->getUpdate() ? 'Create new' : 'update' ?>"
+                                <input type="submit" class="btn <?php echo !$comment->getUpdate() ? 'btn-primary' : 'btn-info' ?>"
+                                       name="<?php echo !$comment->getUpdate() ? 'submit-new' : 'submit-update' ?>"
+                                       value="<?php echo !$comment->getUpdate() ? 'Create new' : 'update' ?>"
                                 >
                                 <input type="submit" class="btn btn-secondary" value="Cancel">
                             </div>
@@ -131,3 +135,4 @@ $post->setPost();
         </div>
     </section>
 </div>
+
