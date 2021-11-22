@@ -3,7 +3,7 @@
 
 // Admin routes;
 
-if($_SESSION['user-role'] == 2) {
+if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
     RouterController::set('admin', function() {
         DashboardController::CreateView('DashboardView');
     });
