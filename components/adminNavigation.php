@@ -49,25 +49,25 @@
             </div>
             <div class="nav_links_wrapper">
                 <div class="nav_links_container">
-                    <a href="/bike-shop-solution/admin-dashboard" class="nav_link">Dashboard</a>
-                    <a href="/bike-shop-solution/admin-products" class="nav_link">Products</a>
-                    <a href="/bike-shop-solution/admin-category" class="nav_link">Categories</a>
-                    <a href="/bike-shop-solution/admin-bike-specifications" class="nav_link">Bike Specifications</a>
-                    <a href="/bike-shop-solution/admin-drive-type" class="nav_link">Drive Types</a>
-                    <a href="/bike-shop-solution/admin-brake-system" class="nav_link">Break Systems</a>
-                    <a href="/bike-shop-solution/admin-wheel-size" class="nav_link">Wheel Sizes</a>
-                    <a href="/bike-shop-solution/admin-image" class="nav_link">Images</a>
-                    <a href="/bike-shop-solution/admin-company-details" class="nav_link">Bikeshop Information</a>
-                    <a href="/bike-shop-solution/admin-shipping" class="nav_link">Shipping</a>
-                    <a href="/bike-shop-solution/admin-order" class="nav_link">Order</a>
-                    <a href="/bike-shop-solution/admin-user" class="nav_link">Users</a>
-                    <a href="/bike-shop-solution/admin-address" class="nav_link">Address</a>
-                    <a href="/bike-shop-solution/admin-post" class="nav_link">Posts</a>
-                    <a href="/bike-shop-solution/admin-comment" class="nav_link">Comments</a>
+                    <a href="admin-dashboard" class="nav_link">Dashboard</a>
+                    <a href="admin-products" class="nav_link">Products</a>
+                    <a href="admin-category" class="nav_link">Categories</a>
+                    <a href="admin-bike-specifications" class="nav_link">Bike Specifications</a>
+                    <a href="admin-drive-type" class="nav_link">Drive Types</a>
+                    <a href="admin-brake-system" class="nav_link">Break Systems</a>
+                    <a href="admin-wheel-size" class="nav_link">Wheel Sizes</a>
+                    <a href="admin-image" class="nav_link">Images</a>
+                    <a href="admin-company-details" class="nav_link">Bikeshop Information</a>
+                    <a href="admin-shipping" class="nav_link">Shipping</a>
+                    <a href="admin-order" class="nav_link">Order</a>
+                    <a href="admin-user" class="nav_link">Users</a>
+                    <a href="admin-address" class="nav_link">Address</a>
+                    <a href="admin-post" class="nav_link">Posts</a>
+                    <a href="admin-comment" class="nav_link">Comments</a>
                 </div>
             </div>
         <div class="nav_tab_snack_bar">
-            <h4 class="snack_bar_heading">Logged in user: Radek or Raul</h4>
+            <h4 class="snack_bar_heading">Logged in user: <?php echo $_SESSION['name'] ?></h4>
         </div>
     </div>
 </div>

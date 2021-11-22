@@ -1,23 +1,5 @@
 <?php
 
-spl_autoload_register(function($class_name) {
-
-    // Define an array of directories in the order of their priority to iterate through.
-    $dirs = array(
-        'models/',
-        'controllers/',
-        'controllers/admin/'
-    );
-
-    // Looping through each directory to load all the class files. It will only require a file once.
-    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
-    foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name . '.php')) {
-            require_once( $dir . $class_name . '.php');
-             return;
-        }
-    }
-});
 
 class UserController extends ViewController {
 
@@ -116,11 +98,22 @@ class UserController extends ViewController {
             $loggedInUser = $this->user->LogInUser($data['email'], $data['password']);
 
             if($loggedInUser->role == 2){
-                new RedirectHandler("admin-category");
+                print_r($loggedInUser);
+                $_SESSION['name'] = $loggedInUser->first_name . " " . $loggedInUser->last_name ;
+                $_SESSION['user-role'] = $loggedInUser->role;
+                $_SESSION['email'] = $loggedInUser->email;
+                new RedirectHandler("admin");
+
+
+
                 // session handler goes here and activates the session
             }elseif ($loggedInUser->role == 1){
-                new RedirectHandler("landing");
                 // session handler goes here and activates the session
+                $_SESSION['name'] = $loggedInUser->first_name . " " . $loggedInUser->last_name ;
+                $_SESSION['user-role'] = $loggedInUser->role;
+                $_SESSION['email'] = $loggedInUser->email;
+                new RedirectHandler("landing");
+
             }
         }
     }

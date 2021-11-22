@@ -1,68 +1,77 @@
 <?php
 
 
-// Admin routes
-RouterController::set('admin-dashboard', function() {
-    DashboardController::CreateView('DashboardView');
-});
+// Admin routes;
 
-RouterController::set('admin-products', function() {
-    ProductsController::CreateView('ProductView');
-});
+if($_SESSION['user-role'] == 2) {
+    RouterController::set('admin', function() {
+        DashboardController::CreateView('DashboardView');
+    });
 
-RouterController::set('admin-category', function () {
-    CategoryController::CreateView('CategoryView');
-});
+    RouterController::set('admin-products', function() {
+        ProductsController::CreateView('ProductView');
+    });
 
-RouterController::set('admin-brake-system', function() {
-    BrakeSystemController::CreateView('BrakeSystemView');
-});
+    RouterController::set('admin-category', function () {
+        CategoryController::CreateView('CategoryView');
+    });
 
-RouterController::set('admin-wheel-size', function() {
-    WheelSizeController::CreateView('WheelSizeView');
-});
+    RouterController::set('admin-brake-system', function() {
+        BrakeSystemController::CreateView('BrakeSystemView');
+    });
 
-RouterController::set('admin-drive-type', function() {
-    DriveTypeController::CreateView('DriveTypeView');
-});
+    RouterController::set('admin-wheel-size', function() {
+        WheelSizeController::CreateView('WheelSizeView');
+    });
 
-RouterController::set('admin-company-details', function() {
-    CompanyDetailsController::CreateView('CompanyDetailsView');
-});
+    RouterController::set('admin-drive-type', function() {
+        DriveTypeController::CreateView('DriveTypeView');
+    });
 
-RouterController::set('admin-image', function () {
-    ImageController::CreateView('ImageView');
-});
+    RouterController::set('admin-company-details', function() {
+        CompanyDetailsController::CreateView('CompanyDetailsView');
+    });
 
-RouterController::set('admin-bike-specifications', function () {
-    BikeSpecificationController::CreateView('BikeSpecificationsView');
-});
+    RouterController::set('admin-image', function () {
+        ImageController::CreateView('ImageView');
+    });
 
-RouterController::set('admin-shipping', function () {
-   ShippingController::CreateView('ShippingView');
-});
+    RouterController::set('admin-bike-specifications', function () {
+        BikeSpecificationController::CreateView('BikeSpecificationsView');
+    });
 
-RouterController::set('admin-order', function () {
-   OrderController::CreateView('OrderView');
-});
+    RouterController::set('admin-shipping', function () {
+        ShippingController::CreateView('ShippingView');
+    });
 
-RouterController::set('admin-user', function() {
-    UserController::CreateView('UserView');
-});
+    RouterController::set('admin-order', function () {
+        OrderController::CreateView('OrderView');
+    });
 
-RouterController::set('admin-address', function() {
-    AddressController::CreateView('AddressView');
-});
+    RouterController::set('admin-user', function() {
+        UserController::CreateView('UserView');
+    });
 
-RouterController::set('admin-post', function() {
-    PostController::CreateView('PostView');
-});
+    RouterController::set('admin-address', function() {
+        AddressController::CreateView('AddressView');
+    });
 
-RouterController::set('admin-comment', function() {
-    CommentController::CreateView('CommentView');
-});
+    RouterController::set('admin-post', function() {
+        PostController::CreateView('PostView');
+    });
+
+    RouterController::set('admin-comment', function() {
+        CommentController::CreateView('CommentView');
+    });
+}
+
 
 // Customer routes
+
+RouterController::set('', function() {
+    HomeController::CreateView('HomeView');
+});
+
 RouterController::set('home', function() {
     HomeController::CreateView('HomeView');
 });
