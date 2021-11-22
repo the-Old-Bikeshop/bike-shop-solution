@@ -73,6 +73,8 @@ CREATE TABLE review (
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title VARCHAR(255),
   content TEXT NOT NULL,
+  rating INT,
+  state INT,
   userID INT,
   FOREIGN KEY (userID) REFERENCES `user` (userID)
 );

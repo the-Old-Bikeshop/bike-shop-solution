@@ -45,5 +45,10 @@ FROM product p
 	     INNER JOIN user u ON (o.userID = u.userID)
 
 
+CREATE OR REPLACE VIEW review_view AS
+SELECT r.reviewID, r.created_at, r.title, r.content, u.email, u.first_name, u.last_name
+FROM review r
+INNER JOIN user u ON r.userID = u.userID;
+
 
 

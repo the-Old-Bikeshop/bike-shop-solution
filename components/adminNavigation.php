@@ -64,6 +64,7 @@
                     <a href="admin-address" class="nav_link">Address</a>
                     <a href="admin-post" class="nav_link">Posts</a>
                     <a href="admin-comment" class="nav_link">Comments</a>
+                    <a href="admin-review" class="nav_link">Reviews</a>
                 </div>
             </div>
         <div class="nav_tab_snack_bar">

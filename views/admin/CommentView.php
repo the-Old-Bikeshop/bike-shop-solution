@@ -7,7 +7,7 @@ $comment->setComment();
     <section class="admin_section_wrapper">
         <div class="page_heading_wrapper">
             <h1 class="page_heading">
-                Categories
+                Comments
             </h1>
             <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark admin-main-button">
                 Create New
@@ -33,7 +33,7 @@ $comment->setComment();
                         <tr>
                             <th scope="row"> <?php echo $res["commentID"] ?></th>
                             <td><?php echo $res['title']?></td>
-                            <td><?php echo htmlspecialchars_decode($res['content'])?></td>
+                            <td><?php echo $res['content']?></td>
                             <td><?php echo $res['postID']?></td>
                             <td><?php echo $res['userID']?></td>
                             <td><?php echo $res['created_at']?></td>

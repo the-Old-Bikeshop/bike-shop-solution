@@ -9,6 +9,7 @@ class Convert
     private $paymentStatus = array();
     private $userRoles = array();
     private $addressTypes = array();
+    private $reviewStatuses = array();
 
     public function __construct()
     {
@@ -18,6 +19,18 @@ class Convert
         $this->paymentStatus = [0, 1, 2, 3, 4, 5, 6];
         $this->userRoles = [1, 2, 3];
         $this->addressTypes =[1, 2];
+        $this->reviewStatuses = [0,1];
+    }
+
+    public function reviewStatus($val) {
+        switch ($val) {
+            case 0:
+                echo "unpublished";
+                break;
+            case 1:
+                echo "published";
+                break;
+        }
     }
 
     public function addressType($val) {
@@ -194,6 +207,14 @@ class Convert
     public function getAddressTypes(): array
     {
         return $this->addressTypes;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getReviewStatuses(): array
+    {
+        return $this->reviewStatuses;
     }
 }
 //Order status

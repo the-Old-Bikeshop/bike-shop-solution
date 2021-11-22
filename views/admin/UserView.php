@@ -9,7 +9,7 @@ $user->setUser();
     <section class="admin_section_wrapper">
         <div class="page_heading_wrapper">
             <h1 class="page_heading">
-                Shipping
+                User
             </h1>
             <button data-toggle="modal" data-target="#exampleModalCenter" style="height: 3rem;" type="button" class="btn btn-dark admin-main-button">
                 Create New

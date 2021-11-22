@@ -63,6 +63,11 @@ if($_SESSION['user-role'] == 2) {
     RouterController::set('admin-comment', function() {
         CommentController::CreateView('CommentView');
     });
+
+      RouterController::set('admin-review', function() {
+        ReviewController::CreateView('ReviewView');
+    });
+
 }
 
 
