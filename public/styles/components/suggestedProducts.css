@@ -1,13 +1,98 @@
+@import "../colors.css";
 .suggested-products-wrapper {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    width: 100vw;
     background-color: var(--background-secondary);
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
-.carousel-product-image {
+.suggested-products-heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2.5rem;
+}
+
+.suggested-products-heading-icon {
+    font-size: 3.5rem;
+    color: var(--primary);
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-right:1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.suggested-products-heading {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Neue Metana', sans-serif;
+}
+
+.suggested-products-container {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+.suggested-product {
+    width: 32%;
+    margin-bottom: 2rem;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: var(--background-primary);
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    opacity: 0.8;
+    padding: 0;
+    margin: 0;
+}
+
+
+.product-card-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.product-image {
     padding-top: 10rem;
     padding-bottom: 10rem;
     width: 100%;
     height: 20rem;
-    background-color: blueviolet;
+    background-image: url("../../img/bike-trek.jpg");
+    background-size: cover;
+}
+
+.bottom-product-info-wrapper {
+    height: auto;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    padding: 0;
+    font-family: 'Neue Metana', sans-serif;
+    margin: 0;
+    font-weight: 400;
+}
+
+.product-price {
+    font-size:1.25rem;
+    font-family: 'Neue Metana', sans-serif;
+    text-decoration: underline 3px solid var(--primary);
+    padding: 0;
+    margin: 0;
 }
