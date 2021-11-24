@@ -30,5 +30,20 @@ class Post extends
         }
     }
 
+    public function fetchImageList($id) {
+
+        try {
+            $query = $this->db->dbCon->prepare("SELECT `imageID` FROM `post_has_images` WHERE postID = :id");
+            $query->bindValue(':id', $id);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+
+        } catch(Exception $e) {
+            $this->message = $e->getMessage();
+        }
+
+    }
+
 
 }

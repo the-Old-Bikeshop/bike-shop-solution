@@ -22,6 +22,7 @@ $post->setPost();
                         <th scope="col">title</th>
                         <th scope="col">content</th>
                         <th scope="col">for Product</th>
+                        <th scope="col">images</th>
                         <th scope="col">controls</th>
                     </tr>
                     </thead>
@@ -33,9 +34,26 @@ $post->setPost();
                             <td><?php echo htmlspecialchars_decode($res['content'])?></td>
                             <td><?php echo $res['productID']?></td>
                             <td>
+                                <?php foreach($post->getPosts()->fetchImageList($res['postID']) as $img): ?>
+
+                                    <?php $url = $post->getOneImage($img['imageID']); ?>
+                                    <img
+                                            src="<?php echo '/bike-shop-solution/public/img/' . $res['URL'] ?>?>"
+                                            alt="<?php echo $url['alt'] ?? '' ?>"
+                                            height="50px"
+                                    >
+                                    <?php echo $url['URL'] ?>
+                                <?php endforeach; ?>
+                            </td>
+                            <td>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="hidden" hidden name="postID" value="<?php echo $res['postID'] ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="postID" value="<?php echo $res['postID'] ?>">
+                                    <input type="submit" name="addImage" value="add image" class="btn btn-outline-secondary
+                                    btn-sm" >
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="hidden" hidden name="postID" value="<?php echo $res['postID'] ?>">
@@ -53,6 +71,10 @@ $post->setPost();
         <h3>
             <?php echo $post->getPosts()->message  ?>
         </h3>
+            <div class="col-12 col-md-8 offset-md-2">
+                <h3><?php echo $post->getPostImage()->message ?></h3>
+            </div>
+
 
         <!--    the form for creating and updating drive_type starts here-->
         <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1"
@@ -123,6 +145,83 @@ $post->setPost();
                                        value="<?php echo !$post->getUpdate() ? 'Create new' : 'update' ?>"
                                 >
                                 <input type="submit" class="btn btn-secondary" value="Cancel">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade <?php echo isset($_POST["addImage"]) ? 'show' : ' ' ?>" id="addImage"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            <?php echo isset($_POST["addImage"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <?php echo $_POST['addImage'] ? "Add or remove image for" : "" .
+                                $post->getOnePost()['title'] ?>
+                        </h5>
+                        <form action="" method="post" >
+                            <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-body">
+                        <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
+                            <div class="d-flex">
+                                <?php foreach($post->getPosts()->fetchImageList($_POST['postID']) as $img): ?>
+                                    <?php $url = $post->getOneImage($img['imageID']); ?>
+                                    <img
+                                            src="./public/img/<?php echo $url['URL'] ?? '' ?>"
+                                            alt="<?php echo $url['alt'] ?? '' ?>"
+                                            height="50px"
+                                    >
+                                    <?php echo $url['URL'] ?>
+                                    <input type="hidden" name="deleteImageID" value="<?php echo $img['imageID'] ?>">
+                                    <input type="hidden" name="deleteProductID" value="<?php echo $_POST['postID']?>">
+                                    <input type="submit" name="deleteImage" value="delete image">
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="form-group col-12 mt-2">
+                                <label for="description">Product Image</label>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="image name"
+                                           value=""
+                                    >
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image">
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="URL">URL</label>
+                                    <input type="text" class="form-control" id="URL" name="URL"
+                                           value=""
+                                    >
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="alt">Alt</label>
+                                    <input type="text" class="form-control" id="alt" name="alt" placeholder="alt form the image"
+                                           value=""
+                                    >
+                                </div>
+                            </div>
+
+                            <?php if(isset($_POST['postID'])): ?>
+                                <input type="hidden" hidden name="postID" value = "<?php echo $_POST['postID'] ?>">
+                            <?php endif; ?>
+                            <div class="form-group col-12 mt-2">
+                                <input type="submit" class="btn btn-primary"
+                                       name="addNewImage"
+                                       value="add New Image">
+                                <form action="" method="post">
+                                    <input type="submit" class="btn btn-secondary" value="Cancel">
+                                </form>
+
                             </div>
                         </form>
                     </div>

@@ -80,8 +80,6 @@ class Product extends BasisSQL
             $this->message = $e->getMessage();
         }
 
-
-
     }
 
     public function updateProduct($data, $id) {
