@@ -50,5 +50,11 @@ SELECT r.reviewID, r.created_at, r.title, r.content, r.state, r.rating, u.email,
 FROM review r
 INNER JOIN user u ON r.userID = u.userID;
 
+CREATE OR REPLACE VIEW brand_view AS
+SELECT b.brandID, b.name, b.description, b.short_description, b.website, i.URL, i.alt, i.name AS image_name
+FROM brand b
+LEFT JOIN image i ON (b.imageID = i.imageID);
+
+
 
 

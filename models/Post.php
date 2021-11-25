@@ -25,6 +25,22 @@ class Post extends
     public function updatePost($data, $id) {
         try {
 
+            $query = $this->db->dbCon->prepare('UPDATE `post` SET 
+                                                                    title = :title, 
+                                                                    content = :content, 
+                                                                    userID = :userID,
+                                                                    productID = :productID
+                                                                    WHERE postID = :postID
+                                                ');
+
+            $query->bindValue(':title', $data['title']);
+            $query->bindValue(':content', $data['content']);
+            $query->bindValue(':userID', $data['userID']);
+            $query->bindValue(':productID', $data['productID']);
+            $query->bindValue(':postID', $id);
+
+            $query->execute();
+
         }catch (Exception $e) {
             $this->message = $e->getMessage();
         }

@@ -68,6 +68,10 @@ if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
         ReviewController::CreateView('ReviewView');
     });
 
+    RouterController::set('admin-brand', function() {
+        BrandController::CreateView('BrandView');
+    });
+
 }
 
 

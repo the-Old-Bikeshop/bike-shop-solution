@@ -48,7 +48,7 @@ class ImageController extends ViewController {
 //                        var_dump($this->data);
                     }
                 }
-            }else{
+            }elseif(isset($_POST['imageID'])){
 
 //                var_dump($_POST);
                 $this->data = [
@@ -56,6 +56,12 @@ class ImageController extends ViewController {
                     'alt' => trim($_POST['alt']) ?? "",
                     'URL' => $_POST['URL'],
                     'imageID'=>$_POST['imageID']
+                ];
+            } else {
+                $this->data = [
+                    'name' => trim($_POST['name']) ?? "",
+                    'alt' => trim($_POST['alt']) ?? "",
+                    'URL' => $_POST['URL']
                 ];
             }
         }
