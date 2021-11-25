@@ -1,0 +1,168 @@
+.blog-posts-view-wrapper {
+    padding: 1.5rem;
+    background-color: var(--background-primary);
+    padding-top: 9rem;
+}
+
+.blog-posts-view-heading-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.blog-posts-view-heading-icon-wrapper {
+    font-size: 3.5rem;
+    color: var(--primary);
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-right:1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-posts-view-heading {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+}
+
+.blog-posts-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.blog-post-container {
+    height: 35rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    margin-bottom: 10rem;
+}
+
+.blog-post-text-wrapper:hover{
+    border: 2px solid var(--primary);
+}
+
+.blog-post-text-wrapper:hover>.blog-post-icon {
+    display: flex;
+}
+
+.blog-post-text-wrapper:hover>.blog-post-heading {
+    text-decoration: underline 2px var(--primary);
+}
+
+.blog-post-text-wrapper:hover>.blog-post-icon {
+    color: var(--primary);
+}
+
+.blog-post-container:nth-child(odd)>.blog-post-text-wrapper:hover~.blog-post-image-wrapper{
+    right: -5rem;
+}
+
+.blog-post-container:nth-child(even)>.blog-post-text-wrapper:hover~.blog-post-image-wrapper{
+    left: -5rem;
+}
+
+.blog-post-container:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.blog-post-container:nth-child(even)>.blog-post-text-wrapper {
+    align-items: flex-end;
+}
+
+.blog-post-container:nth-child(even)>.blog-post-image-wrapper {
+    left: 0;
+}
+
+.blog-post-container:nth-child(odd)>.blog-post-image-wrapper {
+    right: 0;
+}
+
+.blog-post-text-wrapper {
+    height: 100%;
+    width: 60%;
+    border: 2px solid var(--background-secondary);
+    border-radius: 10px;
+    background-color:  var(--background-tertiary);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
+
+.blog-post-image-wrapper {
+    height: 80%;
+    width: 50%;
+    position: absolute;
+    border-radius: 10px;
+    background-image: url(../../img/bike.png);
+    background-size: contain;
+}
+
+.blog-post-heading {
+    width: 80%;
+    font-family: 'Neue Metana', sans-serif;
+    color: var(--background-secondary);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.blog-post-text {
+    width: 80%;
+    font-family: 'Neue Metana', sans-serif;
+    color: var(--background-secondary);
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 0.8;
+    padding: 0;
+    margin: 0;
+}
+
+.blog-post-icon {
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+    color: var(--background-secondary);
+    display: none;
+    position: absolute;
+    bottom: 4rem;
+}
+
+.blog-post-container:nth-child(even)>.blog-post-text-wrapper>.blog-post-icon{
+    left: 13rem;
+}
+
+.post-chips-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.post-chip {
+    padding: 0.35rem;
+    color: var(--background-primary);
+    font-size: 0.7rem;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+}
