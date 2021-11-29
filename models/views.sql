@@ -56,5 +56,29 @@ FROM brand b
 LEFT JOIN image i ON (b.imageID = i.imageID);
 
 
+product_has_images
+brand
+post_has_images
+image
+
+CREATE OR REPLACE VIEW used_images AS
+SELECT i.imageID
+FROM image i, brand b, product_has_images pri, post_has_images poi
+WHERE i.imageID = b.imageID
+INNER JOIN product_has_images pri ON (i.imageID = pri.imageID)
+INNER JOIN post_has_images poi ON (i.imageID = poi.imageID);
+
+CREATE OR REPLACE VIEW used_images AS
+SELECT b.imageID AS brand_image FROM brand b
+UNION
+SELECT pri.imageID AS product_image FROM product_has_images pri
+UNION
+SELECT poi.imageID AS post_image FROM post_has_images poi;
+
+
+
+
+
+
 
 

@@ -150,6 +150,10 @@ class ImageController extends ViewController {
     public function getAllImages() {
         return $this->image->fetchAll('image');
     }
+
+    public function getUsedImages() {
+        return $this->image->fetchAll('used_images');
+    }
 }
 
 

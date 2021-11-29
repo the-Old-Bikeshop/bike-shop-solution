@@ -284,3 +284,10 @@ CREATE OR REPLACE VIEW review_view AS
 SELECT r.reviewID, r.created_at, r.title, r.content, u.email, u.first_name, u.last_name
 FROM review r
 	     INNER JOIN user u ON r.userID = u.userID;
+
+CREATE OR REPLACE VIEW used_images AS
+SELECT b.imageID AS usedImageID FROM brand b
+UNION
+SELECT pri.imageID AS product_image FROM product_has_images pri
+UNION
+SELECT poi.imageID AS post_image FROM post_has_images poi;

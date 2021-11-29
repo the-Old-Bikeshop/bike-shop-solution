@@ -46,7 +46,17 @@ $img->setImage();
                                 </form>
                                 <form action="" method="post" class="d-inline-block">
                                     <input type="hidden" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
-                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')">
+                                    <input type="submit" name="delete" value="<?php if(array_search($res['imageID'],
+                                            array_column( $img->getUsedImages(), 'usedImageID')) !== false): ?>
+                                                image in use
+                                            <?php else: ?>
+                                                delete
+                                            <?php endif; ?>"
+                                           <?php if(array_search($res['imageID'],
+                                               array_column( $img->getUsedImages(), 'usedImageID')) !== false): ?>
+                                                disabled
+                                            <?php endif; ?>
+                                           class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')">
                                 </form>
                             </td>
                         </tr>
