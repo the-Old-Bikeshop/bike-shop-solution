@@ -31,8 +31,6 @@
             <div class="blog-post-image-wrapper">
             </div>
         </div>
-    </div>
-    <div class="blog-posts-wrapper">
         <div class="blog-post-container">
             <div class="blog-post-text-wrapper">   
                 <h1 class="blog-post-heading">Custom build bikes!</h1>
@@ -57,8 +55,6 @@
             <div class="blog-post-image-wrapper">
             </div>
         </div>
-    </div>
-    <div class="blog-posts-wrapper">
         <div class="blog-post-container">
             <div class="blog-post-text-wrapper">   
                 <h1 class="blog-post-heading">Custom build bikes!</h1>

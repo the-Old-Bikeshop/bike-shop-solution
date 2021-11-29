@@ -1,0 +1,74 @@
+.contact-form-wrapper {
+    width: 100%;
+    height: 30rem;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.contact-form-banner-container {
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-primary);
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-form-banner-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.contact-form-banner-heading {
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    text-decoration: underline 2px var(--primary);
+    font-weight: bold;
+}
+
+.contact-form-banner-text {
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: thin;
+    width: 90%;
+    opacity: 0.8;
+}
+
+.contact-banner-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contact-banner-item {
+    margin-bottom: 1rem;
+}
+
+.contact-banner-item-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    color: var(--primary);
+}
+
+.contact-banner-item-heading {
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+} 

@@ -1,7 +1,5 @@
 .blog-posts-view-wrapper {
-    padding: 1.5rem;
     background-color: var(--background-primary);
-    padding-top: 9rem;
 }
 
 .blog-posts-view-heading-wrapper {
@@ -9,6 +7,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 6rem;
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    background-color: var(--background-tertiary);
 }
 
 .blog-posts-view-heading-icon-wrapper {
@@ -35,17 +37,19 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    padding-left: 4rem;
+    padding-top: 4rem;
+    padding-right: 4rem;
 }
 
 .blog-post-container {
-    height: 35rem;
+    height: 30rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
 }
 
 .blog-post-text-wrapper:hover{
@@ -109,7 +113,7 @@
     position: absolute;
     border-radius: 10px;
     background-image: url(../../img/bike.png);
-    background-size: contain;
+    background-size: cover;
 }
 
 .blog-post-heading {
@@ -142,17 +146,20 @@
 }
 
 .blog-post-container:nth-child(even)>.blog-post-text-wrapper>.blog-post-icon{
-    left: 13rem;
+    left: 12rem;
+    transform: rotate(180deg);
 }
 
 .post-chips-container {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     flex-wrap: wrap;
     margin-top: 1rem;
 }
+
+
 
 .post-chip {
     padding: 0.35rem;

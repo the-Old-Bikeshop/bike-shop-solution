@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="public/styles/components/contactForm.css">
     <!-- Custom CSS Views-->
     <link rel="stylesheet" href="public/styles/views/homeView.css">
+    <link rel="stylesheet" href="public/styles/views/productsView.css">
     <link rel="stylesheet" href="public/styles/views/blogView.css">
     <title>Admin</title>
 </head>

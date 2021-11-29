@@ -1,2 +1,161 @@
 <?php include_once "./components/customerNavigation.php"?>
-<h1>This is products page!1!1!1!</h1>
+<div class="products-view-wrapper">
+    <div class="products-view-filtering-wrapper">
+        <div class="filters-heading-wrapper">
+            <div class="filtering-heading-container">
+                <div class="filtering-icon">
+                    <i class="las la-filter"></i>
+                </div>
+                <h1 class="filtering-heading">Filters</h1>
+            </div>
+            <div class="filtering-icon-control-wrapper">
+                <i class="las la-angle-down"></i>
+            </div>
+        </div>
+        <div class="filters-wrapper">
+            <div class="categories-filter-wrapper">
+                <h2 class="filter-wrapper-heading">Categories</h2>
+                <div class="filter-view-chips-wrapper">
+                    <div class="filter-view-chip">
+                        bikes
+                    </div>
+                    <div class="filter-view-chip">
+                        accessories
+                    </div>
+                    <div class="filter-view-chip">
+                        fixed-gear
+                    </div>
+                    <div class="filter-view-chip">
+                        city bikes
+                    </div>
+                    <div class="filter-view-chip">
+                        affordable
+                    </div>
+                    <div class="filter-view-chip">
+                        custom
+                    </div>
+                    <div class="filter-view-chip">
+                        bikes
+                    </div>
+                    <div class="filter-view-chip">
+                        accessories
+                    </div>
+                    <div class="filter-view-chip">
+                        fixed-gear
+                    </div>
+                    <div class="filter-view-chip">
+                        city bikes
+                    </div>
+                    <div class="filter-view-chip">
+                        affordable
+                    </div>
+                    <div class="filter-view-chip">
+                        custom
+                    </div>
+                </div>
+            </div>
+            <div class="wheel-sizes-filter-wrapper">
+                <h2 class="filter-wrapper-heading">Wheel Sizes</h2>
+                <div class="filter-view-chips-wrapper">
+                    <div class="filter-view-chip">
+                        28''
+                    </div>
+                    <div class="filter-view-chip">
+                        26''
+                    </div>
+                    <div class="filter-view-chip">
+                        24''
+                    </div>
+                    <div class="filter-view-chip">
+                        21''
+                    </div>
+                    <div class="filter-view-chip">
+                        28''
+                    </div>
+                    <div class="filter-view-chip">
+                        28''
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="products-wrapper">
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="suggested-product">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="suggested-product">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
