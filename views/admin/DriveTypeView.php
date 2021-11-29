@@ -1,9 +1,7 @@
 <?php
     // Initializing admin Drive Type controller
     $dt = new DriveTypeController();
-    
     $dt->setDriveType();
-    $dt->getDriveType();
 ?>
 
 <div class="page_wrapper">
@@ -30,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody class="col-12">
-                        <?php foreach ($dt->getDriveType()->fetchAll('drive_type') as $res) : ?>
+                        <?php foreach ($dt->getAllDriveTypes() as $res) : ?>
                             <tr class="ml-2">
                                 <th scope="row"> <?php echo $res["drive_typeID"] ?></th>
                                 <td><?php echo $res['name'] ?></td>
@@ -38,11 +36,11 @@
                                 <td><?php echo $res['description'] ?></td>
                                 <td>
                                     <form action="" method="post" class="d-inline-block p-0 m-0">
-                                        <input type="text" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
+                                        <input type="hidden" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
                                         <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                     </form>
                                     <form action="" method="post" class="d-inline-block p-0 m-0">
-                                        <input type="text" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
+                                        <input type="hidden" hidden name="drive_typeID" value="<?php echo $res['drive_typeID'] ?>">
                                         <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')">
                                     </form>
                                 </td>
@@ -91,7 +89,7 @@
                                 <textarea class="form-control" id="description" rows="5" name="description"><?php echo $dt->getDrive()['description'] ?? '' ?></textarea>
                             </div>
                             <?php if (isset($dt->getDrive()['drive_typeID'])) : ?>
-                                <input type="text" hidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
+                                <input type="hidden" hidden name="drive_typeID" value="<?php echo $dt->getDrive()['drive_typeID'] ?>">
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
                                 <input type="submit" class="btn <?php echo !$dt->getUpdate() ? 'btn-primary' : 'btn-info' ?>" name="<?php echo !$dt->getUpdate() ? 'submit-new' : 'submit-update' ?>" value="<?php echo !$dt->getUpdate() ? 'Create new' : 'update' ?>">

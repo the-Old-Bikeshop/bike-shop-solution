@@ -29,26 +29,27 @@ $bike_s->setBikeSpecifications();
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($bike_s->getBikeSpecifications()->fetchAll('bike_speks') as $res): ?>
-                        <tr>
-                            <th scope="row"> <?php echo $res['bike_specificationsID']?></th>
-                            <td><?php echo $res['type']?></td>
-                            <td><?php echo $res['wheel_ISO'] . ' / ' . $res['tire_ISO']?></td>
-                            <td><?php echo $res['brake_name']?></td>
-                            <td><?php echo $res['drive_name']?></td>
-                            <td><?php echo $res['first_name'] . " " . $res['last_name']?></td>
-                            <td>
-                                <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="bike_specificationsID" value="<?php echo $res['bike_specificationsID'] ?>">
-                                    <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm" >
-                                </form>
-                                <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="bike_specificationsID" value="<?php echo $res['bike_specificationsID'] ?>">
-                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
+                        <?php foreach ($bike_s->getAllBikeSpecifications() as $res): ?>
+                            <tr>
+                                <th scope="row"> <?php echo $res['bike_specificationsID']?></th>
+                                <td><?php echo $res['type']?></td>
+                                <td><?php echo $res['wheel_ISO'] . ' / ' . $res['tire_ISO']?></td>
+                                <td><?php echo $res['brake_name']?></td>
+                                <td><?php echo $res['drive_name']?></td>
+                                <td><?php echo $res['first_name'] . " " . $res['last_name']?></td>
+                                <td>
+                                    <form action="" method="post" class="d-inline-block">
+                                        <input type="hidden" hidden name="bike_specificationsID" value="<?php echo $res['bike_specificationsID'] ?>">
+                                        <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm" >
+                                    </form>
+                                    <form action="" method="post" class="d-inline-block">
+                                        <input type="hidden" hidden name="bike_specificationsID" value="<?php echo $res['bike_specificationsID'] ?>">
+                                        <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+
                     </tbody>
                 </table>
             </div>
@@ -167,7 +168,7 @@ $bike_s->setBikeSpecifications();
                                                 class="custom-control-input"
                                                 id="front_basket_<?php $bike_s->getConvert()->yesNo($cond);?>"
                                                 value="<?php echo $cond;?>"
-                            `                            <?php if(isset($bike_s->getOneBike()["front_basket"]) && $bike_s->getOneBike()["front_basket"] ==
+                                                      <?php if(isset($bike_s->getOneBike()["front_basket"]) && $bike_s->getOneBike()["front_basket"] ==
                                                     $cond
                                                 ):?>
                                                     checked
@@ -213,8 +214,8 @@ $bike_s->setBikeSpecifications();
                                 <div class="column-form-item form-group col-12  mt-2">
                                     <label for="form-label" >Wheel size</label>
                                     <select class="custom-select" id="wheel_size" name="wheel_sizeID">
-                                        <?php if(($bike_s->getWheel()->fetchAll('wheel_size') !== null)) {
-                                            foreach ($bike_s->getWheel()->fetchAll('wheel_size') as $wheel):?>
+                                        <?php if(($bike_s->getAllWheelSizes() !== null)) {
+                                            foreach ($bike_s->getAllWheelSizes() as $wheel):?>
                                                 <option value="<?php echo $wheel['wheel_sizeID'] ?? "" ?>"
                                                         <?php if(!isset($wheel['wheel_sizeID']) && isset($bike_s->getOneBike()['wheel_sizeID']) && $wheel['wheel_sizeID'] ==
                                                             $bike_s->getOneBike()['wheel_sizeID']):?>
@@ -236,8 +237,8 @@ $bike_s->setBikeSpecifications();
                                 <div class="column-form-item form-group col-12  mt-2">
                                     <label for="form-label">Braking system</label>
                                     <select class="custom-select" id="brake_system" name="braking_systemID">
-                                        <?php if(($bike_s->getBrake()->fetchAll('braking_system') !== null)) {
-                                            foreach ($bike_s->getBrake()->fetchAll('braking_system') as $brake):?>
+                                        <?php if(($bike_s->getAllBrakingSystem() !== null)) {
+                                            foreach ($bike_s->getAllBrakingSystem() as $brake):?>
                                                 <option value="<?php echo $brake['braking_systemID'] ?? "" ?>"
                                                     <?php if(!isset($brake['braking_systemID']) && isset($bike_s->getOneBike()['braking_systemID'])
                                                         &&
@@ -260,8 +261,8 @@ $bike_s->setBikeSpecifications();
                                 <div class="column-form-item form-group col-12  mt-2">
                                     <label for="form-label">Drive Type</label>
                                     <select class="custom-select" id="drive_type" name="drive_typeID">
-                                        <?php if(($bike_s->getDriveType()->fetchAll('drive_type') !== null)) {
-                                            foreach ($bike_s->getDriveType()->fetchAll('drive_type') as $drive):?>
+                                        <?php if(($bike_s->getAllDriveTypes() !== null)) {
+                                            foreach ($bike_s->getAllDriveTypes() as $drive):?>
 
                                                 <option value="<?php echo $drive['drive_typeID'] ?? "" ?>"
                                                     <?php if(!isset($drive['drive_typeID']) && isset($bike_s->getOneBike()['drive_typeID'])
@@ -286,7 +287,7 @@ $bike_s->setBikeSpecifications();
                             </div>
                             <input type="hidden" name="created_by" value="1">
                             <?php if(isset($bike_s->getOneBike()['bike_specificationsID'])): ?>
-                                <input type="text" hidden
+                                <input type="hidden" hidden
                                     name = "bike_specificationsID"
                                     value = "<?php echo $bike_s->getOneBike()['bike_specificationsID'] ?>"
                                 >

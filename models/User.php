@@ -1,29 +1,24 @@
 <?php
-spl_autoload_register(function($class_name) {
+//spl_autoload_register(function($class_name) {
+//
+//    // Define an array of directories in the order of their priority to iterate through.
+//    $dirs = array(
+//        'models/',
+//        'controllers/',
+//    );
+//
+//    // Looping through each directory to load all the class files. It will only require a file once.
+//    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
+//    foreach( $dirs as $dir ) {
+//        if (file_exists($dir . $class_name . '.php')) {
+//            require_once( $dir . $class_name . '.php');
+//            return;
+//        }
+//    }
+//});
 
-    // Define an array of directories in the order of their priority to iterate through.
-    $dirs = array(
-        'models/',
-        'controllers/',
-    );
+class User extends BasisSQL {
 
-    // Looping through each directory to load all the class files. It will only require a file once.
-    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
-    foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name . '.php')) {
-            require_once( $dir . $class_name . '.php');
-            return;
-        }
-    }
-});
-
-class User {
-
-    private $db;
-
-    public function __construct() {
-        $this->db = new DBcon();
-    }
 
     //Register User
     public function registerUser($data, $password) {
@@ -78,5 +73,34 @@ class User {
             return false;
         }
   
+    }
+
+    public function updateUserRole($data, $id) {
+        $this->db->dbCon->beginTransaction();
+        try {
+            $query = $this->db->dbCon->prepare("UPDATE `user` SET 
+                                                                    nick_name = :nick_name, 
+                                                                    first_name = :first_name,
+                                                                    last_name = :last_name,
+                                                                    email = :email,
+                                                                    role = :role
+                                                                    WHERE userID = :userID");
+
+            $query->bindValue(':nick_name', $data['nick_name']);
+            $query->bindValue(':first_name', $data['first_name']);
+            $query->bindValue(':last_name', $data['last_name']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':role', $data['role']);
+            $query->bindValue(':userID', $id);
+            $query->execute();
+
+            $this->db->dbCon->commit();
+
+        }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+            $this->message = $e->getMessage();
+        }
+
+
     }
 }

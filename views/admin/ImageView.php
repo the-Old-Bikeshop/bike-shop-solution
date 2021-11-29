@@ -28,7 +28,7 @@ $img->setImage();
                     </tr>
                     </thead>
                     <tbody class="col-12">
-                    <?php foreach ($img->getImage()->fetchAll('image') as $res): ?>
+                    <?php foreach ($img->getAllImages() as $res): ?>
                         <tr>
                             <th scope="row"> <?php echo $res['imageID']?></th>
                             <td><?php echo $res['name']?></td>
@@ -41,12 +41,22 @@ $img->setImage();
                             </td>
                             <td>
                                 <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
+                                    <input type="hidden" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
                                     <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
                                 </form>
                                 <form action="" method="post" class="d-inline-block">
-                                    <input type="text" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
-                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')">
+                                    <input type="hidden" hidden name="imageID" value="<?php echo $res['imageID'] ?>">
+                                    <input type="submit" name="delete" value="<?php if(array_search($res['imageID'],
+                                            array_column( $img->getUsedImages(), 'usedImageID')) !== false): ?>
+                                                image in use
+                                            <?php else: ?>
+                                                delete
+                                            <?php endif; ?>"
+                                           <?php if(array_search($res['imageID'],
+                                               array_column( $img->getUsedImages(), 'usedImageID')) !== false): ?>
+                                                disabled
+                                            <?php endif; ?>
+                                           class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')">
                                 </form>
                             </td>
                         </tr>
@@ -110,7 +120,7 @@ $img->setImage();
                                 >
                             </div>
                             <?php if(isset($img->getImg()['imageID'])): ?>
-                                <input type="text" hidden name="imageID" value ="<?php echo $img->getImg()['imageID'] ?>">
+                                <input type="hidden" hidden name="imageID" value ="<?php echo $img->getImg()['imageID'] ?>">
                             <?php endif; ?>
                             <div class="form-group col-12 mt-2">
                                 <input type="submit" class="btn <?php echo !$img->getUpdate() ? 'btn-primary' : 'btn-info' ?>"

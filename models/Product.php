@@ -5,24 +5,6 @@ class Product extends BasisSQL
     public $message;
     public $last_id;
 
-    //CREATE TABLE product (
-    //    productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    //  `name` VARCHAR(100) NOT NULL,
-    //  `description` TEXT,
-    //  short_description VARCHAR(255),
-    //  `weight` DECIMAL(10, 2),
-    //  price DECIMAL(10, 2) NOT NULL,
-    //  model_name VARCHAR(255) NOT NULL,
-    //  stock INT NOT NULL,
-    //  `length` DECIMAL(10, 2),
-    //  color VARCHAR(100),
-    //  bike_specificationsID INT,
-    //  brandID INT,
-    //  created_by INT NOT NULL,
-    //  FOREIGN KEY (bike_specificationsID) REFERENCES bike_specifications (bike_specificationsID),
-    //  FOREIGN KEY (brandID) REFERENCES brand (brandID),
-    //  FOREIGN KEY (created_by) REFERENCES `user` (userID)
-    //);
 
     public function createProduct($data) {
         $this->db->dbCon->beginTransaction();
@@ -97,8 +79,6 @@ class Product extends BasisSQL
         } catch(Exception $e) {
             $this->message = $e->getMessage();
         }
-
-
 
     }
 

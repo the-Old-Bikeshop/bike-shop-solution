@@ -3,8 +3,10 @@
 class Login
 {
     public $message;
+    private $session;
     public function __construct($email, $password)
     {
+        $this->session = new SessionHandle();
         $db = new DbCon();
         $email = trim($email);
         $pass = trim($password);

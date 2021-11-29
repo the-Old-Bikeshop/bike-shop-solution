@@ -1,22 +1,5 @@
 <?php
-spl_autoload_register(function($class_name) {
 
-    // Define an array of directories in the order of their priority to iterate through.
-    $dirs = array(
-        'models/',
-        'controllers/',
-        'controllers/admin/',
-    );
-
-    // Looping through each directory to load all the class files. It will only require a file once.
-    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
-    foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name .'.php')) {
-            require_once($dir . $class_name.'.php');
-            return;
-        }
-    }
-});
 
 class ImageController extends ViewController {
 
@@ -65,7 +48,7 @@ class ImageController extends ViewController {
 //                        var_dump($this->data);
                     }
                 }
-            }else{
+            }elseif(isset($_POST['imageID'])){
 
 //                var_dump($_POST);
                 $this->data = [
@@ -73,6 +56,12 @@ class ImageController extends ViewController {
                     'alt' => trim($_POST['alt']) ?? "",
                     'URL' => $_POST['URL'],
                     'imageID'=>$_POST['imageID']
+                ];
+            } else {
+                $this->data = [
+                    'name' => trim($_POST['name']) ?? "",
+                    'alt' => trim($_POST['alt']) ?? "",
+                    'URL' => $_POST['URL']
                 ];
             }
         }
@@ -156,6 +145,14 @@ class ImageController extends ViewController {
     public function getData()
     {
         return $this->data;
+    }
+
+    public function getAllImages() {
+        return $this->image->fetchAll('image');
+    }
+
+    public function getUsedImages() {
+        return $this->image->fetchAll('used_images');
     }
 }
 

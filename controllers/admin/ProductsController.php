@@ -1,23 +1,6 @@
 <?php
 
-spl_autoload_register(function($class_name) {
 
-    // Define an array of directories in the order of their priority to iterate through.
-    $dirs = array(
-        'models/',
-        'controllers/',
-        'controllers/admin/',
-    );
-
-    // Looping through each directory to load all the class files. It will only require a file once.
-    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
-    foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name .'.php')) {
-            require_once($dir . $class_name.'.php');
-            return;
-        }
-    }
-});
 
 
 
@@ -33,6 +16,8 @@ class ProductsController extends
     private $imageID;
     private $productID;
     private $productImage;
+    private $like;
+    private $message;
 
     public function __construct()
     {
@@ -41,6 +26,8 @@ class ProductsController extends
         $this->imageController = new ImageController();
         $this->productImage = new ProductImage();
         $this->image = new Image();
+        $this->like = new FavoriteProductsController();
+
 
 
     }
@@ -76,6 +63,14 @@ class ProductsController extends
             $this->productImage->createProductImage($_POST['productID'], $this->imageID);
         }elseif (isset($_POST['deleteImage'])) {
             $this->productImage->deleteImage($_POST['deleteImageID'], $_POST['deleteProductID']);
+//        }elseif (isset($_POST['like'])) {
+//            if (!isset($_POST['userID'])) {
+//                $this->message = 'Login to add product to favorite';
+//            }else{
+//                $this->like->setData();
+//                $this->like->likeAction();
+//            }
+
         }
     }
 
@@ -101,31 +96,28 @@ class ProductsController extends
         $this->product_info = $product_info;
     }
 
-    //CREATE TABLE product (
-    //    productID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    //  `name` VARCHAR(100) NOT NULL,
-    //  `description` TEXT,
-    //  short_description VARCHAR(255),
-    //  `weight` DECIMAL(10, 2),
-    //  price DECIMAL(10, 2) NOT NULL,
-    //  model_name VARCHAR(255) NOT NULL,
-    //  stock INT NOT NULL,
-    //  `length` DECIMAL(10, 2),
-    //  color VARCHAR(100),
-    //  bike_specificationsID INT,
-    //  brandID INT,
-    //  created_by INT NOT NULL,
-    //  FOREIGN KEY (bike_specificationsID) REFERENCES bike_specifications (bike_specificationsID),
-    //  FOREIGN KEY (brandID) REFERENCES brand (brandID),
-    //  FOREIGN KEY (created_by) REFERENCES `user` (userID)
-    //);
-
     /**
      * @return mixed
      */
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return FavoriteProductsController
+     */
+    public function getLike(): FavoriteProductsController
+    {
+        return $this->like;
     }
 
     /**
@@ -158,6 +150,34 @@ class ProductsController extends
     public function getProductImage(): ProductImage
     {
         return $this->productImage;
+    }
+
+    public function getFavProducts() {
+        return $this->like->getFavs();
+    }
+
+    public function getAllProducts() {
+        return $this->products->fetchAll('product');
+    }
+
+    public function getOneBikeSpecificationType($id) {
+        return $this->products->fetchOne('bike_specifications', 'bike_specificationsID', $id)['type'];
+    }
+
+    public function getOneBrandName($id) {
+        return $this->products->fetchOne('brand', 'brandID', $id) ['name'];
+    }
+
+    public function getOneImage($id) {
+        return $this->products->fetchOne('image', 'imageID', $id);
+    }
+
+    public function getAllBrands() {
+        return $this->products->fetchAll('brand');
+    }
+
+    public function getAllBikeSpecifications() {
+        return $this->products->fetchAll('bike_speks');
     }
 
 }

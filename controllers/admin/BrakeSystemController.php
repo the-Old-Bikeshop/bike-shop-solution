@@ -1,21 +1,5 @@
 <?php
-spl_autoload_register(function($class_name) {
-    // Define an array of directories in the order of their priority to iterate through.
-    $dirs = array(
-        'models/',
-        'controllers/',
-        'controllers/admin/',
-    );
 
-    // Looping through each directory to load all the class files. It will only require a file once.
-    // If it finds the same class in a directory later on, IT WILL IGNORE IT! Because of that require once!
-    foreach( $dirs as $dir ) {
-        if (file_exists($dir . $class_name .'.php')) {
-            require_once($dir . $class_name.'.php');
-            return;
-        }
-    }
-});
 
 class BrakeSystemController extends ViewController
 {
@@ -38,16 +22,13 @@ class BrakeSystemController extends ViewController
             $this->brake->createBrakeSystem();
         }elseif(isset($_POST['update'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->update= true;
             $this->val = $this->brake->fetchOne("braking_system", "braking_systemID", $_POST['braking_systemID'] );
         }elseif(isset($_POST['submit-update'])){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->brake->updateBrakeSystem($_POST['name'], $_POST['condition'], $_POST['braking_systemID'] );
         }elseif(isset($_POST['delete'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $this->brake = new BrakeType();
             $this->brake->deleteRow('braking_system', "braking_systemID" , $_POST['braking_systemID']);
         }
     }
@@ -82,6 +63,19 @@ class BrakeSystemController extends ViewController
     public function getConvert(): Convert
     {
         return $this->convert;
+    }
+
+    public function braking_system() {
+        return $this->brake->fetchAll('braking_system');
+    }
+
+    public function getOneCondition($cond) {
+        $this->convert->condition($cond);
+    }
+
+    public function checkSelect($input, $condition) {
+
+          return  $input !== null && $input == $condition ? 'selected' : "";
     }
 
 
