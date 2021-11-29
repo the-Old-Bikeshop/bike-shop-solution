@@ -16,6 +16,8 @@ class ProductsController extends
     private $imageID;
     private $productID;
     private $productImage;
+    private $like;
+    private $message;
 
     public function __construct()
     {
@@ -24,6 +26,8 @@ class ProductsController extends
         $this->imageController = new ImageController();
         $this->productImage = new ProductImage();
         $this->image = new Image();
+        $this->like = new FavoriteProductsController();
+
 
 
     }
@@ -59,6 +63,14 @@ class ProductsController extends
             $this->productImage->createProductImage($_POST['productID'], $this->imageID);
         }elseif (isset($_POST['deleteImage'])) {
             $this->productImage->deleteImage($_POST['deleteImageID'], $_POST['deleteProductID']);
+//        }elseif (isset($_POST['like'])) {
+//            if (!isset($_POST['userID'])) {
+//                $this->message = 'Login to add product to favorite';
+//            }else{
+//                $this->like->setData();
+//                $this->like->likeAction();
+//            }
+
         }
     }
 
@@ -95,6 +107,22 @@ class ProductsController extends
     /**
      * @return mixed
      */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return FavoriteProductsController
+     */
+    public function getLike(): FavoriteProductsController
+    {
+        return $this->like;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getUpdate()
     {
         return $this->update;
@@ -122,6 +150,10 @@ class ProductsController extends
     public function getProductImage(): ProductImage
     {
         return $this->productImage;
+    }
+
+    public function getFavProducts() {
+        return $this->like->getFavs();
     }
 
     public function getAllProducts() {

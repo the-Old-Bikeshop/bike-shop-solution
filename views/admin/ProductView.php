@@ -77,6 +77,19 @@ $product->setProduct();
                                     <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
                                     <input type="submit" name="update" value="update"  class="btn btn-outline-secondary btn-sm">
                                 </form>
+                                <form action="favorites" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="likedProductsID" value="<?php echo $res['productID'] ?>">
+                                    <input type="hidden" hidden name="userID" value="<?php echo $_SESSION['userID'] ?>">
+                                    <input type="submit" name="like"
+                                           value="<?php if(array_search($res['productID'],
+                                               array_column( $_SESSION['userFavorites'], 'productID')) !== false) {
+                                                echo 'unlike';
+                                            }else {
+                                                echo 'like';
+                                            }?>"
+                                           class="btn btn-outline-secondary
+                                    btn-sm">
+                                </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
                                     <input type="submit" name="addImage" value="add image" class="btn btn-outline-secondary
@@ -106,6 +119,19 @@ $product->setProduct();
                 <h3><?php echo $product->getProductImage()->message ?></h3>
             </div>
         <?php endif  ?>
+
+        <?php if($product->getMessage() !== null): ?>
+            <div class="col-12 col-md-8 offset-md-2">
+                <h3><?php echo $product->getMessage() ?></h3>
+            </div>
+        <?php endif  ?>
+
+        <?php if($product->getLike()->getLikes()->message !== null): ?>
+            <div class="col-12 col-md-8 offset-md-2">
+                <h3><?php echo $product->getLike()->getLikes()->message ?></h3>
+            </div>
+        <?php endif  ?>
+
 
         <!--    the form for creating and updating drive_type starts here-->
         <div class="modal fade <?php echo isset($_POST["update"]) ? 'show' : ' ' ?>" id="exampleModalCenter" tabindex="-1" role="dialog"

@@ -183,11 +183,11 @@ CREATE TABLE order_has_products(
 );
 
 CREATE TABLE favourite_products(
+	favourite_productsID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   userID INT NOT NULL,
   productID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES user (userID),
   FOREIGN KEY (productID) REFERENCES product (productID),
-  CONSTRAINT PK_favourite_products PRIMARY KEY(userID, productID)
 );
 
 CREATE TABLE product_has_category (

@@ -117,5 +117,10 @@ RouterController::set('basket', function() {
     BasketController::CreateView('BasketView');
 });
 
+RouterController::set('favorites', function() {
+    FavoriteProductsController::CreateView('FavoriteView');
+});
+
+
 ?>
 
