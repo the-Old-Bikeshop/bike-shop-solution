@@ -1,0 +1,185 @@
+@import "../colors.css";
+.base-footer-wrapper {
+    width: 100%;
+    height: 45vh;
+    background-color: var(--background-secondary);
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.logo-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.owl-bikeshop-banner {
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    text-decoration: underline 2px solid var(--primary);
+}
+
+.base-footer-column {
+    width: 23%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer-banners-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact-banner-item {
+    display:flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact-item-heading {
+    font-size: 1rem;
+    color: var(--background-primary);
+    font-weight: thin;
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-banner-item-icon {
+    font-size: 2.25rem;
+    margin-right: 1rem;
+    padding: 0;
+    color: var(--primary);
+}
+
+.contact-form-social-media-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-form-social-media-item {
+    background-color: var(--background-primary);
+    font-size: 2.25rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    color: var(--background-secondary);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.base-footer-links-column {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.pages-banner-heading-container {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+}
+
+.pages-banner-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    opacity: 0.8;
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.pages-links-wrapper {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+}
+
+.pages-link {
+    color: var(--background-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.pages-link:hover {
+    color: var(--background-primary);
+    text-decoration: underline 2px var(--primary);
+}
+
+.footer-newsletter-column {
+    width: 23%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer-newsletter-banner-heading-container {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.footer-newsletter-banner-input-container {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer-newsletter-banner-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+    padding: 0;
+}
+
+.footer-newsletter-banner-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
