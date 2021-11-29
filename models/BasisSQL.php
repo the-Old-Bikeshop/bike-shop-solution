@@ -27,7 +27,23 @@ class BasisSQL {
             $this->message = $e;
         }
         return $this->message;
+    }
 
+    public function fetchAllLimit($table, $limit = 24)
+    {
+        try{
+            $tbl = filter_var($table, FILTER_SANITIZE_STRING);
+            $tblID = $tbl . "ID";
+            $lim = intval($limit);
+            $query = $this->db->dbCon->prepare("SELECT * FROM `{$tbl}` ORDER BY {$tblID} DESC LIMIT {$lim}");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+
+        }catch (Exception $e) {
+            $this->message = $e;
+        }
+        return $this->message;
     }
 
 
