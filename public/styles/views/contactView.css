@@ -1,0 +1,36 @@
+@import "../colors.css";
+
+.contact-page {
+    min-height: 100vh;
+}
+
+.contact-page__intro {
+
+}
+
+.heading-one {
+    color: var(--background-secondary);
+    font-size: 4rem;
+}
+
+.heading-two {
+    color: var(--background-secondary);
+}
+.heading-one__support-text {
+    color: var(--background-secondary);
+}
+.contact-page__form label {
+    color: var(--background-secondary);
+}
+.contact-page__error {
+    color: var(--error);
+}
+.contact-page__message {
+    color: var(--success);
+}
+
+.button-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--background-primary);
+}
