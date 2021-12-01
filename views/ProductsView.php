@@ -169,5 +169,6 @@
             </a>
         </div>
     </div>
+    <?php include_once "./components/contactForm.php"?>
 </div>
 <?php include_once "./components/baseFooter.php"?>
