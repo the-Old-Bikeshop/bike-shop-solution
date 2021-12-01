@@ -2,10 +2,7 @@
 
 class SessionHandle
 {
-    public function __construct()
-    {
-        session_start();
-    }
+    private $token;
 
     public function logged_in() {
         return isset($_SESSION['userID']);
@@ -15,6 +12,25 @@ class SessionHandle
         if (!$this->logged_in()) {
             $redirect = new RedirectHandler("landing");
         }
+    }
+
+    public function setToken() {
+        if (empty($_SESSION['token'])) {
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+        }
+        $this->token = $_SESSION['token'];
+
+    }
+    public function startSession() {
+        session_start();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 
 }

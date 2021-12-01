@@ -2,4 +2,6 @@
     --primary: #33CC99;
     --background-primary: #191414;
     --background-secondary: #F5F5F5;
+    --error: #ff0000;
+    --success: var(--primary)
   }

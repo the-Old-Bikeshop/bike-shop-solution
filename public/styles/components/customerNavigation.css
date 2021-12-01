@@ -11,7 +11,7 @@ body {
     justify-content: space-between;
     background-color:  var(--background-secondary);
     padding: 1rem;
-    position: fixed;
+    position: sticky;
     z-index: 99;
 }
 
