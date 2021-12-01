@@ -135,7 +135,7 @@
                 </div>
             </a>
         </div>
-        <div class="suggested-product">
+        <div class="product-card">
             <a href="" class="product-card-link">
                 <div class="product-image">
                     <!-- product image goes here -->
@@ -146,7 +146,18 @@
                 </div>
             </a>
         </div>
-        <div class="suggested-product">
+        <div class="product-card">
+            <a href="" class="product-card-link">
+                <div class="product-image">
+                    <!-- product image goes here -->
+                </div>
+                <div class="bottom-product-info-wrapper">
+                    <p class="product-name">Kilimanjaro</p>
+                    <p class="product-price">1800DKK</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-card">
             <a href="" class="product-card-link">
                 <div class="product-image">
                     <!-- product image goes here -->

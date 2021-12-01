@@ -1,16 +1,17 @@
 @import "../colors.css";
 body {
     overflow-x: hidden;
+    background-color: var(--background-secondary);
 }
 
 .customer_nav_wrapper {
-    width: 100%;
+    width: 100vw;
     height: 4.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color:  var(--background-secondary);
-    padding: 1rem;
+    padding: 2rem;
     position: fixed;
     z-index: 99;
     box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1);
@@ -24,7 +25,7 @@ body {
 }
 
 .customer_nav_links_container {
-    margin-left: 1rem;
+    margin-left: 2rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -111,7 +112,7 @@ body {
 }
 
 .nav_searchbar_input_wrapper {
-    height: 100%;
+    height: 2.25rem;
     width: 88%;
 }
 
@@ -140,6 +141,7 @@ body {
     height: 100%;
     position: absolute;
     right: 4;
+    bottom:0.9rem;
 }
 
 .nav_searchbar_button {
