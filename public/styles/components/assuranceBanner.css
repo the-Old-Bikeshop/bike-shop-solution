@@ -11,18 +11,13 @@
 }
 
 .assurance-banner-item-wrapper {
-    width: 21rem;
+    width: 19rem;
     height: 19rem;
-    margin-right: 2rem;
-}
-.assurance-banner-item-wrapper:nth-child(1) {
-    padding-left: 2rem;
-    margin-left: 0rem;
-}
-
-.assurance-banner-item-wrapper:last-child {
+    margin-left: rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
     padding-right: 2rem;
-    margin-right: 0rem;
+    display: flex;
 }
 
 .assurance-banner-item-container {
