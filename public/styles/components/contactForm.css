@@ -11,14 +11,11 @@
     background-color: var(--background-primary);
     display: flex;
     flex-direction: column;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-between;
+    padding: 2rem;
 }
 
 .contact-form-banner-header-wrapper {
@@ -72,3 +69,12 @@
     color: var(--background-secondary);
     font-family: 'Neue Metana', sans-serif;
 } 
+
+.contact-form-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    background-color: var(--background-tertiary);
+    padding: 2rem;
+}

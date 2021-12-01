@@ -6,7 +6,7 @@
             </div>
             <h1 class="assurance-banner-heading">Free shipping!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc, non rutrum velit tristique varius.  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc.
             </p>
         </div>
     </div>
@@ -17,7 +17,7 @@
             </div>
             <h1 class="assurance-banner-heading">Supporting earth!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc, non rutrum velit tristique varius.  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc.  
             </p>
         </div>
     </div>
@@ -28,7 +28,7 @@
             </div>
             <h1 class="assurance-banner-heading">Quality assurance!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc, non rutrum velit tristique varius.  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc. 
             </p>
         </div>
     </div>
@@ -39,7 +39,7 @@
             </div>
             <h1 class="assurance-banner-heading">Donate your bike!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc, non rutrum velit tristique varius.  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc. 
             </p>
         </div>
     </div>

@@ -1,11 +1,8 @@
 @import "../colors.css";
 .new-posts-wrapper {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding: 2rem;
     width: 100vw;
     background-color: var(--background-secondary);
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
 }
 
 .new-posts-heading-wrapper {

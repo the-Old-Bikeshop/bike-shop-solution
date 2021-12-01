@@ -30,25 +30,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form action="" method="post" class="col col-12">
                         <input type="hidden" name="type" value="register">
                         <div style="display: flex; align-items:center; justify-content:center;" class="form-row row">
-                            <div class="col-12 col-md-11" style="margin-top:8px;">
+                            <div class="col-12 col-md-10" style="margin-top:8px;">
                                 <label for="email">Email</label>
-                                <input id="email" type="text" name="email" class="form-control">
+                                <input id="email" type="text" name="email" class="form-control col-12">
                             </div>
-                            <div class="col-12 col-md-11" style="margin-top:8px;">
+                            <div class="col-12 col-md-10" style="margin-top:8px;">
                                 <label for="password">Password</label>
-                                <input id="password" type="text" name="password" class="form-control">
+                                <input id="password" type="text" name="password" class="form-control col-12">
                             </div>
-                            <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
-                                <button type="" name="" style="margin-top:30px;" class="btn btn-dark col-12
-                                col-md-10">Sign up</button>
+                            <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
+                                <input style="margin-top:30px;" class="btn btn-outline-dark col-12" type="submit" name="login" value="Login">
                             </div>
-                        </div>
-                        <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
-                            <input style="margin-top:30px;" class="btn btn-outline-dark col-12 col-md-10" type="submit"
-                                    name="login" value="login">
+                            <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
+                                <button type="" name="" style="margin-top:30px;"  class="btn btn-dark col-12">Sign up</button>
+                            </div>
                         </div>
                     </form>
-
                 </section>
             </div>
         </div>
