@@ -187,7 +187,7 @@ CREATE TABLE favourite_products(
   userID INT NOT NULL,
   productID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES user (userID),
-  FOREIGN KEY (productID) REFERENCES product (productID),
+  FOREIGN KEY (productID) REFERENCES product (productID)
 );
 
 CREATE TABLE product_has_category (
@@ -244,7 +244,6 @@ CREATE TABLE `page` (
   meta_description VARCHAR(500),
   meta_keyword VARCHAR(100)
 );
-
 
 CREATE OR REPLACE VIEW bike_speks AS
 SELECT
