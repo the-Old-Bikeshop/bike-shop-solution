@@ -77,7 +77,7 @@ if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
 
 // Customer routes
 
-RouterController::set('', function() {
+RouterController::set('/', function() {
     HomeController::CreateView('HomeView');
 });
 
@@ -120,6 +120,7 @@ RouterController::set('basket', function() {
 RouterController::set('favorites', function() {
     FavoriteProductsController::CreateView('FavoriteView');
 });
+
 
 
 ?>
