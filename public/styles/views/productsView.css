@@ -182,15 +182,12 @@
     height: auto;
     justify-content:center;
     flex-wrap: wrap;
-    padding-top: 4rem;
+    gap: 2rem;
 }
 
 .product-card {
     width: 24rem;
     height: 24rem;
-    margin-bottom: 4rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
 }
 
 .product-card-link {
