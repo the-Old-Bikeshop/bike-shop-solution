@@ -39,10 +39,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input id="password" type="text" name="password" class="form-control col-12">
                             </div>
                             <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
-                                <input style="margin-top:30px;" class="btn btn-outline-dark col-12" type="submit" name="login" value="Login">
+                                <input style="margin-top:30px;" class="btn btn-outline-dark col-12" type="submit" name="login" value="Sign in">
                             </div>
                             <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
-                                <button type="" name="" style="margin-top:30px;"  class="btn btn-dark col-12">Sign up</button>
+                                <button style="margin-top:30px;"  class="btn btn-dark col-12">
+                                    <a href="/bike-shop-solution/sign-up">
+                                    Sign up
+                                    </a>
+                                </button>
                             </div>
                         </div>
                     </form>

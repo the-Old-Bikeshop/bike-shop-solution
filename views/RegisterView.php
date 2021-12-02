@@ -60,7 +60,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </form>
                     <div class="col-12"  style="display:flex; align-items:center; justify-content:center;">
-                        <button style="margin-top:30px;" class="btn btn-outline-dark col-12 col-md-10" type="submit" name="submit">Sign in</button>
+                        <button style="margin-top:30px;" class="btn btn-outline-dark col-12 col-md-10" type="submit" name="submit">
+                            <a href="/bike-shop-solution/sign-in">Sign in</a>
+                        </button>
                     </div>
                 </section>
             </div>
