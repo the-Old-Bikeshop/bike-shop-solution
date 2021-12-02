@@ -32,6 +32,7 @@
     font-size: 1.5rem;
     padding: 0;
     margin: 0;
+    margin-right: 0.5rem;
     color: var(--background-secondary);
 }
 
@@ -180,14 +181,16 @@
     width: 100%;
     align-items: flex-start;
     height: auto;
-    justify-content:center;
+    justify-content:flex-start;
     flex-wrap: wrap;
-    gap: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    gap: 4rem;
 }
 
 .product-card {
-    width: 24rem;
-    height: 24rem;
+    width: 26rem;
+    height: 26rem;
 }
 
 .product-card-link {

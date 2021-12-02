@@ -5,18 +5,15 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--background-primary);
+    gap: 3rem;
     flex-wrap: wrap;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding: 2rem;
+
 }
 
 .assurance-banner-item-wrapper {
-    width: 19rem;
-    height: 19rem;
-    margin-left: rem;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    padding-right: 2rem;
+    width: 23rem;
+    height: 23rem;
     display: flex;
 }
 
@@ -61,13 +58,13 @@
 
 .assurance-banner-heading {
     font-family: 'Neue Metana', sans-serif;
-    font-size: 1.25rem;
+    font-size: 100%;
     color: var(--background-secondary);
     font-weight: bold;
 }
 
 .assurance-banner-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--background-secondary);
     font-family: 'Neue Metana', sans-serif;
