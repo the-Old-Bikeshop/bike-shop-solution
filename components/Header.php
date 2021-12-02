@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="public/styles/views/homeView.css">
     <link rel="stylesheet" href="public/styles/views/productsView.css">
     <link rel="stylesheet" href="public/styles/views/blogView.css">
+    <link rel="stylesheet" href="public/styles/views/contactView.css">
     <title>Admin</title>
 </head>
 <body>

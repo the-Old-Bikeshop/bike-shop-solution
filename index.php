@@ -21,7 +21,9 @@ spl_autoload_register(function ($class_name) {
 ?>
 <?php require 'controllers/SessionHandler.php';
 
-$session = new SessionHandle()?>
+$session = new SessionHandle();
+$session->startSession();
+$session->setToken();?>
 
 <?php require('./components/Header.php')?>
 

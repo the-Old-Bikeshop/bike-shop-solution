@@ -3,4 +3,6 @@
     --background-primary: #191414;
     --background-secondary:#F5F5F5;
     --background-tertiary:#211e1e;
+    --error: #CC3333;
+    --success: var(--primary);
   }
