@@ -1,7 +1,6 @@
 @import "../colors.css";
 .products-view-wrapper {
     background-color: var(--background-primary);
-    padding-top: 4.5rem;
 }
 
 .products-view-filtering-wrapper {
@@ -177,10 +176,10 @@
 
 .products-wrapper {
     display: flex;
-    width: 100%;
+    width: 100vw;
     align-items: flex-start;
     height: auto;
-    justify-content:center;
+    justify-content:flex-start;
     flex-wrap: wrap;
 }
 
@@ -188,8 +187,8 @@
     width: 20rem;
     height: 20rem;
     margin-bottom: 6rem;
-    margin-right: 1.1rem;
-    margin-left: 1.1rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 .product-card-link {
