@@ -90,8 +90,15 @@ $product->setProduct();
     <?php foreach ($product->getAllProducts() as $res): ?>
         <div class="product-card">
             <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
+                <div class="product-image-banner">
+                    <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
+
+                    <?php $url = $product->getOneImage($img['imageID']); ?>
+                            <img
+                                src="<?php echo $res['URL'] ?? '/bike-shop-solution/public/img/product-placeholder.png' ?>"
+                                alt="<?php echo $url['alt'] ?? '' ?>"
+                            >
+                    <?php endforeach; ?>
                 </div>
                 <div class="bottom-product-info-wrapper">
                     <p class="product-name"><?php echo $res['name']?></p>
