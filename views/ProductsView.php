@@ -1,3 +1,10 @@
+<?php
+$product = new ProductsController();
+$product->setProduct();
+
+?>
+
+
 <?php include_once "./components/customerNavigation.php"?>
 <div class="products-view-wrapper">
     <div class="products-view-filtering-wrapper">
@@ -80,95 +87,31 @@
         </div>
     </div>
     <div class="products-wrapper">
+    <?php foreach ($product->getAllProducts() as $res): ?>
         <div class="product-card">
             <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
+                <div class="product-image-banner">
+                    <?php foreach($product->getProducts()->fetchImageList($res['productID']) as $img): ?>
+
+                    <?php $url = $product->getOneImage($img['imageID']); ?>
+                            <img
+                                src="<?php echo $res['URL'] ?? '/bike-shop-solution/public/img/product-placeholder.png' ?>"
+                                alt="<?php echo $url['alt'] ?? '' ?>"
+                            >
+                    <?php endforeach; ?>
                 </div>
                 <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
+                    <p class="product-name"><?php echo $res['name']?></p>
+                    <p class="product-price"><?php echo $res['price']?></p>
                 </div>
             </a>
         </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
-        <div class="product-card">
-            <a href="" class="product-card-link">
-                <div class="product-image">
-                    <!-- product image goes here -->
-                </div>
-                <div class="bottom-product-info-wrapper">
-                    <p class="product-name">Kilimanjaro</p>
-                    <p class="product-price">1800DKK</p>
-                </div>
-            </a>
-        </div>
+    <?php endforeach ?>
     </div>
     <?php include_once "./components/contactForm.php"?>
 </div>
 <?php include_once "./components/baseFooter.php"?>
+
+
+
+

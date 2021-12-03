@@ -1,6 +1,6 @@
 .contact-form-wrapper {
     width: 100%;
-    height: 30rem;
+    height: 40rem;
     display: flex; 
     justify-content: space-between;
 }
@@ -33,6 +33,7 @@
     font-size: 2rem;
     text-decoration: underline 2px var(--primary);
     font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .contact-form-banner-text {
@@ -77,4 +78,14 @@
     width: 50%;
     background-color: var(--background-tertiary);
     padding: 2rem;
+}
+
+.contact-form {
+    padding: 0;
+    margin: 0;
+}
+
+.form-row {
+    padding: 0;
+    margin: 0;
 }

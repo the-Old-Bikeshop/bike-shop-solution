@@ -5,6 +5,7 @@ $email = new ContactController();
 $email->SendEmail();
 
 ?>
+
 <?php include_once "./components/customerNavigation.php"?>
 <div class="contact-page page_container pt-5 px-3">
 

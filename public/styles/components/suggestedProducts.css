@@ -61,7 +61,7 @@
     text-decoration: none;
     color: black;
 }
-
+/* 
 .product-image {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -69,7 +69,7 @@
     height: 20rem;
     background-image: url("../../img/bike-trek.jpg");
     background-size: cover;
-}
+} */
 
 .bottom-product-info-wrapper {
     height: auto;
