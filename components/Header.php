@@ -13,6 +13,7 @@
     <!-- Custom CSS Components-->
     <link rel="stylesheet" href="public/styles/components/customerNavigation.css">
     <link rel="stylesheet" href="public/styles/components/baseFooter.css">
+    <link rel="stylesheet" href="public/styles/components/customerAccountNav.css">
     <link rel="stylesheet" href="public/styles/components/suggestedProducts.css">
     <link rel="stylesheet" href="public/styles/components/adminNavigation.css">
     <link rel="stylesheet" href="public/styles/components/adminPageLayout.css">

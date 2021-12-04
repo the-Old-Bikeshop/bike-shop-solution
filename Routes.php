@@ -76,13 +76,12 @@ if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
 
 
 // Customer routes
-
-RouterController::set('/', function() {
+RouterController::set('home', function() {
     HomeController::CreateView('HomeView');
 });
 
-RouterController::set('home', function() {
-    HomeController::CreateView('HomeView');
+RouterController::set('your-orders', function() {
+    OrderController::CreateView('CustomerOrdersView');
 });
 
 RouterController::set('products', function() {
