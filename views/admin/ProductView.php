@@ -97,6 +97,12 @@ $product->setProduct();
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="addCategory" value="add category" class="btn
+                                    btn-outline-secondary
+                                    btn-sm" >
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
                             </td>
@@ -362,6 +368,68 @@ $product->setProduct();
                                 <input type="submit" class="btn btn-primary"
                                     name="addNewImage"
                                     value="add New Image">
+                                <form action="" method="post">
+                                    <input type="submit" class="btn btn-secondary" value="Cancel">
+                                </form>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade <?php echo isset($_POST["addCategory"]) ? 'show' : ' ' ?>" id="addCategory"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            <?php echo isset($_POST["addCategory"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <?php echo $_POST['addCategory'] ? "Add or remove category for" : "" .
+                                $product->getProduct()['name'] ?>
+                        </h5>
+                        <form action="" method="post" >
+                            <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-body">
+                        <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
+                            <div class="d-flex">
+                                <?php foreach($product->getCategoriesForProduct($_POST['productID']) as
+                                              $categotyID):
+                                    ?>
+                                    <?php $category = $product->fetchOneCategory($categotyID['categoryID']) ?>
+                                    <?php echo $category['name'] ?>
+                                    <input type="hidden" name="deleteCategoryID" value="<?php echo $category['categoryID'] ?>">
+                                    <input type="hidden" name="deleteProductID" value="<?php echo $_POST['productID']?>">
+                                    <input type="submit" name="deleteCategory" value="delete category">
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="form-group col-12 mt-2">
+                                <label for="category">Product Category</label>
+                                <select class="custom-select col-12 mt-2"
+                                        name="categoryID"
+                                        id="category">
+                                    <?php if($product->getAllCategories() !== null): ?>
+                                        <?php foreach($product->getAllCategories() as $cat): ?>
+                                        <option value="<?php echo $cat["categoryID"]?>"><?php echo $cat["name"]
+                                            ?></option>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+
+                            <?php if(isset($_POST['productID'])): ?>
+                                <input type="hidden" hidden name = "productID" value = "<?php echo $_POST['productID'] ?>">
+                            <?php endif; ?>
+                            <div class="form-group col-12 mt-2">
+                                <input type="submit" class="btn btn-primary"
+                                       name="addNewCategory"
+                                       value="add new category">
                                 <form action="" method="post">
                                     <input type="submit" class="btn btn-secondary" value="Cancel">
                                 </form>

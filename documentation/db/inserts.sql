@@ -1181,14 +1181,50 @@ INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '9982', 'Ålbæk', '0', '0', '0', '0', '0', '0', '57.5956', '10.4094', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES;
 
+--category
+
+INSERT INTO `category` (description, short_description, name )
+	VALUES
+        (
+	       'Two wheel bicycle', 'Two wheel bicycle', 'bikes'
+        ),
+        (
+	        'Bike accessories', 'Bike accessories', 'accessories'
+        ),
+	    (
+	        'Fixed gear bicycles', 'Fixed gear', 'fixed-gear'
+        ),
+	    (
+		'City bikes', 'city bikes', 'city bikes'
+		),
+        (
+	        'affordable', 'affordable', 'affordable'
+        ),
+        (
+	        'custom made, unique', 'made for you', 'custom'
+        ),
+        (
+	        '28" wheel size', '28"', '28'
+        ),
+        (
+	        '26" wheel size', '26"', '26'
+        ),
+        (
+	        '24" wheel size', '24"', '24'
+        ),
+        (
+	        '21" wheel size', '21"', '21'
+        );
+
+
 -- Brands
 INSERT INTO `brand` (`brandID`, `name`, `description`, `short_description`, `website`, `imageID`) VALUES (NULL, 'Kryptonite ', 'Over 40 years ago, Kryptonite began with a mission. While much has changed in bicycling, and bicycle security, our objective remains the same, we are here to empower you to protect what you value.\r\n\r\n \r\n\r\nThrough constant innovation, expert guidance, and our never-ending commitment, Kryptonite will continue to pursue our passion and do everything we can to ensure you can go where you want, when you want by offering smart, serious security solutions.', 'This is really cool bike care company, well known all over world for its iconic u-locks!', 'https://www.kryptonitelock.com/en/our-story/company-history.html', NULL);
 
 -- Products
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & orange', CURRENT_TIMESTAMP, NULL, '1', '2');
+INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & orange', CURRENT_TIMESTAMP, '1', '1', '1');
 
 -- Images
 INSERT INTO `image` (`imageID`, `name`, `URL`, `alt`) VALUES (NULL, 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL);
 
 -- Posts
-INSERT INTO `post` (`postID`, `title`, `content`, `created_at`, `productID`, `userID`) VALUES (NULL, 'Move smart, harm less!', 'Pollution is also toxic to our economies and exerts a higher burden on the cost of health care. It results in lost productivity and leads to a diminished quality of life. Investing in bicycles and the infrastructure needed to make them convenient and affordable would help in many ways to reclaim a cleaner environment and make a contribution to the mental and physical health of the population.\r\n\r\nSome see the bike as just a form of recreation or kids play. However, bicycles are a major and practical form of transportation for hundreds of millions, and it could be for billions. One-third of U.S. carbon dioxide emissions are from motorized transport, yet half of all car trips are just 5 km or less. Such a distance takes only 15 minutes on a bike. Of course, cycling may not be the best option for every trip or by everyone. But if we improve the availability of bicycles and the facilities to support safe cycling, then they could offer a zero-carbon alternative to the car. It would also save us from billions of tons of CO2 emissions in the coming decades.', CURRENT_TIMESTAMP, NULL, NULL);
+INSERT INTO `post` (`postID`, `title`, `content`, `created_at`, `productID`, `userID`) VALUES (NULL, 'Move smart, harm less!', 'Pollution is also toxic to our economies and exerts a higher burden on the cost of health care. It results in lost productivity and leads to a diminished quality of life. Investing in bicycles and the infrastructure needed to make them convenient and affordable would help in many ways to reclaim a cleaner environment and make a contribution to the mental and physical health of the population.\r\n\r\nSome see the bike as just a form of recreation or kids play. However, bicycles are a major and practical form of transportation for hundreds of millions, and it could be for billions. One-third of U.S. carbon dioxide emissions are from motorized transport, yet half of all car trips are just 5 km or less. Such a distance takes only 15 minutes on a bike. Of course, cycling may not be the best option for every trip or by everyone. But if we improve the availability of bicycles and the facilities to support safe cycling, then they could offer a zero-carbon alternative to the car. It would also save us from billions of tons of CO2 emissions in the coming decades.', CURRENT_TIMESTAMP, NULL, 1);
