@@ -18,6 +18,7 @@ class ProductsController extends
     private $productImage;
     private $like;
     private $message;
+    private $category;
 
     public function __construct()
     {
@@ -27,6 +28,7 @@ class ProductsController extends
         $this->productImage = new ProductImage();
         $this->image = new Image();
         $this->like = new FavoriteProductsController();
+        $this->category = new ProductHasCategory();
 
 
 
@@ -62,18 +64,16 @@ class ProductsController extends
             $this->imageID = $this->image->createImage($this->imageController->getData());
             $this->productImage->createProductImage($_POST['productID'], $this->imageID);
         }elseif (isset($_POST['deleteImage'])) {
-            $this->productImage->deleteImage($_POST['deleteImageID'], $_POST['deleteProductID']);
-//        }elseif (isset($_POST['like'])) {
-//            if (!isset($_POST['userID'])) {
-//                $this->message = 'Login to add product to favorite';
-//            }else{
-//                $this->like->setData();
-//                $this->like->likeAction();
-//            }
-
+            $this->productImage->deleteImage($_POST['deleteImageID'],
+                $_POST['deleteProductID']);
+        }elseif (isset($_POST['addNewCategory'])){
+            $this->category = new ProductHasCategory();
+            $this->category->addCategoryToProduct($_POST['productID'], $_POST['categoryID']);
+        }elseif ( isset($_POST["deleteCategory"])) {
+            $this->category = new ProductHasCategory();
+            $this->category->deleteCategoryToProduct($_POST['deleteProductID'], $_POST['deleteCategoryID'] );
         }
     }
-
     public function setData(): void {
 
         $_POST = filter_input_array(INPUT_POST,
@@ -158,6 +158,16 @@ class ProductsController extends
 
     public function getAllProducts() {
         return $this->products->fetchAll('product');
+    }
+    public function getAllCategories() {
+        return $this->products->fetchAll('category');
+    }
+    public function getCategoriesForProduct($productID) {
+        return $this->category->fetchCategoryListForProduct($productID);
+        var_dump($this->category->fetchCategoryListForProduct($productID));
+    }
+    public function fetchOneCategory($categoryID) {
+      return $this->category->fetchOne('category', 'categoryID', $categoryID );
     }
 
     public function getOneBikeSpecificationType($id) {
