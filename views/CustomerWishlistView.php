@@ -12,7 +12,7 @@ $order->setOrders();
     <section class="admin_section_wrapper">
         <div class="page_heading_wrapper">
             <h1 class="page_heading">
-                Orders
+                Wishlist
             </h1>
         </div>
         <div class="page_content_wrapper">

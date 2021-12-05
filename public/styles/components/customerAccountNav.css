@@ -2,10 +2,10 @@
     width: 20vw; 
     height: 100vh;
     background-color: var(--background-tertiary);
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .account-nav-item {

@@ -3,7 +3,7 @@ $logout->logoutCheck();?>
 
 <div class="account-nav-items-wrapper">
     <div class="account-nav-items-container">
-        <a class="account-nav-items-link"  href="home">
+        <a class="account-nav-items-link"  href="your-settings">
             <div class="account-nav-item">
                 <div class="account-nav-item-icon">
                     <i class="las la-user-cog"></i>
@@ -11,7 +11,7 @@ $logout->logoutCheck();?>
             <h1 class="account-nav-item-title">Settings</h1> 
             </div>
         </a>
-        <a class="account-nav-items-link"  href="home">
+        <a class="account-nav-items-link"  href="your-orders">
             <div class="account-nav-item">
                 <div class="account-nav-item-icon">
                     <i class="las la-shopping-bag"></i>
@@ -19,7 +19,7 @@ $logout->logoutCheck();?>
             <h1 class="account-nav-item-title">Orders</h1> 
             </div>
         </a>
-        <a class="account-nav-items-link"  href="home">
+        <a class="account-nav-items-link"  href="your-wishlist">
             <div class="account-nav-item">
                 <div class="account-nav-item-icon">
                     <i class="lar la-heart"></i>

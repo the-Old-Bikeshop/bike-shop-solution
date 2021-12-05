@@ -70,7 +70,7 @@
             </form>
         </div>
         <div class="toolbar_icon_wrapper">
-            <a class="toolbar_link" href="/bike-shop-solution/customer-account">
+            <a class="toolbar_link" href="your-settings">
                 <i class="las la-user-circle"></i>
             </a>
         </div>

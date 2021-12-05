@@ -1,8 +1,5 @@
 <?php
-
-
 // Admin routes;
-
 if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
     RouterController::set('admin', function() {
         DashboardController::CreateView('DashboardView');
@@ -80,8 +77,16 @@ RouterController::set('home', function() {
     HomeController::CreateView('HomeView');
 });
 
+RouterController::set('your-settings', function() {
+    ProductsController::CreateView('CustomerSettingsView');
+});
+
 RouterController::set('your-orders', function() {
     OrderController::CreateView('CustomerOrdersView');
+});
+
+RouterController::set('your-wishlist', function() {
+    ProductsController::CreateView('CustomerWishlistView');
 });
 
 RouterController::set('products', function() {
