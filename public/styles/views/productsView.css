@@ -74,6 +74,15 @@
     text-transform: capitalize;
 }
 
+.filter-checkbox-chip {
+    /*display: none;*/
+}
+
+.filter-checkbox-chip:checked ~ .filter-product-chip {
+    background: var(--primary);
+    color: var(--background-secondary);
+}
+
 .product-filter-wrapper {
     width: 15%;
  
@@ -202,6 +211,15 @@
     opacity: 0.8;
     padding: 0;
     margin: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.product-card-link img {
+    width: 26rem;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 
 

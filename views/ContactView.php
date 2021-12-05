@@ -13,7 +13,7 @@ $email->SendEmail();
         <div class="contact-page__intro px-5 col col-12 col-lg-4">
             <h1 class="heading-one pb-2">Contact Us</h1>
             <p class="heading-one__support-text pb-5">Thank you for showing and interest in our products and works.</p>
-            <h2 class="contact-page__form-intro heading-two pt-5">If you want to get in touch with user the contact form
+            <h2 class="contact-page__form-intro heading-two pt-5">If you want to get in touch with use the contact form
                 and we
                 will respond as soon as possible</h2>
         </div>
