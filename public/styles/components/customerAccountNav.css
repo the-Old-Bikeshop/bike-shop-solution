@@ -1,0 +1,152 @@
+.account-nav-items-wrapper {
+    width: 20vw; 
+    height: calc(100vh - 4.5rem);
+    background-color: var(--background-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.account-nav-header-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 0;
+}
+
+.account-nav-logged-in-user-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.account-nav-logged-in-user-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--background-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    padding: 0;
+    margin-right: 0.5rem;
+    color: var(--primary);
+    opacity: 0.95;
+}
+
+.account-nav-logged-in-user-text {
+    font-size:  0.8rem;
+    color: var(--background-secondary);
+    opacity: 0.65;
+    padding: 0;
+    margin: 0;
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: 400;
+    width:170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.account-nav-form-wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.account-nav-items-container {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-nav-item {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    height: 3rem;
+    width: 100%;
+    border-radius: 7px;
+    padding: 1rem;
+    cursor: pointer;
+    border:  var(--background-secondary) 2px solid;
+}
+
+.account-nav-item:hover {
+    transform: scale(1.025);
+    transition: ease;
+    background-color: var(--background-secondary);
+    opacity: 0.9;
+}
+
+.account-nav-item:hover>.account-nav-item-title {
+    color: var(--background-primary);
+}
+
+.account-nav-item-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.account-nav-item-icon {
+    font-size: 1.85rem;
+    padding: 0;
+    color: var(--primary);
+    margin-right: 0.75rem;
+}
+
+.account-nav-item:hover>.account-nav-item-icon{
+    color: var(--primary);
+}
+
+.user-account-router-link {
+    text-decoration: none;
+}
+
+.account-nav-sign-out {
+    background-color: var(--error);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 7px;
+    padding: 1rem;
+    height: 2.5rem;
+}
+
+.account-nav-sign-out:hover {
+ text-decoration: none;
+}
+
+.account-nav-sign-out-icon {
+    font-size: 1.5rem;
+    color: var(--background-secondary);
+    margin-right: 0.5rem;
+}
+
+.account-nav-sign-out-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.account-nav-items-link {
+    text-decoration: none;
+}
+
+.account-nav-items-link:hover {
+    text-decoration: none;
+}
