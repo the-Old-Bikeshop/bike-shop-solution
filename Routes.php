@@ -77,6 +77,7 @@ RouterController::set('home', function() {
     HomeController::CreateView('HomeView');
 });
 
+if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 1)) {
 RouterController::set('your-settings', function() {
     ProductsController::CreateView('CustomerSettingsView');
 });
@@ -88,6 +89,7 @@ RouterController::set('your-orders', function() {
 RouterController::set('your-wishlist', function() {
     ProductsController::CreateView('CustomerWishlistView');
 });
+}
 
 RouterController::set('products', function() {
     ProductsController::CreateView('ProductsView');

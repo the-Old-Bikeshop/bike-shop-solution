@@ -4,8 +4,8 @@ $logout->logoutCheck();?>
 <div class="tab_nav_wrapper">
     <div class="tab_nav_container">
             <div class="tab_nav_header">
-                <div class="row">
-                    <div class="col col-6">
+                <div class="top-nav-wrapper">
+                    <div class="col ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 206.191 206.191">
                             <g id="Group_4" data-name="Group 4" transform="translate(-1118 -661)">
                                 <path id="Path_1" data-name="Path 1" d="M1200.351,743.451a12.406,12.406,0,0,0,11.67,8.288c.234,0,.461-.024.691-.037-.23.013-.457.036-.691.037A12.411,12.411,0,0,1,1200.351,743.451Z" transform="translate(-15.236 -15.255)" fill="#3c9"/>
@@ -50,12 +50,10 @@ $logout->logoutCheck();?>
                                 <path id="Path_40" data-name="Path 40" d="M1198.957,792c0,.514.014,1.022.035,1.527v0c-.016-.505-.033-1-.033-1.524Z" transform="translate(-14.978 -24.237)" fill="#3c9"/>
                             </g>
                         </svg>
-
                     </div>
                     <form action="" method="POST">
                         <input class="btn btn-danger" type="submit" name="logout" value="logout">
                     </form>
-
                 </div>
                 <?php if($logout->getLogMessage()): ?>
                     <h4 class="error"> <?php echo $logout->getLogMessage() ?> </h4>

@@ -102,13 +102,11 @@ class UserController extends ViewController {
             $_SESSION['userID'] = $loggedInUser->userID;
 
             if($loggedInUser->role == 2){
-
                 new RedirectHandler("admin");
                 // session handler goes here and activates the session
             }elseif ($loggedInUser->role == 1){
                 // session handler goes here and activates the session
-                new RedirectHandler("landing");
-
+                new RedirectHandler("your-settings");
             }
         }
     }
