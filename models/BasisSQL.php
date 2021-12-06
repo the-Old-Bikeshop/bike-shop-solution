@@ -35,7 +35,7 @@ class BasisSQL {
             $tbl = filter_var($table, FILTER_SANITIZE_STRING);
             $tblID = $tbl . "ID";
             $lim = intval($limit);
-            $query = $this->db->dbCon->prepare("SELECT * FROM `{$tbl}` ORDER BY {$tblID} DESC LIMIT {$lim}");
+            $query = $this->db->dbCon->prepare("SELECT * FROM `{$tbl}` ORDER BY 'created_at' DESC LIMIT {$lim}");
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;

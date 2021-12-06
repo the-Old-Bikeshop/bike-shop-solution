@@ -298,7 +298,7 @@ FROM brand b
 
 
 CREATE OR REPLACE VIEW simple_product_with_image AS
-SELECT p.productID, p.model_name, p.name, p.price, i.URL, i.alt
+SELECT p.productID, p.model_name, p.name, p.price, p.created_at, i.URL, i.alt
 FROM product p
 LEFT JOIN product_has_images phi ON( p.productID = phi.productid)
 LEFT JOIN image i ON (phi.imageid = i.imageid);

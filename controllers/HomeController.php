@@ -8,11 +8,11 @@ class HomeController extends ViewController {
     }
 
    public function getProductsWithLimit() {
-      return $this->home->fetchAllLimit('product', 10);
+      return $this->home->fetchAllLimit('simple_product_with_image', 10);
     }
 
     public function getAllProducts() {
-       return $this->home->fetchAll('product');
+       return $this->home->fetchAll('simple_product_with_image');
     }
 
    public function getPostsWithLimit() {
