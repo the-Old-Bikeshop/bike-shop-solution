@@ -5,17 +5,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function getFilter() {
         let filter = [];
         document.querySelectorAll('.filter-checkbox-chip:checked').forEach( function(el){
-            console.log(el.value);
             filter.push(el.value);
         })
         return filter;
     }
 
     function filterData() {
+        let category = [];
+        document.querySelectorAll('.filter-checkbox-chip:checked').forEach( function(el){
+            category.push(el.value);
+        })
         const action = 'filter-products';
-        let category = getFilter();
         $.ajax({
-            url:'models/BasisSQL.php',
+            url:'models/FilterProducts.php',
             method: 'POST',
             data: {action:action, category: category},
             success:function (data) {
