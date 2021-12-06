@@ -8,7 +8,7 @@ class HomeController extends ViewController {
     }
 
    public function getProductsWithLimit() {
-      return $this->home->fetchAllLimit('simple_product_with_image', 10);
+      return $this->home->fetchAllLimit('simple_product_with_image', 5);
     }
 
     public function getAllProducts() {
