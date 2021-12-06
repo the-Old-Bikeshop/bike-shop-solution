@@ -74,6 +74,13 @@
     text-transform: capitalize;
 }
 
+.chip-container {
+    display: flex;
+}
+.filter-checkbox-chip {
+    /*display: none;*/
+}
+
 .product-filter-wrapper {
     width: 15%;
  
@@ -83,6 +90,7 @@
     display: flex;
     padding-top: 0.5rem;
 }
+
 
 .product-filter {
     border: 2px solid var(--background-secondary);
@@ -123,7 +131,7 @@
     border-radius: 10px;
     padding: 0.4rem;
     font-size: 0.7rem;
-    display: flex;
+    display: block;
     font-weight: bold;
     align-items: center;
     font-family: 'Neue Metana', sans-serif;
@@ -131,6 +139,13 @@
     margin-top: 0.25rem;
     margin-right: 0.25rem;
     cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.chip-container .filter-checkbox-chip:checked ~ .chip-container .filter-view-chip {
+    color: var(--primary);
+    /*color: var(--background-secondary)*/
 }
 
 .wheel-sizes-filter-wrapper {
@@ -202,6 +217,15 @@
     opacity: 0.8;
     padding: 0;
     margin: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.product-card-link img {
+    width: 26rem;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 
 

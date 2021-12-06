@@ -295,3 +295,10 @@ CREATE OR REPLACE VIEW brand_view AS
 SELECT b.brandID, b.name, b.description, b.short_description, b.website, i.URL, i.alt, i.name AS image_name
 FROM brand b
 	     LEFT JOIN image i ON (b.imageID = i.imageID);
+
+
+CREATE OR REPLACE VIEW simple_product_with_image AS
+SELECT p.productID, p.model_name, p.name, p.price, i.URL, i.alt
+FROM product p
+LEFT JOIN product_has_images phi ON( p.productID = phi.productid)
+LEFT JOIN image i ON (phi.imageid = i.imageid);

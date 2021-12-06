@@ -2,8 +2,55 @@
 
 class Product extends BasisSQL
 {
-    public $message;
     public $last_id;
+    public $productIDlist;
+
+    public function fetchFilterProducts() {
+
+        try {
+            $this->db->dbCon->beginTransaction();
+
+                if(isset($_POST['category'])){
+                    $category_str = implode("','", $_POST['category']);
+                    $catQuery = "SELECT DISTINCT `productID` FROM `product_has_category` 
+                WHERE categoryID IN ('".$category_str."')";
+
+                    $cat_st = $this->db->dbCon->prepare($catQuery);
+                    $cat_st->execute();
+
+                    $this->productIDlist = $cat_st->fetchAll();
+                    $productIDsrt = implode("','", array_column($this->productIDlist, 'productID'));
+
+                    $query = "SELECT * FROM `product` 
+                WHERE `productID` IN ('".$productIDsrt."')";
+                    $statement = $this->db->dbCon->prepare($query);
+
+                    $statement->execute();
+                    $result = $statement->fetchAll();
+                    $total_Rows = $statement->rowCount();
+
+                    $this->db->dbCon->commit();
+
+                    if($total_Rows > 0) {
+                        return $result;
+
+
+                    }else {
+                        return 'no result found';
+                    }
+
+
+                }else {
+                    $this->fetchAll('product');
+                }
+
+            }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+                $this->message = $e;
+
+        }
+
+    }
 
 
     public function createProduct($data) {
@@ -126,4 +173,9 @@ class Product extends BasisSQL
 
     }
 
+}
+
+$product = new Product();
+if(isset($_POST['category'])) {
+    $product->fetchFilterProducts();
 }

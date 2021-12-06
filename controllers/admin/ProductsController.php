@@ -164,7 +164,6 @@ class ProductsController extends
     }
     public function getCategoriesForProduct($productID) {
         return $this->category->fetchCategoryListForProduct($productID);
-        var_dump($this->category->fetchCategoryListForProduct($productID));
     }
     public function fetchOneCategory($categoryID) {
       return $this->category->fetchOne('category', 'categoryID', $categoryID );
