@@ -29,23 +29,19 @@ $product->setProduct();
                             $category['name']?>"> <?php
                                 echo
                                 $category['name'] ?>
-
                                 <input  class="filter-checkbox-chip" type="checkbox" id="<?php echo $category['name']?>"
                                         name ='category' value="<?php echo $category['categoryID'] ?>">
                             </label>
-
                         </div>
-
-                          <?php endforeach; ?>
+                        <?php endforeach; ?>
                     <?php endif;?>
-
                 </div>
             </div>
         </div>
     </div>
     <div class="products-wrapper">
-    </div>
 
+    </div>
     <?php include_once "./components/contactForm.php"?>
 </div>
 <?php include_once "./components/baseFooter.php"?>

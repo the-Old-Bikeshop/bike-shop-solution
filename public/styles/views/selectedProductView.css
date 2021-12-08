@@ -1,0 +1,219 @@
+.selected-product-page-wrapper {
+    background-color: var(--background-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: auto;
+    width: 100vw;
+}
+
+.selected-product-base-information {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.selected-product-image-wrapper {
+    width: 60%;
+}
+
+.selected-product-image {
+    width: 100%;
+    z-index: 99;
+}
+
+.selected-product-information-wrapper {
+    width:40%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start
+}
+
+.selected-product-information-heading {
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    color: var(--background-secondary);
+}
+
+.selected-product-category {
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    opacity: 0.7;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom:0;
+    padding: 0;
+    color: var(--background-secondary);
+}
+
+/* .product-category-chips-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.product-chip {
+    background-color: var(--background-secondary);
+    padding: 0.25rem;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+} */
+
+.selected-product-specifications-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.selected-product-specifications-item{
+    width: 49%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255,255,255, 0.1);
+    border-radius: 5px;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.selected-product-specifications-item-label-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.selected-product-specifications-item-icon {
+    font-size: 2rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    color: var(--background-secondary);
+    opacity: 0.8;
+}
+
+.selected-product-specifications-item-value {
+    font-family: 'Neue Metana', sans-serif;
+    color: var(--background-secondary);
+    opacity: 0.8;
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+
+.selected-product-action-nav-wrapper {
+    margin-top: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selected-product-price-value {
+    font-family: 'Neue Metana', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline 2px solid var(--primary);
+    color: var(--background-secondary);
+}
+
+.selected-product-price-wrapper {
+
+}
+
+.selected-product-action-nav-items-form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.action-nav-item-add-to-basket {
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    background-color: var(--primary);
+    padding: 0.5rem;
+    color: var(--background-secondary);
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.action-nav-item-add-to-favourites {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--background-secondary);
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.action-nav-item-add-to-favourites-input {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.selected-product-secondary-information {
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.selected-product-secondary-information-wrapper {
+    width: 40%;
+    height: 100%;
+    padding: 2rem;
+}
+
+.selected-product-assurance-wrapper {
+    width: 60%;
+}
+
+.selected-product-secondary-information-description-label {
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-decoration: solid underline var(--primary) 2px;
+}
+
+.selected-product-secondary-information-description {
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
