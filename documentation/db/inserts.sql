@@ -1,5 +1,4 @@
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '0800', 'Høje Taastrup', '0', '0', '0', '0', '0', '0', '55.65', '12.2833', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '0877', 'Valby', '0', '0', '0', '0', '0', '0', '55.7333', '12.1729', 4);
+
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '0900', 'København C', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '0910', 'København C', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '0929', 'København C', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
@@ -43,15 +42,6 @@ INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1059', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1060', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1061', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1062', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1063', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1064', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1065', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1066', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1067', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1068', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1069', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1070', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1071', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1072', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '1073', 'København K', '0', '0', '0', '0', '0', '0', '55.6777', '12.5709', 4);
@@ -1216,11 +1206,19 @@ INSERT INTO `category` (description, short_description, name )
 	        '21" wheel size', '21"', '21'
         );
 
+-- Images
+INSERT INTO `image` (`imageID`, `name`, `URL`, `alt`) VALUES (NULL, 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL);
 
 -- Brands
 INSERT INTO `brand` (`brandID`, `name`, `description`, `short_description`, `website`, `imageID`) VALUES (NULL, 'Kryptonite ', 'Over 40 years ago, Kryptonite began with a mission. While much has changed in bicycling, and bicycle security, our objective remains the same, we are here to empower you to protect what you value.\r\n\r\n \r\n\r\nThrough constant innovation, expert guidance, and our never-ending commitment, Kryptonite will continue to pursue our passion and do everything we can to ensure you can go where you want, when you want by offering smart, serious security solutions.', 'This is really cool bike care company, well known all over world for its iconic u-locks!', 'https://www.kryptonitelock.com/en/our-story/company-history.html', NULL);
 
+
+-- Wheel size
+INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '28', '');
+INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '26', '');
+
 -- Products
+INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 7', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, NULL, '1', '1');
 INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & orange', CURRENT_TIMESTAMP, '1', '1', '1');
 INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger mini 2', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
 INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 3', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'orange', CURRENT_TIMESTAMP, '1', '1', '1');
@@ -1232,8 +1230,11 @@ INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, 
 INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 9', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
 INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 10', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
 
--- Images
-INSERT INTO `image` (`imageID`, `name`, `URL`, `alt`) VALUES (NULL, 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL);
+-- Product has category
+INSERT INTO `product_has_category` (`productID`, `categoryID`) VALUES ('1', '2');
+
+-- Product has image
+INSERT INTO `product_has_images` (`productID`, `imageID`) VALUES ('1', '1');
 
 -- Posts
 INSERT INTO `post` (`postID`, `title`, `content`, `created_at`, `productID`, `userID`) VALUES (NULL, 'Move smart, harm less!', 'Pollution is also toxic to our economies and exerts a higher burden on the cost of health care. It results in lost productivity and leads to a diminished quality of life. Investing in bicycles and the infrastructure needed to make them convenient and affordable would help in many ways to reclaim a cleaner environment and make a contribution to the mental and physical health of the population.\r\n\r\nSome see the bike as just a form of recreation or kids play. However, bicycles are a major and practical form of transportation for hundreds of millions, and it could be for billions. One-third of U.S. carbon dioxide emissions are from motorized transport, yet half of all car trips are just 5 km or less. Such a distance takes only 15 minutes on a bike. Of course, cycling may not be the best option for every trip or by everyone. But if we improve the availability of bicycles and the facilities to support safe cycling, then they could offer a zero-carbon alternative to the car. It would also save us from billions of tons of CO2 emissions in the coming decades.', CURRENT_TIMESTAMP, NULL, 1);

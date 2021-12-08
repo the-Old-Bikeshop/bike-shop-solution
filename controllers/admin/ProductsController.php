@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 class ProductsController extends
     ViewController
 {
