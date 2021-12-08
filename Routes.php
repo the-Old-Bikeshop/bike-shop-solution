@@ -99,7 +99,7 @@ if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 1)) {
         ProductsController::CreateView('ProductsView');
     });
 
-    RouterController::set('selected-product', function() {
+    RouterController::set('product', function() {
         ProductsController::CreateView('SelectedProductView');
     });
 

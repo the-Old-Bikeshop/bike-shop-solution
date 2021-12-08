@@ -148,6 +148,10 @@ class ProductsController extends
         return $this->productImage;
     }
 
+    public function getOneProduct($id) {
+        return $this->products->fetchOne('product', 'productID', $id);
+    }
+
     public function getFavProducts() {
         return $this->like->getFavs();
     }

@@ -1,11 +1,14 @@
 <?php
 $product = new ProductsController();
-
+$product->setProduct();
 ?>
 
 <?php include_once "./components/customerNavigation.php"?>
 <div class="selected-product-page-wrapper">
     <div class="selected-product-base-information">
+            <?php $url = $product->getOneProduct('1'); ?>
+                                        
+                                    <?php echo $url; ?>
         <div class="selected-product-image-wrapper">
             <img class="selected-product-image" src="/bike-shop-solution/public/img/bike.png" alt="">
         </div>
