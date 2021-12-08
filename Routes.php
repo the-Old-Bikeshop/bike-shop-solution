@@ -73,61 +73,66 @@ if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 2)) {
 
 
 // Customer routes
-RouterController::set('home', function() {
-    HomeController::CreateView('HomeView');
-});
-
 if(isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 1)) {
-RouterController::set('your-settings', function() {
-    ProductsController::CreateView('CustomerSettingsView');
-});
+    RouterController::set('your-settings', function() {
+        ProductsController::CreateView('CustomerSettingsView');
+    });
 
-RouterController::set('your-orders', function() {
-    OrderController::CreateView('CustomerOrdersView');
-});
+    RouterController::set('your-orders', function() {
+        OrderController::CreateView('CustomerOrdersView');
+    });
 
-RouterController::set('your-wishlist', function() {
-    ProductsController::CreateView('CustomerWishlistView');
-});
+    RouterController::set('your-wishlist', function() {
+        ProductsController::CreateView('CustomerWishlistView');
+    });
 }
 
-RouterController::set('products', function() {
-    ProductsController::CreateView('ProductsView');
-});
+    RouterController::set('home', function() {
+        HomeController::CreateView('HomeView');
+    });
 
-RouterController::set('blog', function() {
-    BlogController::CreateView('BlogView');
-});
+    RouterController::set('products', function() {
+        ProductsController::CreateView('ProductsView');
+    });
 
-RouterController::set('about', function() {
-    AboutController::CreateView('AboutView');
-});
+    RouterController::set('products', function() {
+        ProductsController::CreateView('ProductsView');
+    });
 
-RouterController::set('contact', function() {
-    ContactController::CreateView('ContactView');
-});
+    RouterController::set('selected-product', function() {
+        ProductsController::CreateView('SelectedProductView');
+    });
 
-RouterController::set('sign-up', function() {
-    UserController::CreateView('RegisterView');
-});
+    RouterController::set('blog', function() {
+        BlogController::CreateView('BlogView');
+    });
 
-RouterController::set('sign-in', function() {
-    UserController::CreateView('LoginView');
-});
+    RouterController::set('about', function() {
+        AboutController::CreateView('AboutView');
+    });
 
-RouterController::set('customer-account', function() {
-    UserController::CreateView('CustomerAccountView');
-});
+    RouterController::set('contact', function() {
+        ContactController::CreateView('ContactView');
+    });
 
-RouterController::set('basket', function() {
-    BasketController::CreateView('BasketView');
-});
+    RouterController::set('sign-up', function() {
+        UserController::CreateView('RegisterView');
+    });
 
-RouterController::set('favorites', function() {
-    FavoriteProductsController::CreateView('FavoriteView');
-});
+    RouterController::set('sign-in', function() {
+        UserController::CreateView('LoginView');
+    });
 
+    RouterController::set('customer-account', function() {
+        UserController::CreateView('CustomerAccountView');
+    });
 
+    RouterController::set('basket', function() {
+        BasketController::CreateView('BasketView');
+    });
 
+    RouterController::set('favorites', function() {
+        FavoriteProductsController::CreateView('FavoriteView');
+    });
 ?>
 
