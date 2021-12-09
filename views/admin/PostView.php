@@ -132,7 +132,7 @@ $post->setPost();
                                     CKEDITOR.replace( 'postContent' );
                                 </script>
                             </div>
-                            <input type="hidden" name="userID" value="1">
+                            <input type="hidden" name="userID" value='<?php echo $_SESSION['userID'] ?? "" ?> ' >
 
                             <?php if(isset($post->getOnePost()['postID'])): ?>
                                 <input type="hidden" hidden

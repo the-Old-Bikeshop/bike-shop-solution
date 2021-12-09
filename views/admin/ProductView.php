@@ -283,7 +283,7 @@ $product->setProduct();
                                     >
                                 </div>
                             </div>
-                            <input type="hidden" name="created_by" value="1">
+                            <input type="hidden" name="created_by" value=<?php echo $_SESSION['userID'] ?? "" ?>>
                             <?php if(isset($product->getProduct()['productID'])): ?>
                                 <input type="hidden" hidden name = "productID" value = "<?php echo $product->getProduct()['productID']?>">
                             <?php endif; ?>
