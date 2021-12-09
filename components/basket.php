@@ -11,30 +11,89 @@
                     <img
                             src=""
                             alt=""
-                            width="300"
-                            height="300">
+                            width="150"
+                            height="150">
                 </div>
                 <div class="basket-product__info">
                     <div class="basket-product-info__name">
                         <h2>name</h2>
                     </div>
                     <div class="basket-product-info__math">
-                        <div>
+
                             <div class="basket-product-info__gty">
-                                <label for="quantity"></label>
-                                <input type="number" value="1">
+                                <label for="quantity">Qty</label>
+                                <input id="quantity" type="number" value="1">
                             </div>
                             <div class="basket-product-info__price">
                                 Price: 1000.00
                             </div>
 
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="basket-product">
+                <div class="basket-product__image">
+                    <img
+                            src=""
+                            alt=""
+                            width="150"
+                            height="150">
+                </div>
+                <div class="basket-product__info">
+                    <div class="basket-product-info__name">
+                        <h2>name</h2>
+                    </div>
+                    <div class="basket-product-info__math">
+
+                        <div class="basket-product-info__gty">
+                            <label for="quantity">Qty</label>
+                            <input id="quantity" type="number" value="1">
                         </div>
+                        <div class="basket-product-info__price">
+                            Price: 1000.00
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="basket-product">
+                <div class="basket-product__image">
+                    <img
+                            src=""
+                            alt=""
+                            width="150"
+                            height="150">
+                </div>
+                <div class="basket-product__info">
+                    <div class="basket-product-info__name">
+                        <h2>name</h2>
+                    </div>
+                    <div class="basket-product-info__math">
+
+                        <div class="basket-product-info__gty">
+                            <label for="quantity">Qty</label>
+                            <input id="quantity" type="number" value="1">
+                        </div>
+                        <div class="basket-product-info__price">
+                            Price: 1000.00
+                        </div>
+
+
 
                     </div>
 
                 </div>
             </div>
             <!--            loop ends here-->
+
 
         </div>
 

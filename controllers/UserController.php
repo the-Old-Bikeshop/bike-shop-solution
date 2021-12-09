@@ -172,6 +172,9 @@ class UserController extends ViewController {
     {
         return $this->userInfo;
     }
+    public function getUserInfoCheckout() {
+     return $this->user->fetchOne('user', 'userID', $_SESSION['userID']);
+    }
 
 
 

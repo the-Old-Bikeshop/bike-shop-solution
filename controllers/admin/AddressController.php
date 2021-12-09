@@ -111,4 +111,8 @@ class AddressController extends
         return $this->addressTypeConverter;
     }
 
+    public function getAddressForCheckout() {
+       return $this->addresses->fetchOne('address', 'addressID', $_POST['addressID']);
+    }
+
 }

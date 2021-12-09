@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="public/styles/components/assuranceBanner.css">
     <link rel="stylesheet" href="public/styles/components/newPosts.css">
     <link rel="stylesheet" href="public/styles/components/contactForm.css">
+    <link rel="stylesheet" href="public/styles/components/basket.css">
+    <link rel="stylesheet" href="public/styles/components/checkoutForm.css">
     <!-- Custom CSS Views-->
     <link rel="stylesheet" href="public/styles/views/homeView.css">
     <link rel="stylesheet" href="public/styles/views/productsView.css">
