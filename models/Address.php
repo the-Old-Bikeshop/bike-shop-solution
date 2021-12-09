@@ -66,6 +66,25 @@ class Address extends
             $this->message = $e->getMessage();
         }
     }
+    public function getCheckoutInvoiceAddress() {
+        $query = $this->db->dbCon->prepare("SELECT * FROM `address` WHERE `address_type` = 1 AND `userID` = :userID");
+        $query->bindValue( ':userID', $_SESSION['userID']);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getCheckoutDeliveryAddress() {
+        $query = $this->db->dbCon->prepare("SELECT * FROM `address` WHERE `address_type` = 2 AND `userID` = :userID");
+        $query->bindValue( ':userID', $_SESSION['userID']);
+        $query->execute();
+        $row = $query->rowCount();
+        $result = [];
+        if ($row > 0) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+           $this->getCheckoutInvoiceAddress();
+        }
+        return $result;
+    }
 
 
 }

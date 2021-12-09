@@ -111,4 +111,12 @@ class AddressController extends
         return $this->addressTypeConverter;
     }
 
+    public function getInvoiceAddress() {
+        return $this->addresses->getCheckoutInvoiceAddress();
+    }
+
+    public function getDeliveryAddress() {
+        return $this->addresses->getCheckoutDeliveryAddress();
+    }
+
 }
