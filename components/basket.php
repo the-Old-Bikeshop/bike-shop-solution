@@ -2,29 +2,29 @@
 
 ?>
 
-<div class="card">
+<div class="basket">
     <div class="product-container">
         <div class="product-wrapper">
             <!--            loop start here-->
-            <div class="product">
-                <div class="product__image">
+            <div class="basket-product">
+                <div class="basket-product__image">
                     <img
                             src=""
                             alt=""
                             width="300"
                             height="300">
                 </div>
-                <div class="product__info">
-                    <div class="product-info__name">
+                <div class="basket-product__info">
+                    <div class="basket-product-info__name">
                         <h2>name</h2>
                     </div>
-                    <div class="product-info__math">
+                    <div class="basket-product-info__math">
                         <div>
-                            <div class="product-info__gty">
+                            <div class="basket-product-info__gty">
                                 <label for="quantity"></label>
                                 <input type="number" value="1">
                             </div>
-                            <div class="product-info__price">
+                            <div class="basket-product-info__price">
                                 Price: 1000.00
                             </div>
 
@@ -40,7 +40,7 @@
 
     </div>
 
-    <div class="card-footer">
+    <div class="basket-footer">
         <div class="delivery">
             Delivery : 0
         </div>
