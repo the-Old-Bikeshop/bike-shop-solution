@@ -88,7 +88,7 @@ $user->setUser();
                             <label for="street_name">Street</label>
                             <input type="text" class="form-control" id="street_name" name="street_name"
                                    placeholder="Storegade"
-                                   value=" <?php echo $address->getAddressForCheckout()['street_name'] ?? '' ?>"
+                                   value=" <?php echo $address->getInvoiceAddress()['street_name'] ?? '' ?>"
                             >
                         </div>
 
@@ -96,7 +96,7 @@ $user->setUser();
                             <label for="address_content">nr</label>
                             <input type="text" class="form-control" id="address_content" name="address_content"
                                    placeholder="39, 4th"
-                                   value=" <?php echo $address->getAddressForCheckout()['address_content'] ?? '' ?>"
+                                   value=" <?php echo $address->getInvoiceAddress()['address_content'] ?? '' ?>"
                             >
                         </div>
 
@@ -146,7 +146,7 @@ $user->setUser();
                                             <label for="street_name">Street</label>
                                             <input type="text" class="form-control" id="street_name" name="street_name"
                                                    placeholder="Storegade"
-                                                   value=" <?php echo $address->getAddressForCheckout()['street_name'] ?? '' ?>"
+                                                   value=" <?php echo $address->getDeliveryAddress()['street_name'] ?? '' ?>"
                                             >
                                         </div>
 
@@ -154,7 +154,7 @@ $user->setUser();
                                             <label for="address_content">nr</label>
                                             <input type="text" class="form-control" id="address_content" name="address_content"
                                                    placeholder="39, 4th"
-                                                   value=" <?php echo $address->getAddressForCheckout()['address_content'] ?? '' ?>"
+                                                   value=" <?php echo $address->getDeliveryAddress()['address_content'] ?? '' ?>"
                                             >
                                         </div>
 
