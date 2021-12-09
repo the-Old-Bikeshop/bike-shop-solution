@@ -1,0 +1,11 @@
+@import "../colors.css";
+
+.checkout-container {
+    min-height: 100vh;
+    background: var(--background-primary);
+    color: var(--background-secondary);
+    display: flex;
+    justify-content: space-between;
+
+;
+}
