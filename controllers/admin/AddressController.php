@@ -114,5 +114,12 @@ class AddressController extends
     public function getAddressForCheckout() {
        return $this->addresses->fetchOne('address', 'addressID', $_POST['addressID']);
     }
+    public function getInvoiceAddress() {
+        return $this->addresses->getCheckoutInvoiceAddress();
+    }
+
+    public function getDeliveryAddress() {
+        return $this->addresses->getCheckoutDeliveryAddress();
+    }
 
 }
