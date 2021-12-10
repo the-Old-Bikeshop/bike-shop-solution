@@ -15,6 +15,7 @@ class ProductsController extends
     private $like;
     private $message;
     private $category;
+    private $recommendation;
 
     public function __construct()
     {
@@ -25,6 +26,7 @@ class ProductsController extends
         $this->image = new Image();
         $this->like = new FavoriteProductsController();
         $this->category = new ProductHasCategory();
+        $this->recommendation = new RecommendedProducts();
 
 
 
@@ -183,6 +185,11 @@ class ProductsController extends
 
     public function getAllBikeSpecifications() {
         return $this->products->fetchAll('bike_speks');
+    }
+
+    public function getRecommendation($categoryID)
+    {
+        return $this->recommendation->fetchRecommendedProducts($categoryID);
     }
 
 }
