@@ -86,6 +86,7 @@ CREATE TABLE `order` (
   `status` INT NOT NULL ,
   payment_status INT NOT NULL,
   total_price DECIMAL(10,2),
+  discount DECIMAL(2,2),
   userID INT NOT NULL,
   shippingID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES `user` (userID),
