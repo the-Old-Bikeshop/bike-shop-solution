@@ -1,5 +1,5 @@
-<?php $logout = new LogoutController();
-$logout->logoutCheck();?>
+<?php //$logout = new LogoutController();
+//$logout->logoutCheck();?>
 
 <div class="account-nav-items-wrapper">
     <div class="account-nav-header-wrapper">
@@ -12,6 +12,7 @@ $logout->logoutCheck();?>
         <form class="account-nav-form-wrapper" action="" method="POST">
             <input class="btn btn-danger" type="submit" name="logout" value="Sign out">
         </form>
+
     </div>
     <div class="account-nav-items-container">
         <a class="account-nav-items-link"  href="your-settings">

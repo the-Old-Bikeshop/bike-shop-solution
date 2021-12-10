@@ -8,8 +8,9 @@ class Order extends
 
     public function createOrder($data) {
 
+        $this->db->dbCon->beginTransaction();
+
         try {
-            $this->db->dbCon->beginTransaction();
             $query = $this->db->dbCon->prepare("INSERT INTO `order` (
                                                                     status,
                                                                     payment_status,
@@ -30,7 +31,7 @@ class Order extends
             $query->bindValue(':shippingID', $data['shippingID'] );
 
             $query->execute();
-
+            $_SESSION['active-orderID'] = $this->db->dbCon->lastInsertId();
             $this->db->dbCon->commit();
 
         }catch (Exception $e) {
@@ -68,5 +69,13 @@ class Order extends
             $this->message = $e->getMessage();
         }
 
+    }
+
+    public function fetchUserOrders() {
+        $query = $this->db->dbCon->prepare("SELECT * FROM `order_view` WHERE `email` = :email");
+        $query->bindValue(':email', $_SESSION['email']);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <?php include_once "./components/customerNavigation.php"?>
 <section class="checkout-container">
     <div class="basket-container">

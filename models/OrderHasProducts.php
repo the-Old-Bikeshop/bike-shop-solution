@@ -1,6 +1,6 @@
 <?php
 
-class OrderHasProducts extends
+class   OrderHasProducts extends
     BasisSQL
 {
     public function addProductToOrder($data) {

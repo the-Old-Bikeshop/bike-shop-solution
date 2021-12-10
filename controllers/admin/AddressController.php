@@ -117,11 +117,17 @@ class AddressController extends
 //    }
 
     public function getInvoiceAddress() {
-        return $this->addresses->getCheckoutInvoiceAddress();
+        if(isset($_SESSION['userID'])) {
+            return $this->addresses->getCheckoutInvoiceAddress();
+        }
+
     }
 
     public function getDeliveryAddress() {
-        return $this->addresses->getCheckoutDeliveryAddress();
+
+        if(isset($_SESSION['userID'])) {
+            return $this->addresses->getCheckoutDeliveryAddress();
+        }
     }
 
 }

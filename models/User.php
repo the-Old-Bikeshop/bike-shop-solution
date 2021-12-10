@@ -43,6 +43,37 @@ class User extends BasisSQL {
 
     }
 
+    public function registerAnonimusUser($data) {
+
+        $this->db->dbCon->beginTransaction();
+        try{
+            $query = $this->db->dbCon->prepare("INSERT INTO user ( first_name, last_name, email, phone_number, `role`)
+        VALUES ( :first_name, :last_name, :email, :phone_number, :role)");
+            //Bind values
+            $query->bindValue(':first_name', $data['first_name']);
+            $query->bindValue(':last_name', $data['last_name']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':phone_number', $data['phone_number']);
+            $query->bindValue(':role', $data['role']);
+
+            $_SESSION['userID']= $this->db->dbCon->lastInsertId();
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['first_name'] = $data['first_name'];
+            $_SESSION['last_name'] = $data['last_name'];
+            $_SESSION['phone_number'] = $data['phone_number'];
+
+            $query->execute();
+            $this->db->dbCon->commit();
+
+        } catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+            $this->message = $e;
+        }
+
+
+
+    }
+
        //Find user by email or username
        public function findUserByEmail($email){
 
