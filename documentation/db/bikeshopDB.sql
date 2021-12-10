@@ -167,7 +167,7 @@ CREATE TABLE product (
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   bike_specificationsID INT,
   brandID INT,
-  created_by INT NOT NULL,
+  created_by INT,
   FOREIGN KEY (bike_specificationsID) REFERENCES bike_specifications (bike_specificationsID),
   FOREIGN KEY (brandID) REFERENCES brand (brandID),
   FOREIGN KEY (created_by) REFERENCES `user` (userID)

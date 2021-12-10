@@ -1169,9 +1169,16 @@ INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '9970', 'Strandby', '0', '0', '0', '0', '0', '0', '57.5', '10.5', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '9981', 'Jerup', '0', '0', '0', '0', '0', '0', '57.5333', '10.4333', 4);
 INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES ('DK', '9982', 'Ålbæk', '0', '0', '0', '0', '0', '0', '57.5956', '10.4094', 4);
-INSERT INTO `delivery_zip` ( `country_code`, `postal_code`, `place_name`, `admin_name1`, `code_name1`, `admin_name2`, `code_name2`, `admin_name3`, `code_name3`, `latitude`, `longitude`, `accuracy`) VALUES;
 
---category
+
+
+
+INSERT INTO `user` (`userID`, `nick_name`, `first_name`, `last_name`, `password_hash`, `email`, `phone_number`, `created_at`, `role`) VALUES
+	(1, '', 'admin', 'admin', '$2y$15$u1Fe2PaUxs6iNvTJZkSpqutTq0H9bBWYhZVMtWyiY9quyQS7M8i12', 'admin@owl.com', NULL, '2021-12-10 05:31:09', 2);
+
+
+
+# category
 
 INSERT INTO `category` (description, short_description, name )
 	VALUES
@@ -1206,35 +1213,187 @@ INSERT INTO `category` (description, short_description, name )
 	        '21" wheel size', '21"', '21'
         );
 
+
+
 -- Images
-INSERT INTO `image` (`imageID`, `name`, `URL`, `alt`) VALUES (NULL, 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL);
+
+INSERT INTO `image` ( `name`, `URL`, `alt`) VALUES ( 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL);
+INSERT INTO `image` ( `name`, `URL`, `alt`)
+VALUES
+( 'bike tube', 'https://imgur.com/a/zaCRIlQ', NULL),
+( 'image', 'http://ww1.prweb.com/prfiles/2014/07/14/12017079/Priority%20Hero.JPG', 'bicycle'),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://1.bp.blogspot.com/-kKM8pNJIjEY/T6GKsHfKghI/AAAAAAAAAJQ/eJq7Gbu5fkI/s1600/Jopo_+turkoosi+low.jpg', ''),
+( '', 'https://1.bp.blogspot.com/-BABYKd4mtnA/T6GJQw00cxI/AAAAAAAAAJA/5683C4gdSlw/s1600/Jopo_+keltainen+low.jpg', ''),
+( '', 'https://www.bicycleretailer.com/sites/default/files/styles/colorbox_popup/public/images/article/auto-2_0.jpeg?itok=yhlwfPIB', ''),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://www.bicycleretailer.com/sites/default/files/styles/colorbox_popup/public/images/article/auto-2_0.jpeg?itok=yhlwfPIB', ''),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://www.bicycleretailer.com/sites/default/files/styles/colorbox_popup/public/images/article/file.gif?itok=vms8yoKY', ''),
+( '', 'https://www.peacebicycles.com/wp-content/uploads/2013/02/peace-bicycles-diamond-dutch-cruiser-bike-1-4.jpg', ''),
+( '', 'https://cloudfront.ojcommerce.com/img/prods/large/s5991a_schwinn_baywood_bicycle.jpg', ''),
+( '', 'https://static.diamondback.com/version1637262190/frontend/Regent/alta_diamondback/en_US/images/DB22-Primary-Logo-Wordmark-White-Org.png', ''),
+( '', 'http://photos.prnewswire.com/prnfull/20160727/393596LOGO?p=publish', '');
+
+
+
 
 -- Brands
-INSERT INTO `brand` (`brandID`, `name`, `description`, `short_description`, `website`, `imageID`) VALUES (NULL, 'Kryptonite ', 'Over 40 years ago, Kryptonite began with a mission. While much has changed in bicycling, and bicycle security, our objective remains the same, we are here to empower you to protect what you value.\r\n\r\n \r\n\r\nThrough constant innovation, expert guidance, and our never-ending commitment, Kryptonite will continue to pursue our passion and do everything we can to ensure you can go where you want, when you want by offering smart, serious security solutions.', 'This is really cool bike care company, well known all over world for its iconic u-locks!', 'https://www.kryptonitelock.com/en/our-story/company-history.html', NULL);
+
+INSERT INTO `brand` ( `name`, `description`, `short_description`, `website`, `imageID`)
+VALUES
+     ( 'Kryptonite ', 'Over 40 years ago, Kryptonite began with a mission. While much has changed in bicycling, and bicycle security, our objective remains the same, we are here to empower you to protect what you value.\r\n\r\n \r\n\r\nThrough constant innovation, expert guidance, and our never-ending commitment, Kryptonite will continue to pursue our passion and do everything we can to ensure you can go where you want, when you want by offering smart, serious security solutions.', 'This is really cool bike care company, well known all over world for its iconic u-locks!', 'https://www.kryptonitelock.com/en/our-story/company-history.html', NULL),
+	( 'Diamondback', 'Founded in 1977 as a California company, it was originally a BMX brand.  A major bicycle manufacturer based in Washington state, Diamondback Bicycle brands offers an array of models you can ride on the trails or the road for men, women, and children.It is the most popular and successful bicycle brands in the USA.', 'Known For: BMX, Mountain bike, Road bikes, Hybrid', 'https://www.diamondback.com/', '15'),
+	( 'Sixthreezero','They stand behind their products 100%. Sixthreezero allows customers to test-ride a bike for 365 days after purchase. If at any time during the first year a customer does not love their bike, sixthreezero will accept a return. They don’t charge restocking fees and will pay the return shipping.', 'The company prides themselves on producing bikes that are durable, reliable, comfortable, and affordable.', 'https://www.sixthreezero.com/', '16');
+
 
 
 -- Wheel size
+
 INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '28', '');
 INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '26', '');
+INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '24', '');
+INSERT INTO `wheel_size` (`wheel_sizeID`, `wheel_ISO`, `tire_ISO`) VALUES (NULL, '21', '');
+
+
+
+-- brake
+
+INSERT INTO `braking_system` (`name`, `condition`)
+VALUES
+( 'caliper brake', 1),
+( 'side-pull caliper brake', 2),
+( 'centre-pull caliper brake', 1),
+( 'direct-mount calipers', 2),
+( 'U-brake', 4),
+( 'V-brakes', 1),
+( 'Cantilever brake', 1),
+( 'roller cam brake', 1),
+( 'delta brake', 1),
+( 'hydraulic rim brake', 1),
+( 'Coaster brakes', 1),
+( 'Disc brakes', 1),
+( 'Mechanical disc brakes', 1),
+( 'Drum brakes', 1);
+
+
+
+-- drive
+
+INSERT INTO `drive_type` ( `name`, `description`, `short_description`)
+VALUES
+( '2x drivetrain', '', 'asdaaa'),
+( '1x drivetrain', '', ''),
+( 'mono', '', '');
+
+
+
+-- shipping
+
+INSERT INTO `shipping` (`shippingID`, `name`, `description`)
+VALUES
+(NULL, 'courier', NULL),
+(NULL, 'Owl delivery', NULL),
+(NULL, 'pick-up', NULL);
+
+
+
+-- bike-specifications
+
+INSERT INTO `bike_specifications` (`type`, `back_basket`, `mudguards`, `front_basket`, `lights`, `disk_brakes`, `wheel_sizeID`, `braking_systemID`, `drive_typeID`)
+VALUES
+( 'city bike', 1, 1, 1, 1, 1, 1, 6, 2 ),
+( 'sport', 0, 1, 0, 1, 1, 1, 12, 1 ),
+( 'sport', 0, 1, 0, 1, 1, 1, 12, 1 ),
+( 'weekend', 1, 1, 1, 1, 0, 3, 14, 3);
+
 
 -- Products
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 7', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, NULL, '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & orange', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger mini 2', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 3', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'orange', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 4', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 5', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'red', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 6', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 7', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 8', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 9', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
-INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`, `created_by`) VALUES (NULL, 'Kryptonite Messenger Mini 10', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1', '1');
 
--- Product has category
-INSERT INTO `product_has_category` (`productID`, `categoryID`) VALUES ('1', '2');
+INSERT INTO `product` (`productID`, `name`, `description`, `short_description`, `weight`, `price`, `model_name`, `stock`, `length`, `color`, `created_at`, `bike_specificationsID`, `brandID`)
+VALUES
+ (NULL, 'Kryptonite Messenger Mini 7', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, '2', '1'),
+ (NULL, 'Kryptonite Messenger Mini', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & orange', CURRENT_TIMESTAMP, '1', '2'),
+ (NULL, 'Kryptonite Messenger mini 2', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '3', '2'),
+ (NULL, 'Kryptonite Messenger Mini 3', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'orange', CURRENT_TIMESTAMP, '1', '3'),
+ (NULL, 'Kryptonite Messenger Mini 4', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '4', '3'),
+ (NULL, 'Kryptonite Messenger Mini 5', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'red', CURRENT_TIMESTAMP, '1', '2'),
+ (NULL, 'Kryptonite Messenger Mini 6', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '4', '3'),
+ (NULL, 'Kryptonite Messenger Mini 7', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, '2', '1'),
+ (NULL, 'Kryptonite Messenger Mini 8', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '3', '3'),
+ (NULL, 'Kryptonite Messenger Mini 9', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '3', '2'),
+ (NULL, 'Kryptonite Messenger Mini 10', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '2'),
+ (NULL, 'Kryptonite Messenger Mini 11', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black & white', CURRENT_TIMESTAMP, '1', '3'),
+ (NULL, 'Kryptonite Messenger Mini 13', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '4', '2'),
+ (NULL, 'Kryptonite Messenger Mini 14', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '2', '3'),
+ (NULL, 'Kryptonite Messenger Mini 15', NULL, NULL, NULL, '876', 'Messenger Mini', '345', NULL, 'black', CURRENT_TIMESTAMP, '1', '1');
+
+
+-- product has category
+
+INSERT INTO `product_has_category` (`productID`, `categoryID`)
+VALUES
+('1', '2'),
+('1', '3'),
+('1', '5'),
+('1', '7'),
+('2', '2'),
+('3', '1'),
+('3', '2'),
+('4', '1'),
+('4', '7'),
+('5', '1'),
+('5', '6'),
+('6', '1'),
+('6', '9'),
+('7', '1'),
+('7', '2'),
+('8', '1'),
+('8', '8'),
+('9', '1'),
+('9', '9'),
+('11', '1'),
+('12', '1'),
+('13', '7'),
+('13', '3'),
+('14', '1'),
+('13', '1'),
+('14', '2'),
+('14', '6');
+
+
 
 -- Product has image
-INSERT INTO `product_has_images` (`productID`, `imageID`) VALUES ('1', '1');
+
+INSERT INTO `product_has_images` (`productID`, `imageID`)
+VALUES
+('1', '3'),
+('3', '2'),
+('4', '3'),
+('5', '4'),
+('6', '5'),
+('7', '6'),
+('8', '7'),
+('9', '8'),
+('10', '9'),
+('11', '10'),
+('12', '11'),
+('13', '3'),
+('14', '12'),
+('2', '14'),
+('1', '11'),
+('3', '10'),
+('15', '14');
+
 
 -- Posts
-INSERT INTO `post` (`postID`, `title`, `content`, `created_at`, `productID`, `userID`) VALUES (NULL, 'Move smart, harm less!', 'Pollution is also toxic to our economies and exerts a higher burden on the cost of health care. It results in lost productivity and leads to a diminished quality of life. Investing in bicycles and the infrastructure needed to make them convenient and affordable would help in many ways to reclaim a cleaner environment and make a contribution to the mental and physical health of the population.\r\n\r\nSome see the bike as just a form of recreation or kids play. However, bicycles are a major and practical form of transportation for hundreds of millions, and it could be for billions. One-third of U.S. carbon dioxide emissions are from motorized transport, yet half of all car trips are just 5 km or less. Such a distance takes only 15 minutes on a bike. Of course, cycling may not be the best option for every trip or by everyone. But if we improve the availability of bicycles and the facilities to support safe cycling, then they could offer a zero-carbon alternative to the car. It would also save us from billions of tons of CO2 emissions in the coming decades.', CURRENT_TIMESTAMP, NULL, 1);
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `productID`, `userID`)
+VALUES
+( 'Move smart, harm less!', 'Pollution is also toxic to our economies and exerts a higher burden on the cost of health care. It results in lost productivity and leads to a diminished quality of life. Investing in bicycles and the infrastructure needed to make them convenient and affordable would help in many ways to reclaim a cleaner environment and make a contribution to the mental and physical health of the population.\r\n\r\nSome see the bike as just a form of recreation or kids play. However, bicycles are a major and practical form of transportation for hundreds of millions, and it could be for billions. One-third of U.S. carbon dioxide emissions are from motorized transport, yet half of all car trips are just 5 km or less. Such a distance takes only 15 minutes on a bike. Of course, cycling may not be the best option for every trip or by everyone. But if we improve the availability of bicycles and the facilities to support safe cycling, then they could offer a zero-carbon alternative to the car. It would also save us from billions of tons of CO2 emissions in the coming decades.', CURRENT_TIMESTAMP, NULL, 1);
+
+-- company details
+
+INSERT INTO `company_details` (`company_detailsID`, `company_description`, `opening_hours`, `mission`, `vision`, `STATEMENT`, `phone`, `address`, `email`, `instagram`) VALUES (NULL, 'Two guys with a passion for bikes started OWL in 2021. ', '08-21', 'OWL hase one goal, to save as much bicycles from turning into scrap metal as possible. We refurbish, repair and revive bicycles.', 'Every new bicycle on the street makes the world better.', 'we will not stop as long as there are bikes in need of saving.', '99999999', 'Storegade 01, Esbjerg 6700', 'contact@owl.com', 'not yet');
