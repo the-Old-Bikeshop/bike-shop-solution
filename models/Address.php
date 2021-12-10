@@ -7,9 +7,21 @@ class Address extends
 
     public function createAddress($data) {
 
+        $this->db->dbCon->beginTransaction();
+
 
         try {
-            $query = $this->db->dbCon->prepare("INSERT INTO `address` (
+//            check if exist
+
+            $checkQuery = $this->db->dbCon->prepare("SELECT * FROM `address` WHERE `address_type` = :address_type AND `userID` = :userID ");
+
+            $checkQuery->bindValue(':address_type' ,$data["address_type"] );
+            $checkQuery->bindValue(':userID' ,$data["userID"] );
+
+            $checkQuery->execute();
+            if ($checkQuery->rowCount() == 0) {
+
+                $query = $this->db->dbCon->prepare("INSERT INTO `address` (
                                                                             street_name, 
                                                                             address_content, 
                                                                             phone_number, 
@@ -25,13 +37,16 @@ class Address extends
                                                                             :postalCodeID
                                                                             )");
 
-            $query->bindValue(":street_name", $data["street_name"]);
-            $query->bindValue(":address_content", $data["address_content"]);
-            $query->bindValue(":phone_number", $data["phone_number"]);
-            $query->bindValue(":address_type", $data["address_type"]);
-            $query->bindValue(":userID", $data["userID"]);
-            $query->bindValue(":postalCodeID", $data["postalCodeID"]);
-            $query->execute();
+                $query->bindValue(":street_name", $data["street_name"]);
+                $query->bindValue(":address_content", $data["address_content"]);
+                $query->bindValue(":phone_number", $data["phone_number"]);
+                $query->bindValue(":address_type", $data["address_type"]);
+                $query->bindValue(":userID", $data["userID"]);
+                $query->bindValue(":postalCodeID", $data["postalCodeID"]);
+                $query->execute();
+            } else {
+                $this->message = "You already have a invoice or delivery address set, update them if you what to chant to change them.";
+            }
 
 
         }catch (Exception $e) {
@@ -70,7 +85,7 @@ class Address extends
         $query = $this->db->dbCon->prepare("SELECT * FROM `address` WHERE `address_type` = 1 AND `userID` = :userID");
         $query->bindValue( ':userID', $_SESSION['userID']);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
     public function getCheckoutDeliveryAddress() {
         $query = $this->db->dbCon->prepare("SELECT * FROM `address` WHERE `address_type` = 2 AND `userID` = :userID");
@@ -79,7 +94,7 @@ class Address extends
         $row = $query->rowCount();
         $result = [];
         if ($row > 0) {
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $result = $query->fetch(PDO::FETCH_ASSOC);
         } else {
            $this->getCheckoutInvoiceAddress();
         }
