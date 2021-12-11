@@ -8,6 +8,8 @@ class CheckoutController
     private $user;
     private $userData;
     private $productsToOrder;
+    private $title;
+    private $content;
 
     public function __construct()
     {
@@ -42,12 +44,14 @@ class CheckoutController
     }
 
     public function createAnonymUser() {
+        $this->email();
         if(!isset($_SESSION['email'])) {
             $this->setUserData();
             $this->user->registerAnonimusUser($this->userData);
             $this->setAddress();
             $this->createOrder();
             $this->addProductToOrder();
+
     }
 
 
@@ -134,7 +138,7 @@ class CheckoutController
     public function addProductToOrder() {
         foreach ($_SESSION['products'] as $product) {
             $this->productsToOrder->addProductToOrder([
-                'orderID' => $_SESSION['active-orderID'],
+                'orderID' => $_SESSION['active-orderID'] ?? 1,
                 'productID' => $product['productID'],
                 'quantity' => $product['quantity']
             ]);
@@ -143,6 +147,37 @@ class CheckoutController
     }
 
 //    send confirmation email to user
+
+
+
+    private function email() {
+        $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
+        $order = $_SESSION['active_orderID'] ?? "test";
+        $productList = '';
+        if(isset($_SESSION['basket'])) {
+            foreach ($_SESSION['basket'] as $product){
+                    $productList = ' 
+                    <tr>
+                        <td>'
+                             . $product['name'] ?? 'name'
+                       . '</td>
+                        <td>' .
+                            intval($product['quantity'] ) ?? 1
+                       . '</td>
+                        <td>' .
+                              intval($product['price']) * intval($product['quantity']) ?? '1000'
+                       . '</td>
+                    </tr>';
+            }
+        }
+
+
+        $this->content = $productList;
+
+        $this->title = "Confirming order nr: " .$_SESSION['active-orderID'];
+        mail('alburaul@gmail.com', $this->title, $this->content, "From: no-reply@owl.com" );
+//        $this->message[] = "Thank you for your message";
+    }
 
 
 
