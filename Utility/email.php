@@ -3,21 +3,7 @@
 //$session = new SessionHandle();
 //$session->startSession();
 
-$_SESSION['active_orderID'] = 1244233;
 
-$_SESSION['basket'] = [
-    [
-        'name' => 'one',
-        'quantity' => 2,
-        'price' => 200
-    ],
-
-    [
-        'name' => 'two',
-        'quantity' => 1,
-        'price' => 1200
-    ]
-]
 
 ?>
 
