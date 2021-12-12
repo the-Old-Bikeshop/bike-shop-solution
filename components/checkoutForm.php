@@ -111,9 +111,9 @@ $checkout->processCheckout();
                                     <?php if ($address->fetchAllZipCodes() !== null): ?>
                                         <?php foreach ($address->fetchAllZipCodes() as $zipCode) : ?>
                                             <option value = "<?php echo $zipCode['postal_code']?>"
-                                                <?php if(($address->getOneAddress()!==null) && $address->fetchAllZipCodes()
+                                                <?php if(($address->getInvoiceAddress()!==null) && $address->fetchAllZipCodes()
                                                     !== null && isset($zipCode) &&
-                                                    ($address->getOneAddress()['postalCodeID'] == $zipCode['postal_code'])
+                                                    ($address->getInvoiceAddress()['postalCodeID'] == $zipCode['postal_code'])
                                                 ):?>
                                                     selected
                                                 <?php endif; ?>
@@ -176,11 +176,19 @@ $checkout->processCheckout();
                                     <?php if ($address->fetchAllZipCodes() !== null): ?>
                                         <?php foreach ($address->fetchAllZipCodes() as $zipCode) : ?>
                                             <option value = "<?php echo $zipCode['postal_code']?>"
-                                                <?php if(($address->getOneAddress()!==null) && $address->fetchAllZipCodes()
-                                                    !== null && isset($zipCode) &&
-                                                    ($address->getOneAddress()['postalCodeID'] == $zipCode['postal_code'])
+                                                <?php if(($address->getDeliveryAddress()!==null)
+                                                 && $address->fetchAllZipCodes() !== null
+                                                    && isset($zipCode)
+                                                    && ($address->getDeliveryAddress()['postalCodeID'] == $zipCode['postal_code'])
                                                 ):?>
                                                     selected
+                                                <?php else: ?>
+                                                    <?php if(!isset($shipping['shippingID']) && isset($order->getOrder()['oderID'])
+                                                        && $shipping['shippingID'] ==
+                                                        $order->getOrder()['orderID']):?>
+                                                        selected
+                                                    <?php endif; ?>
+
                                                 <?php endif; ?>
                                             > <?php
                                                 if( $address->fetchAllZipCodes() !== null && isset($zipCode) ) {
@@ -199,7 +207,7 @@ $checkout->processCheckout();
                                 <input type="text" class="form-control" id="delivery_street_name"
                                        name="delivery_street_name"
                                        placeholder="Storegade"
-                                       value=" <?php echo $address->getDeliveryAddress()['street_name'] ?? '' ?>"
+                                       value=" <?php echo $address->getDeliveryAddress()['street_name'] ?? $address->getInvoiceAddress()['street_name'] ?? '' ?>"
                                 >
                             </div>
 
@@ -208,7 +216,7 @@ $checkout->processCheckout();
                                 <input type="text" class="form-control" id="delivery_address_content"
                                        name="delivery_address_content"
                                        placeholder="39, 4th"
-                                       value=" <?php echo $address->getDeliveryAddress()['address_content'] ?? '' ?>"
+                                       value=" <?php echo $address->getDeliveryAddress()['address_content'] ?? $address->getInvoiceAddress()['address_content'] ?? '' ?>"
                                 >
                             </div>
 

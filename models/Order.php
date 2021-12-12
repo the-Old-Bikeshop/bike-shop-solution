@@ -31,7 +31,7 @@ class Order extends
             $query->bindValue(':shippingID', $data['shippingID'] );
 
             $query->execute();
-            $_SESSION['active-orderID'] = $this->db->dbCon->lastInsertId();
+            $_SESSION['active_orderID'] = $this->db->dbCon->lastInsertId();
             $this->db->dbCon->commit();
 
         }catch (Exception $e) {

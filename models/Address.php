@@ -43,11 +43,23 @@ class Address extends
                 $query->bindValue(":address_type", $data["address_type"]);
                 $query->bindValue(":userID", $data["userID"]);
                 $query->bindValue(":postalCodeID", $data["postalCodeID"]);
-                $query->execute();
+
+
+                if($query->execute()) {
+                   $this->setAddressToSession($data);
+                }
+
+            } else {
+                $result = $checkQuery->fetch(PDO::FETCH_ASSOC);
+                $this->updateAddress($data, $result['addressID']);
+
             }
+
+            $this->db->dbCon->commit();
 
 
         }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
             $this->message = $e->getMessage();
         }
     }
@@ -72,7 +84,9 @@ class Address extends
             $query->bindValue(":postalCodeID", $data["postalCodeID"]);
             $query->bindValue(":addressID", $id);
 
-            $query->execute();
+            if($query->execute()) {
+                $this->setAddressToSession($data);
+            }
 
 
         }catch (Exception $e) {
@@ -94,9 +108,21 @@ class Address extends
         if ($row > 0) {
             $result = $query->fetch(PDO::FETCH_ASSOC);
         } else {
-           $this->getCheckoutInvoiceAddress();
+           $result = $this->getCheckoutInvoiceAddress();
         }
         return $result;
+    }
+
+    private function setAddressToSession($data) {
+            if ($data["address_type"] === 1) {
+                $_SESSION['active_invoice_address'] = $data["street_name"] . " " . $data["address_content"] . " " .
+                    $data["postalCodeID"];
+
+            } else {
+                $_SESSION['active_delivery_address'] = $data["street_name"] . " " . $data["address_content"] . " " .
+                    $data["postalCodeID"];
+            }
+
     }
 
 

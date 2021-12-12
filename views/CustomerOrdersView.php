@@ -37,24 +37,24 @@ $order->setOrders();
                             <td><?php echo $res['name']?></td>
                             <td><?php echo $res['quantity']?></td>
                             <td><?php echo $res['total_price']?></td>
-                            <td>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID']
-                                    ?>">
-                                    <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">
-                                </form>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID'] ?>">
-                                    <input type="submit" name="addProduct" value="Add product" class="btn
-                                    btn-outline-secondary
-                                    btn-sm" >
-                                </form>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="orderID" value="<?php echo $res['orderID']
-                                    ?>">
-                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
-                                </form>
-                            </td>
+<!--                            <td>-->
+<!--                                <form action="" method="post" class="d-inline-block p-0 m-0">-->
+<!--                                    <input type="hidden" hidden name="orderID" value="--><?php //echo $res['orderID']
+//                                    ?><!--">-->
+<!--                                    <input type="submit" name="update" value="update" class="btn btn-outline-secondary btn-sm">-->
+<!--                                </form>-->
+<!--                                <form action="" method="post" class="d-inline-block p-0 m-0">-->
+<!--                                    <input type="hidden" hidden name="orderID" value="--><?php //echo $res['orderID'] ?><!--">-->
+<!--                                    <input type="submit" name="addProduct" value="Add product" class="btn-->
+<!--                                    btn-outline-secondary-->
+<!--                                    btn-sm" >-->
+<!--                                </form>-->
+<!--                                <form action="" method="post" class="d-inline-block p-0 m-0">-->
+<!--                                    <input type="hidden" hidden name="orderID" value="--><?php //echo $res['orderID']
+//                                    ?><!--">-->
+<!--                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >-->
+<!--                                </form>-->
+<!--                            </td>-->
                         </tr>
                     <?php endforeach ?>
                     </tbody>

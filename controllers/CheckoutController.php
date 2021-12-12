@@ -20,19 +20,24 @@ class CheckoutController
 
 //        test data
 
-        $_SESSION['active_orderID'] = 1244233;
 
         $_SESSION['basket'] = [
             [
+                'productID' => '1',
                 'name' => 'one',
                 'quantity' => 2,
-                'price' => 200
+                'price' => 200,
+                'discount' => 0,
+
             ],
 
             [
+                'productID' => '4',
                 'name' => 'two',
                 'quantity' => 1,
-                'price' => 1200
+                'price' => 1200,
+                'discount' => 0,
+
             ]
         ];
 
@@ -86,7 +91,7 @@ class CheckoutController
             'address_type' => 1,
             'userID' => trim($_SESSION['userID']) ?? "",
             'postalCodeID' => trim($_POST['invoice_postalCodeID']) ?? "",
-            'phone_number' => ""
+            'phone_number' => $_POST['phone_number'] ?? ""
         ];
         return $invoiceAddressData;
 
@@ -97,18 +102,19 @@ class CheckoutController
             FILTER_SANITIZE_STRING);
 
         $deliveyAddressData = [
-            'street_name' => trim($_POST['delivery_street_name']) ?? "",
-            'address_content' => trim($_POST['delivery_address_content']) ?? "",
+            'street_name' => trim($_POST['delivery_street_name']) ?? trim($_POST['invoice_street_name']) ?? "",
+            'address_content' => trim($_POST['delivery_address_content']) ?? trim($_POST['invoice_address_content']) ?? "",
             'address_type' => 2,
-            'userID' => trim($_SESSION['userID']) ?? "",
-            'postalCodeID' => trim($_POST['delivery_postalCodeID']) ?? "",
-            'phone_number' => ""
+            'userID' => trim($_SESSION['userID']),
+            'postalCodeID' => trim($_POST['delivery_postalCodeID']) ?? trim($_POST['invoice_postalCodeID']) ?? "",
+            'phone_number' => $_POST['phone_number'] ?? ""
         ];
         return $deliveyAddressData;
 
     }
 
     public function setAddress() {
+
         $this->address->getAddresses()->createAddress($this->setInvoiceAddressInfo());
         $this->address->getAddresses()->createAddress($this->setDeliveryAddressInfo());
     }
@@ -120,20 +126,37 @@ class CheckoutController
 
     public function setOrderData() {
 
+
         $_POST = filter_input_array(INPUT_POST,
             FILTER_SANITIZE_STRING);
 
         $orderData = [
             'status' => 0,
             'payment_status' => 0,
-            'total_price' => $_SESSION['total_price'] ?? 0,
+            'total_price' => $this->setTotalPrice(),
             'userID' => $_SESSION['userID'],
             'shippingID' => trim($_POST['shippingID']) ?? ""
         ];
         return $orderData;
     }
 
+    private function setTotalPrice() {
+        $totalPrice = 0;
+        foreach ($_SESSION['basket'] as $item) {
+            if(isset($item['discount']) && $item['discount'] > 0){
+                $totalPrice += (($item['price'] - ($item['price']*($item['discount']/100))) * $item['quantity']);
+
+            } else {
+                $totalPrice += ($item['price'] * $item['quantity']);
+            }
+
+
+        }
+        return $totalPrice;
+    }
+
     public function createOrder() {
+
         $this->order->getOrders()->createOrder($this->setOrderData());
     }
 
@@ -152,9 +175,9 @@ class CheckoutController
 //    }
 
     public function addProductToOrder() {
-        foreach ($_SESSION['products'] as $product) {
+        foreach ($_SESSION['basket'] as $product) {
             $this->productsToOrder->addProductToOrder([
-                'orderID' => $_SESSION['active-orderID'] ?? 1,
+                'orderID' => $_SESSION['active_orderID'],
                 'productID' => $product['productID'],
                 'quantity' => $product['quantity']
             ]);
@@ -168,7 +191,9 @@ class CheckoutController
 
     private function email() {
         $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
-        $order = $_SESSION['active_orderID'] ?? "test";
+        $order = $_SESSION['active_orderID'];
+        $invoiceAddress = $_SESSION['active_invoice_address'];
+        $deliveryAddress = $_SESSION['active_delivery_address'];
         $productList = '';
 
         $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -233,7 +258,11 @@ class CheckoutController
         $this->content .= "<h1>Hello $name  Thank you for your order</h1> "."\r\n";
         $this->content .= "</td></tr><tr><td> "."\r\n";
         $this->content .= "<h2>payment for order nr $order was confirmed, "."\r\n";
-        $this->content .= "it will be dispatched as soon as possible</h2> "."\r\n";
+        $this->content .= "it will be dispatched as soon as possible at</h2> "."\r\n";
+        $this->content .= "<h3>Delivery address:</h3> "."\r\n";
+        $this->content .= "<h3>$deliveryAddress</h3> "."\r\n";
+        $this->content .= "<h3>Invoicing Address:</h3> "."\r\n";
+        $this->content .= "<h3>$invoiceAddress</h3> "."\r\n";
         $this->content .= "</td></tr></tbody></table><table><tbody> "."\r\n";
         $this->content .= "<tr><td><h2>Order Details</h2></td></tr></tbody></table> "."\r\n";
         $this->content .= "<table><tbody><tr><th>Item</th><th>Quantity</th><th>Price</th></tr> "."\r\n";
@@ -243,7 +272,7 @@ class CheckoutController
 
 
 
-        $this->title = "Confirming order nr: " .$_SESSION['active-orderID'];
+        $this->title = "Confirming order nr: " .$_SESSION['active_orderID'];
         mail('alburaul@gmail.com', $this->title, $this->content, $headers );
 //        $this->message[] = "Thank you for your message";
     }
