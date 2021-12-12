@@ -25,6 +25,9 @@ $session = new SessionHandle();
 $session->startSession();
 $session->setToken();?>
 
+<?php $logout = new LogoutController();
+$logout->logoutCheck();?>
+
 <?php require('./components/Header.php')?>
 
     <?php require_once('./Routes.php');
