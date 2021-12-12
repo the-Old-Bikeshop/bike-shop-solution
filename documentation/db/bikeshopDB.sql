@@ -303,3 +303,8 @@ SELECT p.productID, p.model_name, p.name, p.price, p.created_at, i.URL, i.alt
 FROM product p
 LEFT JOIN product_has_images phi ON( p.productID = phi.productid)
 LEFT JOIN image i ON (phi.imageid = i.imageid);
+
+CREATE OR REPLACE VIEW product_with_category AS
+SELECT p.productID, c.name
+FROM product p, product_has_category phc, category c
+WHERE p.productID = phc.productID AND phc.categoryID = c.categoryID;

@@ -77,7 +77,7 @@ SELECT poi.imageID AS post_image FROM post_has_images poi;
 
 
 CREATE OR REPLACE VIEW simple_product_with_image AS
-SELECT p.productID, p.model_name, p.name, p.price, i.URL, i.alt
+SELECT min(p.productID), p.model_name, p.name, p.price, i.URL, i.alt
 FROM product p, product_has_images phi
 WHERE p.productID = phi.productID
 LEFT JOIN image i ON (phi.imageID = i.imageID);
