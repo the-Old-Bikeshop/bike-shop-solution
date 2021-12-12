@@ -308,3 +308,13 @@ CREATE OR REPLACE VIEW product_with_category AS
 SELECT p.productID, c.name
 FROM product p, product_has_category phc, category c
 WHERE p.productID = phc.productID AND phc.categoryID = c.categoryID;
+
+
+DELIMITER //
+CREATE TRIGGER `afterInsertInOrderHasProducts` AFTER INSERT
+    ON `order_has_products`
+    FOR EACH ROW
+    UPDATE product p
+    SET p.stock = p.stock - NEW.quantity
+    WHERE p.productID = NEW.productID;
+DELIMITER //
