@@ -152,6 +152,10 @@ class ProductsController extends
         return $this->products->fetchOne('product', 'productID', $id);
     }
 
+    public function getProductBikeSpecifications($id) {
+        return $this->products->fetchOne('bike_specifications', 'bike_specificationsID', $id);
+    }
+
     public function getFavProducts() {
         return $this->like->getFavs();
     }

@@ -1,9 +1,4 @@
 <?php
-
-
-
-
-
 class BikeSpecificationController extends ViewController
 {
 

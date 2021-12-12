@@ -1,20 +1,17 @@
 <?php
 $product = new ProductsController();
-$product->setProduct();
 ?>
 
 <?php include_once "./components/customerNavigation.php"?>
 <div class="selected-product-page-wrapper">
     <div class="selected-product-base-information">
-            <?php $url = $product->getOneProduct('1'); ?>
-                                        
-                                    <?php echo $url; ?>
         <div class="selected-product-image-wrapper">
             <img class="selected-product-image" src="/bike-shop-solution/public/img/bike.png" alt="">
         </div>
         <div class="selected-product-information-wrapper">
             <div class="selected-product-information-container">
-                <h1 class="selected-product-information-heading">Some bike</h1>
+                <?php $product = $product->getOneProduct('1'); ?>
+                <h1 class="selected-product-information-heading"><?php echo $product['name'] ?></h1>
                 <h2 class="selected-product-category">fixed-gear</h2>
                 <!-- <div class="product-category-chips-container">
                     <div class="product-chip">
@@ -34,15 +31,23 @@ $product->setProduct();
                                 <i class="las la-weight-hanging"></i>
                             </div>
                         </div>
-                        <h1 class="selected-product-specifications-item-value">5.00 kg</h1>
+                        <h1 class="selected-product-specifications-item-value"><?php echo $product['weight'] ?>kg</h1>
                     </div>
                     <div class="selected-product-specifications-item">
                         <div class="selected-product-specifications-item-label-wrapper">
                             <div class="selected-product-specifications-item-icon">
-                                <i class="las la-weight-hanging"></i>
+                                <i class="las la-ruler"></i>
                             </div>
                         </div>
-                        <h1 class="selected-product-specifications-item-value">5.00 kg</h1>
+                        <h1 class="selected-product-specifications-item-value"><?php echo $product['length']?>cm</h1>
+                    </div>
+                    <div class="selected-product-specifications-item">
+                        <div class="selected-product-specifications-item-label-wrapper">
+                            <div class="selected-product-specifications-item-icon">
+                                <i class="las la-palette"></i>
+                            </div>
+                        </div>
+                        <h1 class="selected-product-specifications-item-value-color"><?php echo $product['color'] ?></h1>
                     </div>
                     <div class="selected-product-specifications-item">
                         <div class="selected-product-specifications-item-label-wrapper">
@@ -56,7 +61,7 @@ $product->setProduct();
             </div>
             <div class="selected-product-action-nav-wrapper">
                 <div class="selected-product-price-wrapper">
-                    <h1 class="selected-product-price-value">244 DKK</h1>
+                    <h1 class="selected-product-price-value"><?php echo $product['price'] ?>DKK</h1>
                 </div>
                 <div class="selected-product-action-nav-items-wrapper">
                     <form class="selected-product-action-nav-items-form" action="">
@@ -74,16 +79,36 @@ $product->setProduct();
         <div class="selected-product-secondary-information-wrapper">
             <h1 class="selected-product-secondary-information-description-label">Description</h1>
             <p class="selected-product-secondary-information-description">
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-               Minima quae facilis provident consectetur, maxime numquam 
-               asperiores odio explicabo ex itaque iure natus quo a sequi 
-               magni et excepturi obcaecati tenetur?
+                <?php echo $product['description'] ?>
             </p>
         </div>
-        <div class="selected-product-assurance-wrapper">
-            <?php include_once "./components/assuranceBanner.php"?>
+        <div class="suggested-products-wrapper">
+            <div class="suggested-products-heading-wrapper">
+                <div class="suggested-products-heading-icon">
+                    <i class="las la-pepper-hot"></i>
+                </div>
+                <h2 class="suggested-products-heading">Woth checking out!</h2>
+            </div>
+            <div class="suggested-products-container">
+                <?php foreach ($home->getProductsWithLimit() as $product):?>
+                    <div class="suggested-product">
+                        <a href="" class="product-card-link">
+                            <div class="product-image">
+                                <img
+                                        src="<?php echo  $product['URL'] ?>"
+                                        alt="<?php echo  $product['alt'] ?>"">
+                            </div>
+                            <div class="bottom-product-info-wrapper">
+                                <p class="product-name"><?php echo  $product['name']?></p>
+                                <p class="product-price"><?php echo  $product['price']?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
+    <?php include_once "./components/assuranceBanner.php"?>
 </div>
 <?php include_once "./components/baseFooter.php"?>
 
