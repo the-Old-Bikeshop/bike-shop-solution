@@ -41,9 +41,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
                                 <input style="margin-top:30px;" class="btn btn-outline-dark col-12" type="submit" name="login" value="login">
                             </div>
-<!--                            <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">-->
-<!--                                <button type="" name="" style="margin-top:30px;"  class="btn btn-dark col-12">Sign up</button>-->
-<!--                            </div>-->
+
+                            <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
+                                <a href="sign-up" class="btn btn-dark col-12" style="margin-top:30px;">
+                                      Sign up
+                                </a>
+                            </div>
+
                         </div>
                     </form>
                 </section>
