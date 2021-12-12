@@ -113,7 +113,7 @@ $comment->setComment();
                                     name="content"
                                     id="postContent"
                                     rows="5"><?php echo $comment->getOneComment()['content']??''?></textarea>
-                            <input type="hidden" name="userID" value="1">
+                            <input type="hidden" name="userID" value='<?php echo $_SESSION['userID'] ?? "" ?> ' >
 
                             <?php if(isset($comment->getOneComment()['commentID'])): ?>
                                 <input type="hidden" hidden

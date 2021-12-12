@@ -23,6 +23,7 @@ class AddressController extends
     public function setAddress(): void
     {
 
+
         if (isset($_POST['submit-new'])) {
             $this->setData();
             $this->addresses->createAddress($this->data);
@@ -109,6 +110,24 @@ class AddressController extends
     public function getAddressTypeConverter(): Convert
     {
         return $this->addressTypeConverter;
+    }
+
+//    public function getAddressForCheckout() {
+//       return $this->addresses->fetchOne('address', 'addressID', $_POST['addressID']);
+//    }
+
+    public function getInvoiceAddress() {
+        if(isset($_SESSION['userID'])) {
+            return $this->addresses->getCheckoutInvoiceAddress();
+        }
+
+    }
+
+    public function getDeliveryAddress() {
+
+        if(isset($_SESSION['userID'])) {
+            return $this->addresses->getCheckoutDeliveryAddress();
+        }
     }
 
 }

@@ -155,7 +155,7 @@ $address->setAddress();
                             </div>
                                 <input type="hidden" hidden
                                        name ="userID"
-                                       value = "1"
+                                       value = '<?php echo $_SESSION['userID'] ?? "" ?> '
                                 >
 
                             <?php if(isset($address->getOneAddress()['addressID'] )) : ?>

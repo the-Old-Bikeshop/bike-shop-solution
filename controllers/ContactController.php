@@ -23,7 +23,7 @@ class ContactController extends ViewController {
                                 $this->email();
                                 unset($_SESSION['token']);
                             }else {
-                                die('Token do not match, refers the page and try again');
+                                $this->error[] = 'Token do not match, refresh the page and try again';
                             }
                         }else {
                             $this->error[] = "Message must be over 20 characters long";
@@ -52,6 +52,9 @@ class ContactController extends ViewController {
         $this->data = $data;
         //        print_r($data);
     }
+
+
+
 
     private function email() {
             mail('alburaul@gmail.com', $this->title, $this->mess, "From: $this->email" );

@@ -1,0 +1,24 @@
+@import "../colors.css";
+
+.checkout-container {
+    min-height: 100vh;
+    background: var(--background-primary);
+    color: var(--background-secondary);
+    display: flex;
+    padding: 5rem;
+    gap: 4rem;
+
+}
+
+.basket-container {
+    flex: auto;
+    padding: 2rem;
+}
+
+.checkout-form {
+
+    flex: auto;
+    background: var(--background-secondary);
+    color: var(--background-primary);
+    padding: 2rem;
+}

@@ -86,6 +86,7 @@ CREATE TABLE `order` (
   `status` INT NOT NULL ,
   payment_status INT NOT NULL,
   total_price DECIMAL(10,2),
+  discount DECIMAL(2,2),
   userID INT NOT NULL,
   shippingID INT NOT NULL,
   FOREIGN KEY (userID) REFERENCES `user` (userID),
@@ -167,7 +168,7 @@ CREATE TABLE product (
   created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   bike_specificationsID INT,
   brandID INT,
-  created_by INT NOT NULL,
+  created_by INT,
   FOREIGN KEY (bike_specificationsID) REFERENCES bike_specifications (bike_specificationsID),
   FOREIGN KEY (brandID) REFERENCES brand (brandID),
   FOREIGN KEY (created_by) REFERENCES `user` (userID)
@@ -302,3 +303,18 @@ SELECT p.productID, p.model_name, p.name, p.price, p.created_at, i.URL, i.alt
 FROM product p
 LEFT JOIN product_has_images phi ON( p.productID = phi.productid)
 LEFT JOIN image i ON (phi.imageid = i.imageid);
+
+CREATE OR REPLACE VIEW product_with_category AS
+SELECT p.productID, c.name
+FROM product p, product_has_category phc, category c
+WHERE p.productID = phc.productID AND phc.categoryID = c.categoryID;
+
+
+DELIMITER //
+CREATE TRIGGER `afterInsertInOrderHasProducts` AFTER INSERT
+    ON `order_has_products`
+    FOR EACH ROW
+    UPDATE product p
+    SET p.stock = p.stock - NEW.quantity
+    WHERE p.productID = NEW.productID;
+DELIMITER //

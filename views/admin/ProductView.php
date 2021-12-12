@@ -30,6 +30,7 @@ $product->setProduct();
                         <th scope="col">length</th>
                         <th scope="col">weight</th>
                         <th scope="col">color</th>
+                        <th scope="col">recommended products</th>
                         <th scope="col">bike_specificationsID</th>
                         <th scope="col">brandID</th>
                         <th scope="col">images</th>
@@ -51,6 +52,9 @@ $product->setProduct();
                             <td><?php echo $res['length']?></td>
                             <td><?php echo $res['weight']?></td>
                             <td><?php echo $res['color']?></td>
+                            <td><?php foreach ($product->getRecommendation($res['productID']) as $recommended) {
+                                    echo $recommended['productID'] . " ";
+                                } ?></td>
                             <td>
                                 <?php echo $product->getOneBikeSpecificationType($res['bike_specificationsID'])?>
                             </td>
@@ -283,7 +287,7 @@ $product->setProduct();
                                     >
                                 </div>
                             </div>
-                            <input type="hidden" name="created_by" value="1">
+                            <input type="hidden" name="created_by" value=<?php echo $_SESSION['userID'] ?? "" ?>>
                             <?php if(isset($product->getProduct()['productID'])): ?>
                                 <input type="hidden" hidden name = "productID" value = "<?php echo $product->getProduct()['productID']?>">
                             <?php endif; ?>

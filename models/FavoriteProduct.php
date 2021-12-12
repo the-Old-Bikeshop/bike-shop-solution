@@ -57,12 +57,14 @@ class FavoriteProduct extends
     public function fetchUserFavorits() {
 
             try {
-                $query = $this->db->dbCon->prepare("SELECT productID FROM `favourite_products` WHERE userID = :userID");
-                $query->bindValue(':userID', $_SESSION['userID']);
+                if(isset($_SESSION['userID'])) {
+                    $query = $this->db->dbCon->prepare("SELECT productID FROM `favourite_products` WHERE userID = :userID");
+                    $query->bindValue(':userID',$_SESSION['userID'] );
 
-                $query->execute();
-                $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                $_SESSION['userFavorites'] = $result;
+                    $query->execute();
+                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                    $_SESSION['userFavorites'] = $result;
+                }
 
             }catch (Exception $e) {
                 $this->message = $e->getMessage();

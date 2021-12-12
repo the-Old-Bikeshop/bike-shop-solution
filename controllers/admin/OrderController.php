@@ -136,6 +136,10 @@ class OrderController extends
         return $this->orders->fetchAll('order_view');
     }
 
+    public function getOrdersForUser() {
+        return $this->orders->fetchUserOrders();
+    }
+
 
 
 }

@@ -174,7 +174,7 @@ $order->setOrders();
 
 
 
-                            <input type="hidden" name="userID" value="1">
+                            <input type="hidden" name="userID" value='<?php echo $_SESSION['userID'] ?? "" ?> ' >
                             <?php if(isset($order->getOrder()['orderID'])): ?>
                                 <input type="hidden" hidden
                                        name = "orderID"
