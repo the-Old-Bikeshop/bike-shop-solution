@@ -45,7 +45,7 @@
                     foreach ($result as $row) {
                         $output .='
                          <div class="product-card">
-                            <a href="" class="product-card-link">
+                            <a href="/bike-shop-solution/product?id='.$row['productID'] .'" class="product-card-link">
                                 <div class="product-image-banner">
                                     <img
                                     src="'.$row['URL'].'"
@@ -74,7 +74,7 @@
             foreach ($result as $row) {
                 $output .='
                          <div class="product-card">
-                            <a href="" class="product-card-link">
+                            <a href="/bike-shop-solution/product?id='.$row['productID'] .'" class="product-card-link">
                                 <div class="product-image-banner">
                                     <img
                                     src="'.$row['URL'].'"

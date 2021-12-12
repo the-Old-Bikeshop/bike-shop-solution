@@ -80,7 +80,12 @@ CREATE OR REPLACE VIEW simple_product_with_image AS
 SELECT p.productID, p.model_name, p.name, p.price, i.URL, i.alt
 FROM product p, product_has_images phi
 WHERE p.productID = phi.productID
-LEFT JOIN image i ON (phi.imageID = i.imageID)
+LEFT JOIN image i ON (phi.imageID = i.imageID);
+
+CREATE OR REPLACE VIEW product_with_category AS
+SELECT p.productID, c.name
+FROM product p, product_has_category phc, category c
+WHERE p.productID = phc.productID AND phc.categoryID = c.categoryID;
 
 
 
