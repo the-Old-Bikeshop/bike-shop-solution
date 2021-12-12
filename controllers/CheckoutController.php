@@ -62,20 +62,17 @@ class CheckoutController
     }
 
     public function createAnonymUser() {
-        $this->email();
         if(!isset($_SESSION['email'])) {
             $this->setUserData();
             $this->user->registerAnonimusUser($this->userData);
+        }
+
             $this->setAddress();
             $this->createOrder();
             $this->addProductToOrder();
             $this->email();
 
     }
-
-
-
-}
 
 //    check, create or update address
 
@@ -173,128 +170,81 @@ class CheckoutController
         $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
         $order = $_SESSION['active_orderID'] ?? "test";
         $productList = '';
+
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= "From: no-reply@owl.com" . "\r\n";
         if(isset($_SESSION['basket'])) {
             foreach ($_SESSION['basket'] as $product){
-                    $productList = ' 
-                    <tr>
-                        <td>'
-                             . $product['name'] ?? 'name'
-                       . '</td>
-                        <td>' .
-                            intval($product['quantity'] ) ?? 1
-                       . '</td>
-                        <td>' .
-                              intval($product['price']) * intval($product['quantity']) ?? '1000'
-                       . '</td>
-                    </tr>';
+                $name = $product['name'] ?? 'name';
+                $quantity = intval($product['quantity'] ) ?? 1;
+                $price = intval($product['price']) * intval($product['quantity']);
+                    $productList .= "<tr><td> "."\r\n";
+                    $productList .= "$name"."\r\n";
+                    $productList .= "</td><td> "."\r\n";
+                    $productList .= "$quantity"."\r\n";
+                    $productList .= "</td><td> "."\r\n";
+                    $productList .= "$price "."\r\n";
+                    $productList .= "</td></tr> "."\r\n";
+
             }
         }
 
+        $this->content = "<!DOCTYPE HTML PUBLIC '-//W3C//DTD XHTML 1.0 Transitional //EN'"."\r\n";
+        $this->content .= "'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>"."\r\n";
+        $this->content .= "<html xmlns='http://www.w3.org/1999/xhtml'"."\r\n";
+        $this->content .= " xmlns:v='urn:schemas-microsoft-com:vml'"."\r\n";
+        $this->content .= " xmlns:o='urn:schemas-microsoft-com:office:office'>"."\r\n";
+        $this->content .= "<head>"."\r\n";
+        $this->content .= "<!--[if gte mso 9]>"."\r\n";
+        $this->content .= "<xml>"."\r\n";
+        $this->content .= "<o:OfficeDocumentSettings>"."\r\n";
+        $this->content .= "<o:AllowPNG/>"."\r\n";
+        $this->content .= "<o:PixelsPerInch>96</o:PixelsPerInch>"."\r\n";
+        $this->content .= "</o:OfficeDocumentSettings>"."\r\n";
+        $this->content .= "</xml>"."\r\n";
+        $this->content .= "<![endif]-->"."\r\n";
+        $this->content .= "<meta http-equiv='Content-Type' content='text/html;"."\r\n";
+        $this->content .=  "charset=UTF-8'>"."\r\n";
+        $this->content .= "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"."\r\n";
+        $this->content .= "<meta name='x-apple-disable-message-reformatting'>"."\r\n";
+        $this->content .= " <!--[if !mso]><!--><meta http-equiv='X-UA-Compatible'"."\r\n";
+        $this->content .= "content='IE=edge'><!--<![endif]-->"."\r\n";
+        $this->content .= "<title></title>"."\r\n";
+        $this->content .= "<style type='text/css'>"."\r\n";
+        $this->content .= "body {"."\r\n";
+        $this->content .= "background: #191414;"."\r\n";
+        $this->content .= "color: #F5F5F5;"."\r\n";
+        $this->content .= "min-height: 100vh;"."\r\n";
+        $this->content .= "padding: 4rem 2rem; }"."\r\n";
+        $this->content .= " h1, h2 {"."\r\n";
+        $this->content .= "color: #FFFFFF;"."\r\n";
+        $this->content .= "text-transform: uppercase;"."\r\n";
+        $this->content .= "text-align: center; }"."\r\n";
+        $this->content .= "h1  {"."\r\n";
+        $this->content .= "color: #33CC99; }"."\r\n";
+        $this->content .= "table {"."\r\n";
+        $this->content .= " margin: 0 auto;}"."\r\n";
+        $this->content .= "td, th {"."\r\n";
+        $this->content .= "padding: 3rem 5rem;"."\r\n";
+        $this->content .= "border: 1px solid #33CC99;"."\r\n";
+        $this->content .= "text-align: center; } </style> </head>"."\r\n";
+        $this->content .= "<body><table><tbody><tr><td> "."\r\n";
+        $this->content .= "<h1>Hello $name  Thank you for your order</h1> "."\r\n";
+        $this->content .= "</td></tr><tr><td> "."\r\n";
+        $this->content .= "<h2>payment for order nr $order was confirmed, "."\r\n";
+        $this->content .= "it will be dispatched as soon as possible</h2> "."\r\n";
+        $this->content .= "</td></tr></tbody></table><table><tbody> "."\r\n";
+        $this->content .= "<tr><td><h2>Order Details</h2></td></tr></tbody></table> "."\r\n";
+        $this->content .= "<table><tbody><tr><th>Item</th><th>Quantity</th><th>Price</th></tr> "."\r\n";
+        $this->content .= $productList;
+        $this->content .= "</tbody></table></body></html>"."\r\n";
+        $this->content .= " "."\r\n";
 
-        $this->content = "
-        <!DOCTYPE HTML PUBLIC '-//W3C//DTD XHTML 1.0 Transitional //EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-        <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office'>
-            <head>
-            <!--[if gte mso 9]>
-            <xml>
-              <o:OfficeDocumentSettings>
-                <o:AllowPNG/>
-                <o:PixelsPerInch>96</o:PixelsPerInch>
-              </o:OfficeDocumentSettings>
-            </xml>
-            <![endif]-->
-              <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-              <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-              <meta name='x-apple-disable-message-reformatting'>
-              <!--[if !mso]><!--><meta http-equiv='X-UA-Compatible' content='IE=edge'><!--<![endif]-->
-              <title></title>
-                <style type='text/css'>
-                    body {
-                        background: #191414;
-                        color: #F5F5F5;
-                        min-height: 100vh;
-                        padding: 4rem 2rem;
-                    }
-                    h1, h2 {
-                        color: #FFFFFF;
-                        text-transform: uppercase;
-                        text-align: center;
-                    }
-                    h1  {
-                        color: #33CC99;
-        
-                    }
-                    table {
-                        margin: 0 auto;
-                    }
-                    td, th {
-                        padding: 3rem 5rem;
-                        border: 1px solid #33CC99;
-                        text-align: center;
-                    }
-        
-        
-                </style>
-            </head>
-            <body>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-        
-                                <h1>Hello $name  Thank you for your order</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h2>payment for order nr $order
-                                    was confirmed it will be dispatched as soon as possible</h2>
-                            </td>
-                        </tr>
-        
-                    </tbody>
-        
-                </table>
-        
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <h2>
-                                Order Details
-                            </h2>
-                        </td>
-                    </tr>
-                    </tbody>
-        
-                </table>
-        
-                <table>
-                    <tbody>
-                    <tr>
-                        <th>
-                           Item
-                        </th>
-                        <th>
-                            Quantity
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                   $productList
-                    </tbody>
-        
-        
-                </table>
-        
-            </body>
 
-        </html>
-        ";
 
         $this->title = "Confirming order nr: " .$_SESSION['active-orderID'];
-        mail('alburaul@gmail.com', $this->title, $this->content, "From: no-reply@owl.com" );
+        mail('alburaul@gmail.com', $this->title, $this->content, $headers );
 //        $this->message[] = "Thank you for your message";
     }
 

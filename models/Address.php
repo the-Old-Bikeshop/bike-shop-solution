@@ -44,8 +44,6 @@ class Address extends
                 $query->bindValue(":userID", $data["userID"]);
                 $query->bindValue(":postalCodeID", $data["postalCodeID"]);
                 $query->execute();
-            } else {
-                $this->message = "You already have a invoice or delivery address set, update them if you what to chant to change them.";
             }
 
 
