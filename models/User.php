@@ -22,24 +22,36 @@ class User extends BasisSQL {
 
     //Register User
     public function registerUser($data, $password) {
-
-        $query = $this->db->dbCon->prepare("INSERT INTO user (nick_name, first_name, last_name, email, `password_hash`, `role`)
+        $this->db->dbCon->beginTransaction();
+        try {
+            $query = $this->db->dbCon->prepare("INSERT INTO user (nick_name, first_name, last_name, email, `password_hash`, `role`)
         VALUES (:nick_name, :first_name, :last_name, :email, :password_hash, :role)");
-        //Bind values
-        $query->bindValue(':nick_name', $data['nick_name']);
-        $query->bindValue(':first_name', $data['first_name']);
-        $query->bindValue(':last_name', $data['last_name']);
-        $query->bindValue(':email', $data['email']);
-        $query->bindValue(':password_hash', $password);
-        $query->bindValue(':role', $data['role']);
+            //Bind values
+            $query->bindValue(':nick_name', $data['nick_name']);
+            $query->bindValue(':first_name', $data['first_name']);
+            $query->bindValue(':last_name', $data['last_name']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':password_hash', $password);
+            $query->bindValue(':role', $data['role']);
 
-        //Execute
-        if($query->execute()) {
-            $this->message = "User created";
-            new RedirectHandler("about");
-        } else {
-            $this->message = "ERROR, and shit happens";
+            $query->execute();
+
+            $userID = $this->db->dbCon->lastInsertId();
+
+            $_SESSION['name'] = $data['first_name'] . " " . $data['last_name'] ;
+            $_SESSION['user-role'] = $data['role'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['userID'] = $userID;
+
+            new RedirectHandler("home");
+            $this->db->dbCon->commit();
+
+        }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+
+            $this->message = $e;
         }
+
 
     }
 
