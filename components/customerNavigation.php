@@ -77,8 +77,7 @@
             </a>
         </div>
         <div class="toolbar_icon_wrapper">
-            <a class="toolbar_link" href="<?php echo isset($_SESSION['user-role']) && ($_SESSION['user-role'] == 1) ?
-                'basket' : 'sign-in'; ?> "
+            <a class="toolbar_link" href="basket"
                 >
                 <i class="las la-shopping-bag"></i>
             </a>

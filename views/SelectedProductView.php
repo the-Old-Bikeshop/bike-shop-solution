@@ -1,5 +1,9 @@
 <?php
 $product = new ProductsController();
+$selectedProductID = $_GET['id'];
+
+$basket = new BasketController();
+$basket->addToBasket();
 ?>
 
 <?php include_once "./components/customerNavigation.php"?>
@@ -10,7 +14,7 @@ $product = new ProductsController();
         </div>
         <div class="selected-product-information-wrapper">
             <div class="selected-product-information-container">
-                <?php $product = $product->getOneProduct('1'); ?>
+                <?php $product = $product->getOneProduct($selectedProductID); ?>
                 <h1 class="selected-product-information-heading"><?php echo $product['name'] ?></h1>
                 <h2 class="selected-product-category">fixed-gear</h2>
                 <!-- <div class="product-category-chips-container">
@@ -64,8 +68,8 @@ $product = new ProductsController();
                     <h1 class="selected-product-price-value"><?php echo $product['price'] ?>DKK</h1>
                 </div>
                 <div class="selected-product-action-nav-items-wrapper">
-                    <form class="selected-product-action-nav-items-form" action="">
-                        <input class="action-nav-item-add-to-basket" value="Add to basket" type="submit">
+                    <form class="selected-product-action-nav-items-form" action="" method="post">
+                        <input class="action-nav-item-add-to-basket" value="Add to basket" name="add" type="submit">
                         <div  class="action-nav-item-add-to-favourites">
                             <i class="las la-heart"></i>
                             <input class="action-nav-item-add-to-favourites-input" type="submit">
@@ -81,31 +85,6 @@ $product = new ProductsController();
             <p class="selected-product-secondary-information-description">
                 <?php echo $product['description'] ?>
             </p>
-        </div>
-        <div class="suggested-products-wrapper">
-            <div class="suggested-products-heading-wrapper">
-                <div class="suggested-products-heading-icon">
-                    <i class="las la-pepper-hot"></i>
-                </div>
-                <h2 class="suggested-products-heading">Woth checking out!</h2>
-            </div>
-            <div class="suggested-products-container">
-                <?php foreach ($home->getProductsWithLimit() as $product):?>
-                    <div class="suggested-product">
-                        <a href="" class="product-card-link">
-                            <div class="product-image">
-                                <img
-                                        src="<?php echo  $product['URL'] ?>"
-                                        alt="<?php echo  $product['alt'] ?>"">
-                            </div>
-                            <div class="bottom-product-info-wrapper">
-                                <p class="product-name"><?php echo  $product['name']?></p>
-                                <p class="product-price"><?php echo  $product['price']?></p>
-                            </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
         </div>
     </div>
     <?php include_once "./components/assuranceBanner.php"?>
