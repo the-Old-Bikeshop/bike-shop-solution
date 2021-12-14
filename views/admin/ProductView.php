@@ -20,15 +20,12 @@ $product->setProduct();
                 <table class="table table-sm col-12">
                     <thead class="thead-light">
                     <tr>
+                        <th scope="col">Controls</th>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">price</th>
                         <th scope="col">model_name</th>
                         <th scope="col">stock</th>
-                        <th scope="col">description</th>
-                        <th scope="col">short_description</th>
-                        <th scope="col">length</th>
-                        <th scope="col">weight</th>
                         <th scope="col">color</th>
                         <th scope="col">recommended products</th>
                         <th scope="col">bike_specificationsID</th>
@@ -36,21 +33,51 @@ $product->setProduct();
                         <th scope="col">images</th>
                         <th scope="col">created_by</th>
                         <th scope="col">created_at</th>
-                        <th scope="col">Controls</th>
+
                     </tr>
                     </thead>
                     <tbody class="col-12">
                     <?php foreach ($product->getAllProducts() as $res): ?>
                         <tr>
+                            <td>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="update" value="update"  class="btn btn-outline-secondary btn-sm">
+                                </form>
+                                <form action="favorites" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="likedProductsID" value="<?php echo $res['productID'] ?>">
+                                    <input type="hidden" hidden name="userID" value="<?php echo $_SESSION['userID'] ?>">
+                                    <input type="submit" name="like"
+                                           value="<?php if(array_search($res['productID'],
+                                                   array_column( $_SESSION['userFavorites'], 'productID')) !== false) {
+                                               echo 'unlike';
+                                           }else {
+                                               echo 'like';
+                                           }?>"
+                                           class="btn btn-outline-secondary
+                                    btn-sm">
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="addImage" value="add image" class="btn btn-outline-secondary
+                                    btn-sm" >
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="addCategory" value="add category" class="btn
+                                    btn-outline-secondary
+                                    btn-sm" >
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
+                                </form>
+                            </td>
                             <th scope="row"> <?php echo $res['productID']?></th>
                             <td><?php echo $res['name']?></td>
                             <td><?php echo $res['price']?></td>
                             <td><?php echo $res['model_name']?></td>
                             <td><?php echo $res['stock']?></td>
-                            <td><?php echo $res['description']?></td>
-                            <td><?php echo $res['short_description']?></td>
-                            <td><?php echo $res['length']?></td>
-                            <td><?php echo $res['weight']?></td>
                             <td><?php echo $res['color']?></td>
                             <td><?php foreach ($product->getRecommendation($res['productID']) as $recommended) {
                                     echo $recommended['productID'] . " ";
@@ -76,40 +103,7 @@ $product->setProduct();
                             </td>
                             <td><?php echo $res['created_by']?></td>
                             <td><?php echo $res['created_at']?></td>
-                            <td>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
-                                    <input type="submit" name="update" value="update"  class="btn btn-outline-secondary btn-sm">
-                                </form>
-                                <form action="favorites" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="likedProductsID" value="<?php echo $res['productID'] ?>">
-                                    <input type="hidden" hidden name="userID" value="<?php echo $_SESSION['userID'] ?>">
-                                    <input type="submit" name="like"
-                                           value="<?php if(array_search($res['productID'],
-                                               array_column( $_SESSION['userFavorites'], 'productID')) !== false) {
-                                                echo 'unlike';
-                                            }else {
-                                                echo 'like';
-                                            }?>"
-                                           class="btn btn-outline-secondary
-                                    btn-sm">
-                                </form>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
-                                    <input type="submit" name="addImage" value="add image" class="btn btn-outline-secondary
-                                    btn-sm" >
-                                </form>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
-                                    <input type="submit" name="addCategory" value="add category" class="btn
-                                    btn-outline-secondary
-                                    btn-sm" >
-                                </form>
-                                <form action="" method="post" class="d-inline-block p-0 m-0">
-                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
-                                    <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
-                                </form>
-                            </td>
+
                         </tr>
                     <?php endforeach ?>
                     </tbody>
