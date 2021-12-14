@@ -1,24 +1,60 @@
 @import "../colors.css";
 
-.checkout-container {
-    min-height: 100vh;
-    background: var(--background-primary);
-    color: var(--background-secondary);
+.checkout-section-wrapper {
     display: flex;
-    padding: 5rem;
-    gap: 4rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
 
+.basket-header-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+
+.basket-icon-wrapper {
+    color: var(--primary);
+    font-size: 2.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.basket-heading {
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    margin-left: 0.5rem;
+    color: var(--background-primary);
+}
+
+.checkout-heading{
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+    margin-left: 0.5rem;
+    color: var(--background-secondary);
 }
 
 .basket-container {
     flex: auto;
     padding: 2rem;
+    background: var(--background-secondary);
+    height: auto;
+    width: 50%;
 }
 
-.checkout-form {
-
+.checkout-form-container{
     flex: auto;
-    background: var(--background-secondary);
+    background: var(--background-tertiary);
     color: var(--background-primary);
+    width: 50%;
+    bottom: 0;
+    position: sticky;
+    height: 91vh;
     padding: 2rem;
 }

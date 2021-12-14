@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <div class="basket">
     <div class="product-container">
         <div class="product-wrapper">
