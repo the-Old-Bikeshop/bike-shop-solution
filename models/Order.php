@@ -78,4 +78,20 @@ class Order extends
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function fetchSimpleOrderForUser() {
+        $query = $this->db->dbCon->prepare("SELECT * FROM `order` WHERE `userID` = :userID");
+        $query->bindValue(':userID', $_SESSION['userID']);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function fetchOrderProductList($orderID) {
+        $query = $this->db->dbCon->prepare("SELECT * FROM `order_view` WHERE `orderID` = :orderID");
+        $query->bindValue(':orderID', $orderID);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
 }

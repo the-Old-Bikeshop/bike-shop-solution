@@ -1,0 +1,42 @@
+.order-container {
+    border: 2px solid var(--background-secondary);
+    border-radius: 10px;
+    color: var(--background-secondary);
+}
+
+.order-container h3 {
+    font-family: 'Neue Metana', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.order__top-info {
+    display: flex ;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.order__products {
+    color: var(--background-secondary);
+
+}
+
+.order__products-table {
+    color: var(--background-secondary);
+}
+
+.order__products-table th {
+    font-size: 0.8rem;
+}
+
+.order__products-table td {
+    padding: 0.5rem 3rem 0.5rem 0;
+}
+
+.order__products--name {
+
+}
+
+.order__products--quantity {
+    text-align: center;
+}

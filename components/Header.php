@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="public/styles/views/contactView.css">
     <link rel="stylesheet" href="public/styles/views/basketView.css">
     <link rel="stylesheet" href="public/styles/views/userInfoView.css">
+    <link rel="stylesheet" href="public/styles/views/ordersView.css">
     <title>Admin</title>
 </head>
 <body>

@@ -140,6 +140,14 @@ class OrderController extends
         return $this->orders->fetchUserOrders();
     }
 
+    public function fetchSimpleOrderForUser() {
+        return $this->orders->fetchSimpleOrderForUser();
+    }
+
+    public function fetchOrderProductList($orderID) {
+        return $this->orders->fetchOrderProductList($orderID);
+    }
+
 
 
 }
