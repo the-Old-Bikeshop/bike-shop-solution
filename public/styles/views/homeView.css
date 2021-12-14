@@ -50,6 +50,14 @@
     text-decoration: none;
 }
 
+.heading-two {
+    color: var(--background-secondary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
+
+}
+
 .hero-breadcrumbs {
     color: var(--background-secondary);
     opacity: 0.3;

@@ -4,6 +4,12 @@ $selectedProductID = $_GET['id'];
 
 $basket = new BasketController();
 $basket->addToBasket();
+
+//
+//$recomended = new RecommendedProducts();
+//$recomended_products = $recomended->fetchRecommendedProducts($selectedProductID);
+//var_dump($recomended_products);
+
 ?>
 
 <?php include_once "./components/customerNavigation.php"?>

@@ -184,8 +184,9 @@ class UserController extends ViewController {
         if(isset($_SESSION['userID'])) {
             return $this->user->fetchOne('user', 'userID', $_SESSION['userID']);
         }
-
     }
+
+
 
 
 
