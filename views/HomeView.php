@@ -63,6 +63,8 @@
                 </div>
             </div>
         </div>
+
+        <?php include_once "./components/dailyOffer.php"?>
         <?php include_once "./components/assuranceBanner.php"?>
         <?php include_once "./components/suggestedProducts.php"?>
         <?php include_once "./components/newPosts.php"?>

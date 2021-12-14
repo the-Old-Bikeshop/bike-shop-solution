@@ -211,4 +211,8 @@ class ProductsController extends
         return $this->products->fetchDailyOffer();
     }
 
+    public function getProductWithImage($id) {
+        return $this->products->fetchOne('simple_product_with_image', 'productID' ,$id);
+    }
+
 }
