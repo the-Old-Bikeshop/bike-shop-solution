@@ -80,7 +80,7 @@ $basket->addToBasket();
                         <input id="name" type="hidden" value="<?php echo $product['name'] ?>" name="name">
                         <input id="quantity" type="hidden" value="1" name="quantity">
                         <input id="price" type="hidden" value="<?php echo $product['price'] ?>" name="price">
-                        <input id="discount" type="hidden" value="2" name="discount">
+                        <input id="discount" type="hidden" value="0" name="discount">
                         <div  class="action-nav-item-add-to-favourites">
                             <i class="las la-heart"></i>
                             <input class="action-nav-item-add-to-favourites-input" type="submit">
