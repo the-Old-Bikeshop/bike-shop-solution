@@ -203,9 +203,9 @@ class ProductsController extends
         return $this->products->fetchAll('bike_speks');
     }
 
-    public function getRecommendation($categoryID)
+    public function getRecommendation($productID)
     {
-        return $this->recommendation->fetchRecommendedProducts($categoryID);
+        return $this->recommendation->fetchRecommendedProducts($productID);
     }
 
 }
