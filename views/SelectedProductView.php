@@ -70,6 +70,11 @@ $basket->addToBasket();
                 <div class="selected-product-action-nav-items-wrapper">
                     <form class="selected-product-action-nav-items-form" action="" method="post">
                         <input class="action-nav-item-add-to-basket" value="Add to basket" name="add" type="submit">
+                        <input id="productID" type="hidden" value="<?php echo $product['productID'] ?>" name="productID"> 
+                        <input id="name" type="hidden" value="<?php echo $product['name'] ?>" name="name">
+                        <input id="quantity" type="hidden" value="1" name="quantity">
+                        <input id="price" type="hidden" value="<?php echo $product['price'] ?>" name="price">
+                        <input id="discount" type="hidden" value="2" name="discount">
                         <div  class="action-nav-item-add-to-favourites">
                             <i class="las la-heart"></i>
                             <input class="action-nav-item-add-to-favourites-input" type="submit">
