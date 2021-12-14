@@ -12,7 +12,8 @@ $home = new HomeController();
     <div class="suggested-products-container">
         <?php foreach ($home->getProductsWithLimit() as $product):?>
             <div class="suggested-product">
-                <a href="" class="product-card-link">
+                <a href="/bike-shop-solution/product?id='<?php echo $product['productID']  ?>'"
+                   class="product-card-link">
                     <div class="product-image">
                         <img
                                 src="<?php echo  $product['URL'] ?>"
