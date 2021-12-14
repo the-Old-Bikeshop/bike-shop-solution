@@ -71,7 +71,20 @@ class UserController extends ViewController {
             'first_name' => trim($_POST['first_name']),
             'last_name' => trim($_POST['last_name']),
             'email' => trim($_POST['email']),
+            'phone_number' => trim($_POST['phone_number']),
             'role' => trim($_POST['role'])
+        ];
+        $this->data = $data;
+
+    }
+
+    private function setUpdateUserData() {
+        $data = [
+            'nick_name' => trim($_POST['nick_name']),
+            'first_name' => trim($_POST['first_name']),
+            'last_name' => trim($_POST['last_name']),
+            'email' => trim($_POST['email']),
+            'phone_number' => trim($_POST['phone_number'])
         ];
         $this->data = $data;
 
@@ -133,9 +146,16 @@ class UserController extends ViewController {
             $this->setUpdateData();
             $this->user->updateUserRole($this->data,
                 $_POST['userID']);
+            var_dump($this->data);
+        }elseif (isset($_POST['submit-user-update'])) {
+            $this->setUpdateUserData();
+            $this->user->updateUser($this->data,
+                $_SESSION['userID']);
         } elseif (isset($_POST['delete'])) {
             $this->user->deleteRow('user', 'userID', $_POST['userID']);
         }
+
+
     }
 
     public function getAllUsers() {

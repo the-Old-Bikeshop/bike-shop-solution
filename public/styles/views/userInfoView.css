@@ -1,0 +1,9 @@
+.user-info__form input:disabled, .user-info__form input:read-only, .user-info__form select:disabled {
+    background: var(--background-primary);
+    color: var(--background-secondary);
+
+}
+
+.user-info__form *:focus {
+    outline-color: var(--primary);
+}

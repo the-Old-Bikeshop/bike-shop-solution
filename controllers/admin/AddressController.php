@@ -33,7 +33,16 @@ class AddressController extends
         } elseif (isset($_POST['submit-update'])) {
             $this->setData();
             $this->addresses->updateAddress($this->data, $_POST['addressID']);
-        } elseif (isset($_POST['delete'])) {
+        } elseif (isset($_POST['submit-user-update'])) {
+            if(isset($_POST['invoice_addressID']) && ($_POST['invoice_addressID']) !== "") {
+                $this->addresses->createAddress($this->setInvoiceAddressUpdateData());
+            }
+            if(isset($_POST['delivery_addressID']) && ($_POST['delivery_addressID']) !== ""){
+                $this->addresses->createAddress($this->setDeliveryAddressUpdateData());
+            }
+        }
+
+        elseif (isset($_POST['delete'])) {
             $this->addresses->deleteRow('address', 'addressID', $_POST['addressID']);
         }
     }
@@ -56,6 +65,32 @@ class AddressController extends
             'postalCodeID' => trim($_POST['postalCodeID']) ?? "",
         ];
         $this->data = $data;
+    }
+
+    private function setInvoiceAddressUpdateData() {
+        $invoice = [
+            'street_name' => trim($_POST['invoice_street_name']) ?? "",
+            'address_content' => trim($_POST['invoice_address_content']) ?? "",
+            'phone_number' => trim($_POST['invoice_phone_number']) ?? "",
+            'address_type' => 1,
+            'userID' => $_SESSION['userID'],
+            'postalCodeID' => trim($_POST['invoice_postalCodeID']) ?? ""
+            ];
+        return $invoice;
+
+    }
+
+    private function setDeliveryAddressUpdateData() {
+        $delivery = [
+            'street_name' => trim($_POST['delivery_street_name']) ?? "",
+            'address_content' => trim($_POST['delivery_address_content']) ?? "",
+            'phone_number' => trim($_POST['delivery_phone_number']) ?? "",
+            'address_type' => 2,
+            'userID' => $_SESSION['userID'],
+            'postalCodeID' => trim($_POST['delivery_postalCodeID']) ?? ""
+        ];
+        return $delivery;
+
     }
 
     /**

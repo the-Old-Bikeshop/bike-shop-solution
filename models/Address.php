@@ -61,10 +61,13 @@ class Address extends
         }catch (Exception $e) {
             $this->db->dbCon->rollBack();
             $this->message = $e->getMessage();
+            echo $this->message;
         }
     }
 
     public function updateAddress($data, $id) {
+
+        var_dump($data);
 
         try {
          $query = $this->db->dbCon->prepare("UPDATE `address` SET

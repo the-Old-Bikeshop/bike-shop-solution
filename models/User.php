@@ -126,6 +126,7 @@ class User extends BasisSQL {
                                                                     first_name = :first_name,
                                                                     last_name = :last_name,
                                                                     email = :email,
+                                                                    phone_number = :phone_number,
                                                                     role = :role
                                                                     WHERE userID = :userID");
 
@@ -133,6 +134,7 @@ class User extends BasisSQL {
             $query->bindValue(':first_name', $data['first_name']);
             $query->bindValue(':last_name', $data['last_name']);
             $query->bindValue(':email', $data['email']);
+            $query->bindValue(':phone_number', $data['phone_number']);
             $query->bindValue(':role', $data['role']);
             $query->bindValue(':userID', $id);
             $query->execute();
@@ -142,6 +144,37 @@ class User extends BasisSQL {
         }catch (Exception $e) {
             $this->db->dbCon->rollBack();
             $this->message = $e->getMessage();
+        }
+
+
+    }
+
+    public function updateUser($data, $id) {
+        $this->db->dbCon->beginTransaction();
+
+        try {
+            $query = $this->db->dbCon->prepare("UPDATE `user` SET 
+                                                                    nick_name = :nick_name, 
+                                                                    first_name = :first_name,
+                                                                    last_name = :last_name,
+                                                                    email = :email,
+                                                                    phone_number = :phone_number
+                                                                    WHERE userID = :userID");
+
+            $query->bindValue(':nick_name', $data['nick_name']);
+            $query->bindValue(':first_name', $data['first_name']);
+            $query->bindValue(':last_name', $data['last_name']);
+            $query->bindValue(':email', $data['email']);
+            $query->bindValue(':phone_number', $data['phone_number']);
+            $query->bindValue(':userID', $id);
+            $query->execute();
+
+            $this->db->dbCon->commit();
+
+        }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+            $this->message = $e->getMessage();
+            echo $this->message;
         }
 
 
