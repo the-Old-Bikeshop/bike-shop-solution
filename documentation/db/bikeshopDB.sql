@@ -174,6 +174,11 @@ CREATE TABLE product (
   FOREIGN KEY (created_by) REFERENCES `user` (userID)
 );
 
+ALTER TABLE product ADD (
+    discount INT,
+    dailyOffer INT
+);
+
 CREATE TABLE order_has_products(
   quantity INT NOT NULL,
   orderID INT NOT NULL,

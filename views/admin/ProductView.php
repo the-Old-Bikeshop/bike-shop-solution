@@ -22,6 +22,7 @@ $product->setProduct();
                     <tr>
                         <th scope="col">Controls</th>
                         <th scope="col">#</th>
+                        <th scope="col">Discount</th>
                         <th scope="col">Name</th>
                         <th scope="col">price</th>
                         <th scope="col">model_name</th>
@@ -70,10 +71,17 @@ $product->setProduct();
                                 </form>
                                 <form action="" method="post" class="d-inline-block p-0 m-0">
                                     <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
+                                    <input type="submit" name="addSpecialOffer" value="add special Offer" class="btn
+                                    btn-outline-secondary
+                                    btn-sm" >
+                                </form>
+                                <form action="" method="post" class="d-inline-block p-0 m-0">
+                                    <input type="hidden" hidden name="productID" value="<?php echo $res['productID'] ?>">
                                     <input type="submit" name="delete" value="delete" class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete! are you sure?')" >
                                 </form>
                             </td>
                             <th scope="row"> <?php echo $res['productID']?></th>
+                            <th scope="row"> <?php echo $res['discount']?></th>
                             <td><?php echo $res['name']?></td>
                             <td><?php echo $res['price']?></td>
                             <td><?php echo $res['model_name']?></td>
@@ -428,6 +436,49 @@ $product->setProduct();
                                 <input type="submit" class="btn btn-primary"
                                        name="addNewCategory"
                                        value="add new category">
+                                <form action="" method="post">
+                                    <input type="submit" class="btn btn-secondary" value="Cancel">
+                                </form>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade <?php echo isset($_POST["addSpecialOffer"]) ? 'show' : ' ' ?>" id="addSpecialOffer"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            <?php echo isset($_POST["addSpecialOffer"]) ? 'style = "display : block; overflow : scroll"' : 'style = "display : none"'?>>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <?php echo $_POST['addSpecialOffer'] ? "Add or remove category for" : "" .
+                                $product->getProduct()['name'] ?>
+                        </h5>
+                        <form action="" method="post" >
+                            <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-body">
+                        <form class="col-12" action="" method="post" id="form" enctype="multipart/form-data" >
+
+
+                            <?php if(isset($_POST['productID'])): ?>
+                                <input type="hidden" hidden name = "productID" value = "<?php echo $_POST['productID'] ?>">
+                            <?php endif; ?>
+                            <label for="discount"> Daily discount Value</label>
+                            <input type="text" name="discount" value="" id="discount">
+                            <div class="form-group col-12 mt-2">
+                                <input type="submit" class="btn btn-primary"
+                                       name="addNewOffer"
+                                       value="add Offer">
                                 <form action="" method="post">
                                     <input type="submit" class="btn btn-secondary" value="Cancel">
                                 </form>

@@ -70,7 +70,15 @@ class ProductsController extends
         }elseif ( isset($_POST["deleteCategory"])) {
             $this->category = new ProductHasCategory();
             $this->category->deleteCategoryToProduct($_POST['deleteProductID'], $_POST['deleteCategoryID'] );
+        }elseif ( isset($_POST['addNewOffer'])) {
+            $this->sanitize();
+            $this->products->createOfferProduct($_POST['productID'], $_POST['discount']);
         }
+    }
+
+    public function sanitize() {
+        $_POST = filter_input_array(INPUT_POST,
+            FILTER_SANITIZE_STRING);
     }
     public function setData(): void {
 

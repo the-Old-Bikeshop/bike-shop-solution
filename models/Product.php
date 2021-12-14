@@ -173,6 +173,31 @@ class Product extends BasisSQL
 
     }
 
+    public function createOfferProduct($productID, $discount) {
+        $this->db->dbCon->beginTransaction();
+
+        try {
+            $resetDaily =  $this->db->dbCon->prepare("UPDATE `product` SET dailyOffer = 0, discount = 0");
+
+            $query = $this->db->dbCon->prepare("UPDATE `product` SET discount = :discount, dailyOffer = 1 WHERE productID = :productID");
+
+            $query->bindValue(":discount", $discount);
+            $query->bindValue(":productID", $productID);
+            $resetDaily->execute();
+            $query->execute();
+
+            $this->db->dbCon->commit();
+
+
+
+        }catch (Exception $e) {
+            $this->db->dbCon->rollBack();
+            $this->message = $e;
+
+        }
+
+    }
+
 }
 
 $product = new Product();
