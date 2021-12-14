@@ -23,15 +23,15 @@ $checkout->processCheckout();
             </div>
             <div class="show" id="userInfo">
                 <div class="col-12">
-                    <div class="row">
-                        <div class="form-group col-12 col-md-6 mt-2">
+                    <div class="row col-12">
+                        <div class="form-group col-12">
                             <label for="first_name">first name</label>
                             <input type="text" class="form-control" id="first_name" name="first_name"
                                    placeholder="John"
                                    value="<?php echo $user->getUserInfoCheckout()['first_name'] ?? '' ?>"
                             >
                         </div>
-                        <div class="form-group col-12 col-md-6 mt-2">
+                        <div class="form-group col-12 mt-2">
                             <label for="last_name">last name</label>
                             <input type="text" class="form-control" id="last_name" name="last_name"
                                    placeholder="Smith"
@@ -58,7 +58,6 @@ $checkout->processCheckout();
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-12">
                 <div class="row">
@@ -73,18 +72,14 @@ $checkout->processCheckout();
                                             $order->getOrder()['orderID']):?>
                                             selected
                                         <?php endif; ?>
-
                                     ><?php echo $shipping["name"] ?? ""?></option>
-
                                 <?php endforeach; ?>
-
                             <?php }; ?>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="checkout-form-control-dropdown">
                 <a class="checkout-form-control-dropdown-link" data-bs-toggle="collapse" href="#invoiceAddress" 
@@ -96,7 +91,6 @@ $checkout->processCheckout();
                     </div>
                 </a>
             </div>
-
             <div class="collapse" id="invoiceAddress">
                 <div class="col-12">
                     <div class="row">
@@ -117,9 +111,7 @@ $checkout->processCheckout();
                                                 echo $zipCode['postal_code'] . ", " . $zipCode['place_name'];
                                             }?>
                                         </option>
-
                                     <?php endforeach; ?>
-
                                 <?php endif; ?>
                             </select>
                         </div>
@@ -143,76 +135,69 @@ $checkout->processCheckout();
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="checkout-form-control-dropdown">
                 <a class="checkout-form-control-dropdown-link" data-bs-toggle="collapse" href="#deliveryAddress" 
                     role="button" aria-controls="address"
                 >
-                    Your personal details
+                    Your delivery address
                     <div class="dropdown-control-icon">
                         <i class="las la-chevron-right"></i>
                     </div>
                 </a>
             </div>
-
-                <div class="collapse" id="deliveryAddress">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="form-group col-12 mt-2">
-                                <label for="delivery_postalCodeID">Zip Code</label>
-                                <select  class="form-control" id="delivery_postalCodeID" name="delivery_postalCodeID" >
-                                    <?php if ($address->fetchAllZipCodes() !== null): ?>
-                                        <?php foreach ($address->fetchAllZipCodes() as $zipCode) : ?>
-                                            <option value = "<?php echo $zipCode['postal_code']?>"
-                                                <?php if(($address->getDeliveryAddress()!==null)
-                                                 && $address->fetchAllZipCodes() !== null
-                                                    && isset($zipCode)
-                                                    && ($address->getDeliveryAddress()['postalCodeID'] == $zipCode['postal_code'])
-                                                ):?>
+            <div class="collapse" id="deliveryAddress">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="form-group col-12 mt-2">
+                            <label for="delivery_postalCodeID">Zip Code</label>
+                            <select  class="form-control" id="delivery_postalCodeID" name="delivery_postalCodeID" >
+                                <?php if ($address->fetchAllZipCodes() !== null): ?>
+                                    <?php foreach ($address->fetchAllZipCodes() as $zipCode) : ?>
+                                        <option value = "<?php echo $zipCode['postal_code']?>"
+                                            <?php if(($address->getDeliveryAddress()!==null)
+                                                && $address->fetchAllZipCodes() !== null
+                                                && isset($zipCode)
+                                                && ($address->getDeliveryAddress()['postalCodeID'] == $zipCode['postal_code'])
+                                            ):?>
+                                                selected
+                                            <?php else: ?>
+                                                <?php if(!isset($shipping['shippingID']) && isset($order->getOrder()['oderID'])
+                                                    && $shipping['shippingID'] ==
+                                                    $order->getOrder()['orderID']):?>
                                                     selected
-                                                <?php else: ?>
-                                                    <?php if(!isset($shipping['shippingID']) && isset($order->getOrder()['oderID'])
-                                                        && $shipping['shippingID'] ==
-                                                        $order->getOrder()['orderID']):?>
-                                                        selected
-                                                    <?php endif; ?>
-
                                                 <?php endif; ?>
-                                            > <?php
-                                                if( $address->fetchAllZipCodes() !== null && isset($zipCode) ) {
-                                                    echo $zipCode['postal_code'] . ", " . $zipCode['place_name'];
-                                                }?>
-                                            </option>
 
-                                        <?php endforeach; ?>
-
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                            <div class="form-group col-12 mt-2">
-                                <label for="delivery_street_name">Street</label>
-                                <input type="text" class="form-control" id="delivery_street_name"
-                                       name="delivery_street_name"
-                                       placeholder="Storegade"
-                                       value=" <?php echo $address->getDeliveryAddress()['street_name'] ?? $address->getInvoiceAddress()['street_name'] ?? '' ?>"
-                                >
-                            </div>
-                            <div class="form-group col-12 mt-2">
-                                <label for="delivery_address_content">nr</label>
-                                <input type="text" class="form-control" id="delivery_address_content"
-                                       name="delivery_address_content"
-                                       placeholder="39, 4th"
-                                       value=" <?php echo $address->getDeliveryAddress()['address_content'] ?? $address->getInvoiceAddress()['address_content'] ?? '' ?>"
-                                >
-                            </div>
+                                            <?php endif; ?>
+                                        > <?php
+                                            if( $address->fetchAllZipCodes() !== null && isset($zipCode) ) {
+                                                echo $zipCode['postal_code'] . ", " . $zipCode['place_name'];
+                                            }?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
                         </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="delivery_street_name">Street</label>
+                            <input type="text" class="form-control" id="delivery_street_name"
+                                    name="delivery_street_name"
+                                    placeholder="Storegade"
+                                    value=" <?php echo $address->getDeliveryAddress()['street_name'] ?? $address->getInvoiceAddress()['street_name'] ?? '' ?>"
+                            >
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="delivery_address_content">nr</label>
+                            <input type="text" class="form-control" id="delivery_address_content"
+                                    name="delivery_address_content"
+                                    placeholder="39, 4th"
+                                    value=" <?php echo $address->getDeliveryAddress()['address_content'] ?? $address->getInvoiceAddress()['address_content'] ?? '' ?>"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
 <!--        <p>-->
 <!--            <a class="btn" data-bs-toggle="collapse" href="#payment" role="button"-->
 <!--               aria-expanded="false" aria-controls="payment">Toggle first element</a>-->
@@ -233,6 +218,5 @@ $checkout->processCheckout();
                 <input type='submit' class="btn" name="pay" value="proceed to payment">
             </div>
         </div>
-
     </form>
 </div>

@@ -21,25 +21,25 @@ class CheckoutController
 //        test data
 
 
-        $_SESSION['basket'] = [
-            [
-                'productID' => '1',
-                'name' => 'one',
-                'quantity' => 2,
-                'price' => 200,
-                'discount' => 0,
-
-            ],
-
-            [
-                'productID' => '4',
-                'name' => 'two',
-                'quantity' => 1,
-                'price' => 1200,
-                'discount' => 0,
-
-            ]
-        ];
+//        $_SESSION['basket'] = [
+//            [
+//                'productID' => '1',
+//                'name' => 'one',
+//                'quantity' => 2,
+//                'price' => 200,
+//                'discount' => 0,
+//
+//            ],
+//
+//            [
+//                'productID' => '4',
+//                'name' => 'two',
+//                'quantity' => 1,
+//                'price' => 1200,
+//                'discount' => 0,
+//
+//            ]
+//        ];
 
     }
 

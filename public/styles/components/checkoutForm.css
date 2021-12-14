@@ -1,7 +1,8 @@
 .checkout-form-wrapper {
     display: flex;
-    height: 91vh;
+    height: 73.5vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .checkout-form {
@@ -11,6 +12,8 @@
 
 .checkout-form-step {
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .checkout-form-control-dropdown {

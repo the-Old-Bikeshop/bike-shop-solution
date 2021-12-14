@@ -19,6 +19,8 @@ class HomeController extends ViewController {
        return $this->home->fetchAllLimit('post', 10);
     }
 
+
+
 }
 
 ?>

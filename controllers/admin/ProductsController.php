@@ -207,5 +207,12 @@ class ProductsController extends
     {
         return $this->recommendation->fetchRecommendedProducts($productID);
     }
+    public function getDailyOffer() {
+        return $this->products->fetchDailyOffer();
+    }
+
+    public function getProductWithImage($id) {
+        return $this->products->fetchOne('simple_product_with_image', 'productID' ,$id);
+    }
 
 }
