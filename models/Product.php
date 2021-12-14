@@ -197,6 +197,17 @@ class Product extends BasisSQL
         }
 
     }
+    public function fetchDailyOffer() {
+        try {
+            $query = $this->db->dbCon->prepare("SELECT * FROM `product` WHERE dailyOffer = 1");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+
+        }catch (Exception $e) {
+            $this->message = $e;
+        }
+    }
 
 }
 

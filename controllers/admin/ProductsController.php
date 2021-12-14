@@ -207,5 +207,8 @@ class ProductsController extends
     {
         return $this->recommendation->fetchRecommendedProducts($productID);
     }
+    public function getDailyOffer() {
+        return $this->products->fetchDailyOffer();
+    }
 
 }
