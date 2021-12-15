@@ -146,7 +146,6 @@ class UserController extends ViewController {
             $this->setUpdateData();
             $this->user->updateUserRole($this->data,
                 $_POST['userID']);
-            var_dump($this->data);
         }elseif (isset($_POST['submit-user-update'])) {
             $this->setUpdateUserData();
             $this->user->updateUser($this->data,

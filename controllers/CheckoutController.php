@@ -18,29 +18,6 @@ class CheckoutController
         $this->user  =new User();
         $this->productsToOrder = new OrderHasProducts();
 
-//        test data
-
-
-//        $_SESSION['basket'] = [
-//            [
-//                'productID' => '1',
-//                'name' => 'one',
-//                'quantity' => 2,
-//                'price' => 200,
-//                'discount' => 0,
-//
-//            ],
-//
-//            [
-//                'productID' => '4',
-//                'name' => 'two',
-//                'quantity' => 1,
-//                'price' => 1200,
-//                'discount' => 0,
-//
-//            ]
-//        ];
-
     }
 
     public function processCheckout() {
@@ -190,11 +167,14 @@ class CheckoutController
 
 
     private function email() {
+
+        var_dump($_POST);
         $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
         $order = $_SESSION['active_orderID'];
         $invoiceAddress = $_SESSION['active_invoice_address'];
         $deliveryAddress = $_SESSION['active_delivery_address'];
         $productList = '';
+        $to = $_POST['email'];
 
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -273,8 +253,9 @@ class CheckoutController
 
 
         $this->title = "Confirming order nr: " .$_SESSION['active_orderID'];
-        mail('alburaul@gmail.com', $this->title, $this->content, $headers );
-//        $this->message[] = "Thank you for your message";
+       if(mail($to, $this->title, $this->content, $headers )) {
+           echo "message sent!";
+       };
     }
 
 

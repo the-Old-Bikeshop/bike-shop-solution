@@ -67,7 +67,6 @@ class Address extends
 
     public function updateAddress($data, $id) {
 
-        var_dump($data);
 
         try {
          $query = $this->db->dbCon->prepare("UPDATE `address` SET

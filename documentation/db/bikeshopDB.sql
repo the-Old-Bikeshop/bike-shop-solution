@@ -323,3 +323,13 @@ CREATE TRIGGER `afterInsertInOrderHasProducts` AFTER INSERT
     SET p.stock = p.stock - NEW.quantity
     WHERE p.productID = NEW.productID;
 DELIMITER //
+
+DELIMITER //
+CREATE TRIGGER `AfterNewOrderInsertUpdateFollowUpDate` AFTER INSERT
+    ON `order`
+    FOR EACH ROW
+    UPDATE `order`
+    SET `follow_up_date` = DATE_ADD(NEW.created_at , INTERVAL 2 DAY)
+    WHERE `orderID` = NEW.orderID;
+
+DELIMITER //

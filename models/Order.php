@@ -80,7 +80,7 @@ class Order extends
     }
 
     public function fetchSimpleOrderForUser() {
-        $query = $this->db->dbCon->prepare("SELECT * FROM `order` WHERE `userID` = :userID");
+        $query = $this->db->dbCon->prepare("SELECT * FROM `order` WHERE `userID` = :userID ORDER BY `created_at` DESC ");
         $query->bindValue(':userID', $_SESSION['userID']);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);

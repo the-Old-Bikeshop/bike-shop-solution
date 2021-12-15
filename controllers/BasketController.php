@@ -4,6 +4,20 @@
 class BasketController extends ViewController {
 
     private $product;
+   public function quantityAction() {
+        if(isset($_POST['action']) ) {
+            if($_POST['action'] == 'add') {
+                $_SESSION['basket'][$_POST['index']]['quantity']++;
+            }elseif(($_POST['action'] == 'retract') && count($_SESSION['basket']) > 0) {
+                $_SESSION['basket'][$_POST['index']]['quantity']--;
+                if ($_SESSION['basket'][$_POST['index']]['quantity'] <= 0) {
+                    array_splice($_SESSION['basket'], $_POST['index'], 1);
+                }
+            }
+        }
+    }
+
+
 
 
 
@@ -40,6 +54,8 @@ class BasketController extends ViewController {
                  array_push($_SESSION['basket'], $localProduct);
             }
         }
+
+
     }
 
 }
