@@ -90,6 +90,7 @@ $basket->addToBasket();
         </div>
     </div>
     <?php include_once "./components/assuranceBanner.php"?>
+    <?php include_once "./components/recommendedProducts.php"?>
 </div>
 <?php include_once "./components/baseFooter.php"?>
 
