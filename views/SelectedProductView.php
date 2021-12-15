@@ -16,7 +16,10 @@ $basket->addToBasket();
 <div class="selected-product-page-wrapper">
     <div class="selected-product-base-information">
         <div class="selected-product-image-wrapper">
-            <img class="selected-product-image" src="/bike-shop-solution/public/img/bike.png" alt="">
+            <?php $img = $product->getProductWithImage($selectedProductID) ?>
+            <img class="selected-product-image"
+                 src="<?php echo  $img['URL'] ?>"
+                 alt="<?php echo  $img['alt'] ?? $img['URL'] ?>"">
         </div>
         <div class="selected-product-information-wrapper">
             <div class="selected-product-information-container">
