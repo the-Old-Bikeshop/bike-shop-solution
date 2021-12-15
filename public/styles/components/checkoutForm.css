@@ -1,8 +1,5 @@
 .checkout-form-wrapper {
     display: flex;
-    height: 73.5vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 .checkout-form {
@@ -44,4 +41,19 @@
     color: var(--primary);
     font-size: 1.5rem;
     margin-left: 0.5rem;
+}
+
+.submit-checkout-form-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4rem;
+}
+
+.form-input-label{
+    color: var(--background-secondary);
+    opacity: 0.6;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
 }

@@ -161,7 +161,7 @@
 }
 
 .action-nav-item-add-to-basket {
-    width: 10rem;
+    min-width: 10rem;
     height: 3rem;
     border: none;
     border-radius: 5px;

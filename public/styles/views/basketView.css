@@ -58,4 +58,6 @@
     position: sticky;
     height: 91vh;
     padding: 2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
