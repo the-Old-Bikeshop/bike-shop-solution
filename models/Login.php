@@ -19,7 +19,9 @@ class Login
                     $_SESSION['email'] = $found_user[0]['email'];
                     $_SESSION['name'] = $found_user[0]['first_name'];
 
-                    $redirect = new RedirectHandler("index.php");
+                    $URL="https://raul-octavian.eu/bike-shop-solution/home";
+                    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                 } else {
                     // username/password combo was not found in the database
                     $this->message = "Email/password combination incorrect.<br />

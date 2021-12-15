@@ -13,7 +13,9 @@ if (!isset($_SESSION['userID'])) {
 }else{
     $fav->setData();
     $fav->likeAction();
-    new RedirectHandler($previous);
+    $URL= $previous;
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 ?>

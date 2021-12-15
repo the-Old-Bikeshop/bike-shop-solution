@@ -12,10 +12,15 @@ class  ViewController {
         if(isset($_POST['logout'])) {
             $this->logout = new Logout();
             if(!isset($_SESSION["user-role"])) {
-                new RedirectHandler('home');
+                $URL="https://raul-octavian.eu/bike-shop-solution/home";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';;
             }else {
                 $this->message = "Logout process failed, Try again";
-                new RedirectHandler($_SERVER["HTTP_REFERER"]);
+
+                $URL=$_SERVER["HTTP_REFERER"];
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         }
     }

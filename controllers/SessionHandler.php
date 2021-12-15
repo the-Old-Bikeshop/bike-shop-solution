@@ -10,7 +10,9 @@ class SessionHandle
 
     public function confirm_logged_in() {
         if (!$this->logged_in()) {
-            $redirect = new RedirectHandler("landing");
+            $URL="https://raul-octavian.eu/bike-shop-solution/home";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     }
 

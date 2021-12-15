@@ -117,7 +117,11 @@ class UserController extends ViewController {
             $_SESSION['userID'] = $loggedInUser->userID;
 
             if($loggedInUser->role == 2){
-                new RedirectHandler("admin");
+
+                $URL="https://raul-octavian.eu/bike-shop-solution/admin";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
                 // session handler goes here and activates the session
             }elseif ($loggedInUser->role == 1){
                 // session handler goes here and activates the session
@@ -125,7 +129,9 @@ class UserController extends ViewController {
 //                    var_dump($_SERVER['HTTP_REFERER']);
 //                    new RedirectHandler($_SERVER['HTTP_REFERER']);
 //                } else {
-                    new RedirectHandler('home');
+                $URL="https://raul-octavian.eu/bike-shop-solution/home";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 //                }
 
             }

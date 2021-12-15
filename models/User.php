@@ -43,7 +43,9 @@ class User extends BasisSQL {
             $_SESSION['email'] = $data['email'];
             $_SESSION['userID'] = $userID;
 
-            new RedirectHandler("home");
+            $URL="https://raul-octavian.eu/bike-shop-solution/home";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             $this->db->dbCon->commit();
 
         }catch (Exception $e) {
