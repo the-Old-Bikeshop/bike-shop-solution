@@ -1,5 +1,59 @@
+.checkout-form-wrapper {
+    display: flex;
+}
 
+.checkout-form {
+    padding: 0;
+    margin: 0;
+}
 
-.checkout {
+.checkout-form-step {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+.checkout-form-control-dropdown {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.checkout-form-control-dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.checkout-form-control-dropdown-link:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--background-secondary);
+}
+
+.dropdown-control-icon {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.submit-checkout-form-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4rem;
+}
+
+.form-input-label{
+    color: var(--background-secondary);
+    opacity: 0.6;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'Neue Metana', sans-serif;
 }
