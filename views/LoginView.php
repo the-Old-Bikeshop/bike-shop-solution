@@ -36,18 +36,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                             <div class="col-12 col-md-10" style="margin-top:8px;">
                                 <label for="password">Password</label>
-                                <input id="password" type="text" name="password" class="form-control col-12">
+                                <input id="password" type="password" name="password" class="form-control col-12">
                             </div>
                             <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
                                 <input style="margin-top:30px;" class="btn btn-outline-dark col-12" type="submit" name="login" value="login">
                             </div>
-
                             <div class="col-12 col-md-10"  style="display:flex; align-items:center; justify-content:center;">
                                 <a href="sign-up" class="btn btn-dark col-12" style="margin-top:30px;">
                                       Sign up
                                 </a>
                             </div>
-
                         </div>
                     </form>
                 </section>
