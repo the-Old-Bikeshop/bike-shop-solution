@@ -4,6 +4,10 @@ $ses->setToken();
 $email = new ContactController();
 $email->SendEmail();
 
+$business = new HomeController();
+$info = $business->getBusinessInfo();
+
+
 ?>
 <div class="contact-form-wrapper">
     <div class="contact-form-banner-container">
@@ -16,19 +20,19 @@ $email->SendEmail();
                 <div class="contact-banner-item-icon">
                     <i class="las la-at"></i>
                 </div>
-                <h2 class="contact-banner-item-heading">owlbikehsop@gmail.com</h2>
+                <h2 class="contact-banner-item-heading"> <?php echo $info['email'] ?></h2>
             </div>
             <div class="contact-banner-item">
                 <div class="contact-banner-item-icon">
                     <i class="las la-phone"></i>
                 </div>
-                <h2 class="contact-banner-item-heading">+45983123876</h2>
+                <h2 class="contact-banner-item-heading"><?php echo $info['phone'] ?></h2>
             </div>
             <div class="contact-banner-item">
                 <div class="contact-banner-item-icon">
                     <i class="las la-map-marker"></i>
                 </div>
-                <h2 class="contact-banner-item-heading">Gl Vardevej 78, 6700 Esbjerg</h2>
+                <h2 class="contact-banner-item-heading"><?php echo $info['address'] ?></h2>
             </div>
         </div>
     </div>

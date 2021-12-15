@@ -1,3 +1,8 @@
+<?php
+$business = new HomeController();
+$info = $business->getBusinessInfo();
+?>
+
 <div class="assurance-banner-wrapper">
     <div class="assurance-banner-item-wrapper">
         <div class="assurance-banner-item-container">
@@ -6,7 +11,7 @@
             </div>
             <h1 class="assurance-banner-heading">Free shipping!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc.
+                <?php echo $info['company_description'] ?>
             </p>
         </div>
     </div>
@@ -17,7 +22,7 @@
             </div>
             <h1 class="assurance-banner-heading">Supporting earth!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc.  
+                <?php echo $info['vision'] ?>
             </p>
         </div>
     </div>
@@ -28,7 +33,7 @@
             </div>
             <h1 class="assurance-banner-heading">Quality assurance!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc. 
+                <?php echo $info['mission'] ?>
             </p>
         </div>
     </div>
@@ -39,7 +44,7 @@
             </div>
             <h1 class="assurance-banner-heading">Donate your bike!</h1>
             <p class="assurance-banner-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor sodales nunc. 
+                <?php echo $info['business_statement'] ?>
             </p>
         </div>
     </div>

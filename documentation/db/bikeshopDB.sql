@@ -20,7 +20,7 @@ CREATE TABLE `company_details` (
     opening_hours VARCHAR(100),
     mission TEXT,
     vision TEXT,
-    STATEMENT TEXT,
+    business_statement TEXT,
     phone VARCHAR(20),
     address VARCHAR(255),
     email VARCHAR(150),

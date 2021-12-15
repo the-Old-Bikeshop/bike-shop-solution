@@ -18,6 +18,9 @@ class HomeController extends ViewController {
    public function getPostsWithLimit() {
        return $this->home->fetchAllLimit('post', 10);
     }
+    public function getBusinessInfo() {
+        return $this->home->fetchOne('company_details', 'company_detailsID', 1);
+    }
 
 
 

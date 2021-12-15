@@ -1,3 +1,7 @@
+<?php
+$business = new HomeController();
+$info = $business->getBusinessInfo();
+?>
 <div class="base-footer-wrapper">
     <div class="base-footer-column">
         <div class="logo-wrapper">
@@ -51,20 +55,20 @@
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-at"></i>
                 </div>
-                <h2 class="footer-contact-item-heading">owl-shop@gmail.com</h2>
+                <h2 class="footer-contact-item-heading"><?php echo $info['email']?></h2>
             </div>
             <div class="footer-contact-banner-item">
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-phone"></i>
                 </div>
-                <h2 class="footer-contact-item-heading">+45983123876</h2>
+                <h2 class="footer-contact-item-heading"><?php echo $info['phone']?></h2>
             </div>
             <div class="footer-contact-banner-item">
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-map-marker"></i>
                 </div>
                 <span>
-                    <h2 class="footer-contact-item-heading">Gl Vardevej 78, 6700 Esbjerg</h2>
+                    <h2 class="footer-contact-item-heading"><?php echo $info['address']?></h2>
                 </span>
             </div>
         </div>
