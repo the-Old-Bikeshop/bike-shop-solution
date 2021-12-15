@@ -168,7 +168,7 @@ class CheckoutController
 
     private function email() {
 
-        var_dump($_POST);
+//        var_dump($_POST);
         $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
         $order = $_SESSION['active_orderID'];
         $invoiceAddress = $_SESSION['active_invoice_address'];

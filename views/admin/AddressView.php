@@ -1,4 +1,3 @@
-
 <?php
 $address = new AddressController();
 $address->setAddress();

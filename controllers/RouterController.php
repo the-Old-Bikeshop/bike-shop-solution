@@ -10,7 +10,7 @@
 
 
             if (!isset($_GET['url'])) {
-                new RedirectHandler('home');
+//                new RedirectHandler('home');
             } elseif (isset($_GET['url'])  && $_GET['url'] == $route){
                 $function->__invoke();
             }

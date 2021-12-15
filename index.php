@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 
 spl_autoload_register(function ($class_name) {
@@ -22,7 +23,6 @@ spl_autoload_register(function ($class_name) {
 <?php require 'controllers/SessionHandler.php';
 
 $session = new SessionHandle();
-$session->startSession();
 $session->setToken();?>
 
 <?php $logout = new LogoutController();

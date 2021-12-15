@@ -1,4 +1,4 @@
-    <?php include_once "./components/customerNavigation.php"?>
+<?php include_once "./components/customerNavigation.php"?>
 <section class="checkout-section-wrapper">
     <div class="basket-container">
         <div class="basket-header-wrapper">

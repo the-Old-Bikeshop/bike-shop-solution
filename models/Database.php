@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    protected const DB_SERVER = 'localhost';
-    protected const DB_USER = 'root';
-    protected const DB_PASSWORD = 'root';
-    protected const DB_DATABASE = 'bikeshop';
+    protected const DB_SERVER = 'raul-octavian.eu.mysql:3306';
+    protected const DB_USER = 'raul_octavian_eubikeshop';
+    protected const DB_PASSWORD = '123456';
+    protected const DB_DATABASE = 'raul_octavian_eubikeshop';
 }
 
 ?>

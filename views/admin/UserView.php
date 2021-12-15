@@ -1,4 +1,3 @@
-
 <?php
 $user = new UserController();
 $user->setUser();

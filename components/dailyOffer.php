@@ -1,7 +1,5 @@
 <?php
-
 $product = new ProductsController()?>
-
 <div class="suggested-products-wrapper">
     <div class="suggested-products-heading-wrapper">
         <div class="suggested-products-heading-icon">

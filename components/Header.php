@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="public/styles/views/basketView.css">
     <link rel="stylesheet" href="public/styles/views/userInfoView.css">
     <link rel="stylesheet" href="public/styles/views/ordersView.css">
-    <title>Admin</title>
+    <title>Owl</title>
 </head>
 <body>
 

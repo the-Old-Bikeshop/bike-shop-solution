@@ -1,5 +1,3 @@
-
-
 <div class="account-nav-items-wrapper">
     <div class="account-nav-header-wrapper">
         <div class="account-nav-logged-in-user-wrapper">

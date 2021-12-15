@@ -53,7 +53,7 @@ $ws->setWheelSize();
         <?php if(isset($ws->getWheelSize()->message)): ?>
             <div class="col-12 col-md-8 offset-md-2">
 
-                <h3><?php var_dump($ws->getwheelSize()->message);  ?></h3>
+                <h3><?php echo $ws->getwheelSize()->message;  ?></h3>
             </div>
         <?php endif  ?>
 
