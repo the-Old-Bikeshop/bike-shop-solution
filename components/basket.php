@@ -1,5 +1,4 @@
 <?php
-
 $product = new ProductsController();
 $bask = new BasketController();
 $bask->quantityAction();
@@ -14,9 +13,6 @@ if(isset($_SESSION['basket'])) {
 }
 
 $price = $subtotal + $delivery;
-
-
-
 ?>
 
 <div class="basket">
@@ -67,42 +63,32 @@ $price = $subtotal + $delivery;
                                 <div class="basket-product-info__price">
                                     Price: <?php echo $item['price'] ?>
                                 </div>
-
-
-
                         </div>
-
                     </div>
                 </div>
-
                 <?php endforeach; ?>
-
-
         </div>
-
     </div>
-
     <div class="basket-footer">
-        <div class="delivery">
-            Delivery : <?php echo $delivery ?>
+        <div class="basket-footer-item-wrapper">
+            <p basket-footer-item-label>Delivery:</p>
+            <p class="basket-footer-item-value"><?php echo $delivery ?></p>
         </div>
         <div class="subtotal">
-            Subtotal: <?php echo $price - $price*75/100 ?>
+            <p class="basket-footer-item-label">Subtotal:</p>
+            <p class="basket-footer-item-value"><?php echo $price - $price*75/100 ?></p>
         </div>
         <div class="tax">
-            Tax: <?php echo $price - $price*25/100 ?>
+            <p class="basket-footer-item-label">Tax:</p>
+            <p class="basket-footer-item-value"><?php echo $price - $price*25/100 ?></p>
         </div>
         <div class="totalPrice">
             <?php
-
-            echo $price;
+                echo $price;
             ?>
         </div>
-
     </div>
     <?php else : ?>
-        <h2>Your basket is empty</h2>
-
+        <h2 class="empty-basekt-banner">Your basket is empty</h2>
     <?php endif; ?>
-
 </div>

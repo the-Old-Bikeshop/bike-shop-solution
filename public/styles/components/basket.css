@@ -46,6 +46,15 @@
 .basket-product-info__price {
     flex: 4;
 }
+
 .basket-footer {
     text-align: right;
+}
+
+.basket-footer-item-wrapper {
+    display: flex;
+}
+
+.empty-basekt-banner {
+    font-family: 'Neue Metana', sans-serif;
 }
