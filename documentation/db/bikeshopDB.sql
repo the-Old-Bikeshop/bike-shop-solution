@@ -254,7 +254,7 @@ CREATE TABLE `page` (
 CREATE OR REPLACE VIEW bike_speks AS
 SELECT
 	bike_s.bike_specificationsID,
-	bike_S.type,
+	bike_S.`type`,
 	bike_s.back_basket,
 	bike_s.mudguards,
 	bike_s.front_basket,
@@ -270,11 +270,11 @@ SELECT
 	u.nick_name,
 	u.first_name,
 	u.last_name
-FROM bike_specifications bike_s
-	     INNER JOIN wheel_size ws ON (bike_s.wheel_sizeID = ws.wheel_sizeID)
-	     INNER JOIN drive_type dt ON (bike_s.drive_typeID = dt.drive_typeID)
-	     INNER JOIN braking_system bs ON (bike_s.braking_systemID = bs.braking_systemID)
-	     INNER JOIN user u ON (bike_s.created_by = u.userID);
+FROM bike_specifications AS bike_s
+	     INNER JOIN wheel_size AS ws ON (bike_s.wheel_sizeID = ws.wheel_sizeID)
+	     INNER JOIN drive_type As dt ON (bike_s.drive_typeID = dt.drive_typeID)
+	     INNER JOIN braking_system AS bs ON (bike_s.braking_systemID = bs.braking_systemID)
+	     INNER JOIN user AS u ON (bike_s.created_by = u.userID);
 
 
 CREATE OR REPLACE VIEW order_view AS
