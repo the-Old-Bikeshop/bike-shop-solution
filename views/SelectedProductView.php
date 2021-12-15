@@ -22,18 +22,6 @@ $basket->addToBasket();
             <div class="selected-product-information-container">
                 <?php $product = $product->getOneProduct($selectedProductID); ?>
                 <h1 class="selected-product-information-heading"><?php echo $product['name'] ?></h1>
-                <h2 class="selected-product-category">fixed-gear</h2>
-                <!-- <div class="product-category-chips-container">
-                    <div class="product-chip">
-                        cheap-transportation
-                    </div>
-                    <div class="product-chip">
-                        city-bike
-                    </div>
-                    <div class="product-chip">
-                        green-world
-                    </div>
-                </div> -->
                 <div class="selected-product-specifications-wrapper">
                     <div class="selected-product-specifications-item">
                         <div class="selected-product-specifications-item-label-wrapper">
