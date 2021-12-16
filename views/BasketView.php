@@ -10,6 +10,7 @@
         <?php include_once 'components/basket.php' ?>
     </div>
     <div class="checkout-form-container">
+        <a class="sign-in-call-to-action-checkout" href="sign-in">Sign in</a>
         <div class="basket-header-wrapper">
             <div class="basket-icon-wrapper">
                 <i class="las la-cash-register"></i>

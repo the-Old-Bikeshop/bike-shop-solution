@@ -6,6 +6,22 @@
     flex-wrap: wrap;
 }
 
+.sign-in-call-to-action-checkout {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    background-color: var(--background-secondary);
+    font-family: 'Neue Metana', sans-serif;
+    color: var(--background-primary);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.sign-in-call-to-action-checkout:hover {
+    text-decoration: none;
+    color: var(--primary);
+}
+
 .basket-header-wrapper {
     width: 100%;
     display: flex;
@@ -60,4 +76,5 @@
     padding: 2rem;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: relative;
 }
