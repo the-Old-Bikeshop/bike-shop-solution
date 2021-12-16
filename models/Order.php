@@ -8,8 +8,6 @@ class Order extends
 
     public function createOrder($data) {
 
-        var_dump( $data);
-
         $this->db->dbCon->beginTransaction();
 
         try {
