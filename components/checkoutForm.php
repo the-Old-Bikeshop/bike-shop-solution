@@ -17,7 +17,7 @@ $checkout->processCheckout();
                     <select class="custom-select" id="shippingID" name="shippingID">
                         <?php if ($order->getShipping() !== null) {
                             foreach ($order->getShipping() as $shipping):?>
-                                <option value="<?php echo $shipping['shippingID'] ?? '' ?>"
+                                <option value="<?php echo $shipping['shippingID'] ?? 1 ?>"
                                     <?php if(!isset($shipping['shippingID']) && isset($order->getOrder()['oderID'])
                                         && $shipping['shippingID'] ==
                                         $order->getOrder()['orderID']):?>
@@ -48,14 +48,14 @@ $checkout->processCheckout();
                             <label class="form-input-label" for="first_name">first name</label>
                             <input type="text" class="form-control" id="first_name" name="first_name"
                                    placeholder="John"
-                                   value="<?php echo $user->getUserInfoCheckout()['first_name'] ?? '' ?>"
+                                   value="<?php echo $user->getUserInfoCheckout()['first_name'] ?? '' ?> " required
                             >
                         </div>
                         <div class="form-group col-6 p-0 mt-2">
                             <label class="form-input-label" for="last_name">last name</label>
                             <input type="text" class="form-control" id="last_name" name="last_name"
                                    placeholder="Smith"
-                                   value="<?php echo $user->getUserInfoCheckout()['last_name'] ?? '' ?>"
+                                   value="<?php echo $user->getUserInfoCheckout()['last_name'] ?? '' ?>" required
                             >
                         </div>
                     </div>
@@ -64,14 +64,14 @@ $checkout->processCheckout();
                             <label class="form-input-label" for="email">email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                    placeholder="email@email.com"
-                                   value="<?php echo $user->getUserInfoCheckout()['email'] ?? '' ?>"
+                                   value="<?php echo $user->getUserInfoCheckout()['email'] ?? '' ?>" required
                             >
                         </div>
                         <div class="form-group col-12 p-0 mt-2">
                             <label class="form-input-label" for="phone_number">phone_number</label>
                             <input type="text" class="form-control" id="phone_number" name="phone_number"
                                    placeholder="phone"
-                                   value="<?php echo $user->getUserInfoCheckout()['phone_number'] ?? '' ?>"
+                                   value="<?php echo $user->getUserInfoCheckout()['phone_number'] ?? '' ?>" required
                             >
                         </div>
                     </div>
@@ -94,7 +94,7 @@ $checkout->processCheckout();
                     <div class="row">
                         <div class="form-group col-12 mt-2">
                             <label class="form-input-label" for="invoice_postalCodeID">Zip Code</label>
-                            <select  class="form-control" id="invoice_postalCodeID" name="invoice_postalCodeID" >
+                            <select  class="form-control" id="invoice_postalCodeID" name="invoice_postalCodeID" required >
                                 <?php if ($address->fetchAllZipCodes() !== null): ?>
                                     <?php foreach ($address->fetchAllZipCodes() as $zipCode) : ?>
                                         <option value = "<?php echo $zipCode['postal_code']?>"
@@ -118,7 +118,7 @@ $checkout->processCheckout();
                             <input type="text" class="form-control" id="invoice_street_name"
                                     name="invoice_street_name"
                                     placeholder="Storegade"
-                                    value=" <?php echo $address->getInvoiceAddress()['street_name'] ?? '' ?>"
+                                    value=" <?php echo $address->getInvoiceAddress()['street_name'] ?? '' ?>" required
                             >
                         </div>
                         <div class="form-group col-12 mt-2">
@@ -126,7 +126,7 @@ $checkout->processCheckout();
                             <input type="text" class="form-control" id="invoice_address_content"
                                     name="invoice_address_content"
                                     placeholder="39, 4th"
-                                    value=" <?php echo $address->getInvoiceAddress()['address_content'] ?? '' ?>"
+                                    value=" <?php echo $address->getInvoiceAddress()['address_content'] ?? '' ?>" required
                             >
                         </div>
                     </div>

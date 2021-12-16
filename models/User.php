@@ -24,28 +24,41 @@ class User extends BasisSQL {
     public function registerUser($data, $password) {
         $this->db->dbCon->beginTransaction();
         try {
-            $query = $this->db->dbCon->prepare("INSERT INTO user (nick_name, first_name, last_name, email, `password_hash`, `role`)
+
+            $emailquery = $this->db->dbCon->prepare("SELECT * FROM `user` WHERE email = :email");
+            $emailquery->bindValue(':email', $data['email']);
+            $emailquery->execute();
+            if (count($emailquery->fetchAll(PDO::FETCH_ASSOC)) == 0) {
+                $query = $this->db->dbCon->prepare("INSERT INTO user (nick_name, first_name, last_name, email, `password_hash`, `role`)
         VALUES (:nick_name, :first_name, :last_name, :email, :password_hash, :role)");
-            //Bind values
-            $query->bindValue(':nick_name', $data['nick_name']);
-            $query->bindValue(':first_name', $data['first_name']);
-            $query->bindValue(':last_name', $data['last_name']);
-            $query->bindValue(':email', $data['email']);
-            $query->bindValue(':password_hash', $password);
-            $query->bindValue(':role', $data['role']);
+                //Bind values
+                $query->bindValue(':nick_name', $data['nick_name']);
+                $query->bindValue(':first_name', $data['first_name']);
+                $query->bindValue(':last_name', $data['last_name']);
+                $query->bindValue(':email', $data['email']);
+                $query->bindValue(':password_hash', $password);
+                $query->bindValue(':role', $data['role']);
 
-            $query->execute();
+                $query->execute();
 
-            $userID = $this->db->dbCon->lastInsertId();
+                $userID = $this->db->dbCon->lastInsertId();
 
-            $_SESSION['name'] = $data['first_name'] . " " . $data['last_name'] ;
-            $_SESSION['user-role'] = $data['role'];
-            $_SESSION['email'] = $data['email'];
-            $_SESSION['userID'] = $userID;
+                $_SESSION['name'] = $data['first_name'] . " " . $data['last_name'] ;
+                $_SESSION['user-role'] = $data['role'];
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['userID'] = $userID;
 
-            $URL="https://raul-octavian.eu/bike-shop-solution/home";
-            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                $URL="https://raul-octavian.eu/bike-shop-solution/home";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+            } else {
+                $_SESSION['login_message'] = "email exists please sign in";
+                $URL="https://raul-octavian.eu/bike-shop-solution/sign-in";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+
             $this->db->dbCon->commit();
 
         }catch (Exception $e) {
@@ -61,22 +74,35 @@ class User extends BasisSQL {
 
         $this->db->dbCon->beginTransaction();
         try{
-            $query = $this->db->dbCon->prepare("INSERT INTO user ( first_name, last_name, email, phone_number, `role`)
+
+            $emailquery = $this->db->dbCon->prepare("SELECT * FROM `user` WHERE email = :email");
+            $emailquery->bindValue(':email', $data['email']);
+            $emailquery->execute();
+            if (count($emailquery->fetchAll(PDO::FETCH_ASSOC)) == 0) {
+                $query = $this->db->dbCon->prepare("INSERT INTO user ( first_name, last_name, email, phone_number, `role`)
         VALUES ( :first_name, :last_name, :email, :phone_number, :role)");
-            //Bind values
-            $query->bindValue(':first_name', $data['first_name']);
-            $query->bindValue(':last_name', $data['last_name']);
-            $query->bindValue(':email', $data['email']);
-            $query->bindValue(':phone_number', $data['phone_number']);
-            $query->bindValue(':role', $data['role']);
+                //Bind values
+                $query->bindValue(':first_name', $data['first_name']);
+                $query->bindValue(':last_name', $data['last_name']);
+                $query->bindValue(':email', $data['email']);
+                $query->bindValue(':phone_number', $data['phone_number']);
+                $query->bindValue(':role', $data['role']);
 
-            $_SESSION['userID']= $this->db->dbCon->lastInsertId();
-            $_SESSION['email'] = $data['email'];
-            $_SESSION['first_name'] = $data['first_name'];
-            $_SESSION['last_name'] = $data['last_name'];
-            $_SESSION['phone_number'] = $data['phone_number'];
+                $_SESSION['userID']= $this->db->dbCon->lastInsertId();
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['first_name'] = $data['first_name'];
+                $_SESSION['last_name'] = $data['last_name'];
+                $_SESSION['phone_number'] = $data['phone_number'];
 
-            $query->execute();
+                $query->execute();
+
+            }else {
+                $_SESSION['login_message'] = "email exists please sign in";
+                $URL="https://raul-octavian.eu/bike-shop-solution/sign-in";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+
             $this->db->dbCon->commit();
 
         } catch (Exception $e) {

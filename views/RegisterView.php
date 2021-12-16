@@ -23,6 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+    <h3><?php echo $init->getMessage()  ?></h3>
         <div style="height:100vh; background-color:black; width:100vw; display:flex; align-items:center; justify-content:center;">
             <div style="background-color: whitesmoke; width:25rem; padding-top:2rem; height: auto; display:flex; align-items:center; justify-content:center; padding-bottom:2rem; border-radius: 20px;">
                 <section class="container row">

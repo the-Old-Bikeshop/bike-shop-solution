@@ -23,9 +23,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+
         <div style="height:100vh; background-color:black; width:100vw; display:flex; align-items:center; justify-content:center;">
             <div style="background-color: whitesmoke; width:25rem; padding-top:2rem; height: auto; display:flex; align-items:center; justify-content:center; padding-bottom:2rem; border-radius: 20px;">
                 <section class="container row">
+                    <h3><?php echo $_SESSION['login_message'] ?? "" ?></h3>
                     <h2 style="margin-bottom:2rem;" class="col col-12 text-center">Sign in.</h2>
                     <form action="" method="post" class="col col-12">
                         <input type="hidden" name="type" value="register">
