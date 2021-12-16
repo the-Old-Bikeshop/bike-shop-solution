@@ -12,20 +12,21 @@ $info = $business->getBusinessInfo();
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-at"></i>
                 </div>
-                <h2 class="footer-contact-item-heading"><?php echo $info['email']?></h2>
+                <h2 class="footer-contact-item-heading footer-contact-item-heading--white "><?php echo
+                    $info['email']?></h2>
             </div>
             <div class="footer-contact-banner-item">
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-phone"></i>
                 </div>
-                <h2 class="footer-contact-item-heading"><?php echo $info['phone']?></h2>
+                <h2 class="footer-contact-item-heading footer-contact-item-heading--white"><?php echo $info['phone']?></h2>
             </div>
             <div class="footer-contact-banner-item">
                 <div class="footer-contact-banner-item-icon">
                     <i class="las la-map-marker"></i>
                 </div>
                 <span>
-                    <h2 class="footer-contact-item-heading"><?php echo $info['address'] . " from " . $info['opening_hours'] ?> </h2>
+                    <h2 class="footer-contact-item-heading footer-contact-item-heading--white"><?php echo $info['address'] . " from " . $info['opening_hours'] ?> </h2>
                 </span>
             </div>
         </div>
