@@ -28,7 +28,9 @@ $price = $subtotal + $delivery;
                         <?php $img = $product->getProductWithImage($item['productID']) ?>
                         <img
                             src="<?php echo  $img['URL'] ?>"
-                            alt="<?php echo  $img['alt'] ?? $img['URL'] ?>""
+                            alt="<?php echo  $img['alt'] ?? $img['URL'] ?>"
+                            width="200"
+                            height="150"
                             class="basket-product-image"
                         >
                     </div>

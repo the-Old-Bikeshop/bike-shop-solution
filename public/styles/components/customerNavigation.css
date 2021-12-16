@@ -87,6 +87,9 @@ body {
     transition: ease;
     color: var(--primary);
 }
+.toolbar_icon_wrapper--active {
+    color: var(--primary);
+}
 
 .nav_searchbar_wrapper {
     height: 100%;

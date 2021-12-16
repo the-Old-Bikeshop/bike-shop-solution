@@ -39,7 +39,6 @@
 
                 $total_Rows = $statement->rowCount();
 
-//                $dbCon->commit();
 
                 if($total_Rows > 0) {
                     foreach ($result as $row) {

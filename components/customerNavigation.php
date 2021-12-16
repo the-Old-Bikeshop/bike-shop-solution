@@ -76,7 +76,7 @@
                 <i class="las la-user-circle"></i>
             </a>
         </div>
-        <div class="toolbar_icon_wrapper">
+        <div class="toolbar_icon_wrapper <?php echo count($_SESSION['basket']) > 0 ? 'toolbar_icon_wrapper--active' : '' ?>">
             <a class="toolbar_link" href="basket"
                 >
                 <i class="las la-shopping-bag"></i>

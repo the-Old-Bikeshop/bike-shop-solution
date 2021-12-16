@@ -176,9 +176,9 @@ class CheckoutController
         $productList = '';
         $to = $_POST['email'];
 
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $headers .= "From: no-reply@owl.com" . "\r\n";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: no-reply@raul-octavian.eu" . "\r\n";
         if(isset($_SESSION['basket'])) {
             foreach ($_SESSION['basket'] as $product){
                 $name = $product['name'] ?? 'name';
@@ -254,7 +254,8 @@ class CheckoutController
 
         $this->title = "Confirming order nr: " .$_SESSION['active_orderID'];
        if(mail($to, $this->title, $this->content, $headers )) {
-           echo "message sent!";
+           $_SESSION['basket'] = [];
+           $_SESSION['message_sent'] = true;
        };
     }
 
