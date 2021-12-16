@@ -15,7 +15,7 @@ class CheckoutController
     {
         $this->order = new OrderController();
         $this->address = new AddressController();
-        $this->user  =new User();
+        $this->user = new User();
         $this->productsToOrder = new OrderHasProducts();
 
     }
@@ -102,7 +102,6 @@ class CheckoutController
 
 
     public function setOrderData() {
-
 
         $_POST = filter_input_array(INPUT_POST,
             FILTER_SANITIZE_STRING);

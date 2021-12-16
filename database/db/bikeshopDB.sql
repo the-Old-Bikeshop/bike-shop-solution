@@ -326,10 +326,10 @@ DELIMITER //
 
 DELIMITER //
 CREATE TRIGGER `AfterNewOrderInsertUpdateFollowUpDate` AFTER INSERT
-    ON `order`
+    ON `order_has_products`
     FOR EACH ROW
     UPDATE `order`
-    SET `follow_up_date` = DATE_ADD(NEW.created_at , INTERVAL 2 DAY)
+    SET `follow_up_date` = DATE_ADD(NOW() , INTERVAL 2 DAY)
     WHERE `orderID` = NEW.orderID;
 
 DELIMITER //
