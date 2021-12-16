@@ -1,3 +1,7 @@
+<?php  $business = new HomeController();
+$info = $business->getBusinessInfo();
+?>
+
 <?php include_once "./components/customerNavigation.php"?>
 <div class="about-page-wrapper">
     <div class="about-page-info-wrapper">
@@ -21,7 +25,7 @@
                     <i class="las la-map-marker"></i>
                 </div>
                 <span>
-                    <h2 class="footer-contact-item-heading"><?php echo $info['address']?></h2>
+                    <h2 class="footer-contact-item-heading"><?php echo $info['address'] . " from " . $info['opening_hours'] ?> </h2>
                 </span>
             </div>
         </div>
