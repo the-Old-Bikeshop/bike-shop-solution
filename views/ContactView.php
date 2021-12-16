@@ -57,3 +57,4 @@ $email->SendEmail();
 
 
 </div>
+<?php include_once "./components/baseFooter.php"?>

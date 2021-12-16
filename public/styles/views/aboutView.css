@@ -1,0 +1,26 @@
+.about-page-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 111vh;
+    background-color: var(--background-tertiary);
+}
+
+.about-page-info-wrapper {
+    width: 40%;
+    padding: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-text {
+margin-bottom: 2rem;
+color: var(--background-secondary);
+font-family: 'Neue Metana', sans-serif;
+}
+
+.about-page-assurance-wrapper {
+    width: 60%;
+}

@@ -244,3 +244,4 @@ $order->setOrders();
         </div>
     </section>
 </div>
+<?php include_once "./components/baseFooter.php"?>
