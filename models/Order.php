@@ -32,7 +32,6 @@ class Order extends
 
             $query->execute();
             $_SESSION['active_orderID'] = $this->db->dbCon->lastInsertId();
-            var_dump($_SESSION['active_orderID']);
             $this->db->dbCon->commit();
 
         }catch (Exception $e) {
