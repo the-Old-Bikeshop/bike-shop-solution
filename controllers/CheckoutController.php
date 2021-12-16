@@ -168,7 +168,7 @@ class CheckoutController
     private function email() {
 
 //        var_dump($_POST);
-        $name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
+        $user_name = $_SESSION['last_name'] . " " . $_SESSION['first_name'];
         $order = $_SESSION['active_orderID'];
         $invoiceAddress = $_SESSION['active_invoice_address'];
         $deliveryAddress = $_SESSION['active_delivery_address'];
@@ -234,7 +234,7 @@ class CheckoutController
         $this->content .= "border: 1px solid #33CC99;"."\r\n";
         $this->content .= "text-align: center; } </style> </head>"."\r\n";
         $this->content .= "<body><table><tbody><tr><td> "."\r\n";
-        $this->content .= "<h1>Hello $name  Thank you for your order</h1> "."\r\n";
+        $this->content .= "<h1>Hello $user_name  Thank you for your order</h1> "."\r\n";
         $this->content .= "</td></tr><tr><td> "."\r\n";
         $this->content .= "<h2>payment for order nr $order was confirmed, "."\r\n";
         $this->content .= "it will be dispatched as soon as possible at</h2> "."\r\n";
@@ -255,6 +255,10 @@ class CheckoutController
        if(mail($to, $this->title, $this->content, $headers )) {
            $_SESSION['basket'] = [];
            $_SESSION['message_sent'] = true;
+
+           $URL="https://raul-octavian.eu/bike-shop-solution/your-orders";
+           echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+           echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
        };
     }
 
